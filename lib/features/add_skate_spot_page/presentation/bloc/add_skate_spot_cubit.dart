@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:geolocator/geolocator.dart';
+
+import '../../../login_user_page/domain/usecases/get_user_curret_position_usecase.dart';
 import '/../core/classes/choose_image_to_database.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
@@ -15,7 +18,8 @@ part 'add_skate_spot_cubit.freezed.dart';
 @injectable
 class AddSkateSpotCubit extends ActionCubit<AddSkateSpotState, AddSkateSpotAction> {
   final AddSkateSpotUseCase addSkateSpotUseCase;
-  AddSkateSpotCubit({required this.addSkateSpotUseCase}) : super(const AddSkateSpotState.initial());
+  final GetUserCurrentPositionUseCase getUserCurrentPositionUseCase;
+  AddSkateSpotCubit({required this.addSkateSpotUseCase, required this.getUserCurrentPositionUseCase}) : super(const AddSkateSpotState.initial());
 
   Future<void> initAddSkateSpotPage({required bool userLoggedIn}) async{
     emit(const AddSkateSpotState.addSkateSpotPageLoading());
@@ -59,6 +63,15 @@ class AddSkateSpotCubit extends ActionCubit<AddSkateSpotState, AddSkateSpotActio
       emit(const AddSkateSpotState.addSkateSpotPageError(message: 'Ups..something went wrong'));
     }, (success){
 
+    });
+  }
+
+  Future<Position> getSpotPosition() async{
+    final result = await getUserCurrentPositionUseCase.call();
+    return result.fold((failure){
+      return Position.fromMap('oo');
+    }, (success){
+      return success;
     });
   }
 
