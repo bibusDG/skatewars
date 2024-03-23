@@ -6,4 +6,5 @@ class AddSpotMapState with _$AddSpotMapState {
   const factory AddSpotMapState.mapIsLoading() = _MapIsLoading;
   const factory AddSpotMapState.mapError({required String message}) = _MapError;
   const factory AddSpotMapState.mapLoaded({required Position spotPosition}) = _MapLoaded;
+  const factory AddSpotMapState.newPosition({required LatLng spotPosition}) = _NewPosition;
 }

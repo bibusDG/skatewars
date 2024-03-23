@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
+import 'package:latlong2/latlong.dart';
 
 import '../../../../login_user_page/domain/usecases/get_user_curret_position_usecase.dart';
 
@@ -30,6 +31,10 @@ class AddSpotMapCubit extends Cubit<AddSpotMapState> {
     }, (success){
       return success;
     });
+  }
+
+  Future<void> geNewPosition(LatLng position) async{
+    emit(AddSpotMapState.newPosition(spotPosition: position));
   }
 
 }

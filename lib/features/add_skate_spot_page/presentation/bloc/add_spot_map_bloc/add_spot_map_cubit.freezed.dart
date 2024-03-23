@@ -22,6 +22,7 @@ mixin _$AddSpotMapState {
     required TResult Function() mapIsLoading,
     required TResult Function(String message) mapError,
     required TResult Function(Position spotPosition) mapLoaded,
+    required TResult Function(LatLng spotPosition) newPosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$AddSpotMapState {
     TResult? Function()? mapIsLoading,
     TResult? Function(String message)? mapError,
     TResult? Function(Position spotPosition)? mapLoaded,
+    TResult? Function(LatLng spotPosition)? newPosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$AddSpotMapState {
     TResult Function()? mapIsLoading,
     TResult Function(String message)? mapError,
     TResult Function(Position spotPosition)? mapLoaded,
+    TResult Function(LatLng spotPosition)? newPosition,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$AddSpotMapState {
     required TResult Function(_MapIsLoading value) mapIsLoading,
     required TResult Function(_MapError value) mapError,
     required TResult Function(_MapLoaded value) mapLoaded,
+    required TResult Function(_NewPosition value) newPosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$AddSpotMapState {
     TResult? Function(_MapIsLoading value)? mapIsLoading,
     TResult? Function(_MapError value)? mapError,
     TResult? Function(_MapLoaded value)? mapLoaded,
+    TResult? Function(_NewPosition value)? newPosition,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$AddSpotMapState {
     TResult Function(_MapIsLoading value)? mapIsLoading,
     TResult Function(_MapError value)? mapError,
     TResult Function(_MapLoaded value)? mapLoaded,
+    TResult Function(_NewPosition value)? newPosition,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +134,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() mapIsLoading,
     required TResult Function(String message) mapError,
     required TResult Function(Position spotPosition) mapLoaded,
+    required TResult Function(LatLng spotPosition) newPosition,
   }) {
     return initial();
   }
@@ -139,6 +146,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? mapIsLoading,
     TResult? Function(String message)? mapError,
     TResult? Function(Position spotPosition)? mapLoaded,
+    TResult? Function(LatLng spotPosition)? newPosition,
   }) {
     return initial?.call();
   }
@@ -150,6 +158,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? mapIsLoading,
     TResult Function(String message)? mapError,
     TResult Function(Position spotPosition)? mapLoaded,
+    TResult Function(LatLng spotPosition)? newPosition,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -165,6 +174,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_MapIsLoading value) mapIsLoading,
     required TResult Function(_MapError value) mapError,
     required TResult Function(_MapLoaded value) mapLoaded,
+    required TResult Function(_NewPosition value) newPosition,
   }) {
     return initial(this);
   }
@@ -176,6 +186,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_MapIsLoading value)? mapIsLoading,
     TResult? Function(_MapError value)? mapError,
     TResult? Function(_MapLoaded value)? mapLoaded,
+    TResult? Function(_NewPosition value)? newPosition,
   }) {
     return initial?.call(this);
   }
@@ -187,6 +198,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_MapIsLoading value)? mapIsLoading,
     TResult Function(_MapError value)? mapError,
     TResult Function(_MapLoaded value)? mapLoaded,
+    TResult Function(_NewPosition value)? newPosition,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -242,6 +254,7 @@ class _$MapIsLoadingImpl implements _MapIsLoading {
     required TResult Function() mapIsLoading,
     required TResult Function(String message) mapError,
     required TResult Function(Position spotPosition) mapLoaded,
+    required TResult Function(LatLng spotPosition) newPosition,
   }) {
     return mapIsLoading();
   }
@@ -253,6 +266,7 @@ class _$MapIsLoadingImpl implements _MapIsLoading {
     TResult? Function()? mapIsLoading,
     TResult? Function(String message)? mapError,
     TResult? Function(Position spotPosition)? mapLoaded,
+    TResult? Function(LatLng spotPosition)? newPosition,
   }) {
     return mapIsLoading?.call();
   }
@@ -264,6 +278,7 @@ class _$MapIsLoadingImpl implements _MapIsLoading {
     TResult Function()? mapIsLoading,
     TResult Function(String message)? mapError,
     TResult Function(Position spotPosition)? mapLoaded,
+    TResult Function(LatLng spotPosition)? newPosition,
     required TResult orElse(),
   }) {
     if (mapIsLoading != null) {
@@ -279,6 +294,7 @@ class _$MapIsLoadingImpl implements _MapIsLoading {
     required TResult Function(_MapIsLoading value) mapIsLoading,
     required TResult Function(_MapError value) mapError,
     required TResult Function(_MapLoaded value) mapLoaded,
+    required TResult Function(_NewPosition value) newPosition,
   }) {
     return mapIsLoading(this);
   }
@@ -290,6 +306,7 @@ class _$MapIsLoadingImpl implements _MapIsLoading {
     TResult? Function(_MapIsLoading value)? mapIsLoading,
     TResult? Function(_MapError value)? mapError,
     TResult? Function(_MapLoaded value)? mapLoaded,
+    TResult? Function(_NewPosition value)? newPosition,
   }) {
     return mapIsLoading?.call(this);
   }
@@ -301,6 +318,7 @@ class _$MapIsLoadingImpl implements _MapIsLoading {
     TResult Function(_MapIsLoading value)? mapIsLoading,
     TResult Function(_MapError value)? mapError,
     TResult Function(_MapLoaded value)? mapLoaded,
+    TResult Function(_NewPosition value)? newPosition,
     required TResult orElse(),
   }) {
     if (mapIsLoading != null) {
@@ -382,6 +400,7 @@ class _$MapErrorImpl implements _MapError {
     required TResult Function() mapIsLoading,
     required TResult Function(String message) mapError,
     required TResult Function(Position spotPosition) mapLoaded,
+    required TResult Function(LatLng spotPosition) newPosition,
   }) {
     return mapError(message);
   }
@@ -393,6 +412,7 @@ class _$MapErrorImpl implements _MapError {
     TResult? Function()? mapIsLoading,
     TResult? Function(String message)? mapError,
     TResult? Function(Position spotPosition)? mapLoaded,
+    TResult? Function(LatLng spotPosition)? newPosition,
   }) {
     return mapError?.call(message);
   }
@@ -404,6 +424,7 @@ class _$MapErrorImpl implements _MapError {
     TResult Function()? mapIsLoading,
     TResult Function(String message)? mapError,
     TResult Function(Position spotPosition)? mapLoaded,
+    TResult Function(LatLng spotPosition)? newPosition,
     required TResult orElse(),
   }) {
     if (mapError != null) {
@@ -419,6 +440,7 @@ class _$MapErrorImpl implements _MapError {
     required TResult Function(_MapIsLoading value) mapIsLoading,
     required TResult Function(_MapError value) mapError,
     required TResult Function(_MapLoaded value) mapLoaded,
+    required TResult Function(_NewPosition value) newPosition,
   }) {
     return mapError(this);
   }
@@ -430,6 +452,7 @@ class _$MapErrorImpl implements _MapError {
     TResult? Function(_MapIsLoading value)? mapIsLoading,
     TResult? Function(_MapError value)? mapError,
     TResult? Function(_MapLoaded value)? mapLoaded,
+    TResult? Function(_NewPosition value)? newPosition,
   }) {
     return mapError?.call(this);
   }
@@ -441,6 +464,7 @@ class _$MapErrorImpl implements _MapError {
     TResult Function(_MapIsLoading value)? mapIsLoading,
     TResult Function(_MapError value)? mapError,
     TResult Function(_MapLoaded value)? mapLoaded,
+    TResult Function(_NewPosition value)? newPosition,
     required TResult orElse(),
   }) {
     if (mapError != null) {
@@ -528,6 +552,7 @@ class _$MapLoadedImpl implements _MapLoaded {
     required TResult Function() mapIsLoading,
     required TResult Function(String message) mapError,
     required TResult Function(Position spotPosition) mapLoaded,
+    required TResult Function(LatLng spotPosition) newPosition,
   }) {
     return mapLoaded(spotPosition);
   }
@@ -539,6 +564,7 @@ class _$MapLoadedImpl implements _MapLoaded {
     TResult? Function()? mapIsLoading,
     TResult? Function(String message)? mapError,
     TResult? Function(Position spotPosition)? mapLoaded,
+    TResult? Function(LatLng spotPosition)? newPosition,
   }) {
     return mapLoaded?.call(spotPosition);
   }
@@ -550,6 +576,7 @@ class _$MapLoadedImpl implements _MapLoaded {
     TResult Function()? mapIsLoading,
     TResult Function(String message)? mapError,
     TResult Function(Position spotPosition)? mapLoaded,
+    TResult Function(LatLng spotPosition)? newPosition,
     required TResult orElse(),
   }) {
     if (mapLoaded != null) {
@@ -565,6 +592,7 @@ class _$MapLoadedImpl implements _MapLoaded {
     required TResult Function(_MapIsLoading value) mapIsLoading,
     required TResult Function(_MapError value) mapError,
     required TResult Function(_MapLoaded value) mapLoaded,
+    required TResult Function(_NewPosition value) newPosition,
   }) {
     return mapLoaded(this);
   }
@@ -576,6 +604,7 @@ class _$MapLoadedImpl implements _MapLoaded {
     TResult? Function(_MapIsLoading value)? mapIsLoading,
     TResult? Function(_MapError value)? mapError,
     TResult? Function(_MapLoaded value)? mapLoaded,
+    TResult? Function(_NewPosition value)? newPosition,
   }) {
     return mapLoaded?.call(this);
   }
@@ -587,6 +616,7 @@ class _$MapLoadedImpl implements _MapLoaded {
     TResult Function(_MapIsLoading value)? mapIsLoading,
     TResult Function(_MapError value)? mapError,
     TResult Function(_MapLoaded value)? mapLoaded,
+    TResult Function(_NewPosition value)? newPosition,
     required TResult orElse(),
   }) {
     if (mapLoaded != null) {
@@ -603,5 +633,158 @@ abstract class _MapLoaded implements AddSpotMapState {
   Position get spotPosition;
   @JsonKey(ignore: true)
   _$$MapLoadedImplCopyWith<_$MapLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NewPositionImplCopyWith<$Res> {
+  factory _$$NewPositionImplCopyWith(
+          _$NewPositionImpl value, $Res Function(_$NewPositionImpl) then) =
+      __$$NewPositionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({LatLng spotPosition});
+}
+
+/// @nodoc
+class __$$NewPositionImplCopyWithImpl<$Res>
+    extends _$AddSpotMapStateCopyWithImpl<$Res, _$NewPositionImpl>
+    implements _$$NewPositionImplCopyWith<$Res> {
+  __$$NewPositionImplCopyWithImpl(
+      _$NewPositionImpl _value, $Res Function(_$NewPositionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? spotPosition = null,
+  }) {
+    return _then(_$NewPositionImpl(
+      spotPosition: null == spotPosition
+          ? _value.spotPosition
+          : spotPosition // ignore: cast_nullable_to_non_nullable
+              as LatLng,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NewPositionImpl implements _NewPosition {
+  const _$NewPositionImpl({required this.spotPosition});
+
+  @override
+  final LatLng spotPosition;
+
+  @override
+  String toString() {
+    return 'AddSpotMapState.newPosition(spotPosition: $spotPosition)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NewPositionImpl &&
+            (identical(other.spotPosition, spotPosition) ||
+                other.spotPosition == spotPosition));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, spotPosition);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NewPositionImplCopyWith<_$NewPositionImpl> get copyWith =>
+      __$$NewPositionImplCopyWithImpl<_$NewPositionImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() mapIsLoading,
+    required TResult Function(String message) mapError,
+    required TResult Function(Position spotPosition) mapLoaded,
+    required TResult Function(LatLng spotPosition) newPosition,
+  }) {
+    return newPosition(spotPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? mapIsLoading,
+    TResult? Function(String message)? mapError,
+    TResult? Function(Position spotPosition)? mapLoaded,
+    TResult? Function(LatLng spotPosition)? newPosition,
+  }) {
+    return newPosition?.call(spotPosition);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? mapIsLoading,
+    TResult Function(String message)? mapError,
+    TResult Function(Position spotPosition)? mapLoaded,
+    TResult Function(LatLng spotPosition)? newPosition,
+    required TResult orElse(),
+  }) {
+    if (newPosition != null) {
+      return newPosition(spotPosition);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_MapIsLoading value) mapIsLoading,
+    required TResult Function(_MapError value) mapError,
+    required TResult Function(_MapLoaded value) mapLoaded,
+    required TResult Function(_NewPosition value) newPosition,
+  }) {
+    return newPosition(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_MapIsLoading value)? mapIsLoading,
+    TResult? Function(_MapError value)? mapError,
+    TResult? Function(_MapLoaded value)? mapLoaded,
+    TResult? Function(_NewPosition value)? newPosition,
+  }) {
+    return newPosition?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_MapIsLoading value)? mapIsLoading,
+    TResult Function(_MapError value)? mapError,
+    TResult Function(_MapLoaded value)? mapLoaded,
+    TResult Function(_NewPosition value)? newPosition,
+    required TResult orElse(),
+  }) {
+    if (newPosition != null) {
+      return newPosition(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NewPosition implements AddSpotMapState {
+  const factory _NewPosition({required final LatLng spotPosition}) =
+      _$NewPositionImpl;
+
+  LatLng get spotPosition;
+  @JsonKey(ignore: true)
+  _$$NewPositionImplCopyWith<_$NewPositionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

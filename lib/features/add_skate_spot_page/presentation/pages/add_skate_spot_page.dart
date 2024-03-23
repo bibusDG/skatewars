@@ -149,6 +149,8 @@ class SpotPropertiesColumn extends StatelessWidget {
                   ],
                 ),
                 onPressed: () {
+                  skateSpotLong.value = '';
+                  skateSpotLat.value = '';
                   showModalBottomSheet(
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       shape: const RoundedRectangleBorder(
@@ -186,7 +188,10 @@ class SpotPropertiesColumn extends StatelessWidget {
             ),
           ),
           CupertinoButton(color: Colors.black, child: const Text('Attributes'), onPressed: () {}),
-          CupertinoButton(color: Colors.black, child: const Text('Create'), onPressed: () {}),
+          CupertinoButton(color: Colors.black, child: const Text('Create'), onPressed: () {
+            print(skateSpotLat.value);
+            print(skateSpotLong.value);
+          }),
         ],
       ),
     );
