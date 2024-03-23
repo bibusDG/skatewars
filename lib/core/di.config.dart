@@ -20,6 +20,8 @@ import 'package:skatewars/features/add_skate_spot_page/domain/usecases/add_skate
     as _i7;
 import 'package:skatewars/features/add_skate_spot_page/presentation/bloc/add_skate_spot_cubit.dart'
     as _i11;
+import 'package:skatewars/features/add_skate_spot_page/presentation/bloc/add_spot_map_bloc/add_spot_map_cubit.dart'
+    as _i12;
 import 'package:skatewars/features/login_user_page/data/datasources/login_user_data_source.dart'
     as _i4;
 import 'package:skatewars/features/login_user_page/data/repositories/login_user_repo_imp.dart'
@@ -55,6 +57,9 @@ extension GetItInjectableX on _i1.GetIt {
           getUserCurrentPositionUseCase:
               gh<_i10.GetUserCurrentPositionUseCase>(),
         ));
+    gh.factory<_i12.AddSpotMapCubit>(() => _i12.AddSpotMapCubit(
+        getUserCurrentPositionUseCase:
+            gh<_i10.GetUserCurrentPositionUseCase>()));
     return this;
   }
 }

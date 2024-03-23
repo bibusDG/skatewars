@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
 import 'package:skatewars/core/failure/failure.dart';
 import 'package:skatewars/core/usecases/usecases.dart';
@@ -10,7 +11,7 @@ class GetUserCurrentPositionUseCase implements UseCaseWithoutParams{
   const GetUserCurrentPositionUseCase({required this.repo});
 
   @override
-  Future<Either<Failure, dynamic>> call() async{
+  Future<Either<Failure, Position>> call() async{
     return await repo.getUserCurrentPosition();
     // TODO: implement call
     throw UnimplementedError();

@@ -1,9 +1,9 @@
 import 'package:geolocator/geolocator.dart';
+import 'package:skatewars/features/add_skate_spot_page/presentation/pages/add_skate_spot_map_page.dart';
 
 import '/../features/add_skate_spot_page/presentation/bloc/add_skate_spot_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
@@ -69,6 +69,8 @@ class AddSkateSpotPage extends HookWidget {
                     ),
                   ),
                   SpotPropertiesColumn(
+                    skateSpotLong: _skateSpotLang,
+                    skateSpotLat: _skateSpotLat,
                     skateSpotName: _skateSpotName,
                     cubit: _addSkateSpotCubit,
                   ),
@@ -98,6 +100,8 @@ class AddSkateSpotPage extends HookWidget {
                     ),
                   ),
                   SpotPropertiesColumn(
+                    skateSpotLat: _skateSpotLat,
+                    skateSpotLong: _skateSpotLang,
                     skateSpotName: _skateSpotName,
                     cubit: _addSkateSpotCubit,
                   ),
@@ -112,9 +116,13 @@ class SpotPropertiesColumn extends StatelessWidget {
     super.key,
     required TextEditingController skateSpotName,
     required this.cubit,
+    required this.skateSpotLat,
+    required this.skateSpotLong,
   }) : _skateSpotName = skateSpotName;
 
   final TextEditingController _skateSpotName;
+  final ValueNotifier<String> skateSpotLat;
+  final ValueNotifier<String> skateSpotLong;
   final AddSkateSpotCubit cubit;
 
   @override
@@ -125,23 +133,31 @@ class SpotPropertiesColumn extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 100, right: 100),
+            padding: const EdgeInsets.only(left: 70, right: 70),
             child: CupertinoButton(
                 color: Colors.black,
-                child: const Row(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.gps_fixed,
                       size: 30,
                     ),
-                    SizedBox(
-                      width: 20.0,
-                    ),
-                    Text('Spot location'),
+                    const Text('Spot location'),
+                    skateSpotLong.value == '' ? const SizedBox() :
+                    const Icon(Icons.check_circle_outline_outlined, size: 30, color: Colors.green,)
                   ],
                 ),
-                onPressed: () async {
-                  await showMap(context, cubit);
+                onPressed: () {
+                  showModalBottomSheet(
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                      shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
+                      ),
+                      context: context, builder: (BuildContext context){
+                    return AddSkateSpotMapPage(skateSpotLat: skateSpotLat, skateSpotLang: skateSpotLong,);
+                  });
+                  // await showMap(context: context, cubit: cubit, skateSpotLat: skateSpotLat, skateSpotLong: skateSpotLong);
                 }),
           ),
           Padding(
@@ -176,56 +192,65 @@ class SpotPropertiesColumn extends StatelessWidget {
     );
   }
 
-  Future<void> showMap(context, AddSkateSpotCubit cubit) async {
-    Position userPosition = await cubit.getSpotPosition();
-    showModalBottomSheet(
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
-        ),
-        context: context,
-        builder: (BuildContext context) {
-          final position = LatLng(userPosition.latitude, userPosition.longitude);
-          final markers = <Marker>[
-            Marker(
-              point: position,
-              rotate: false, child: Icon(Icons.location_pin, color: Colors.red,size: 80,),
-            ),
-          ];
-          return Column(
-            children: [
-              Expanded(
-                flex: 4,
-                child: FlutterMap(
-                  options: MapOptions(
-                    initialZoom: 20.0,
-                    initialCenter: position,
-                  ),
-                  children: [
-                    TileLayer(
-                      urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                      userAgentPackageName: 'com.example.app',
-                    ),
-                    MarkerLayer(markers: markers),
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    CupertinoButton(
-                        child: Text('Get my position and save'),
-                        onPressed: () {
-                          cubit.getSpotPosition();
-                        }),
-                    CupertinoButton(child: Text('Mark skate spot and save'), onPressed: () {}),
-                  ],
-                ),
-              ),
-            ],
-          );
-        });
-  }
+//   Future<void> showMap({
+//     required context,
+//     required AddSkateSpotCubit cubit,
+//     required ValueNotifier<String> skateSpotLat,
+//     required ValueNotifier<String> skateSpotLong,
+//   }) async {
+//     Position userPosition = await cubit.getSpotPosition();
+//     showModalBottomSheet(
+//         clipBehavior: Clip.antiAliasWithSaveLayer,
+//         shape: const RoundedRectangleBorder(
+//           borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
+//         ),
+//         context: context,
+//         builder: (BuildContext context) {
+//           final position = LatLng(userPosition.latitude, userPosition.longitude);
+//           final markers = <Marker>[
+//             Marker(
+//               point: position,
+//               rotate: false, child: Icon(Icons.location_pin, color: Colors.red,size: 80,),
+//             ),
+//           ];
+//           return Column(
+//             children: [
+//               Expanded(
+//                 flex: 4,
+//                 child: FlutterMap(
+//                   options: MapOptions(
+//                     initialZoom: 20.0,
+//                     initialCenter: position,
+//                   ),
+//                   children: [
+//                     TileLayer(
+//                       urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+//                       userAgentPackageName: 'com.example.app',
+//                     ),
+//                     MarkerLayer(markers: markers),
+//                   ],
+//                 ),
+//               ),
+//               Expanded(
+//                 flex: 2,
+//                 child: Column(
+//                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                   children: [
+//                     CupertinoButton(
+//                         child: Text('Get my position and save'),
+//                         onPressed: () async{
+//                           final position = await cubit.getSpotPosition();
+//                           print(position.longitude);
+//                           print(position.latitude);
+//                         }),
+//                     CupertinoButton(child: Text('Mark skate spot and save'), onPressed: () {}),
+//                   ],
+//                 ),
+//               ),
+//             ],
+//           );
+//         });
+//   }
+
+
 }
