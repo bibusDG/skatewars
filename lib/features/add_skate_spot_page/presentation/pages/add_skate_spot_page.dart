@@ -1,13 +1,13 @@
-import 'package:geolocator/geolocator.dart';
+import 'package:multi_select_flutter/chip_display/multi_select_chip_display.dart';
+import 'package:multi_select_flutter/chip_field/multi_select_chip_field.dart';
+import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'package:skatewars/features/add_skate_spot_page/presentation/pages/add_skate_spot_map_page.dart';
 
 import '/../features/add_skate_spot_page/presentation/bloc/add_skate_spot_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_map/flutter_map.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
-import 'package:latlong2/latlong.dart';
 
 import '../../../../core/custom_widgets/carousel.dart';
 
@@ -19,7 +19,7 @@ class AddSkateSpotPage extends HookWidget {
     final _skateSpotName = useTextEditingController();
     final _skateSpotLat = useState('');
     final _skateSpotLang = useState('');
-    final _skateSpotAttributes = useState([]);
+    final _skateSpotAttributes = useState<List<String>>([]);
 
     final _addSkateSpotCubit = useBloc<AddSkateSpotCubit>();
     final _addSkateSpotState = useBlocBuilder(_addSkateSpotCubit);
@@ -69,6 +69,7 @@ class AddSkateSpotPage extends HookWidget {
                     ),
                   ),
                   SpotPropertiesColumn(
+                    skateSpotAttributes: _skateSpotAttributes,
                     skateSpotLong: _skateSpotLang,
                     skateSpotLat: _skateSpotLat,
                     skateSpotName: _skateSpotName,
@@ -100,6 +101,7 @@ class AddSkateSpotPage extends HookWidget {
                     ),
                   ),
                   SpotPropertiesColumn(
+                    skateSpotAttributes: _skateSpotAttributes,
                     skateSpotLat: _skateSpotLat,
                     skateSpotLong: _skateSpotLang,
                     skateSpotName: _skateSpotName,
@@ -118,17 +120,22 @@ class SpotPropertiesColumn extends StatelessWidget {
     required this.cubit,
     required this.skateSpotLat,
     required this.skateSpotLong,
+    required this.skateSpotAttributes,
   }) : _skateSpotName = skateSpotName;
 
   final TextEditingController _skateSpotName;
   final ValueNotifier<String> skateSpotLat;
   final ValueNotifier<String> skateSpotLong;
+  final ValueNotifier<List<String>> skateSpotAttributes;
   final AddSkateSpotCubit cubit;
 
   @override
   Widget build(BuildContext context) {
+    final List<String> attributesList = ['Rails', 'Banks', 'Stairs', 'Flat ground', 'Grinds', 'Park', 'Ramps', 'Street', 'SkatePark'];
+    final _attributes = attributesList.map((attr) => MultiSelectItem(attr, attr)).toList();
+
     return Expanded(
-      flex: 5,
+      flex: 8,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -144,8 +151,13 @@ class SpotPropertiesColumn extends StatelessWidget {
                       size: 30,
                     ),
                     const Text('Spot location'),
-                    skateSpotLong.value == '' ? const SizedBox() :
-                    const Icon(Icons.check_circle_outline_outlined, size: 30, color: Colors.green,)
+                    skateSpotLong.value == ''
+                        ? const SizedBox()
+                        : const Icon(
+                            Icons.check_circle_outline_outlined,
+                            size: 30,
+                            color: Colors.green,
+                          )
                   ],
                 ),
                 onPressed: () {
@@ -154,11 +166,15 @@ class SpotPropertiesColumn extends StatelessWidget {
                   showModalBottomSheet(
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
                       ),
-                      context: context, builder: (BuildContext context){
-                    return AddSkateSpotMapPage(skateSpotLat: skateSpotLat, skateSpotLang: skateSpotLong,);
-                  });
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AddSkateSpotMapPage(
+                          skateSpotLat: skateSpotLat,
+                          skateSpotLang: skateSpotLong,
+                        );
+                      });
                   // await showMap(context: context, cubit: cubit, skateSpotLat: skateSpotLat, skateSpotLong: skateSpotLong);
                 }),
           ),
@@ -187,75 +203,59 @@ class SpotPropertiesColumn extends StatelessWidget {
               ),
             ),
           ),
-          CupertinoButton(color: Colors.black, child: const Text('Attributes'), onPressed: () {}),
-          CupertinoButton(color: Colors.black, child: const Text('Create'), onPressed: () {
-            print(skateSpotLat.value);
-            print(skateSpotLong.value);
-          }),
+          Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: SpotDetailsMultiChoice(attributes: _attributes, skateSpotAttributes: skateSpotAttributes),
+          ),
+          CupertinoButton(
+              color: Colors.black,
+              child: const Text('Create'),
+              onPressed: () {
+                cubit.addSkateSpot(
+                    spotDescription: 'spotDescription',
+                    spotLang: skateSpotLong.value,
+                    spotLat: skateSpotLat.value,
+                    spotName: 'dd',
+                    spotPhotos: [],
+                    spotProperties: skateSpotAttributes.value);
+                print(skateSpotLat.value);
+                print(skateSpotLong.value);
+              }),
         ],
       ),
     );
   }
+}
 
-//   Future<void> showMap({
-//     required context,
-//     required AddSkateSpotCubit cubit,
-//     required ValueNotifier<String> skateSpotLat,
-//     required ValueNotifier<String> skateSpotLong,
-//   }) async {
-//     Position userPosition = await cubit.getSpotPosition();
-//     showModalBottomSheet(
-//         clipBehavior: Clip.antiAliasWithSaveLayer,
-//         shape: const RoundedRectangleBorder(
-//           borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
-//         ),
-//         context: context,
-//         builder: (BuildContext context) {
-//           final position = LatLng(userPosition.latitude, userPosition.longitude);
-//           final markers = <Marker>[
-//             Marker(
-//               point: position,
-//               rotate: false, child: Icon(Icons.location_pin, color: Colors.red,size: 80,),
-//             ),
-//           ];
-//           return Column(
-//             children: [
-//               Expanded(
-//                 flex: 4,
-//                 child: FlutterMap(
-//                   options: MapOptions(
-//                     initialZoom: 20.0,
-//                     initialCenter: position,
-//                   ),
-//                   children: [
-//                     TileLayer(
-//                       urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-//                       userAgentPackageName: 'com.example.app',
-//                     ),
-//                     MarkerLayer(markers: markers),
-//                   ],
-//                 ),
-//               ),
-//               Expanded(
-//                 flex: 2,
-//                 child: Column(
-//                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                   children: [
-//                     CupertinoButton(
-//                         child: Text('Get my position and save'),
-//                         onPressed: () async{
-//                           final position = await cubit.getSpotPosition();
-//                           print(position.longitude);
-//                           print(position.latitude);
-//                         }),
-//                     CupertinoButton(child: Text('Mark skate spot and save'), onPressed: () {}),
-//                   ],
-//                 ),
-//               ),
-//             ],
-//           );
-//         });
-//   }
+class SpotDetailsMultiChoice extends StatelessWidget {
+  const SpotDetailsMultiChoice({
+    super.key,
+    required List<MultiSelectItem<String?>> attributes,
+    required this.skateSpotAttributes,
+  }) : _attributes = attributes;
 
+  final List<MultiSelectItem<String?>> _attributes;
+  final ValueNotifier<List<String>> skateSpotAttributes;
 
+  @override
+  Widget build(BuildContext context) {
+    return MultiSelectChipField(
+      // initialValue: [],
+      chipColor: Colors.orange,
+      textStyle: const TextStyle(color: Colors.black),
+      items: _attributes,
+      title: const Text(" Choose spot attributes"),
+      headerColor: Colors.white.withOpacity(0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        border: Border.all(color: Colors.orange, width: 1.8),
+      ),
+      selectedChipColor: Colors.blue.withOpacity(0.5),
+      selectedTextStyle: const TextStyle(color: Colors.white),
+      onTap: (values) async{
+        skateSpotAttributes.value = List<String>.from(values);
+        print(skateSpotAttributes.value);
+      },
+    );
+  }
 }

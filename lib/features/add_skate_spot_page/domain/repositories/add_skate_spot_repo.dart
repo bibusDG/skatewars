@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/failure/failure.dart';
-import '../../../login_user_page/domain/entities/my_user.dart';
+import '../../../user_relations/domain/entities/my_user.dart';
 
 abstract class AddSkateSpotRepo{
   const AddSkateSpotRepo();

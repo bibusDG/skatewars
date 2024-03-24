@@ -1,11 +1,10 @@
 import 'package:dartz/dartz.dart';
+import '../../../user_relations/domain/entities/my_user.dart';
 import '/../core/failure/failure.dart';
 import '/../core/usecases/usecases.dart';
 import '/../features/add_skate_spot_page/domain/repositories/add_skate_spot_repo.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
-
-import '../../../login_user_page/domain/entities/my_user.dart';
 
 @injectable
 class AddSkateSpotUseCase implements UseCaseWithParams<void, AddSkateSpotParams>{

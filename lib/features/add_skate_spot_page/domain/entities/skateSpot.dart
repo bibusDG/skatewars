@@ -1,5 +1,5 @@
 
-import '/../features/login_user_page/domain/entities/my_user.dart';
+import '../../../user_relations/domain/entities/my_user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'skateSpot.freezed.dart';
 part 'skateSpot.g.dart';

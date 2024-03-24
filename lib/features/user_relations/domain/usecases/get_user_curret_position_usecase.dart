@@ -3,11 +3,12 @@ import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
 import 'package:skatewars/core/failure/failure.dart';
 import 'package:skatewars/core/usecases/usecases.dart';
-import 'package:skatewars/features/login_user_page/domain/repositories/login_user_repo.dart';
+
+import '../repositories/user_relations_repo.dart';
 
 @injectable
 class GetUserCurrentPositionUseCase implements UseCaseWithoutParams{
-  final LoginUserRepo repo;
+  final UserRelationsRepo repo;
   const GetUserCurrentPositionUseCase({required this.repo});
 
   @override

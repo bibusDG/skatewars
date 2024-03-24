@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:geolocator/geolocator.dart';
 
-import '../../../login_user_page/domain/usecases/get_user_curret_position_usecase.dart';
+import '../../../user_relations/domain/usecases/get_user_curret_position_usecase.dart';
 import '/../core/classes/choose_image_to_database.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';

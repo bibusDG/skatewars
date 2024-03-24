@@ -2,14 +2,14 @@ import 'package:dartz/dartz.dart';
 import 'package:geolocator_platform_interface/src/models/position.dart';
 import 'package:injectable/injectable.dart';
 import 'package:skatewars/core/failure/failure.dart';
-import 'package:skatewars/features/login_user_page/data/datasources/login_user_data_source.dart';
-import 'package:skatewars/features/login_user_page/domain/repositories/login_user_repo.dart';
-import 'package:skatewars/features/login_user_page/login_user_failures.dart';
+import '../../domain/repositories/user_relations_repo.dart';
+import '../../user_failures.dart';
+import '../datasources/user_relations_data_source.dart';
 
-@Singleton(as: LoginUserRepo)
-class LoginUserRepoImp implements LoginUserRepo{
-  final LoginUserDataSource dataSource;
-  const LoginUserRepoImp({required this.dataSource});
+@Singleton(as: UserRelationsRepo)
+class UserRelationsRepoImp implements UserRelationsRepo{
+  final UserRelationsDataSource dataSource;
+  const UserRelationsRepoImp({required this.dataSource});
 
   @override
   Future<Either<Failure, Position>> getUserCurrentPosition() async{

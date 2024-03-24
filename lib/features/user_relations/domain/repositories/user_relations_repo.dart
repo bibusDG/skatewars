@@ -3,8 +3,8 @@ import 'package:geolocator/geolocator.dart';
 
 import '../../../../core/failure/failure.dart';
 
-abstract class LoginUserRepo {
-  const LoginUserRepo();
+abstract class UserRelationsRepo {
+  const UserRelationsRepo();
 
   Future<Either<Failure, Position>> getUserCurrentPosition();
 

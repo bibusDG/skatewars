@@ -1,8 +1,7 @@
+import '../../../user_relations/domain/entities/my_user.dart';
 import '/../core/constants/constants.dart';
 import '/../features/add_skate_spot_page/domain/entities/skateSpot.dart';
 import 'package:injectable/injectable.dart';
-
-import '../../../login_user_page/domain/entities/my_user.dart';
 
 abstract class AddSkateSpotDataSource {
   const AddSkateSpotDataSource();

@@ -14,9 +14,12 @@ class AddSkateSpotMapPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final _newMarkerPosition = useState<LatLng>(const LatLng(0, 0));
     final _newSpotPosition = useState(false);
     final _positionLoaded = useState('init');
+
+
     final _mapCubit = useBloc<AddSpotMapCubit>();
     final _mapState = useBlocBuilder(_mapCubit);
     useBlocListener<AddSpotMapCubit, AddSpotMapState>(_mapCubit, (bloc, current, context) {});

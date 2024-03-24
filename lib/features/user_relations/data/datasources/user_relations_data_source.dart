@@ -1,14 +1,14 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
 
-abstract class LoginUserDataSource{
-  const LoginUserDataSource();
+abstract class UserRelationsDataSource{
+  const UserRelationsDataSource();
 
   Future<Position> getUserCurrentPosition();
 
 }
-@Singleton(as: LoginUserDataSource)
-class LoginUserDataSourceImp implements LoginUserDataSource{
+@Singleton(as: UserRelationsDataSource)
+class UserRelationsDataSourceImp implements UserRelationsDataSource{
   @override
   Future<Position> getUserCurrentPosition() async{
     bool serviceEnabled;

@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
+import '../../../user_relations/domain/entities/my_user.dart';
 import '/../core/failure/failure.dart';
 import '/../features/add_skate_spot_page/add_skate_spot_failures.dart';
 import '/../features/add_skate_spot_page/data/datasources/add_skate_spot_data_source.dart';
 import '/../features/add_skate_spot_page/domain/repositories/add_skate_spot_repo.dart';
-import '/../features/login_user_page/domain/entities/my_user.dart';
 import 'package:injectable/injectable.dart';
 
 @Singleton(as: AddSkateSpotRepo)
