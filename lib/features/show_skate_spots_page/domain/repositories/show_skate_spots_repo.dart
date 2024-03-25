@@ -9,7 +9,6 @@ abstract class ShowSkateSpotsRepo{
 
   Future<Either<Failure, Stream<List<SkateSpot>>>> streamSkateSpots({
     required String distance,
-    required Position userPosition,
 });
 
 }

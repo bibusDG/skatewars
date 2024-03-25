@@ -1,3 +1,5 @@
+import 'package:skatewars/features/show_skate_spots_page/presentation/pages/show_skate_spots_page.dart';
+
 import '../features/add_skate_spot_page/presentation/pages/add_skate_spot_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +21,11 @@ class MyPageRouter{
     name: 'add_skate_spot_page', // Optional, add name to your routes. Allows you navigate by name instead of path
     path: '/add_skate_spot_page',
     builder: (context, state) => const AddSkateSpotPage(),
+  ),
+  GoRoute(
+    name: 'show_skate_spots_page', // Optional, add name to your routes. Allows you navigate by name instead of path
+    path: '/show_skate_spots_page',
+    builder: (context, state) => const ShowSkateSpotsPage(),
   ),
 ]);
 }

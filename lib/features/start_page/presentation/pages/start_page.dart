@@ -17,7 +17,7 @@ class StartPage extends HookWidget {
             context.pushNamed('add_skate_spot_page');
                       }, color: Colors.black,child: const Text('Add spot'),),
             CupertinoButton(onPressed: (){
-              context.pushNamed('add_skate_spot_page');
+              context.pushNamed('show_skate_spots_page');
             }, color: Colors.black,child: const Text('Show spots'),),
           ],
         ),
