@@ -42,7 +42,7 @@ class ShowSkateSpotsCubit extends Cubit<ShowSkateSpotsState> {
                 listOfSkateSpots.add(skateSpot);
               }
             }
-            emit(ShowSkateSpotsState.showSpotsInitial(skateSpotsList: listOfSkateSpots));
+            emit(ShowSkateSpotsState.showSpotsInitial(skateSpotsList: listOfSkateSpots, userPosition: userPosition));
           }
         });
       });

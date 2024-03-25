@@ -294,6 +294,7 @@ class SpotDetailsMultiChoice extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiSelectChipField(
       // initialValue: [],
+      chipShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0), side: const BorderSide(color: Colors.black)),
       chipColor: Colors.orange,
       textStyle: const TextStyle(color: Colors.black),
       items: _attributes,

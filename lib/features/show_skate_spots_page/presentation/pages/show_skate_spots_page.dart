@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot.dart';
@@ -35,11 +36,14 @@ class ShowSkateSpotsPage extends HookWidget {
                   Expanded(
                     flex: 6,
                     child: _showSkateSpotState.maybeWhen(
-                      showSpotsInitial:(listOfSpots) => ListView.builder(
+                      showSpotsInitial:(listOfSpots, userPosition) => ListView.builder(
                         itemCount: listOfSpots.length,
-                        itemExtent: 180,
+                        itemExtent: 200,
                         itemBuilder: (BuildContext context, int index) {
                           SkateSpot skateSpot = listOfSpots[index];
+                          final distanceToSkateSpot = Geolocator.distanceBetween(
+                              userPosition.latitude, userPosition.longitude,
+                              double.parse(skateSpot.spotLat), double.parse(skateSpot.spotLang));
                           // final skateSpotRating = skateSpot.spotRanks.sum;
                           return Padding(
                             padding: const EdgeInsets.only(left: 15, right: 15),
@@ -60,7 +64,7 @@ class ShowSkateSpotsPage extends HookWidget {
                                       Center(
                                           child: Text(
                                             skateSpot.spotName.toUpperCase(),
-                                            style: const TextStyle(fontSize: 25),
+                                            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w200),
                                           )),
                                       RatingBarIndicator(
                                         itemBuilder: (context, index) => const Icon(
@@ -73,14 +77,25 @@ class ShowSkateSpotsPage extends HookWidget {
                                       ),
                                       Row(
                                         children: [
-                                          const Icon(
-                                            Icons.person,
-                                            size: 40,
-                                            color: Colors.white70,
+                                          Row(
+                                            children: [
+                                              const Icon(Icons.location_pin, size: 30, color: Colors.red,),
+                                              Text('${(distanceToSkateSpot/1000).floor()} km'),
+                                            ],
                                           ),
-                                          Text(
-                                            ' : ${skateSpot.spotRiders.length}',
-                                            style: const TextStyle(fontSize: 30),
+                                          const SizedBox(width: 20.0,),
+                                          Row(
+                                            children: [
+                                              const Icon(
+                                                Icons.person,
+                                                size: 30,
+                                                color: Colors.white70,
+                                              ),
+                                              Text(
+                                                ':${skateSpot.spotRiders.length}',
+                                                style: const TextStyle(fontSize: 25),
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
@@ -103,7 +118,7 @@ class ShowSkateSpotsPage extends HookWidget {
                     orElse:() => _showAll.value == false
                       ? Column(
                     children: [
-                      const Text('Find spot in Your area by moving below slider'),
+                      const Text('Find spot in Your nearest area by moving below slider'),
                       const SizedBox(height: 20.0,),
                       SfSliderTheme(
                         data: const SfSliderThemeData(
@@ -115,12 +130,12 @@ class ShowSkateSpotsPage extends HookWidget {
                             activeColor: Colors.teal,
                             minorTicksPerInterval: 10,
                             showLabels: true,
-                            interval: 100,
+                            interval: 20,
                             stepSize: 1,
                             enableTooltip: true,
                             tooltipShape: const SfPaddleTooltipShape(),
                             min: 0.0,
-                            max: 500.0,
+                            max: 100.0,
                             value: double.parse(_distance.value)/1000,
                             numberFormat: NumberFormat("km "),
                             onChanged: (value) {
