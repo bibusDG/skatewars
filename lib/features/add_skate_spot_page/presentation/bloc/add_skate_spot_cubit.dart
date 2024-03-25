@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:geolocator/geolocator.dart';
+import 'package:skatewars/features/add_skate_spot_page/presentation/bloc/add_spot_map_bloc/add_spot_map_cubit.dart';
 
 import '../../../user_relations/domain/usecases/get_user_curret_position_usecase.dart';
 import '/../core/classes/choose_image_to_database.dart';
@@ -48,22 +49,33 @@ class AddSkateSpotCubit extends ActionCubit<AddSkateSpotState, AddSkateSpotActio
     required List<String> spotPhotos,
     required List<String> spotProperties
   }) async{
-    final result = await addSkateSpotUseCase(AddSkateSpotParams(
-        spotID: '',
-        spotComments: const [],
-        spotDescription: spotDescription,
-        spotLang: spotLang,
-        spotLat: spotLat,
-        spotName: spotName,
-        spotPhotos: spotPhotos,
-        spotProperties: spotProperties,
-        spotRanks: const [5.0],
-        spotRiders: const []));
-    result.fold((failure){
-      emit(const AddSkateSpotState.addSkateSpotPageError(message: 'Ups..something went wrong'));
-    }, (success){
-
-    });
+    if(spotName.isEmpty){
+      dispatch(const AddSkateSpotAction.inputFieldError(message: 'Please provide name for Your spot'));
+    }else if(spotProperties.isEmpty){
+      dispatch(const AddSkateSpotAction.inputFieldError(message: 'Please give at least one property'));
+    }else if(spotPhotos.isEmpty){
+      dispatch(const AddSkateSpotAction.inputFieldError(message: 'Please provide at least one photo'));
+    }else if(spotLang.isEmpty || spotLat.isEmpty){
+      dispatch(const AddSkateSpotAction.inputFieldError(message: 'Something is wrong with spot localization.'));
+    }else{
+      emit(const AddSkateSpotState.creatingNewSkateSpot());
+      final result = await addSkateSpotUseCase(AddSkateSpotParams(
+          spotID: '',
+          spotComments: const [],
+          spotDescription: spotDescription,
+          spotLang: spotLang,
+          spotLat: spotLat,
+          spotName: spotName,
+          spotPhotos: spotPhotos,
+          spotProperties: spotProperties,
+          spotRanks: const [5.0],
+          spotRiders: const []));
+      result.fold((failure){
+        emit(const AddSkateSpotState.creatingSpotError(message: 'Ups..something went wrong. Try again'));
+      }, (success){
+        emit(const AddSkateSpotState.creatingSpotSuccess(message: 'Your spot has been successfully created'));
+      });
+    }
   }
 
   Future<Position> getSpotPosition() async{

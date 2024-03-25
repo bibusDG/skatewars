@@ -1,6 +1,8 @@
+import 'package:go_router/go_router.dart';
 import 'package:multi_select_flutter/chip_display/multi_select_chip_display.dart';
 import 'package:multi_select_flutter/chip_field/multi_select_chip_field.dart';
 import 'package:multi_select_flutter/util/multi_select_item.dart';
+import 'package:skatewars/core/classes/custom_snackbar.dart';
 import 'package:skatewars/features/add_skate_spot_page/presentation/pages/add_skate_spot_map_page.dart';
 
 import '/../features/add_skate_spot_page/presentation/bloc/add_skate_spot_cubit.dart';
@@ -12,7 +14,7 @@ import 'package:hooked_bloc/hooked_bloc.dart';
 import '../../../../core/custom_widgets/carousel.dart';
 
 class AddSkateSpotPage extends HookWidget {
-  const AddSkateSpotPage({Key? key}) : super(key: key);
+  const AddSkateSpotPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,27 @@ class AddSkateSpotPage extends HookWidget {
 
     final _addSkateSpotCubit = useBloc<AddSkateSpotCubit>();
     final _addSkateSpotState = useBlocBuilder(_addSkateSpotCubit);
-    useBlocListener<AddSkateSpotCubit, AddSkateSpotState>(_addSkateSpotCubit, (bloc, current, context) {});
+    useBlocListener<AddSkateSpotCubit, AddSkateSpotState>(_addSkateSpotCubit, (bloc, current, context) {
+      current.whenOrNull(
+        creatingSpotError: (message) async{
+          await Future.delayed(const Duration(seconds: 3));
+          if(context.mounted){
+            _addSkateSpotCubit.initAddSkateSpotPage(userLoggedIn: true);
+          }
+        },
+        creatingSpotSuccess: (message) async{
+          await Future.delayed(const Duration(seconds: 3));
+          if(context.mounted){
+            context.goNamed('start_page');
+          }
+        },
+      );
+    });
+    useActionListener(_addSkateSpotCubit, (action){
+      action.whenOrNull(
+        inputFieldError: (message) => CustomSnackBar().mySnackBar(context, message),
+      );
+    });
 
     useEffect(
       () {
@@ -33,82 +55,113 @@ class AddSkateSpotPage extends HookWidget {
       [_addSkateSpotCubit],
     );
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Adding new spot'),
-      ),
-      body: _addSkateSpotState.whenOrNull(
-          addSkateSpotPageLoading: () => const Center(child: CircularProgressIndicator()),
-          addSkateSpotPageError: (message) => Center(
-                child: Text(message),
-              ),
-          addSkateSpotPageLoaded: (userLoginIn) => Column(
-                children: [
-                  Expanded(
-                    flex: 4,
-                    child: Center(
-                      child: Stack(
-                        alignment: AlignmentDirectional.topEnd,
-                        children: [
-                          const CircleAvatar(
-                            backgroundColor: Colors.purple,
-                            radius: 150,
-                            child: Text(' PHOTO GALLERY '),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              _addSkateSpotCubit.getSkateSpotImages();
-                            },
-                            icon: const Icon(
-                              Icons.add_circle_outline,
-                              size: 100,
+    return GestureDetector(
+      onTap: (){
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        appBar: _addSkateSpotState.maybeWhen(
+          addSkateSpotPageLoaded:(userLoggedIn) => AppBar(
+            title: const Text('Adding new spot'),
+          ),
+            gallery: (gallery) => AppBar(
+              title: const Text('Adding new spot'),
+            ),
+            orElse: () => null),
+        body: _addSkateSpotState.whenOrNull(
+            addSkateSpotPageLoading: () => const Center(child: CircularProgressIndicator()),
+            addSkateSpotPageError: (message) => Center(
+                  child: Text(message),
+                ),
+            addSkateSpotPageLoaded: (userLoginIn) => Column(
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: Center(
+                        child: Stack(
+                          alignment: AlignmentDirectional.topEnd,
+                          children: [
+                            const CircleAvatar(
+                              backgroundColor: Colors.purple,
+                              radius: 150,
+                              child: Text(' PHOTO GALLERY '),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SpotPropertiesColumn(
-                    skateSpotAttributes: _skateSpotAttributes,
-                    skateSpotLong: _skateSpotLang,
-                    skateSpotLat: _skateSpotLat,
-                    skateSpotName: _skateSpotName,
-                    cubit: _addSkateSpotCubit,
-                  ),
-                ],
-              ),
-          gallery: (gallery) => Column(
-                children: [
-                  Expanded(
-                    flex: 4,
-                    child: Center(
-                      child: Stack(
-                        alignment: AlignmentDirectional.topEnd,
-                        children: [
-                          CustomCarouselSlider(
-                            gallery: gallery,
-                          ),
-                          IconButton(
+                            IconButton(
                               onPressed: () {
-                                _addSkateSpotCubit.initAddSkateSpotPage(userLoggedIn: true);
+                                _addSkateSpotCubit.getSkateSpotImages();
                               },
                               icon: const Icon(
-                                Icons.delete_outline,
-                                size: 40,
-                              )),
-                        ],
+                                Icons.add_circle_outline,
+                                size: 100,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  SpotPropertiesColumn(
-                    skateSpotAttributes: _skateSpotAttributes,
-                    skateSpotLat: _skateSpotLat,
-                    skateSpotLong: _skateSpotLang,
-                    skateSpotName: _skateSpotName,
-                    cubit: _addSkateSpotCubit,
-                  ),
-                ],
-              )),
+                    SpotPropertiesColumn(
+                      spotPictures: const [],
+                      skateSpotAttributes: _skateSpotAttributes,
+                      skateSpotLong: _skateSpotLang,
+                      skateSpotLat: _skateSpotLat,
+                      skateSpotName: _skateSpotName,
+                      cubit: _addSkateSpotCubit,
+                    ),
+                  ],
+                ),
+            gallery: (gallery) => Column(
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: Center(
+                        child: Stack(
+                          alignment: AlignmentDirectional.topEnd,
+                          children: [
+                            CustomCarouselSlider(
+                              gallery: gallery,
+                            ),
+                            IconButton(
+                                onPressed: () {
+                                  _addSkateSpotCubit.initAddSkateSpotPage(userLoggedIn: true);
+                                },
+                                icon: const Icon(
+                                  Icons.delete_outline,
+                                  size: 40,
+                                )),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SpotPropertiesColumn(
+                      spotPictures: gallery,
+                      skateSpotAttributes: _skateSpotAttributes,
+                      skateSpotLat: _skateSpotLat,
+                      skateSpotLong: _skateSpotLang,
+                      skateSpotName: _skateSpotName,
+                      cubit: _addSkateSpotCubit,
+                    ),
+                  ],
+                ),
+            creatingNewSkateSpot: () => const Center(child: Text('Creating new spot...'),),
+            creatingSpotSuccess: (message) => Center(child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.check_circle_outline_outlined, size: 60, color: Colors.green,),
+                const SizedBox(height: 20.0,),
+                Text(message),
+              ],
+            ),
+            ),
+            creatingSpotError: (message) =>  Center(child:Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.error_outline_rounded, size: 60, color: Colors.red,),
+                const SizedBox(height: 20.0,),
+                Text(message),
+              ],
+            ),),
+        ),
+      ),
     );
   }
 }
@@ -121,6 +174,7 @@ class SpotPropertiesColumn extends StatelessWidget {
     required this.skateSpotLat,
     required this.skateSpotLong,
     required this.skateSpotAttributes,
+    required this.spotPictures,
   }) : _skateSpotName = skateSpotName;
 
   final TextEditingController _skateSpotName;
@@ -128,6 +182,7 @@ class SpotPropertiesColumn extends StatelessWidget {
   final ValueNotifier<String> skateSpotLong;
   final ValueNotifier<List<String>> skateSpotAttributes;
   final AddSkateSpotCubit cubit;
+  final List<String> spotPictures;
 
   @override
   Widget build(BuildContext context) {
@@ -215,11 +270,9 @@ class SpotPropertiesColumn extends StatelessWidget {
                     spotDescription: 'spotDescription',
                     spotLang: skateSpotLong.value,
                     spotLat: skateSpotLat.value,
-                    spotName: 'dd',
-                    spotPhotos: [],
+                    spotName: _skateSpotName.text,
+                    spotPhotos: spotPictures,
                     spotProperties: skateSpotAttributes.value);
-                print(skateSpotLat.value);
-                print(skateSpotLong.value);
               }),
         ],
       ),
