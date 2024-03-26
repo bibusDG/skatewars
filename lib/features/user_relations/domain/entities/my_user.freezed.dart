@@ -27,6 +27,10 @@ mixin _$MyUser {
   String get userAvatar => throw _privateConstructorUsedError;
   String get userMobileToken => throw _privateConstructorUsedError;
   String get userID => throw _privateConstructorUsedError;
+  List<String> get favouriteSpots => throw _privateConstructorUsedError;
+  int get skatePoints => throw _privateConstructorUsedError;
+  int get skateWarsWon => throw _privateConstructorUsedError;
+  int get skateWarsLost => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +49,11 @@ abstract class $MyUserCopyWith<$Res> {
       String userSureName,
       String userAvatar,
       String userMobileToken,
-      String userID});
+      String userID,
+      List<String> favouriteSpots,
+      int skatePoints,
+      int skateWarsWon,
+      int skateWarsLost});
 }
 
 /// @nodoc
@@ -68,6 +76,10 @@ class _$MyUserCopyWithImpl<$Res, $Val extends MyUser>
     Object? userAvatar = null,
     Object? userMobileToken = null,
     Object? userID = null,
+    Object? favouriteSpots = null,
+    Object? skatePoints = null,
+    Object? skateWarsWon = null,
+    Object? skateWarsLost = null,
   }) {
     return _then(_value.copyWith(
       userEmail: null == userEmail
@@ -98,6 +110,22 @@ class _$MyUserCopyWithImpl<$Res, $Val extends MyUser>
           ? _value.userID
           : userID // ignore: cast_nullable_to_non_nullable
               as String,
+      favouriteSpots: null == favouriteSpots
+          ? _value.favouriteSpots
+          : favouriteSpots // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      skatePoints: null == skatePoints
+          ? _value.skatePoints
+          : skatePoints // ignore: cast_nullable_to_non_nullable
+              as int,
+      skateWarsWon: null == skateWarsWon
+          ? _value.skateWarsWon
+          : skateWarsWon // ignore: cast_nullable_to_non_nullable
+              as int,
+      skateWarsLost: null == skateWarsLost
+          ? _value.skateWarsLost
+          : skateWarsLost // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -116,7 +144,11 @@ abstract class _$$MyUserImplCopyWith<$Res> implements $MyUserCopyWith<$Res> {
       String userSureName,
       String userAvatar,
       String userMobileToken,
-      String userID});
+      String userID,
+      List<String> favouriteSpots,
+      int skatePoints,
+      int skateWarsWon,
+      int skateWarsLost});
 }
 
 /// @nodoc
@@ -137,6 +169,10 @@ class __$$MyUserImplCopyWithImpl<$Res>
     Object? userAvatar = null,
     Object? userMobileToken = null,
     Object? userID = null,
+    Object? favouriteSpots = null,
+    Object? skatePoints = null,
+    Object? skateWarsWon = null,
+    Object? skateWarsLost = null,
   }) {
     return _then(_$MyUserImpl(
       userEmail: null == userEmail
@@ -167,6 +203,22 @@ class __$$MyUserImplCopyWithImpl<$Res>
           ? _value.userID
           : userID // ignore: cast_nullable_to_non_nullable
               as String,
+      favouriteSpots: null == favouriteSpots
+          ? _value._favouriteSpots
+          : favouriteSpots // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      skatePoints: null == skatePoints
+          ? _value.skatePoints
+          : skatePoints // ignore: cast_nullable_to_non_nullable
+              as int,
+      skateWarsWon: null == skateWarsWon
+          ? _value.skateWarsWon
+          : skateWarsWon // ignore: cast_nullable_to_non_nullable
+              as int,
+      skateWarsLost: null == skateWarsLost
+          ? _value.skateWarsLost
+          : skateWarsLost // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -181,7 +233,12 @@ class _$MyUserImpl implements _MyUser {
       required this.userSureName,
       required this.userAvatar,
       required this.userMobileToken,
-      required this.userID});
+      required this.userID,
+      required final List<String> favouriteSpots,
+      required this.skatePoints,
+      required this.skateWarsWon,
+      required this.skateWarsLost})
+      : _favouriteSpots = favouriteSpots;
 
   factory _$MyUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$MyUserImplFromJson(json);
@@ -200,10 +257,24 @@ class _$MyUserImpl implements _MyUser {
   final String userMobileToken;
   @override
   final String userID;
+  final List<String> _favouriteSpots;
+  @override
+  List<String> get favouriteSpots {
+    if (_favouriteSpots is EqualUnmodifiableListView) return _favouriteSpots;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favouriteSpots);
+  }
+
+  @override
+  final int skatePoints;
+  @override
+  final int skateWarsWon;
+  @override
+  final int skateWarsLost;
 
   @override
   String toString() {
-    return 'MyUser(userEmail: $userEmail, userPassword: $userPassword, userName: $userName, userSureName: $userSureName, userAvatar: $userAvatar, userMobileToken: $userMobileToken, userID: $userID)';
+    return 'MyUser(userEmail: $userEmail, userPassword: $userPassword, userName: $userName, userSureName: $userSureName, userAvatar: $userAvatar, userMobileToken: $userMobileToken, userID: $userID, favouriteSpots: $favouriteSpots, skatePoints: $skatePoints, skateWarsWon: $skateWarsWon, skateWarsLost: $skateWarsLost)';
   }
 
   @override
@@ -223,13 +294,32 @@ class _$MyUserImpl implements _MyUser {
                 other.userAvatar == userAvatar) &&
             (identical(other.userMobileToken, userMobileToken) ||
                 other.userMobileToken == userMobileToken) &&
-            (identical(other.userID, userID) || other.userID == userID));
+            (identical(other.userID, userID) || other.userID == userID) &&
+            const DeepCollectionEquality()
+                .equals(other._favouriteSpots, _favouriteSpots) &&
+            (identical(other.skatePoints, skatePoints) ||
+                other.skatePoints == skatePoints) &&
+            (identical(other.skateWarsWon, skateWarsWon) ||
+                other.skateWarsWon == skateWarsWon) &&
+            (identical(other.skateWarsLost, skateWarsLost) ||
+                other.skateWarsLost == skateWarsLost));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, userEmail, userPassword,
-      userName, userSureName, userAvatar, userMobileToken, userID);
+  int get hashCode => Object.hash(
+      runtimeType,
+      userEmail,
+      userPassword,
+      userName,
+      userSureName,
+      userAvatar,
+      userMobileToken,
+      userID,
+      const DeepCollectionEquality().hash(_favouriteSpots),
+      skatePoints,
+      skateWarsWon,
+      skateWarsLost);
 
   @JsonKey(ignore: true)
   @override
@@ -253,7 +343,11 @@ abstract class _MyUser implements MyUser {
       required final String userSureName,
       required final String userAvatar,
       required final String userMobileToken,
-      required final String userID}) = _$MyUserImpl;
+      required final String userID,
+      required final List<String> favouriteSpots,
+      required final int skatePoints,
+      required final int skateWarsWon,
+      required final int skateWarsLost}) = _$MyUserImpl;
 
   factory _MyUser.fromJson(Map<String, dynamic> json) = _$MyUserImpl.fromJson;
 
@@ -271,6 +365,14 @@ abstract class _MyUser implements MyUser {
   String get userMobileToken;
   @override
   String get userID;
+  @override
+  List<String> get favouriteSpots;
+  @override
+  int get skatePoints;
+  @override
+  int get skateWarsWon;
+  @override
+  int get skateWarsLost;
   @override
   @JsonKey(ignore: true)
   _$$MyUserImplCopyWith<_$MyUserImpl> get copyWith =>

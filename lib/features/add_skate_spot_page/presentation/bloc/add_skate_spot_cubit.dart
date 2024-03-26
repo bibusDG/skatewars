@@ -1,7 +1,5 @@
-import 'dart:convert';
 
 import 'package:geolocator/geolocator.dart';
-import 'package:skatewars/features/add_skate_spot_page/presentation/bloc/add_spot_map_bloc/add_spot_map_cubit.dart';
 
 import '../../../user_relations/domain/usecases/get_user_curret_position_usecase.dart';
 import '/../core/classes/choose_image_to_database.dart';

@@ -28,7 +28,7 @@ mixin _$SkateSpot {
   List<double> get spotRanks => throw _privateConstructorUsedError;
   List<String> get spotProperties => throw _privateConstructorUsedError;
   String get spotID => throw _privateConstructorUsedError;
-  List<MyUser> get spotRiders => throw _privateConstructorUsedError;
+  List<String> get spotRiders => throw _privateConstructorUsedError;
   List<String> get spotComments => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ abstract class $SkateSpotCopyWith<$Res> {
       List<double> spotRanks,
       List<String> spotProperties,
       String spotID,
-      List<MyUser> spotRiders,
+      List<String> spotRiders,
       List<String> spotComments});
 }
 
@@ -115,7 +115,7 @@ class _$SkateSpotCopyWithImpl<$Res, $Val extends SkateSpot>
       spotRiders: null == spotRiders
           ? _value.spotRiders
           : spotRiders // ignore: cast_nullable_to_non_nullable
-              as List<MyUser>,
+              as List<String>,
       spotComments: null == spotComments
           ? _value.spotComments
           : spotComments // ignore: cast_nullable_to_non_nullable
@@ -141,7 +141,7 @@ abstract class _$$SkateSpotImplCopyWith<$Res>
       List<double> spotRanks,
       List<String> spotProperties,
       String spotID,
-      List<MyUser> spotRiders,
+      List<String> spotRiders,
       List<String> spotComments});
 }
 
@@ -203,7 +203,7 @@ class __$$SkateSpotImplCopyWithImpl<$Res>
       spotRiders: null == spotRiders
           ? _value._spotRiders
           : spotRiders // ignore: cast_nullable_to_non_nullable
-              as List<MyUser>,
+              as List<String>,
       spotComments: null == spotComments
           ? _value._spotComments
           : spotComments // ignore: cast_nullable_to_non_nullable
@@ -224,7 +224,7 @@ class _$SkateSpotImpl implements _SkateSpot {
       required final List<double> spotRanks,
       required final List<String> spotProperties,
       required this.spotID,
-      required final List<MyUser> spotRiders,
+      required final List<String> spotRiders,
       required final List<String> spotComments})
       : _spotPhotos = spotPhotos,
         _spotRanks = spotRanks,
@@ -269,9 +269,9 @@ class _$SkateSpotImpl implements _SkateSpot {
 
   @override
   final String spotID;
-  final List<MyUser> _spotRiders;
+  final List<String> _spotRiders;
   @override
-  List<MyUser> get spotRiders {
+  List<String> get spotRiders {
     if (_spotRiders is EqualUnmodifiableListView) return _spotRiders;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_spotRiders);
@@ -354,7 +354,7 @@ abstract class _SkateSpot implements SkateSpot {
       required final List<double> spotRanks,
       required final List<String> spotProperties,
       required final String spotID,
-      required final List<MyUser> spotRiders,
+      required final List<String> spotRiders,
       required final List<String> spotComments}) = _$SkateSpotImpl;
 
   factory _SkateSpot.fromJson(Map<String, dynamic> json) =
@@ -377,7 +377,7 @@ abstract class _SkateSpot implements SkateSpot {
   @override
   String get spotID;
   @override
-  List<MyUser> get spotRiders;
+  List<String> get spotRiders;
   @override
   List<String> get spotComments;
   @override

@@ -62,7 +62,7 @@ class AddSkateSpotPage extends HookWidget {
       child: Scaffold(
         appBar: _addSkateSpotState.maybeWhen(
           addSkateSpotPageLoaded:(userLoggedIn) => AppBar(
-            title: const Text('Adding new spot'),
+            title: const Text('CREATE NEW SPOT', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300),),
           ),
             gallery: (gallery) => AppBar(
               title: const Text('Adding new spot'),
@@ -125,8 +125,9 @@ class AddSkateSpotPage extends HookWidget {
                                   _addSkateSpotCubit.initAddSkateSpotPage(userLoggedIn: true);
                                 },
                                 icon: const Icon(
-                                  Icons.delete_outline,
-                                  size: 40,
+                                  Icons.delete,
+                                  size: 50,
+                                  color: Colors.yellow,
                                 )),
                           ],
                         ),

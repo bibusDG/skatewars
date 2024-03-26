@@ -15,7 +15,7 @@ class SkateSpot with _$SkateSpot{
     required List<double> spotRanks,
     required List<String> spotProperties,
     required String spotID,
-    required List<MyUser> spotRiders,
+    required List<String> spotRiders,
     required List<String> spotComments,
 
 }) = _SkateSpot;

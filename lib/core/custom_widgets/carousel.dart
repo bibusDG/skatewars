@@ -16,9 +16,9 @@ class CustomCarouselSlider extends StatelessWidget {
     return CarouselSlider(
       options: CarouselOptions(
         height: 300.0,
-        enlargeFactor: 0.4,
+        enlargeFactor: 0.3,
         enlargeCenterPage: true,
-        viewportFraction: 0.35,
+        viewportFraction: 0.6,
       ),
       items: gallery.map((i) {
         return Builder(

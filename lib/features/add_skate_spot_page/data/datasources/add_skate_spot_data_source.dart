@@ -1,4 +1,3 @@
-import '../../../user_relations/domain/entities/my_user.dart';
 import '/../core/constants/constants.dart';
 import '/../features/add_skate_spot_page/domain/entities/skateSpot.dart';
 import 'package:injectable/injectable.dart';
@@ -15,7 +14,7 @@ abstract class AddSkateSpotDataSource {
     required List<double> spotRanks,
     required List<String> spotProperties,
     required String spotID,
-    required List<MyUser> spotRiders,
+    required List<String> spotRiders,
     required List<String> spotComments,
   });
 }
@@ -32,7 +31,7 @@ class AddSkateSpotDataImp implements AddSkateSpotDataSource {
       required List<double> spotRanks,
       required List<String> spotProperties,
       required String spotID,
-      required List<MyUser> spotRiders,
+      required List<String> spotRiders,
       required List<String> spotComments}) async{
     final new_skateSpot = await FIREBASE_PATH.add(SkateSpot(
         spotName: spotName,

@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import '../../../user_relations/domain/entities/my_user.dart';
 import '/../core/failure/failure.dart';
 import '/../core/usecases/usecases.dart';
 import '/../features/add_skate_spot_page/domain/repositories/add_skate_spot_repo.dart';
@@ -38,7 +37,7 @@ class AddSkateSpotParams extends Equatable{
   final List<double> spotRanks;
   final List<String> spotProperties;
   final String spotID;
-  final List<MyUser> spotRiders;
+  final List<String> spotRiders;
   final List<String> spotComments;
   const AddSkateSpotParams({
     required this.spotID,

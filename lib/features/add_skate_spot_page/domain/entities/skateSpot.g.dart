@@ -23,7 +23,7 @@ _$SkateSpotImpl _$$SkateSpotImplFromJson(Map<String, dynamic> json) =>
           .toList(),
       spotID: json['spotID'] as String,
       spotRiders: (json['spotRiders'] as List<dynamic>)
-          .map((e) => MyUser.fromJson(e as Map<String, dynamic>?))
+          .map((e) => e as String)
           .toList(),
       spotComments: (json['spotComments'] as List<dynamic>)
           .map((e) => e as String)

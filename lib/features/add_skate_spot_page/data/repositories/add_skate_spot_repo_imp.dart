@@ -21,7 +21,7 @@ class AddSkateSpotRepoImp implements AddSkateSpotRepo {
       required List<double> spotRanks,
       required List<String> spotProperties,
       required String spotID,
-      required List<MyUser> spotRiders,
+      required List<String> spotRiders,
       required List<String> spotComments}) async{
     try{
       final result = addSkateSpotDataSource.addSkateSpot(

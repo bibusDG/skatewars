@@ -14,6 +14,12 @@ _$MyUserImpl _$$MyUserImplFromJson(Map<String, dynamic> json) => _$MyUserImpl(
       userAvatar: json['userAvatar'] as String,
       userMobileToken: json['userMobileToken'] as String,
       userID: json['userID'] as String,
+      favouriteSpots: (json['favouriteSpots'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+      skatePoints: json['skatePoints'] as int,
+      skateWarsWon: json['skateWarsWon'] as int,
+      skateWarsLost: json['skateWarsLost'] as int,
     );
 
 Map<String, dynamic> _$$MyUserImplToJson(_$MyUserImpl instance) =>
@@ -25,4 +31,8 @@ Map<String, dynamic> _$$MyUserImplToJson(_$MyUserImpl instance) =>
       'userAvatar': instance.userAvatar,
       'userMobileToken': instance.userMobileToken,
       'userID': instance.userID,
+      'favouriteSpots': instance.favouriteSpots,
+      'skatePoints': instance.skatePoints,
+      'skateWarsWon': instance.skateWarsWon,
+      'skateWarsLost': instance.skateWarsLost,
     };

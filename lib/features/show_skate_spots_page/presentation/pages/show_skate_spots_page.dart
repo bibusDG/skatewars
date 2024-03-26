@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:get/utils.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot.dart';
@@ -29,7 +30,7 @@ class ShowSkateSpotsPage extends HookWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Show skate spots'),
+        title: const Text('SKATE SPOTS', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400),),
       ),
       body:Column(
                 children: [
@@ -47,53 +48,58 @@ class ShowSkateSpotsPage extends HookWidget {
                           // final skateSpotRating = skateSpot.spotRanks.sum;
                           return Padding(
                             padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: Card(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  CircleAvatar(
-                                    radius: 70,
-                                    backgroundColor: Colors.tealAccent,
-                                    backgroundImage: skateSpot.spotPhotos.isEmpty
-                                        ? null
-                                        : Image.memory(const Base64Decoder().convert(skateSpot.spotPhotos[0])).image,
-                                  ),
-                                  Column(
+                            child: Stack(
+                              alignment: AlignmentDirectional.topEnd,
+                              children: [
+                                Card(
+                                  child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Center(
-                                          child: Text(
-                                            skateSpot.spotName.toUpperCase(),
-                                            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w200),
-                                          )),
-                                      RatingBarIndicator(
-                                        itemBuilder: (context, index) => const Icon(
-                                          Icons.star,
-                                          color: Colors.amber,
-                                        ),
-                                        rating: skateSpot.spotRanks.sum / skateSpot.spotRanks.length,
-                                        itemCount: 5,
-                                        itemSize: 40,
+                                      CircleAvatar(
+                                        radius: 70,
+                                        backgroundColor: Colors.tealAccent,
+                                        backgroundImage: skateSpot.spotPhotos.isEmpty
+                                            ? null
+                                            : Image.memory(const Base64Decoder().convert(skateSpot.spotPhotos[0])).image,
                                       ),
-                                      Row(
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
-                                          Row(
-                                            children: [
-                                              const Icon(Icons.location_pin, size: 30, color: Colors.red,),
-                                              Text('${(distanceToSkateSpot/1000).floor()} km'),
-                                            ],
+                                          Center(
+                                              child: Text(
+                                                skateSpot.spotName.toUpperCase(),
+                                                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                                              )),
+                                          RatingBarIndicator(
+                                            itemBuilder: (context, index) => const Icon(
+                                              Icons.star,
+                                              color: Colors.amber,
+                                            ),
+                                            rating: skateSpot.spotRanks.sum / skateSpot.spotRanks.length,
+                                            itemCount: 5,
+                                            itemSize: 40,
                                           ),
-                                          const SizedBox(width: 20.0,),
                                           Row(
                                             children: [
-                                              const Icon(
-                                                Icons.person,
-                                                size: 30,
-                                                color: Colors.white70,
+                                              Row(
+                                                children: [
+                                                  const Icon(Icons.location_pin, size: 30, color: Colors.red,),
+                                                  Text('${((distanceToSkateSpot/1000).toPrecision(2))} km'),
+                                                ],
                                               ),
-                                              Text(
-                                                ':${skateSpot.spotRiders.length}',
-                                                style: const TextStyle(fontSize: 25),
+                                              const SizedBox(width: 20.0,),
+                                              Row(
+                                                children: [
+                                                  const Icon(
+                                                    Icons.person,
+                                                    size: 30,
+                                                    color: Colors.white70,
+                                                  ),
+                                                  Text(
+                                                    ': ${skateSpot.spotRiders.length}',
+                                                    style: const TextStyle(fontSize: 25),
+                                                  ),
+                                                ],
                                               ),
                                             ],
                                           ),
@@ -101,8 +107,9 @@ class ShowSkateSpotsPage extends HookWidget {
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
+                                ),
+                                IconButton(onPressed: (){}, icon: const Icon(Icons.favorite_border, size: 40, color: Colors.deepOrange,)),
+                              ],
                             ),
                           );
                         },

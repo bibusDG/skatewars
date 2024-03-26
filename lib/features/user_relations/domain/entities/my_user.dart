@@ -11,6 +11,10 @@ class MyUser with _$MyUser{
     required String userAvatar,
     required String userMobileToken,
     required String userID,
+    required List<String> favouriteSpots,
+    required int skatePoints,
+    required int skateWarsWon,
+    required int skateWarsLost,
 }) = _MyUser;
   factory MyUser.fromJson(Map<String, dynamic>? json) => _$MyUserFromJson(json!);
 }
