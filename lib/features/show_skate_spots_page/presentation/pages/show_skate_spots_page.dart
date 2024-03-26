@@ -2,10 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/utils.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot.dart';
@@ -51,61 +53,66 @@ class ShowSkateSpotsPage extends HookWidget {
                             child: Stack(
                               alignment: AlignmentDirectional.topEnd,
                               children: [
-                                Card(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      CircleAvatar(
-                                        radius: 70,
-                                        backgroundColor: Colors.tealAccent,
-                                        backgroundImage: skateSpot.spotPhotos.isEmpty
-                                            ? null
-                                            : Image.memory(const Base64Decoder().convert(skateSpot.spotPhotos[0])).image,
-                                      ),
-                                      Column(
-                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Center(
-                                              child: Text(
-                                                skateSpot.spotName.toUpperCase(),
-                                                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
-                                              )),
-                                          RatingBarIndicator(
-                                            itemBuilder: (context, index) => const Icon(
-                                              Icons.star,
-                                              color: Colors.amber,
+                                GestureDetector(
+                                  onTap: (){
+                                    context.pushNamed('spot_details_page', pathParameters: {'spotID' : skateSpot.spotID});
+                                  },
+                                  child: Card(
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        CircleAvatar(
+                                          radius: 70,
+                                          backgroundColor: Colors.tealAccent,
+                                          backgroundImage: skateSpot.spotPhotos.isEmpty
+                                              ? null
+                                              : Image.memory(const Base64Decoder().convert(skateSpot.spotPhotos[0])).image,
+                                        ),
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Center(
+                                                child: Text(
+                                                  skateSpot.spotName.toUpperCase(),
+                                                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                                                )),
+                                            RatingBarIndicator(
+                                              itemBuilder: (context, index) => const Icon(
+                                                Icons.star,
+                                                color: Colors.amber,
+                                              ),
+                                              rating: skateSpot.spotRanks.sum / skateSpot.spotRanks.length,
+                                              itemCount: 5,
+                                              itemSize: 40,
                                             ),
-                                            rating: skateSpot.spotRanks.sum / skateSpot.spotRanks.length,
-                                            itemCount: 5,
-                                            itemSize: 40,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  const Icon(Icons.location_pin, size: 30, color: Colors.red,),
-                                                  Text('${((distanceToSkateSpot/1000).toPrecision(2))} km'),
-                                                ],
-                                              ),
-                                              const SizedBox(width: 20.0,),
-                                              Row(
-                                                children: [
-                                                  const Icon(
-                                                    Icons.person,
-                                                    size: 30,
-                                                    color: Colors.white70,
-                                                  ),
-                                                  Text(
-                                                    ': ${skateSpot.spotRiders.length}',
-                                                    style: const TextStyle(fontSize: 25),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                            Row(
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    const Icon(Icons.location_pin, size: 30, color: Colors.red,),
+                                                    Text('${((distanceToSkateSpot/1000).toPrecision(2))} km'),
+                                                  ],
+                                                ),
+                                                const SizedBox(width: 20.0,),
+                                                Row(
+                                                  children: [
+                                                    const Icon(
+                                                      Icons.person,
+                                                      size: 30,
+                                                      color: Colors.white70,
+                                                    ),
+                                                    Text(
+                                                      ': ${skateSpot.spotRiders.length}',
+                                                      style: const TextStyle(fontSize: 25),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                                 IconButton(onPressed: (){}, icon: const Icon(Icons.favorite_border, size: 40, color: Colors.deepOrange,)),
