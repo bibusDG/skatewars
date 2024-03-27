@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:rating_dialog/rating_dialog.dart';
@@ -15,7 +13,6 @@ import 'package:skatewars/core/custom_widgets/carousel.dart';
 import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot.dart';
 import 'package:skatewars/features/spot_details_page/presentation/bloc/spot_details_cubit.dart';
 import 'package:collection/collection.dart';
-import 'package:skatewars/features/user_relations/domain/entities/my_user.dart';
 
 class SpotDetailsPage extends HookWidget {
   final String spotID;

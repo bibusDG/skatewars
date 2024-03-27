@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
 
@@ -5,6 +6,20 @@ abstract class UserRelationsDataSource{
   const UserRelationsDataSource();
 
   Future<Position> getUserCurrentPosition();
+
+  Future<String> loginUserWithEmail({
+    required String userLoginEmail,
+    required String userPassword,
+});
+
+  Future<void> loginWithGoogle();
+
+  Future<void> logOutUser();
+
+  Future<void> registerNewUser({
+    required String userEmail,
+    required String userPassword,
+});
 
 }
 @Singleton(as: UserRelationsDataSource)
@@ -46,6 +61,33 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
     // continue accessing the position of the device.
     return await Geolocator.getCurrentPosition();
     // TODO: implement getUserCurrentPosition
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> logOutUser() async{
+    await FirebaseAuth.instance.signOut();
+    // TODO: implement logOutUser
+    // throw UnimplementedError();
+  }
+
+  @override
+  Future<String> loginUserWithEmail({required String userLoginEmail, required String userPassword}) async{
+    final result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: userLoginEmail, password: userPassword);
+    return result.user!.uid;
+    // TODO: implement loginUserWithCredentials
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> loginWithGoogle() {
+    // TODO: implement loginWithGoogle
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> registerNewUser({required String userEmail, required String userPassword}) {
+    // TODO: implement registerNewUser
     throw UnimplementedError();
   }
 
