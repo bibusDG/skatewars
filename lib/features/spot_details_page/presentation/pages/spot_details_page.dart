@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -8,6 +10,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:rating_dialog/rating_dialog.dart';
 import 'package:skatewars/core/custom_widgets/carousel.dart';
 import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot.dart';
 import 'package:skatewars/features/spot_details_page/presentation/bloc/spot_details_cubit.dart';
@@ -22,6 +25,7 @@ class SpotDetailsPage extends HookWidget {
   Widget build(BuildContext context) {
     final _spotDetailsCubit = useBloc<SpotDetailsCubit>();
     final _spotDetailsState = useBlocBuilder(_spotDetailsCubit);
+    final _switch = useState(false);
 
     useEffect(() {
       _spotDetailsCubit.initSpotDetailPage(spotID: spotID);
@@ -40,13 +44,7 @@ class SpotDetailsPage extends HookWidget {
               children: [
                 Expanded(
                   flex: 5,
-                  child: SizedBox(
-                      width: double.infinity,
-                      height: double.infinity,
-                      child: Card(
-                        color: Colors.black,
-                        child: CustomCarouselSlider(gallery: skateSpot.spotPhotos,),
-                      )),
+                  child: CustomCarouselSlider(gallery: skateSpot.spotPhotos,),
                 ),
                 Expanded(
                   flex: 1,
@@ -73,8 +71,32 @@ class SpotDetailsPage extends HookWidget {
                       Expanded(
                           flex: 2,
                           child: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
+                            onPressed: () {
+                              final _ratingDialog = RatingDialog(
+                                title: const Text(
+                                  'Rate spot',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                // encourage your user to leave a high rating?
+                                message: const Text(
+                                  'Tap a star to set your rating. Add some comments.',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                                // your app's logo?
+                                submitButtonText: 'Submit',
+                                commentHint: 'Comment spot',
+                                onSubmitted: (response) {},
+                              );
+                              showDialog(context: context, builder: (BuildContext context){
+                                return _ratingDialog;
+                              });
+                            },
+                            icon: const Icon(
                               Icons.star_rate_outlined,
                               size: 40,
                             ),
@@ -153,7 +175,16 @@ class SpotDetailsPage extends HookWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("  I'm here "),
-                        CupertinoSwitch(value: true, onChanged: (bool value) {  },),
+                        CupertinoSwitch(
+                          activeColor: Colors.green,
+                          trackColor: Colors.red,
+                          value: _switch.value, onChanged: (bool value) {
+                          if(_switch.value){
+                            _switch.value = false;
+                          }else{
+                            _switch.value = true;
+                          }
+                        },),
                       ],
                     ))
                   ],

@@ -7,42 +7,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1093212011499:android:0e0b84f97ca1df0f4bb7ae",
-        "android_client_info": {
-          "package_name": "com.dominikgrosser.draft"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "1093212011499-71k3k20av2h5m85l2mgoe639k4rvjrqp.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAfaIzfaIG6SETakAg6SU4iwHfFhvIAmDw"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "1093212011499-71k3k20av2h5m85l2mgoe639k4rvjrqp.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "1093212011499-st16kb74oussmnpirengjhofh7rvghej.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.dominikgrosser.skateSpotFinder"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:1093212011499:android:2e7be1240b6ae0294bb7ae",
         "android_client_info": {
           "package_name": "com.dominikgrosser.skate_spot_finder"
@@ -50,7 +14,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "1093212011499-71k3k20av2h5m85l2mgoe639k4rvjrqp.apps.googleusercontent.com",
+          "client_id": "1093212011499-s6kfk9ni3i061o7qtroku65l4q5ff2bd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -67,10 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "1093212011499-st16kb74oussmnpirengjhofh7rvghej.apps.googleusercontent.com",
+              "client_id": "1093212011499-6bscjhgn045mkh96pf6mpfvfrh8338pv.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.dominikgrosser.skateSpotFinder"
+                "bundle_id": "com.dominikgrosser.skatewars.RunnerTests"
               }
             }
           ]
@@ -86,7 +50,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "1093212011499-71k3k20av2h5m85l2mgoe639k4rvjrqp.apps.googleusercontent.com",
+          "client_id": "1093212011499-184i1pq18b1bqfv5fitbv20odh897115.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dominikgrosser.skatewars",
+            "certificate_hash": "e616865ed0100b267d5f37c9859f74faf8188519"
+          }
+        },
+        {
+          "client_id": "1093212011499-s6kfk9ni3i061o7qtroku65l4q5ff2bd.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -103,10 +75,10 @@
               "client_type": 3
             },
             {
-              "client_id": "1093212011499-st16kb74oussmnpirengjhofh7rvghej.apps.googleusercontent.com",
+              "client_id": "1093212011499-6bscjhgn045mkh96pf6mpfvfrh8338pv.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.dominikgrosser.skateSpotFinder"
+                "bundle_id": "com.dominikgrosser.skatewars.RunnerTests"
               }
             }
           ]
