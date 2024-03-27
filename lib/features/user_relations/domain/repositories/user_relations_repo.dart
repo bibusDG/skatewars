@@ -15,6 +15,10 @@ abstract class UserRelationsRepo {
 
   Future<Either<Failure, void>> logOutUser();
 
+  Future<Either<Failure, void>> deleteUserFromDataBase({
+    required String userID,
+});
+
   Future<Either<Failure, void>> registerNewUser({
     required String userEmail,
     required String userPassword,

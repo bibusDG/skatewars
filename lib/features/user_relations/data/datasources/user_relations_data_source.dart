@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:injectable/injectable.dart';
+import 'package:skatewars/core/constants/constants.dart';
+import 'package:skatewars/features/user_relations/domain/entities/my_user.dart';
 
 abstract class UserRelationsDataSource{
   const UserRelationsDataSource();
@@ -16,9 +20,22 @@ abstract class UserRelationsDataSource{
 
   Future<void> logOutUser();
 
+  Future<void> deleteUserFromDataBase({
+    required String userID,
+});
+
   Future<void> registerNewUser({
     required String userEmail,
     required String userPassword,
+    required String userName,
+    required String userSureName,
+    required String userAvatar,
+    required String userMobileToken,
+    required String userID,
+    required List<String> favouriteSpots,
+    required int skatePoints,
+    required int skateWarsWon,
+    required int skateWarsLost,
 });
 
 }
@@ -86,9 +103,43 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
   }
 
   @override
-  Future<void> registerNewUser({required String userEmail, required String userPassword}) {
+  Future<void> registerNewUser({
+    required String userEmail,
+    required String userPassword,
+    required String userName,
+    required String userSureName,
+    required String userAvatar,
+    required String userMobileToken,
+    required String userID,
+    required List<String> favouriteSpots,
+    required int skatePoints,
+    required int skateWarsWon,
+    required int skateWarsLost,
+  }) async{
+    final result = await FIREBASE_USER_PATH.add(
+        MyUser(userEmail: userEmail,
+            userPassword: userPassword,
+            userName: userName,
+            userSureName: userSureName,
+            userAvatar: userAvatar,
+            userMobileToken: userMobileToken,
+            userID: userID,
+            favouriteSpots: favouriteSpots,
+            skatePoints: skatePoints,
+            skateWarsWon: skateWarsWon,
+            skateWarsLost: skateWarsLost).toJson());
+    final uid = result.id;
+    final userToken = await FirebaseMessaging.instance.getToken();
+    await FIREBASE_USER_PATH.doc(uid).update({'userID': uid, 'userMobileToken': userToken});
     // TODO: implement registerNewUser
-    throw UnimplementedError();
+    // throw UnimplementedError();
+  }
+
+  @override
+  Future<void> deleteUserFromDataBase({required String userID}) async{
+    await FIREBASE_USER_PATH.doc(userID).delete();
+    // TODO: implement deleteUserFromDataBase
+    // throw UnimplementedError();
   }
 
 }

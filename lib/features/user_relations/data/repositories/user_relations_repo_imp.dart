@@ -23,4 +23,34 @@ class UserRelationsRepoImp implements UserRelationsRepo{
     // TODO: implement getUserCurrentPosition
     throw UnimplementedError();
   }
+
+  @override
+  Future<Either<Failure, void>> deleteUserFromDataBase({required String userID}) {
+    // TODO: implement deleteUserFromDataBase
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, void>> logOutUser() {
+    // TODO: implement logOutUser
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, String>> loginUserWithEmail({required String userLoginEmail, required String userPassword}) {
+    // TODO: implement loginUserWithEmail
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, void>> loginWithGoogle() {
+    // TODO: implement loginWithGoogle
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, void>> registerNewUser({required String userEmail, required String userPassword}) {
+    // TODO: implement registerNewUser
+    throw UnimplementedError();
+  }
 }
