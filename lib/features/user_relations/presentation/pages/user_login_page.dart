@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
+import 'package:skatewars/core/constants/constants.dart';
 import 'package:skatewars/features/user_relations/presentation/bloc/user_auth_cubit.dart';
 
 class UserLoginPage extends HookWidget {
@@ -20,8 +22,23 @@ class UserLoginPage extends HookWidget {
       [_authCubit],
     );
 
+    useBlocListener<UserAuthCubit, UserAuthState>(_authCubit, (bloc, current, context) {
+      current.whenOrNull(
+        // loginSuccess: (message) async{
+        //   await Future.delayed(const Duration(seconds: 3));
+        //   if(context.mounted){
+        //     context.goNamed('start_page');
+        //   }
+        // }
+      );
+    });
+
     return Scaffold(
-      appBar: AppBar(title: Text('USER LOGIN PAGE'),),
+      appBar: AppBar(title: Text('USER LOGIN PAGE'),
+        actions: [
+          USER_LOGGED_IN == true? CircleAvatar(): SizedBox(),
+        ],
+      ),
       body: _authState.whenOrNull(
         loginInitialPage:() => Center(child: CupertinoButton(onPressed: (){
           _authCubit.loginWithGoogle();

@@ -21,3 +21,7 @@ class RegisterUserFailure extends Failure{
 class LoginWithGoogleFailure extends Failure{
   const LoginWithGoogleFailure({required super.failureMessage});
 }
+
+class UserLoggedInFailure extends Failure{
+  const UserLoggedInFailure({required super.failureMessage});
+}

@@ -21,6 +21,8 @@ abstract class UserRelationsDataSource{
 
   Future<void> logOutUser();
 
+  Stream<User?> userIsLoggedIn();
+
   Future<void> deleteUserFromDataBase({
     required String userID,
 });
@@ -84,7 +86,16 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
 
   @override
   Future<void> logOutUser() async{
+    ///logout from google if user loggedIn with google
+    GoogleSignIn googleSignIn = GoogleSignIn();
+    final _isSignedInViaGoogle = await googleSignIn.isSignedIn();
+    if(_isSignedInViaGoogle == true){
+      await googleSignIn.signOut();
+    }
     await FirebaseAuth.instance.signOut();
+
+    ///set user status to logOut
+    await setUserLoggInStatus();
     // TODO: implement logOutUser
     // throw UnimplementedError();
   }
@@ -111,6 +122,9 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
       accessToken: googleAuth.accessToken,
     );
     final credentials = await FirebaseAuth.instance.signInWithCredential(googleCredentials);
+    ///set user status to loggedIN
+    await setUserLoggInStatus();
+    ///
     return credentials;
     // TODO: implement loginWithGoogle
     // throw UnimplementedError();
@@ -153,6 +167,13 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
   Future<void> deleteUserFromDataBase({required String userID}) async{
     await FIREBASE_USER_PATH.doc(userID).delete();
     // TODO: implement deleteUserFromDataBase
+    // throw UnimplementedError();
+  }
+
+  @override
+  Stream<User?> userIsLoggedIn() async*{
+    yield* FirebaseAuth.instance.authStateChanges();
+    // TODO: implement userIsLoggedIn
     // throw UnimplementedError();
   }
 

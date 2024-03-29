@@ -114,4 +114,17 @@ class UserRelationsRepoImp implements UserRelationsRepo{
     // TODO: implement registerNewUser
     throw UnimplementedError();
   }
+
+  @override
+  Future<Either<Failure, Stream<User?>>> userIsLoggedIn() async{
+    try{
+      final result = dataSource.userIsLoggedIn();
+      return Right(result);
+    }catch(error){
+      print('Unable to stream user');
+      return (const Left(UserLoggedInFailure(failureMessage: 'Unable to stream user')));
+    }
+    // TODO: implement userIsLoggedIn
+    throw UnimplementedError();
+  }
 }

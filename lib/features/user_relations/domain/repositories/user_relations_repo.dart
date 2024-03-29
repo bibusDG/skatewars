@@ -16,6 +16,8 @@ abstract class UserRelationsRepo {
 
   Future<Either<Failure, void>> logOutUser();
 
+  Future<Either<Failure, Stream<User?>>> userIsLoggedIn();
+
   Future<Either<Failure, void>> deleteUserFromDataBase({
     required String userID,
 });
