@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geolocator_platform_interface/src/models/position.dart';
 import 'package:injectable/injectable.dart';
 import 'package:skatewars/core/failure/failure.dart';
@@ -25,31 +26,91 @@ class UserRelationsRepoImp implements UserRelationsRepo{
   }
 
   @override
-  Future<Either<Failure, void>> deleteUserFromDataBase({required String userID}) {
+  Future<Either<Failure, void>> deleteUserFromDataBase({required String userID}) async{
+    try{
+      final result = await dataSource.deleteUserFromDataBase(userID: userID);
+      return Right(result);
+    }catch(error){
+      print('Unable to delete user from database');
+      return (const Left(DeleteUserFromDataBaseFailure(failureMessage: 'Unable to delete user from database')));
+    }
     // TODO: implement deleteUserFromDataBase
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, void>> logOutUser() {
+  Future<Either<Failure, void>> logOutUser() async{
+    try{
+      final result = await dataSource.logOutUser();
+      return Right(result);
+    }catch(error){
+      print('Unabel to logout user');
+      return (const Left(LogoutUseFailure(failureMessage: 'Unable to logout user')));
+    }
+
+    
     // TODO: implement logOutUser
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, String>> loginUserWithEmail({required String userLoginEmail, required String userPassword}) {
+  Future<Either<Failure, String>> loginUserWithEmail({required String userLoginEmail, required String userPassword}) async{
+    try{
+      final result = await dataSource.loginUserWithEmail(userLoginEmail: userLoginEmail, userPassword: userPassword);
+      return Right(result);
+    }catch(error){
+      print('Unable to login user with e-mail and password');
+      return (const Left(LoginWithEmailFailure(failureMessage: 'Unable to login with e-mail and password')));
+    }
+
     // TODO: implement loginUserWithEmail
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, void>> loginWithGoogle() {
+  Future<Either<Failure, UserCredential>> loginWithGoogle() async{
+    try{
+      final result = await dataSource.loginWithGoogle();
+      return Right(result);
+    }catch(error){
+      print('unable to sign in with google');
+      return (const Left(LoginWithGoogleFailure(failureMessage: 'Unable to login with google account')));
+    }
     // TODO: implement loginWithGoogle
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, void>> registerNewUser({required String userEmail, required String userPassword}) {
+  Future<Either<Failure, void>> registerNewUser({
+    required String userEmail,
+    required String userPassword,
+    required String userName,
+    required String userSureName,
+    required String userAvatar,
+    required String userMobileToken,
+    required String userID,
+    required List<String> favouriteSpots,
+    required int skatePoints,
+    required int skateWarsWon,
+    required int skateWarsLost,}) async{
+    try{
+      final result = await dataSource.registerNewUser(
+          userEmail: userEmail,
+          userPassword: userPassword,
+          userName: userName,
+          userSureName: userSureName,
+          userAvatar: userAvatar,
+          userMobileToken: userMobileToken,
+          userID: userID,
+          favouriteSpots: favouriteSpots,
+          skatePoints: skatePoints,
+          skateWarsWon: skateWarsWon,
+          skateWarsLost: skateWarsLost);
+      return Right(result);
+    }catch(error){
+      print('Unable to register new user');
+      return (const Left(RegisterUserFailure(failureMessage: 'Unable to register new user')));
+    }
     // TODO: implement registerNewUser
     throw UnimplementedError();
   }

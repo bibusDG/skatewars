@@ -1,0 +1,1126 @@
+// coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+
+part of 'user_auth_cubit.dart';
+
+// **************************************************************************
+// FreezedGenerator
+// **************************************************************************
+
+T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+/// @nodoc
+mixin _$UserAuthState {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loginInitialPage,
+    required TResult Function(String message) loginPageError,
+    required TResult Function() loginPageLoading,
+    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message) loginFailed,
+    required TResult Function() loginInProgress,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loginInitialPage,
+    TResult? Function(String message)? loginPageError,
+    TResult? Function()? loginPageLoading,
+    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message)? loginFailed,
+    TResult? Function()? loginInProgress,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loginInitialPage,
+    TResult Function(String message)? loginPageError,
+    TResult Function()? loginPageLoading,
+    TResult Function(String message)? loginSuccess,
+    TResult Function(String message)? loginFailed,
+    TResult Function()? loginInProgress,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoginInitialPage value) loginInitialPage,
+    required TResult Function(_LoginPageError value) loginPageError,
+    required TResult Function(_LoginPageLoading value) loginPageLoading,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailed value) loginFailed,
+    required TResult Function(_LoginInProgress value) loginInProgress,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoginInitialPage value)? loginInitialPage,
+    TResult? Function(_LoginPageError value)? loginPageError,
+    TResult? Function(_LoginPageLoading value)? loginPageLoading,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailed value)? loginFailed,
+    TResult? Function(_LoginInProgress value)? loginInProgress,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoginInitialPage value)? loginInitialPage,
+    TResult Function(_LoginPageError value)? loginPageError,
+    TResult Function(_LoginPageLoading value)? loginPageLoading,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailed value)? loginFailed,
+    TResult Function(_LoginInProgress value)? loginInProgress,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserAuthStateCopyWith<$Res> {
+  factory $UserAuthStateCopyWith(
+          UserAuthState value, $Res Function(UserAuthState) then) =
+      _$UserAuthStateCopyWithImpl<$Res, UserAuthState>;
+}
+
+/// @nodoc
+class _$UserAuthStateCopyWithImpl<$Res, $Val extends UserAuthState>
+    implements $UserAuthStateCopyWith<$Res> {
+  _$UserAuthStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$UserAuthStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
+
+  @override
+  String toString() {
+    return 'UserAuthState.initial()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loginInitialPage,
+    required TResult Function(String message) loginPageError,
+    required TResult Function() loginPageLoading,
+    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message) loginFailed,
+    required TResult Function() loginInProgress,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loginInitialPage,
+    TResult? Function(String message)? loginPageError,
+    TResult? Function()? loginPageLoading,
+    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message)? loginFailed,
+    TResult? Function()? loginInProgress,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loginInitialPage,
+    TResult Function(String message)? loginPageError,
+    TResult Function()? loginPageLoading,
+    TResult Function(String message)? loginSuccess,
+    TResult Function(String message)? loginFailed,
+    TResult Function()? loginInProgress,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoginInitialPage value) loginInitialPage,
+    required TResult Function(_LoginPageError value) loginPageError,
+    required TResult Function(_LoginPageLoading value) loginPageLoading,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailed value) loginFailed,
+    required TResult Function(_LoginInProgress value) loginInProgress,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoginInitialPage value)? loginInitialPage,
+    TResult? Function(_LoginPageError value)? loginPageError,
+    TResult? Function(_LoginPageLoading value)? loginPageLoading,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailed value)? loginFailed,
+    TResult? Function(_LoginInProgress value)? loginInProgress,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoginInitialPage value)? loginInitialPage,
+    TResult Function(_LoginPageError value)? loginPageError,
+    TResult Function(_LoginPageLoading value)? loginPageLoading,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailed value)? loginFailed,
+    TResult Function(_LoginInProgress value)? loginInProgress,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Initial implements UserAuthState {
+  const factory _Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$LoginInitialPageImplCopyWith<$Res> {
+  factory _$$LoginInitialPageImplCopyWith(_$LoginInitialPageImpl value,
+          $Res Function(_$LoginInitialPageImpl) then) =
+      __$$LoginInitialPageImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoginInitialPageImplCopyWithImpl<$Res>
+    extends _$UserAuthStateCopyWithImpl<$Res, _$LoginInitialPageImpl>
+    implements _$$LoginInitialPageImplCopyWith<$Res> {
+  __$$LoginInitialPageImplCopyWithImpl(_$LoginInitialPageImpl _value,
+      $Res Function(_$LoginInitialPageImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoginInitialPageImpl implements _LoginInitialPage {
+  const _$LoginInitialPageImpl();
+
+  @override
+  String toString() {
+    return 'UserAuthState.loginInitialPage()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoginInitialPageImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loginInitialPage,
+    required TResult Function(String message) loginPageError,
+    required TResult Function() loginPageLoading,
+    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message) loginFailed,
+    required TResult Function() loginInProgress,
+  }) {
+    return loginInitialPage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loginInitialPage,
+    TResult? Function(String message)? loginPageError,
+    TResult? Function()? loginPageLoading,
+    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message)? loginFailed,
+    TResult? Function()? loginInProgress,
+  }) {
+    return loginInitialPage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loginInitialPage,
+    TResult Function(String message)? loginPageError,
+    TResult Function()? loginPageLoading,
+    TResult Function(String message)? loginSuccess,
+    TResult Function(String message)? loginFailed,
+    TResult Function()? loginInProgress,
+    required TResult orElse(),
+  }) {
+    if (loginInitialPage != null) {
+      return loginInitialPage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoginInitialPage value) loginInitialPage,
+    required TResult Function(_LoginPageError value) loginPageError,
+    required TResult Function(_LoginPageLoading value) loginPageLoading,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailed value) loginFailed,
+    required TResult Function(_LoginInProgress value) loginInProgress,
+  }) {
+    return loginInitialPage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoginInitialPage value)? loginInitialPage,
+    TResult? Function(_LoginPageError value)? loginPageError,
+    TResult? Function(_LoginPageLoading value)? loginPageLoading,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailed value)? loginFailed,
+    TResult? Function(_LoginInProgress value)? loginInProgress,
+  }) {
+    return loginInitialPage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoginInitialPage value)? loginInitialPage,
+    TResult Function(_LoginPageError value)? loginPageError,
+    TResult Function(_LoginPageLoading value)? loginPageLoading,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailed value)? loginFailed,
+    TResult Function(_LoginInProgress value)? loginInProgress,
+    required TResult orElse(),
+  }) {
+    if (loginInitialPage != null) {
+      return loginInitialPage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginInitialPage implements UserAuthState {
+  const factory _LoginInitialPage() = _$LoginInitialPageImpl;
+}
+
+/// @nodoc
+abstract class _$$LoginPageErrorImplCopyWith<$Res> {
+  factory _$$LoginPageErrorImplCopyWith(_$LoginPageErrorImpl value,
+          $Res Function(_$LoginPageErrorImpl) then) =
+      __$$LoginPageErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$LoginPageErrorImplCopyWithImpl<$Res>
+    extends _$UserAuthStateCopyWithImpl<$Res, _$LoginPageErrorImpl>
+    implements _$$LoginPageErrorImplCopyWith<$Res> {
+  __$$LoginPageErrorImplCopyWithImpl(
+      _$LoginPageErrorImpl _value, $Res Function(_$LoginPageErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$LoginPageErrorImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoginPageErrorImpl implements _LoginPageError {
+  const _$LoginPageErrorImpl({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'UserAuthState.loginPageError(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoginPageErrorImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoginPageErrorImplCopyWith<_$LoginPageErrorImpl> get copyWith =>
+      __$$LoginPageErrorImplCopyWithImpl<_$LoginPageErrorImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loginInitialPage,
+    required TResult Function(String message) loginPageError,
+    required TResult Function() loginPageLoading,
+    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message) loginFailed,
+    required TResult Function() loginInProgress,
+  }) {
+    return loginPageError(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loginInitialPage,
+    TResult? Function(String message)? loginPageError,
+    TResult? Function()? loginPageLoading,
+    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message)? loginFailed,
+    TResult? Function()? loginInProgress,
+  }) {
+    return loginPageError?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loginInitialPage,
+    TResult Function(String message)? loginPageError,
+    TResult Function()? loginPageLoading,
+    TResult Function(String message)? loginSuccess,
+    TResult Function(String message)? loginFailed,
+    TResult Function()? loginInProgress,
+    required TResult orElse(),
+  }) {
+    if (loginPageError != null) {
+      return loginPageError(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoginInitialPage value) loginInitialPage,
+    required TResult Function(_LoginPageError value) loginPageError,
+    required TResult Function(_LoginPageLoading value) loginPageLoading,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailed value) loginFailed,
+    required TResult Function(_LoginInProgress value) loginInProgress,
+  }) {
+    return loginPageError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoginInitialPage value)? loginInitialPage,
+    TResult? Function(_LoginPageError value)? loginPageError,
+    TResult? Function(_LoginPageLoading value)? loginPageLoading,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailed value)? loginFailed,
+    TResult? Function(_LoginInProgress value)? loginInProgress,
+  }) {
+    return loginPageError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoginInitialPage value)? loginInitialPage,
+    TResult Function(_LoginPageError value)? loginPageError,
+    TResult Function(_LoginPageLoading value)? loginPageLoading,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailed value)? loginFailed,
+    TResult Function(_LoginInProgress value)? loginInProgress,
+    required TResult orElse(),
+  }) {
+    if (loginPageError != null) {
+      return loginPageError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginPageError implements UserAuthState {
+  const factory _LoginPageError({required final String message}) =
+      _$LoginPageErrorImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$LoginPageErrorImplCopyWith<_$LoginPageErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoginPageLoadingImplCopyWith<$Res> {
+  factory _$$LoginPageLoadingImplCopyWith(_$LoginPageLoadingImpl value,
+          $Res Function(_$LoginPageLoadingImpl) then) =
+      __$$LoginPageLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoginPageLoadingImplCopyWithImpl<$Res>
+    extends _$UserAuthStateCopyWithImpl<$Res, _$LoginPageLoadingImpl>
+    implements _$$LoginPageLoadingImplCopyWith<$Res> {
+  __$$LoginPageLoadingImplCopyWithImpl(_$LoginPageLoadingImpl _value,
+      $Res Function(_$LoginPageLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoginPageLoadingImpl implements _LoginPageLoading {
+  const _$LoginPageLoadingImpl();
+
+  @override
+  String toString() {
+    return 'UserAuthState.loginPageLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoginPageLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loginInitialPage,
+    required TResult Function(String message) loginPageError,
+    required TResult Function() loginPageLoading,
+    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message) loginFailed,
+    required TResult Function() loginInProgress,
+  }) {
+    return loginPageLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loginInitialPage,
+    TResult? Function(String message)? loginPageError,
+    TResult? Function()? loginPageLoading,
+    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message)? loginFailed,
+    TResult? Function()? loginInProgress,
+  }) {
+    return loginPageLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loginInitialPage,
+    TResult Function(String message)? loginPageError,
+    TResult Function()? loginPageLoading,
+    TResult Function(String message)? loginSuccess,
+    TResult Function(String message)? loginFailed,
+    TResult Function()? loginInProgress,
+    required TResult orElse(),
+  }) {
+    if (loginPageLoading != null) {
+      return loginPageLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoginInitialPage value) loginInitialPage,
+    required TResult Function(_LoginPageError value) loginPageError,
+    required TResult Function(_LoginPageLoading value) loginPageLoading,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailed value) loginFailed,
+    required TResult Function(_LoginInProgress value) loginInProgress,
+  }) {
+    return loginPageLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoginInitialPage value)? loginInitialPage,
+    TResult? Function(_LoginPageError value)? loginPageError,
+    TResult? Function(_LoginPageLoading value)? loginPageLoading,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailed value)? loginFailed,
+    TResult? Function(_LoginInProgress value)? loginInProgress,
+  }) {
+    return loginPageLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoginInitialPage value)? loginInitialPage,
+    TResult Function(_LoginPageError value)? loginPageError,
+    TResult Function(_LoginPageLoading value)? loginPageLoading,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailed value)? loginFailed,
+    TResult Function(_LoginInProgress value)? loginInProgress,
+    required TResult orElse(),
+  }) {
+    if (loginPageLoading != null) {
+      return loginPageLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginPageLoading implements UserAuthState {
+  const factory _LoginPageLoading() = _$LoginPageLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$LoginSuccessImplCopyWith<$Res> {
+  factory _$$LoginSuccessImplCopyWith(
+          _$LoginSuccessImpl value, $Res Function(_$LoginSuccessImpl) then) =
+      __$$LoginSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$LoginSuccessImplCopyWithImpl<$Res>
+    extends _$UserAuthStateCopyWithImpl<$Res, _$LoginSuccessImpl>
+    implements _$$LoginSuccessImplCopyWith<$Res> {
+  __$$LoginSuccessImplCopyWithImpl(
+      _$LoginSuccessImpl _value, $Res Function(_$LoginSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$LoginSuccessImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoginSuccessImpl implements _LoginSuccess {
+  const _$LoginSuccessImpl({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'UserAuthState.loginSuccess(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoginSuccessImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoginSuccessImplCopyWith<_$LoginSuccessImpl> get copyWith =>
+      __$$LoginSuccessImplCopyWithImpl<_$LoginSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loginInitialPage,
+    required TResult Function(String message) loginPageError,
+    required TResult Function() loginPageLoading,
+    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message) loginFailed,
+    required TResult Function() loginInProgress,
+  }) {
+    return loginSuccess(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loginInitialPage,
+    TResult? Function(String message)? loginPageError,
+    TResult? Function()? loginPageLoading,
+    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message)? loginFailed,
+    TResult? Function()? loginInProgress,
+  }) {
+    return loginSuccess?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loginInitialPage,
+    TResult Function(String message)? loginPageError,
+    TResult Function()? loginPageLoading,
+    TResult Function(String message)? loginSuccess,
+    TResult Function(String message)? loginFailed,
+    TResult Function()? loginInProgress,
+    required TResult orElse(),
+  }) {
+    if (loginSuccess != null) {
+      return loginSuccess(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoginInitialPage value) loginInitialPage,
+    required TResult Function(_LoginPageError value) loginPageError,
+    required TResult Function(_LoginPageLoading value) loginPageLoading,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailed value) loginFailed,
+    required TResult Function(_LoginInProgress value) loginInProgress,
+  }) {
+    return loginSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoginInitialPage value)? loginInitialPage,
+    TResult? Function(_LoginPageError value)? loginPageError,
+    TResult? Function(_LoginPageLoading value)? loginPageLoading,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailed value)? loginFailed,
+    TResult? Function(_LoginInProgress value)? loginInProgress,
+  }) {
+    return loginSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoginInitialPage value)? loginInitialPage,
+    TResult Function(_LoginPageError value)? loginPageError,
+    TResult Function(_LoginPageLoading value)? loginPageLoading,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailed value)? loginFailed,
+    TResult Function(_LoginInProgress value)? loginInProgress,
+    required TResult orElse(),
+  }) {
+    if (loginSuccess != null) {
+      return loginSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginSuccess implements UserAuthState {
+  const factory _LoginSuccess({required final String message}) =
+      _$LoginSuccessImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$LoginSuccessImplCopyWith<_$LoginSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoginFailedImplCopyWith<$Res> {
+  factory _$$LoginFailedImplCopyWith(
+          _$LoginFailedImpl value, $Res Function(_$LoginFailedImpl) then) =
+      __$$LoginFailedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$LoginFailedImplCopyWithImpl<$Res>
+    extends _$UserAuthStateCopyWithImpl<$Res, _$LoginFailedImpl>
+    implements _$$LoginFailedImplCopyWith<$Res> {
+  __$$LoginFailedImplCopyWithImpl(
+      _$LoginFailedImpl _value, $Res Function(_$LoginFailedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$LoginFailedImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoginFailedImpl implements _LoginFailed {
+  const _$LoginFailedImpl({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'UserAuthState.loginFailed(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoginFailedImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoginFailedImplCopyWith<_$LoginFailedImpl> get copyWith =>
+      __$$LoginFailedImplCopyWithImpl<_$LoginFailedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loginInitialPage,
+    required TResult Function(String message) loginPageError,
+    required TResult Function() loginPageLoading,
+    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message) loginFailed,
+    required TResult Function() loginInProgress,
+  }) {
+    return loginFailed(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loginInitialPage,
+    TResult? Function(String message)? loginPageError,
+    TResult? Function()? loginPageLoading,
+    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message)? loginFailed,
+    TResult? Function()? loginInProgress,
+  }) {
+    return loginFailed?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loginInitialPage,
+    TResult Function(String message)? loginPageError,
+    TResult Function()? loginPageLoading,
+    TResult Function(String message)? loginSuccess,
+    TResult Function(String message)? loginFailed,
+    TResult Function()? loginInProgress,
+    required TResult orElse(),
+  }) {
+    if (loginFailed != null) {
+      return loginFailed(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoginInitialPage value) loginInitialPage,
+    required TResult Function(_LoginPageError value) loginPageError,
+    required TResult Function(_LoginPageLoading value) loginPageLoading,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailed value) loginFailed,
+    required TResult Function(_LoginInProgress value) loginInProgress,
+  }) {
+    return loginFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoginInitialPage value)? loginInitialPage,
+    TResult? Function(_LoginPageError value)? loginPageError,
+    TResult? Function(_LoginPageLoading value)? loginPageLoading,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailed value)? loginFailed,
+    TResult? Function(_LoginInProgress value)? loginInProgress,
+  }) {
+    return loginFailed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoginInitialPage value)? loginInitialPage,
+    TResult Function(_LoginPageError value)? loginPageError,
+    TResult Function(_LoginPageLoading value)? loginPageLoading,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailed value)? loginFailed,
+    TResult Function(_LoginInProgress value)? loginInProgress,
+    required TResult orElse(),
+  }) {
+    if (loginFailed != null) {
+      return loginFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginFailed implements UserAuthState {
+  const factory _LoginFailed({required final String message}) =
+      _$LoginFailedImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$LoginFailedImplCopyWith<_$LoginFailedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoginInProgressImplCopyWith<$Res> {
+  factory _$$LoginInProgressImplCopyWith(_$LoginInProgressImpl value,
+          $Res Function(_$LoginInProgressImpl) then) =
+      __$$LoginInProgressImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoginInProgressImplCopyWithImpl<$Res>
+    extends _$UserAuthStateCopyWithImpl<$Res, _$LoginInProgressImpl>
+    implements _$$LoginInProgressImplCopyWith<$Res> {
+  __$$LoginInProgressImplCopyWithImpl(
+      _$LoginInProgressImpl _value, $Res Function(_$LoginInProgressImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoginInProgressImpl implements _LoginInProgress {
+  const _$LoginInProgressImpl();
+
+  @override
+  String toString() {
+    return 'UserAuthState.loginInProgress()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoginInProgressImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loginInitialPage,
+    required TResult Function(String message) loginPageError,
+    required TResult Function() loginPageLoading,
+    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message) loginFailed,
+    required TResult Function() loginInProgress,
+  }) {
+    return loginInProgress();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loginInitialPage,
+    TResult? Function(String message)? loginPageError,
+    TResult? Function()? loginPageLoading,
+    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message)? loginFailed,
+    TResult? Function()? loginInProgress,
+  }) {
+    return loginInProgress?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loginInitialPage,
+    TResult Function(String message)? loginPageError,
+    TResult Function()? loginPageLoading,
+    TResult Function(String message)? loginSuccess,
+    TResult Function(String message)? loginFailed,
+    TResult Function()? loginInProgress,
+    required TResult orElse(),
+  }) {
+    if (loginInProgress != null) {
+      return loginInProgress();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_LoginInitialPage value) loginInitialPage,
+    required TResult Function(_LoginPageError value) loginPageError,
+    required TResult Function(_LoginPageLoading value) loginPageLoading,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailed value) loginFailed,
+    required TResult Function(_LoginInProgress value) loginInProgress,
+  }) {
+    return loginInProgress(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_LoginInitialPage value)? loginInitialPage,
+    TResult? Function(_LoginPageError value)? loginPageError,
+    TResult? Function(_LoginPageLoading value)? loginPageLoading,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailed value)? loginFailed,
+    TResult? Function(_LoginInProgress value)? loginInProgress,
+  }) {
+    return loginInProgress?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_LoginInitialPage value)? loginInitialPage,
+    TResult Function(_LoginPageError value)? loginPageError,
+    TResult Function(_LoginPageLoading value)? loginPageLoading,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailed value)? loginFailed,
+    TResult Function(_LoginInProgress value)? loginInProgress,
+    required TResult orElse(),
+  }) {
+    if (loginInProgress != null) {
+      return loginInProgress(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoginInProgress implements UserAuthState {
+  const factory _LoginInProgress() = _$LoginInProgressImpl;
+}

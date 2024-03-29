@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../../../../core/failure/failure.dart';
@@ -22,8 +23,17 @@ abstract class UserRelationsRepo {
   Future<Either<Failure, void>> registerNewUser({
     required String userEmail,
     required String userPassword,
+    required String userName,
+    required String userSureName,
+    required String userAvatar,
+    required String userMobileToken,
+    required String userID,
+    required List<String> favouriteSpots,
+    required int skatePoints,
+    required int skateWarsWon,
+    required int skateWarsLost,
 });
 
-  Future<Either<Failure, void>> loginWithGoogle();
+  Future<Either<Failure, UserCredential>> loginWithGoogle();
 
 }

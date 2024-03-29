@@ -1,7 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:skatewars/core/constants/constants.dart';
 import 'package:skatewars/features/user_relations/domain/entities/my_user.dart';
@@ -16,7 +17,7 @@ abstract class UserRelationsDataSource{
     required String userPassword,
 });
 
-  Future<void> loginWithGoogle();
+  Future<UserCredential> loginWithGoogle();
 
   Future<void> logOutUser();
 
@@ -97,9 +98,22 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
   }
 
   @override
-  Future<void> loginWithGoogle() {
+  Future<UserCredential> loginWithGoogle() async{
+    GoogleSignIn googleSignIn = GoogleSignIn(
+      scopes: [
+        'email',
+      ],
+    );
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+    final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
+    final googleCredentials = GoogleAuthProvider.credential(
+      idToken:googleAuth.idToken,
+      accessToken: googleAuth.accessToken,
+    );
+    final credentials = await FirebaseAuth.instance.signInWithCredential(googleCredentials);
+    return credentials;
     // TODO: implement loginWithGoogle
-    throw UnimplementedError();
+    // throw UnimplementedError();
   }
 
   @override

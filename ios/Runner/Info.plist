@@ -3,6 +3,22 @@
 <plist version="1.0">
 <dict>
 
+    <!-- Google Sign-in Section -->
+    <key>CFBundleURLTypes</key>
+    <array>
+    	<dict>
+    		<key>CFBundleTypeRole</key>
+    		<string>Editor</string>
+    		<key>CFBundleURLSchemes</key>
+    		<array>
+    			<!-- TODO Replace this value: -->
+    			<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
+    			<string>com.googleusercontent.apps.1093212011499-mmb7vijrkulir16v7n4bahh133jumsur</string>
+    		</array>
+    	</dict>
+    </array>
+    <!-- End of the Google Sign-in Section -->
+
     <key>NSPhotoLibraryUsageDescription</key>
     <string>App needs access to photo lib for profile images</string>
 

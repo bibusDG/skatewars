@@ -19,6 +19,10 @@ class StartPage extends HookWidget {
             CupertinoButton(onPressed: (){
               context.pushNamed('show_skate_spots_page');
             }, color: Colors.black,child: const Text('Show spots'),),
+            CupertinoButton(onPressed: (){
+              context.pushNamed('login_page');
+            }, color: Colors.black,child: const Text('Google login page'),),
+
           ],
         ),
       ),
