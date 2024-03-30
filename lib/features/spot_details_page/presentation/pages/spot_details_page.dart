@@ -14,6 +14,8 @@ import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot
 import 'package:skatewars/features/spot_details_page/presentation/bloc/spot_details_cubit.dart';
 import 'package:collection/collection.dart';
 
+import '../../../../core/custom_widgets/custom_bottom_app_bar.dart';
+
 class SpotDetailsPage extends HookWidget {
   final String spotID;
   const SpotDetailsPage({super.key, required this.spotID});
@@ -29,6 +31,7 @@ class SpotDetailsPage extends HookWidget {
     });
 
     return Scaffold(
+      bottomNavigationBar: CustomBottomAppBar(),
       appBar: AppBar(
         title: Text('SPOT DETAILS'),
       ),

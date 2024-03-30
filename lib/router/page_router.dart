@@ -1,3 +1,4 @@
+import 'package:skatewars/core/constants/constants.dart';
 import 'package:skatewars/features/show_skate_spots_page/presentation/pages/show_skate_spots_page.dart';
 import 'package:skatewars/features/spot_details_page/presentation/pages/spot_details_page.dart';
 import 'package:skatewars/features/user_relations/presentation/pages/user_login_page.dart';
@@ -39,8 +40,11 @@ class MyPageRouter{
   ),
   GoRoute(
     name: 'login_page', // Optional, add name to your routes. Allows you navigate by name instead of path
-    path: '/login_page',
-    builder: (context, state) => const UserLoginPage(),
+    path: '/login_page/:userLoggedIn',
+    builder: (context, state) {
+      final userIsLoggedIn = USER_LOGGED_IN;
+      return UserLoginPage(userLoggedIn: userIsLoggedIn);
+    },
   ),
 ]);
 }

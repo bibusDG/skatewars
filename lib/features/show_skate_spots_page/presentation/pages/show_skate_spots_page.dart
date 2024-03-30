@@ -10,17 +10,24 @@ import 'package:get/utils.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:skatewars/core/constants/constants.dart';
 import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot.dart';
 import 'package:skatewars/features/show_skate_spots_page/presentation/bloc/show_skate_spots_cubit.dart';
 import 'package:collection/collection.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 
+import '../../../../core/custom_widgets/custom_bottom_app_bar.dart';
+
 class ShowSkateSpotsPage extends HookWidget {
   const ShowSkateSpotsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
+    final _userLoggedIn = USER_LOGGED_IN;
+    final _user = LOGGED_USER;
+
     final _showSkateSpotsCubit = useBloc<ShowSkateSpotsCubit>();
     final _showSkateSpotState = useBlocBuilder(_showSkateSpotsCubit);
     final _distance = useState('10000');
@@ -28,11 +35,18 @@ class ShowSkateSpotsPage extends HookWidget {
 
     useEffect(() {
       _showSkateSpotsCubit.showSkateSpotsInArea(distance: _distance.value);
-    });
+      return null;
+    },
+      [_showSkateSpotsCubit],
+    );
 
     return Scaffold(
+      bottomNavigationBar: CustomBottomAppBar(),
       appBar: AppBar(
         title: const Text('SKATE SPOTS', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400),),
+        actions: [
+          _userLoggedIn? CircleAvatar(child: Text(_user.userName[0]),) : SizedBox(),
+        ],
       ),
       body:Column(
                 children: [

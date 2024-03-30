@@ -5,6 +5,7 @@ import 'package:multi_select_flutter/util/multi_select_item.dart';
 import 'package:skatewars/core/classes/custom_snackbar.dart';
 import 'package:skatewars/features/add_skate_spot_page/presentation/pages/add_skate_spot_map_page.dart';
 
+import '../../../../core/custom_widgets/custom_bottom_app_bar.dart';
 import '/../features/add_skate_spot_page/presentation/bloc/add_skate_spot_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -60,6 +61,7 @@ class AddSkateSpotPage extends HookWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
+        bottomNavigationBar: CustomBottomAppBar(),
         appBar: _addSkateSpotState.maybeWhen(
           addSkateSpotPageLoaded:(userLoggedIn) => AppBar(
             title: const Text('CREATE NEW SPOT', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300),),

@@ -17,4 +17,17 @@ class MyUser with _$MyUser{
     required int skateWarsLost,
 }) = _MyUser;
   factory MyUser.fromJson(Map<String, dynamic>? json) => _$MyUserFromJson(json!);
+  factory MyUser.empty() => const MyUser(
+    userAvatar: '',
+    userID: '',
+    userEmail: '',
+    userMobileToken: '',
+    userName: '',
+    userPassword: '',
+    userSureName: '',
+    favouriteSpots: [],
+    skatePoints: 0,
+    skateWarsLost: 0,
+    skateWarsWon: 0
+  );
 }

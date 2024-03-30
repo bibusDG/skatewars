@@ -1,9 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skatewars/core/constants/constants.dart';
+
+import '../../../../core/custom_widgets/custom_bottom_app_bar.dart';
 
 class StartPage extends HookWidget {
   const StartPage({super.key});
@@ -11,13 +12,14 @@ class StartPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
 
-
     final _userLoggedIn = USER_LOGGED_IN;
+    final _user = LOGGED_USER;
 
     return Scaffold(
+      bottomNavigationBar: CustomBottomAppBar(),
       appBar: AppBar(
         actions: [
-          _userLoggedIn? CircleAvatar() : SizedBox(),
+          _userLoggedIn? CircleAvatar(child: Text(_user.userName[0]),) : SizedBox(),
         ],
       ),
       body: Center(
@@ -31,12 +33,15 @@ class StartPage extends HookWidget {
               context.pushNamed('show_skate_spots_page');
             }, color: Colors.black,child: const Text('Show spots'),),
             CupertinoButton(onPressed: (){
-              context.goNamed('login_page');
+              context.pushNamed('login_page');
             }, color: Colors.black,child: const Text('Google login page'),),
-
           ],
         ),
       ),
     );
   }
 }
+
+
+
+

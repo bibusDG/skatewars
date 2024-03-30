@@ -21,7 +21,9 @@ abstract class UserRelationsDataSource{
 
   Future<void> logOutUser();
 
-  Stream<User?> userIsLoggedIn();
+  Future<void> setUserAccount({
+    required String userEmail,
+});
 
   Future<void> deleteUserFromDataBase({
     required String userID,
@@ -93,10 +95,6 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
       await googleSignIn.signOut();
     }
     await FirebaseAuth.instance.signOut();
-
-    ///set user status to logOut
-    await setUserLoggInStatus();
-    // TODO: implement logOutUser
     // throw UnimplementedError();
   }
 
@@ -122,9 +120,6 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
       accessToken: googleAuth.accessToken,
     );
     final credentials = await FirebaseAuth.instance.signInWithCredential(googleCredentials);
-    ///set user status to loggedIN
-    await setUserLoggInStatus();
-    ///
     return credentials;
     // TODO: implement loginWithGoogle
     // throw UnimplementedError();
@@ -171,9 +166,10 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
   }
 
   @override
-  Stream<User?> userIsLoggedIn() async*{
-    yield* FirebaseAuth.instance.authStateChanges();
-    // TODO: implement userIsLoggedIn
+  Future<void> setUserAccount({required String userEmail}) async{
+    final result = await FIREBASE_USER_PATH.where('userEmail', isEqualTo: userEmail).get();
+    LOGGED_USER = MyUser.fromJson(result.docs[0].data());
+    // TODO: implement setUserAccount
     // throw UnimplementedError();
   }
 

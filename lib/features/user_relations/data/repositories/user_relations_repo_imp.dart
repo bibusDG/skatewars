@@ -116,15 +116,15 @@ class UserRelationsRepoImp implements UserRelationsRepo{
   }
 
   @override
-  Future<Either<Failure, Stream<User?>>> userIsLoggedIn() async{
+  Future<Either<Failure, void>> setUserAccount({required String userEmail}) async{
     try{
-      final result = dataSource.userIsLoggedIn();
+      final result = dataSource.setUserAccount(userEmail: userEmail);
       return Right(result);
     }catch(error){
-      print('Unable to stream user');
-      return (const Left(UserLoggedInFailure(failureMessage: 'Unable to stream user')));
+      print('Unable to get user data');
+      return (const Left(SetUserAccountFailure(failureMessage: 'Unable to set user data')));
     }
-    // TODO: implement userIsLoggedIn
+    // TODO: implement setUserAccount
     throw UnimplementedError();
   }
 }
