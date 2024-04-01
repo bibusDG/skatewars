@@ -15,7 +15,8 @@ import 'package:hooked_bloc/hooked_bloc.dart';
 import '../../../../core/custom_widgets/carousel.dart';
 
 class AddSkateSpotPage extends HookWidget {
-  const AddSkateSpotPage({super.key});
+  final String uid;
+  const AddSkateSpotPage({super.key, required this.uid});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +62,7 @@ class AddSkateSpotPage extends HookWidget {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        bottomNavigationBar: CustomBottomAppBar(),
+        bottomNavigationBar: CustomBottomAppBar(uid: uid,),
         appBar: _addSkateSpotState.maybeWhen(
           addSkateSpotPageLoaded:(userLoggedIn) => AppBar(
             title: const Text('CREATE NEW SPOT', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300),),

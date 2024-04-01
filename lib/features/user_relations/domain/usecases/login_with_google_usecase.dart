@@ -10,7 +10,7 @@ class LoginWithGoogleUseCase implements UseCaseWithoutParams<void>{
   final UserRelationsRepo repo;
   const LoginWithGoogleUseCase({required this.repo});
   @override
-  Future<Either<Failure, UserCredential>> call() async{
+  Future<Either<Failure, String>> call() async{
     return await repo.loginWithGoogle();
     // TODO: implement call
     throw UnimplementedError();

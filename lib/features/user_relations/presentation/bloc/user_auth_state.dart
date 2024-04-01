@@ -10,7 +10,7 @@ class UserAuthState with _$UserAuthState {
   const factory UserAuthState.loggedOutFailure({required String message}) = _UserLoggedOutFailure;
   const factory UserAuthState.loginPageError({required String message}) = _LoginPageError;
   const factory UserAuthState.loginPageLoading() = _LoginPageLoading;
-  const factory UserAuthState.loginSuccess({required String message}) = _LoginSuccess;
+  const factory UserAuthState.loginSuccess({required String message, required String uid}) = _LoginSuccess;
   const factory UserAuthState.loginFailed({required String message}) = _LoginFailed;
   const factory UserAuthState.loginInProgress() = _LoginInProgress;
 

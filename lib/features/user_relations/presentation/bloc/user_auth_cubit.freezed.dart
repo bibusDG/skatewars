@@ -25,7 +25,7 @@ mixin _$UserAuthState {
     required TResult Function(String message) loggedOutFailure,
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
-    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
     required TResult Function() loginInProgress,
   }) =>
@@ -39,7 +39,7 @@ mixin _$UserAuthState {
     TResult? Function(String message)? loggedOutFailure,
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
-    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
     TResult? Function()? loginInProgress,
   }) =>
@@ -53,7 +53,7 @@ mixin _$UserAuthState {
     TResult Function(String message)? loggedOutFailure,
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
-    TResult Function(String message)? loginSuccess,
+    TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
     TResult Function()? loginInProgress,
     required TResult orElse(),
@@ -170,7 +170,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String message) loggedOutFailure,
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
-    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
     required TResult Function() loginInProgress,
   }) {
@@ -187,7 +187,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String message)? loggedOutFailure,
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
-    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
     TResult? Function()? loginInProgress,
   }) {
@@ -204,7 +204,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(String message)? loggedOutFailure,
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
-    TResult Function(String message)? loginSuccess,
+    TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
     TResult Function()? loginInProgress,
     required TResult orElse(),
@@ -326,7 +326,7 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     required TResult Function(String message) loggedOutFailure,
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
-    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
     required TResult Function() loginInProgress,
   }) {
@@ -343,7 +343,7 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     TResult? Function(String message)? loggedOutFailure,
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
-    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
     TResult? Function()? loginInProgress,
   }) {
@@ -360,7 +360,7 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     TResult Function(String message)? loggedOutFailure,
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
-    TResult Function(String message)? loginSuccess,
+    TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
     TResult Function()? loginInProgress,
     required TResult orElse(),
@@ -482,7 +482,7 @@ class _$UserLoggedOutInitialPageImpl implements _UserLoggedOutInitialPage {
     required TResult Function(String message) loggedOutFailure,
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
-    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
     required TResult Function() loginInProgress,
   }) {
@@ -499,7 +499,7 @@ class _$UserLoggedOutInitialPageImpl implements _UserLoggedOutInitialPage {
     TResult? Function(String message)? loggedOutFailure,
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
-    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
     TResult? Function()? loginInProgress,
   }) {
@@ -516,7 +516,7 @@ class _$UserLoggedOutInitialPageImpl implements _UserLoggedOutInitialPage {
     TResult Function(String message)? loggedOutFailure,
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
-    TResult Function(String message)? loginSuccess,
+    TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
     TResult Function()? loginInProgress,
     required TResult orElse(),
@@ -663,7 +663,7 @@ class _$UserLoggedOutSuccessImpl implements _UserLoggedOutSuccess {
     required TResult Function(String message) loggedOutFailure,
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
-    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
     required TResult Function() loginInProgress,
   }) {
@@ -680,7 +680,7 @@ class _$UserLoggedOutSuccessImpl implements _UserLoggedOutSuccess {
     TResult? Function(String message)? loggedOutFailure,
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
-    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
     TResult? Function()? loginInProgress,
   }) {
@@ -697,7 +697,7 @@ class _$UserLoggedOutSuccessImpl implements _UserLoggedOutSuccess {
     TResult Function(String message)? loggedOutFailure,
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
-    TResult Function(String message)? loginSuccess,
+    TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
     TResult Function()? loginInProgress,
     required TResult orElse(),
@@ -850,7 +850,7 @@ class _$UserLoggedOutFailureImpl implements _UserLoggedOutFailure {
     required TResult Function(String message) loggedOutFailure,
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
-    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
     required TResult Function() loginInProgress,
   }) {
@@ -867,7 +867,7 @@ class _$UserLoggedOutFailureImpl implements _UserLoggedOutFailure {
     TResult? Function(String message)? loggedOutFailure,
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
-    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
     TResult? Function()? loginInProgress,
   }) {
@@ -884,7 +884,7 @@ class _$UserLoggedOutFailureImpl implements _UserLoggedOutFailure {
     TResult Function(String message)? loggedOutFailure,
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
-    TResult Function(String message)? loginSuccess,
+    TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
     TResult Function()? loginInProgress,
     required TResult orElse(),
@@ -1036,7 +1036,7 @@ class _$LoginPageErrorImpl implements _LoginPageError {
     required TResult Function(String message) loggedOutFailure,
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
-    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
     required TResult Function() loginInProgress,
   }) {
@@ -1053,7 +1053,7 @@ class _$LoginPageErrorImpl implements _LoginPageError {
     TResult? Function(String message)? loggedOutFailure,
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
-    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
     TResult? Function()? loginInProgress,
   }) {
@@ -1070,7 +1070,7 @@ class _$LoginPageErrorImpl implements _LoginPageError {
     TResult Function(String message)? loggedOutFailure,
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
-    TResult Function(String message)? loginSuccess,
+    TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
     TResult Function()? loginInProgress,
     required TResult orElse(),
@@ -1195,7 +1195,7 @@ class _$LoginPageLoadingImpl implements _LoginPageLoading {
     required TResult Function(String message) loggedOutFailure,
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
-    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
     required TResult Function() loginInProgress,
   }) {
@@ -1212,7 +1212,7 @@ class _$LoginPageLoadingImpl implements _LoginPageLoading {
     TResult? Function(String message)? loggedOutFailure,
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
-    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
     TResult? Function()? loginInProgress,
   }) {
@@ -1229,7 +1229,7 @@ class _$LoginPageLoadingImpl implements _LoginPageLoading {
     TResult Function(String message)? loggedOutFailure,
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
-    TResult Function(String message)? loginSuccess,
+    TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
     TResult Function()? loginInProgress,
     required TResult orElse(),
@@ -1309,7 +1309,7 @@ abstract class _$$LoginSuccessImplCopyWith<$Res> {
           _$LoginSuccessImpl value, $Res Function(_$LoginSuccessImpl) then) =
       __$$LoginSuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call({String message, String uid});
 }
 
 /// @nodoc
@@ -1324,11 +1324,16 @@ class __$$LoginSuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = null,
+    Object? uid = null,
   }) {
     return _then(_$LoginSuccessImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -1337,14 +1342,16 @@ class __$$LoginSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoginSuccessImpl implements _LoginSuccess {
-  const _$LoginSuccessImpl({required this.message});
+  const _$LoginSuccessImpl({required this.message, required this.uid});
 
   @override
   final String message;
+  @override
+  final String uid;
 
   @override
   String toString() {
-    return 'UserAuthState.loginSuccess(message: $message)';
+    return 'UserAuthState.loginSuccess(message: $message, uid: $uid)';
   }
 
   @override
@@ -1352,11 +1359,12 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginSuccessImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.uid, uid) || other.uid == uid));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, uid);
 
   @JsonKey(ignore: true)
   @override
@@ -1374,11 +1382,11 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     required TResult Function(String message) loggedOutFailure,
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
-    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
     required TResult Function() loginInProgress,
   }) {
-    return loginSuccess(message);
+    return loginSuccess(message, uid);
   }
 
   @override
@@ -1391,11 +1399,11 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult? Function(String message)? loggedOutFailure,
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
-    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
     TResult? Function()? loginInProgress,
   }) {
-    return loginSuccess?.call(message);
+    return loginSuccess?.call(message, uid);
   }
 
   @override
@@ -1408,13 +1416,13 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult Function(String message)? loggedOutFailure,
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
-    TResult Function(String message)? loginSuccess,
+    TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
     TResult Function()? loginInProgress,
     required TResult orElse(),
   }) {
     if (loginSuccess != null) {
-      return loginSuccess(message);
+      return loginSuccess(message, uid);
     }
     return orElse();
   }
@@ -1479,10 +1487,12 @@ class _$LoginSuccessImpl implements _LoginSuccess {
 }
 
 abstract class _LoginSuccess implements UserAuthState {
-  const factory _LoginSuccess({required final String message}) =
-      _$LoginSuccessImpl;
+  const factory _LoginSuccess(
+      {required final String message,
+      required final String uid}) = _$LoginSuccessImpl;
 
   String get message;
+  String get uid;
   @JsonKey(ignore: true)
   _$$LoginSuccessImplCopyWith<_$LoginSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1559,7 +1569,7 @@ class _$LoginFailedImpl implements _LoginFailed {
     required TResult Function(String message) loggedOutFailure,
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
-    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
     required TResult Function() loginInProgress,
   }) {
@@ -1576,7 +1586,7 @@ class _$LoginFailedImpl implements _LoginFailed {
     TResult? Function(String message)? loggedOutFailure,
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
-    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
     TResult? Function()? loginInProgress,
   }) {
@@ -1593,7 +1603,7 @@ class _$LoginFailedImpl implements _LoginFailed {
     TResult Function(String message)? loggedOutFailure,
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
-    TResult Function(String message)? loginSuccess,
+    TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
     TResult Function()? loginInProgress,
     required TResult orElse(),
@@ -1718,7 +1728,7 @@ class _$LoginInProgressImpl implements _LoginInProgress {
     required TResult Function(String message) loggedOutFailure,
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
-    required TResult Function(String message) loginSuccess,
+    required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
     required TResult Function() loginInProgress,
   }) {
@@ -1735,7 +1745,7 @@ class _$LoginInProgressImpl implements _LoginInProgress {
     TResult? Function(String message)? loggedOutFailure,
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
-    TResult? Function(String message)? loginSuccess,
+    TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
     TResult? Function()? loginInProgress,
   }) {
@@ -1752,7 +1762,7 @@ class _$LoginInProgressImpl implements _LoginInProgress {
     TResult Function(String message)? loggedOutFailure,
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
-    TResult Function(String message)? loginSuccess,
+    TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
     TResult Function()? loginInProgress,
     required TResult orElse(),
@@ -1824,4 +1834,154 @@ class _$LoginInProgressImpl implements _LoginInProgress {
 
 abstract class _LoginInProgress implements UserAuthState {
   const factory _LoginInProgress() = _$LoginInProgressImpl;
+}
+
+/// @nodoc
+mixin _$UserAuthAction {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ActionInitial value) initial,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ActionInitial value)? initial,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ActionInitial value)? initial,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserAuthActionCopyWith<$Res> {
+  factory $UserAuthActionCopyWith(
+          UserAuthAction value, $Res Function(UserAuthAction) then) =
+      _$UserAuthActionCopyWithImpl<$Res, UserAuthAction>;
+}
+
+/// @nodoc
+class _$UserAuthActionCopyWithImpl<$Res, $Val extends UserAuthAction>
+    implements $UserAuthActionCopyWith<$Res> {
+  _$UserAuthActionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$ActionInitialImplCopyWith<$Res> {
+  factory _$$ActionInitialImplCopyWith(
+          _$ActionInitialImpl value, $Res Function(_$ActionInitialImpl) then) =
+      __$$ActionInitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ActionInitialImplCopyWithImpl<$Res>
+    extends _$UserAuthActionCopyWithImpl<$Res, _$ActionInitialImpl>
+    implements _$$ActionInitialImplCopyWith<$Res> {
+  __$$ActionInitialImplCopyWithImpl(
+      _$ActionInitialImpl _value, $Res Function(_$ActionInitialImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ActionInitialImpl implements _ActionInitial {
+  const _$ActionInitialImpl();
+
+  @override
+  String toString() {
+    return 'UserAuthAction.initial()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ActionInitialImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ActionInitial value) initial,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ActionInitial value)? initial,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ActionInitial value)? initial,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ActionInitial implements UserAuthAction {
+  const factory _ActionInitial() = _$ActionInitialImpl;
 }

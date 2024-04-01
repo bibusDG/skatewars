@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geolocator_platform_interface/src/models/position.dart';
 import 'package:injectable/injectable.dart';
 import 'package:skatewars/core/failure/failure.dart';
+import 'package:skatewars/features/user_relations/domain/entities/my_user.dart';
 import '../../domain/repositories/user_relations_repo.dart';
 import '../../user_failures.dart';
 import '../datasources/user_relations_data_source.dart';
@@ -68,7 +69,7 @@ class UserRelationsRepoImp implements UserRelationsRepo{
   }
 
   @override
-  Future<Either<Failure, UserCredential>> loginWithGoogle() async{
+  Future<Either<Failure, String>> loginWithGoogle() async{
     try{
       final result = await dataSource.loginWithGoogle();
       return Right(result);
@@ -116,15 +117,28 @@ class UserRelationsRepoImp implements UserRelationsRepo{
   }
 
   @override
-  Future<Either<Failure, void>> setUserAccount({required String userEmail}) async{
+  Future<Either<Failure, String>> getUserID({required String userEmail}) async{
     try{
-      final result = dataSource.setUserAccount(userEmail: userEmail);
+      final result = await dataSource.getUserID(userEmail: userEmail);
       return Right(result);
     }catch(error){
       print('Unable to get user data');
-      return (const Left(SetUserAccountFailure(failureMessage: 'Unable to set user data')));
+      return (const Left(GetUserIDFailure(failureMessage: 'Unable to set user data')));
     }
     // TODO: implement setUserAccount
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, MyUser>> getUserByUserID({required String uid}) async{
+    try{
+      final result = await dataSource.getUserByUserID(userID: uid);
+      return Right(result);
+    }catch(error){
+      print('Unable to get user by ID');
+      return (const Left(GetUserByIDFailure(failureMessage: 'Unable to get user by ID')));
+    }
+    // TODO: implement getUserByUserID
     throw UnimplementedError();
   }
 }

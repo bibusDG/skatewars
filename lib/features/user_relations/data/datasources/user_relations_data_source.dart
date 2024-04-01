@@ -17,16 +17,20 @@ abstract class UserRelationsDataSource{
     required String userPassword,
 });
 
-  Future<UserCredential> loginWithGoogle();
+  Future<String> loginWithGoogle();
 
   Future<void> logOutUser();
 
-  Future<void> setUserAccount({
+  Future<String> getUserID({
     required String userEmail,
 });
 
   Future<void> deleteUserFromDataBase({
     required String userID,
+});
+
+  Future<MyUser> getUserByUserID({
+    required String userID
 });
 
   Future<void> registerNewUser({
@@ -100,14 +104,19 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
 
   @override
   Future<String> loginUserWithEmail({required String userLoginEmail, required String userPassword}) async{
-    final result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: userLoginEmail, password: userPassword);
-    return result.user!.uid;
+    try{
+      final result = await FirebaseAuth.instance.signInWithEmailAndPassword(email: userLoginEmail, password: userPassword);
+      return result.user!.uid;
+    }on FirebaseAuthException catch (e) {
+      print(e.code);
+      return e.code;
+    }
     // TODO: implement loginUserWithCredentials
     throw UnimplementedError();
   }
 
   @override
-  Future<UserCredential> loginWithGoogle() async{
+  Future<String> loginWithGoogle() async{
     GoogleSignIn googleSignIn = GoogleSignIn(
       scopes: [
         'email',
@@ -120,7 +129,7 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
       accessToken: googleAuth.accessToken,
     );
     final credentials = await FirebaseAuth.instance.signInWithCredential(googleCredentials);
-    return credentials;
+    return credentials.user!.email!;
     // TODO: implement loginWithGoogle
     // throw UnimplementedError();
   }
@@ -166,11 +175,20 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
   }
 
   @override
-  Future<void> setUserAccount({required String userEmail}) async{
+  Future<String> getUserID({required String userEmail}) async{
     final result = await FIREBASE_USER_PATH.where('userEmail', isEqualTo: userEmail).get();
-    LOGGED_USER = MyUser.fromJson(result.docs[0].data());
+    return result.docs[0].id;
     // TODO: implement setUserAccount
     // throw UnimplementedError();
+  }
+
+  @override
+  Future<MyUser> getUserByUserID({required String userID}) async{
+    final result = await FIREBASE_USER_PATH.doc(userID).get();
+    final user = MyUser.fromJson(result.data());
+    return user;
+    // TODO: implement getUserByUserID
+    throw UnimplementedError();
   }
 
 }

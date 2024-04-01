@@ -22,28 +22,35 @@ class MyPageRouter{
   ),
   GoRoute(
     name: 'add_skate_spot_page', // Optional, add name to your routes. Allows you navigate by name instead of path
-    path: '/add_skate_spot_page',
-    builder: (context, state) => const AddSkateSpotPage(),
+    path: '/add_skate_spot_page/:uid',
+    builder: (context, state) {
+      final userID = state.pathParameters['uid'];
+      return AddSkateSpotPage(uid: userID!);
+    },
   ),
   GoRoute(
     name: 'show_skate_spots_page', // Optional, add name to your routes. Allows you navigate by name instead of path
-    path: '/show_skate_spots_page',
-    builder: (context, state) => const ShowSkateSpotsPage(),
+    path: '/show_skate_spots_page/:uid',
+    builder: (context, state) {
+      final userID = state.pathParameters['uid'];
+      return ShowSkateSpotsPage(uid: userID!);
+    },
   ),
   GoRoute(
     name: 'spot_details_page', // Optional, add name to your routes. Allows you navigate by name instead of path
-    path: '/spot_details_page/:spotID',
+    path: '/spot_details_page/:spotID/:uid',
     builder: (context, state) {
       final spotID = state.pathParameters['spotID'];
-      return SpotDetailsPage(spotID: spotID!);
+      final userID = state.pathParameters['uid'];
+      return SpotDetailsPage(spotID: spotID!, uid: userID!,);
     },
   ),
   GoRoute(
     name: 'login_page', // Optional, add name to your routes. Allows you navigate by name instead of path
     path: '/login_page/:userLoggedIn',
     builder: (context, state) {
-      final userIsLoggedIn = USER_LOGGED_IN;
-      return UserLoginPage(userLoggedIn: userIsLoggedIn);
+      final userIsLoggedIn = state.pathParameters['userLoggedIn'];
+      return UserLoginPage(userLoggedIn: userIsLoggedIn!);
     },
   ),
 ]);

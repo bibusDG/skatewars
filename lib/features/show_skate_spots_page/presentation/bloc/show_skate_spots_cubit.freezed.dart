@@ -20,7 +20,7 @@ mixin _$ShowSkateSpotsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
-            List<SkateSpot> skateSpotsList, Position userPosition)
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)
         showSpotsInitial,
     required TResult Function(String message) showSpotsPageError,
     required TResult Function() showSpotsPageLoading,
@@ -30,7 +30,8 @@ mixin _$ShowSkateSpotsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<SkateSpot> skateSpotsList, Position userPosition)?
+    TResult? Function(
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)?
         showSpotsInitial,
     TResult? Function(String message)? showSpotsPageError,
     TResult? Function()? showSpotsPageLoading,
@@ -40,7 +41,8 @@ mixin _$ShowSkateSpotsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<SkateSpot> skateSpotsList, Position userPosition)?
+    TResult Function(
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)?
         showSpotsInitial,
     TResult Function(String message)? showSpotsPageError,
     TResult Function()? showSpotsPageLoading,
@@ -136,7 +138,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
-            List<SkateSpot> skateSpotsList, Position userPosition)
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)
         showSpotsInitial,
     required TResult Function(String message) showSpotsPageError,
     required TResult Function() showSpotsPageLoading,
@@ -149,7 +151,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<SkateSpot> skateSpotsList, Position userPosition)?
+    TResult? Function(
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)?
         showSpotsInitial,
     TResult? Function(String message)? showSpotsPageError,
     TResult? Function()? showSpotsPageLoading,
@@ -162,7 +165,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<SkateSpot> skateSpotsList, Position userPosition)?
+    TResult Function(
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)?
         showSpotsInitial,
     TResult Function(String message)? showSpotsPageError,
     TResult Function()? showSpotsPageLoading,
@@ -226,7 +230,10 @@ abstract class _$$ShowSpotsInitialImplCopyWith<$Res> {
           $Res Function(_$ShowSpotsInitialImpl) then) =
       __$$ShowSpotsInitialImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<SkateSpot> skateSpotsList, Position userPosition});
+  $Res call(
+      {List<SkateSpot> skateSpotsList, Position userPosition, MyUser user});
+
+  $MyUserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -242,6 +249,7 @@ class __$$ShowSpotsInitialImplCopyWithImpl<$Res>
   $Res call({
     Object? skateSpotsList = null,
     Object? userPosition = null,
+    Object? user = null,
   }) {
     return _then(_$ShowSpotsInitialImpl(
       skateSpotsList: null == skateSpotsList
@@ -252,7 +260,19 @@ class __$$ShowSpotsInitialImplCopyWithImpl<$Res>
           ? _value.userPosition
           : userPosition // ignore: cast_nullable_to_non_nullable
               as Position,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as MyUser,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MyUserCopyWith<$Res> get user {
+    return $MyUserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
@@ -261,7 +281,8 @@ class __$$ShowSpotsInitialImplCopyWithImpl<$Res>
 class _$ShowSpotsInitialImpl implements _ShowSpotsInitial {
   const _$ShowSpotsInitialImpl(
       {required final List<SkateSpot> skateSpotsList,
-      required this.userPosition})
+      required this.userPosition,
+      required this.user})
       : _skateSpotsList = skateSpotsList;
 
   final List<SkateSpot> _skateSpotsList;
@@ -274,10 +295,12 @@ class _$ShowSpotsInitialImpl implements _ShowSpotsInitial {
 
   @override
   final Position userPosition;
+  @override
+  final MyUser user;
 
   @override
   String toString() {
-    return 'ShowSkateSpotsState.showSpotsInitial(skateSpotsList: $skateSpotsList, userPosition: $userPosition)';
+    return 'ShowSkateSpotsState.showSpotsInitial(skateSpotsList: $skateSpotsList, userPosition: $userPosition, user: $user)';
   }
 
   @override
@@ -288,12 +311,13 @@ class _$ShowSpotsInitialImpl implements _ShowSpotsInitial {
             const DeepCollectionEquality()
                 .equals(other._skateSpotsList, _skateSpotsList) &&
             (identical(other.userPosition, userPosition) ||
-                other.userPosition == userPosition));
+                other.userPosition == userPosition) &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_skateSpotsList), userPosition);
+      const DeepCollectionEquality().hash(_skateSpotsList), userPosition, user);
 
   @JsonKey(ignore: true)
   @override
@@ -307,33 +331,35 @@ class _$ShowSpotsInitialImpl implements _ShowSpotsInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
-            List<SkateSpot> skateSpotsList, Position userPosition)
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)
         showSpotsInitial,
     required TResult Function(String message) showSpotsPageError,
     required TResult Function() showSpotsPageLoading,
     required TResult Function(String message) showSpotsPageEmpty,
   }) {
-    return showSpotsInitial(skateSpotsList, userPosition);
+    return showSpotsInitial(skateSpotsList, userPosition, user);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<SkateSpot> skateSpotsList, Position userPosition)?
+    TResult? Function(
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)?
         showSpotsInitial,
     TResult? Function(String message)? showSpotsPageError,
     TResult? Function()? showSpotsPageLoading,
     TResult? Function(String message)? showSpotsPageEmpty,
   }) {
-    return showSpotsInitial?.call(skateSpotsList, userPosition);
+    return showSpotsInitial?.call(skateSpotsList, userPosition, user);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<SkateSpot> skateSpotsList, Position userPosition)?
+    TResult Function(
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)?
         showSpotsInitial,
     TResult Function(String message)? showSpotsPageError,
     TResult Function()? showSpotsPageLoading,
@@ -341,7 +367,7 @@ class _$ShowSpotsInitialImpl implements _ShowSpotsInitial {
     required TResult orElse(),
   }) {
     if (showSpotsInitial != null) {
-      return showSpotsInitial(skateSpotsList, userPosition);
+      return showSpotsInitial(skateSpotsList, userPosition, user);
     }
     return orElse();
   }
@@ -390,10 +416,12 @@ class _$ShowSpotsInitialImpl implements _ShowSpotsInitial {
 abstract class _ShowSpotsInitial implements ShowSkateSpotsState {
   const factory _ShowSpotsInitial(
       {required final List<SkateSpot> skateSpotsList,
-      required final Position userPosition}) = _$ShowSpotsInitialImpl;
+      required final Position userPosition,
+      required final MyUser user}) = _$ShowSpotsInitialImpl;
 
   List<SkateSpot> get skateSpotsList;
   Position get userPosition;
+  MyUser get user;
   @JsonKey(ignore: true)
   _$$ShowSpotsInitialImplCopyWith<_$ShowSpotsInitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -466,7 +494,7 @@ class _$ShowSpotsPageErrorImpl implements _ShowSpotsPageError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
-            List<SkateSpot> skateSpotsList, Position userPosition)
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)
         showSpotsInitial,
     required TResult Function(String message) showSpotsPageError,
     required TResult Function() showSpotsPageLoading,
@@ -479,7 +507,8 @@ class _$ShowSpotsPageErrorImpl implements _ShowSpotsPageError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<SkateSpot> skateSpotsList, Position userPosition)?
+    TResult? Function(
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)?
         showSpotsInitial,
     TResult? Function(String message)? showSpotsPageError,
     TResult? Function()? showSpotsPageLoading,
@@ -492,7 +521,8 @@ class _$ShowSpotsPageErrorImpl implements _ShowSpotsPageError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<SkateSpot> skateSpotsList, Position userPosition)?
+    TResult Function(
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)?
         showSpotsInitial,
     TResult Function(String message)? showSpotsPageError,
     TResult Function()? showSpotsPageLoading,
@@ -597,7 +627,7 @@ class _$ShowSpotsPageLoadingImpl implements _ShowSpotsPageLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
-            List<SkateSpot> skateSpotsList, Position userPosition)
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)
         showSpotsInitial,
     required TResult Function(String message) showSpotsPageError,
     required TResult Function() showSpotsPageLoading,
@@ -610,7 +640,8 @@ class _$ShowSpotsPageLoadingImpl implements _ShowSpotsPageLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<SkateSpot> skateSpotsList, Position userPosition)?
+    TResult? Function(
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)?
         showSpotsInitial,
     TResult? Function(String message)? showSpotsPageError,
     TResult? Function()? showSpotsPageLoading,
@@ -623,7 +654,8 @@ class _$ShowSpotsPageLoadingImpl implements _ShowSpotsPageLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<SkateSpot> skateSpotsList, Position userPosition)?
+    TResult Function(
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)?
         showSpotsInitial,
     TResult Function(String message)? showSpotsPageError,
     TResult Function()? showSpotsPageLoading,
@@ -748,7 +780,7 @@ class _$ShowSpotsPageEmptyImpl implements _ShowSpotsPageEmpty {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(
-            List<SkateSpot> skateSpotsList, Position userPosition)
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)
         showSpotsInitial,
     required TResult Function(String message) showSpotsPageError,
     required TResult Function() showSpotsPageLoading,
@@ -761,7 +793,8 @@ class _$ShowSpotsPageEmptyImpl implements _ShowSpotsPageEmpty {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<SkateSpot> skateSpotsList, Position userPosition)?
+    TResult? Function(
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)?
         showSpotsInitial,
     TResult? Function(String message)? showSpotsPageError,
     TResult? Function()? showSpotsPageLoading,
@@ -774,7 +807,8 @@ class _$ShowSpotsPageEmptyImpl implements _ShowSpotsPageEmpty {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<SkateSpot> skateSpotsList, Position userPosition)?
+    TResult Function(
+            List<SkateSpot> skateSpotsList, Position userPosition, MyUser user)?
         showSpotsInitial,
     TResult Function(String message)? showSpotsPageError,
     TResult Function()? showSpotsPageLoading,

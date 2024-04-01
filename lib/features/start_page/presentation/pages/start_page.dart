@@ -16,7 +16,7 @@ class StartPage extends HookWidget {
     final _user = LOGGED_USER;
 
     return Scaffold(
-      bottomNavigationBar: CustomBottomAppBar(),
+      bottomNavigationBar: const CustomBottomAppBar(uid: 'null',),
       appBar: AppBar(
         actions: [
           _userLoggedIn? CircleAvatar(child: Text(_user.userName[0]),) : SizedBox(),

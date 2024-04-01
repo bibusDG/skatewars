@@ -6,21 +6,21 @@ import 'package:skatewars/core/usecases/usecases.dart';
 import 'package:skatewars/features/user_relations/domain/repositories/user_relations_repo.dart';
 
 @injectable
-class SetUserAccountUseCase implements UseCaseWithParams<void, SetUserAccountParams>{
+class GetUserIDUseCase implements UseCaseWithParams<void, GetUserIDParams>{
   final UserRelationsRepo repo;
-  const SetUserAccountUseCase({required this.repo});
+  const GetUserIDUseCase({required this.repo});
 
   @override
-  Future<Either<Failure, void>> call(SetUserAccountParams params) async{
-    return await repo.setUserAccount(userEmail: params.userEmail);
+  Future<Either<Failure, String>> call(GetUserIDParams params) async{
+    return await repo.getUserID(userEmail: params.userEmail);
     // TODO: implement call
     throw UnimplementedError();
   }
 }
 
-class SetUserAccountParams extends Equatable{
+class GetUserIDParams extends Equatable{
   final String userEmail;
-  const SetUserAccountParams({required this.userEmail});
+  const GetUserIDParams({required this.userEmail});
 
   @override
   List<Object> get props => [userEmail];

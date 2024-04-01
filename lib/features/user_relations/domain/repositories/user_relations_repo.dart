@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:skatewars/features/user_relations/domain/entities/my_user.dart';
 
 import '../../../../core/failure/failure.dart';
 
@@ -17,7 +18,7 @@ abstract class UserRelationsRepo {
   Future<Either<Failure, void>> logOutUser();
 
 
-  Future<Either<Failure, void>> setUserAccount({
+  Future<Either<Failure, String>> getUserID({
     required String userEmail,
 });
 
@@ -39,6 +40,10 @@ abstract class UserRelationsRepo {
     required int skateWarsLost,
 });
 
-  Future<Either<Failure, UserCredential>> loginWithGoogle();
+  Future<Either<Failure, String>> loginWithGoogle();
+
+  Future<Either<Failure, MyUser>> getUserByUserID({
+    required String uid,
+});
 
 }

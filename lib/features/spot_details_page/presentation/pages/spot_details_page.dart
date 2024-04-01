@@ -18,7 +18,8 @@ import '../../../../core/custom_widgets/custom_bottom_app_bar.dart';
 
 class SpotDetailsPage extends HookWidget {
   final String spotID;
-  const SpotDetailsPage({super.key, required this.spotID});
+  final String uid;
+  const SpotDetailsPage({super.key, required this.spotID, required this.uid});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class SpotDetailsPage extends HookWidget {
     });
 
     return Scaffold(
-      bottomNavigationBar: CustomBottomAppBar(),
+      bottomNavigationBar: CustomBottomAppBar(uid: uid,),
       appBar: AppBar(
         title: Text('SPOT DETAILS'),
       ),

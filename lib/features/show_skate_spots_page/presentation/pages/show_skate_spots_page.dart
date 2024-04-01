@@ -20,13 +20,13 @@ import 'package:syncfusion_flutter_core/theme.dart';
 import '../../../../core/custom_widgets/custom_bottom_app_bar.dart';
 
 class ShowSkateSpotsPage extends HookWidget {
-  const ShowSkateSpotsPage({Key? key}) : super(key: key);
+  final String uid;
+  const ShowSkateSpotsPage({Key? key, required this.uid}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
     final _userLoggedIn = USER_LOGGED_IN;
-    final _user = LOGGED_USER;
 
     final _showSkateSpotsCubit = useBloc<ShowSkateSpotsCubit>();
     final _showSkateSpotState = useBlocBuilder(_showSkateSpotsCubit);
@@ -34,18 +34,20 @@ class ShowSkateSpotsPage extends HookWidget {
     final _showAll = useState(false);
 
     useEffect(() {
-      _showSkateSpotsCubit.showSkateSpotsInArea(distance: _distance.value);
+      _showSkateSpotsCubit.showSkateSpotsInArea(distance: _distance.value, userID: uid);
       return null;
     },
       [_showSkateSpotsCubit],
     );
 
     return Scaffold(
-      bottomNavigationBar: CustomBottomAppBar(),
+      bottomNavigationBar: CustomBottomAppBar(uid: uid,),
       appBar: AppBar(
         title: const Text('SKATE SPOTS', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400),),
         actions: [
-          _userLoggedIn? CircleAvatar(child: Text(_user.userName[0]),) : SizedBox(),
+          _userLoggedIn? CircleAvatar(child: _showSkateSpotState.whenOrNull(
+            showSpotsInitial: (listOfSpots, userPosition, user) => Text(user.userName[0]),
+          )) : SizedBox(),
         ],
       ),
       body:Column(
@@ -53,7 +55,7 @@ class ShowSkateSpotsPage extends HookWidget {
                   Expanded(
                     flex: 6,
                     child: _showSkateSpotState.maybeWhen(
-                      showSpotsInitial:(listOfSpots, userPosition) => ListView.builder(
+                      showSpotsInitial:(listOfSpots, userPosition, user) => ListView.builder(
                         itemCount: listOfSpots.length,
                         itemExtent: 200,
                         itemBuilder: (BuildContext context, int index) {
@@ -69,7 +71,7 @@ class ShowSkateSpotsPage extends HookWidget {
                               children: [
                                 GestureDetector(
                                   onTap: (){
-                                    context.pushNamed('spot_details_page', pathParameters: {'spotID' : skateSpot.spotID});
+                                    context.pushNamed('spot_details_page', pathParameters: {'spotID' : skateSpot.spotID, 'uid' : uid});
                                   },
                                   child: Card(
                                     child: Row(
@@ -168,7 +170,7 @@ class ShowSkateSpotsPage extends HookWidget {
                             numberFormat: NumberFormat("km "),
                             onChanged: (value) {
                               _distance.value = (value*1000).toString();
-                              _showSkateSpotsCubit.showSkateSpotsInArea(distance: _distance.value);
+                              _showSkateSpotsCubit.showSkateSpotsInArea(distance: _distance.value, userID: uid);
                             }),
                       ),
                       const SizedBox(height: 20.0,),
@@ -176,7 +178,7 @@ class ShowSkateSpotsPage extends HookWidget {
                         onPressed: () {
                           _showAll.value = true;
                           _distance.value = '10000000';
-                          _showSkateSpotsCubit.showSkateSpotsInArea(distance: _distance.value);
+                          _showSkateSpotsCubit.showSkateSpotsInArea(distance: _distance.value, userID: uid);
                         },
                         color: Colors.black,
                         child: const Text('Show all'),
@@ -186,7 +188,8 @@ class ShowSkateSpotsPage extends HookWidget {
                       : CupertinoButton(
                     onPressed: () {
                       _showAll.value = false;
-                      _distance.value = '50000';
+                      _distance.value = '10000';
+                      _showSkateSpotsCubit.showSkateSpotsInArea(distance: _distance.value, userID: uid);
                     },
                     color: Colors.black,
                     child: const Text('Distance'),

@@ -26,6 +26,10 @@ class UserLoggedInFailure extends Failure{
   const UserLoggedInFailure({required super.failureMessage});
 }
 
-class SetUserAccountFailure extends Failure{
-  const SetUserAccountFailure({required super.failureMessage});
+class GetUserIDFailure extends Failure{
+  const GetUserIDFailure({required super.failureMessage});
+}
+
+class GetUserByIDFailure extends Failure{
+  const GetUserByIDFailure({required super.failureMessage});
 }
