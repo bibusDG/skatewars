@@ -17,7 +17,7 @@ abstract class UserRelationsDataSource{
     required String userPassword,
 });
 
-  Future<String> loginWithGoogle();
+  Future<UserCredential> loginWithGoogle();
 
   Future<void> logOutUser();
 
@@ -116,7 +116,7 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
   }
 
   @override
-  Future<String> loginWithGoogle() async{
+  Future<UserCredential> loginWithGoogle() async{
     GoogleSignIn googleSignIn = GoogleSignIn(
       scopes: [
         'email',
@@ -129,7 +129,9 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
       accessToken: googleAuth.accessToken,
     );
     final credentials = await FirebaseAuth.instance.signInWithCredential(googleCredentials);
-    return credentials.user!.email!;
+    final newUser = credentials.additionalUserInfo!.isNewUser;
+    print(newUser);
+    return credentials;
     // TODO: implement loginWithGoogle
     // throw UnimplementedError();
   }

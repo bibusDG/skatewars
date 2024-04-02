@@ -40,7 +40,9 @@ abstract class UserRelationsRepo {
     required int skateWarsLost,
 });
 
-  Future<Either<Failure, String>> loginWithGoogle();
+
+
+  Future<Either<Failure, UserCredential>> loginWithGoogle();
 
   Future<Either<Failure, MyUser>> getUserByUserID({
     required String uid,

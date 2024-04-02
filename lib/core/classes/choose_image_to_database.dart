@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
 
 class ChooseImageToDatabase{
   ImagePicker _imagePicker = ImagePicker();
@@ -54,3 +55,12 @@ class ChooseImageToDatabase{
     }
   }
 }
+
+class ImageOperations{
+
+  Future<String> changeHttpImageToBase64({required String imageUrl}) async{
+    http.Response response = await http.get(Uri.parse(imageUrl));
+    final bytes = response.bodyBytes;
+    return base64Encode(bytes);
+    }
+  }

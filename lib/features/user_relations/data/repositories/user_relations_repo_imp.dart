@@ -69,7 +69,7 @@ class UserRelationsRepoImp implements UserRelationsRepo{
   }
 
   @override
-  Future<Either<Failure, String>> loginWithGoogle() async{
+  Future<Either<Failure, UserCredential>> loginWithGoogle() async{
     try{
       final result = await dataSource.loginWithGoogle();
       return Right(result);

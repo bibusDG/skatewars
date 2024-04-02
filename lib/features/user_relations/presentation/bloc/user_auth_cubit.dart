@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:skatewars/core/classes/choose_image_to_database.dart';
 import 'package:skatewars/core/constants/constants.dart';
 
 import '../../domain/entities/my_user.dart';
@@ -30,12 +31,15 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
     required this.logOutUserUseCase}) : super(const UserAuthState.initial());
 
   Future<void> loginInitialPage({required String userLoggedIn}) async{
-    print(userLoggedIn);
     if(userLoggedIn == 'false'){
       emit(const UserAuthState.userLoggedOutInitialPage());
     }else{
       emit(const UserAuthState.userLoggedInInitialPage());
     }
+  }
+
+  Future<void> registerInitialPage() async{
+    emit(const UserAuthState.userRegisterInitialPage());
   }
 
   Future<void> logOutUser() async{
@@ -55,8 +59,8 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
     final result = await loginWithGoogleUseCase();
     result.fold((failure){
     emit(const UserAuthState.loginPageError(message: 'Upps... something went wrong'));
-    }, (success) async{
-      final result = await getUserIDUseCase(GetUserIDParams(userEmail: success));
+    }, (credential) async{
+      final result = await getUserIDUseCase(GetUserIDParams(userEmail: credential.user!.email!));
       result.fold((failure){
         emit(const UserAuthState.loginPageError(message: 'Upps... something went wrong'));
       }, (success){
@@ -91,6 +95,45 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
           emit(UserAuthState.loginSuccess(message: 'Success', uid: success));
         });
 
+      }
+    });
+  }
+
+  Future<void> registerWithGoogle() async{
+    emit(const UserAuthState.registeringInProgress());
+    ///login with google account
+    final result = await loginWithGoogleUseCase();
+    result.fold((failure){
+      emit(const UserAuthState.registerFailure(message: 'Registration failure'));
+    }, (credential) async{
+      if(credential.additionalUserInfo!.isNewUser){
+        final _image = await ImageOperations().changeHttpImageToBase64(imageUrl: credential.user!.photoURL!);
+        final result = await registerNewUseUseCase(RegisterNewUserParams(
+            userEmail: credential.user!.email!,
+            userPassword: '',
+            userName: credential.user!.displayName!,
+            userSureName: '',
+            userAvatar: _image,
+            userMobileToken: '',
+            userID: '',
+            favouriteSpots: const [],
+            skatePoints: 0,
+            skateWarsWon: 0,
+            skateWarsLost: 0));
+        result.fold((failure){
+          emit(const UserAuthState.registerFailure(message: 'Register failure'));
+        }, (success) async{
+          emit(const UserAuthState.loginInProgress());
+          final result = await getUserIDUseCase(GetUserIDParams(userEmail: credential.user!.email!));
+          result.fold((failure){
+            emit(const UserAuthState.loginPageError(message: 'Upps... something went wrong'));
+          }, (success){
+            USER_LOGGED_IN = true;
+            emit(UserAuthState.loginSuccess(message: 'Login Success', uid: success));
+          });
+        });
+      }else{
+        emit(const UserAuthState.userLoggedOutInitialPage());
       }
     });
   }
