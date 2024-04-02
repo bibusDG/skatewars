@@ -47,6 +47,11 @@ abstract class UserRelationsDataSource{
     required int skateWarsLost,
 });
 
+  Future<String> createNewEmailPasswordUser({
+    required String userEmail,
+    required String userPassword,
+});
+
 }
 @Singleton(as: UserRelationsDataSource)
 class UserRelationsDataSourceImp implements UserRelationsDataSource{
@@ -190,6 +195,19 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
     final user = MyUser.fromJson(result.data());
     return user;
     // TODO: implement getUserByUserID
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String> createNewEmailPasswordUser({required String userEmail, required String userPassword}) async{
+    try{
+      final result = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: userEmail, password: userPassword);
+      return result.user!.uid;
+    }on FirebaseAuthException catch (e) {
+      print(e.code);
+      return e.code;
+      }
+    // TODO: implement createNewEmailPasswordUser
     throw UnimplementedError();
   }
 

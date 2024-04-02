@@ -99,12 +99,12 @@ class LogInInitialPage extends StatelessWidget {
               const SizedBox(height: 40,),
               Padding(
                 padding: const EdgeInsets.only(left: 50, right: 50),
-                child: CustomTextFormField(controller: _userEmail, hintText: 'E-mail',)
+                child: CustomTextFormField(controller: _userEmail, hintText: 'E-mail', obscureText: false,)
               ),
               const SizedBox(height: 20.0,),
               Padding(
                 padding: const EdgeInsets.only(left: 50, right: 50),
-                child: CustomTextFormField(controller: _userPassword, hintText: 'Password',),
+                child: CustomTextFormField(controller: _userPassword, hintText: 'Password', obscureText: true,),
               ),
               const SizedBox(height: 20.0,),
               InkWell(onTap: (){}, child: const Text('Forgot password?', style: TextStyle(fontWeight: FontWeight.w600, color: Colors.teal),)),
@@ -172,21 +172,21 @@ class SignUpUserPage extends StatelessWidget {
                   const SizedBox(height: 40,),
                   Padding(
                       padding: const EdgeInsets.only(left: 50, right: 50),
-                      child: CustomTextFormField(controller: userRegisterEmail, hintText: 'E-mail',)
+                      child: CustomTextFormField(controller: userRegisterEmail, hintText: 'E-mail', obscureText: false,)
                   ),
                   const SizedBox(height: 20.0,),
                   Padding(
                     padding: const EdgeInsets.only(left: 50, right: 50),
-                    child: CustomTextFormField(controller: userRegisterPassword, hintText: 'Password',),
+                    child: CustomTextFormField(controller: userRegisterPassword, hintText: 'Password', obscureText: true,),
                   ),
                   const SizedBox(height: 20.0,),
                   Padding(
                     padding: const EdgeInsets.only(left: 50, right: 50),
-                    child: CustomTextFormField(controller: userRepeatPassword, hintText: 'Repeat password',),
+                    child: CustomTextFormField(controller: userRepeatPassword, hintText: 'Repeat password', obscureText: true,),
                   ),
                   const SizedBox(height: 40.0,),
                   CupertinoButton(onPressed: (){
-                    // _authCubit.loginWithEmail(userEmail: _userEmail.text, userPassword: _userPassword.text);
+                    cubit.registerWithEmailAndPassword(userEmail: userRegisterEmail.text, userPassword: userRegisterPassword.text);
                   }, color: Colors.black, child: const Text('Register'),),
                   const SizedBox(height: 70,),
                   Padding(

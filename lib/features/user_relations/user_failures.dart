@@ -33,3 +33,7 @@ class GetUserIDFailure extends Failure{
 class GetUserByIDFailure extends Failure{
   const GetUserByIDFailure({required super.failureMessage});
 }
+
+class CreateEmailPasswordUserFailure extends Failure{
+  const CreateEmailPasswordUserFailure({required super.failureMessage});
+}

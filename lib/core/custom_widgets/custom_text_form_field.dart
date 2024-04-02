@@ -5,16 +5,18 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     required this.controller,
     required this.hintText,
+    required this.obscureText,
   });
 
   final TextEditingController controller;
   final String hintText;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      obscureText: true,
+      obscureText: obscureText,
       autocorrect: false,
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(

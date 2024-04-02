@@ -141,4 +141,17 @@ class UserRelationsRepoImp implements UserRelationsRepo{
     // TODO: implement getUserByUserID
     throw UnimplementedError();
   }
+
+  @override
+  Future<Either<Failure, String>> createNewEmailPasswordUser({required String userEmail, required String userPassword}) async{
+    try{
+      final result = await dataSource.createNewEmailPasswordUser(userEmail: userEmail, userPassword: userPassword);
+      return Right(result);
+    }catch(error){
+      print('Unable to create email, password user account');
+      return (const Left(CreateEmailPasswordUserFailure(failureMessage: 'Unable to create email, password user account')));
+    }
+    // TODO: implement createNewEmailPasswordUser
+    throw UnimplementedError();
+  }
 }

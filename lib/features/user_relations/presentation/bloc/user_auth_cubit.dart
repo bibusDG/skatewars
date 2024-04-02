@@ -6,6 +6,7 @@ import 'package:skatewars/core/classes/choose_image_to_database.dart';
 import 'package:skatewars/core/constants/constants.dart';
 
 import '../../domain/entities/my_user.dart';
+import '../../domain/usecases/create_email_password_user_usecase.dart';
 import '../../domain/usecases/log_out_user_usecase.dart';
 import '../../domain/usecases/login_with_google_usecase.dart';
 import '../../domain/usecases/logint_with_email_usecase.dart';
@@ -23,7 +24,9 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
   final RegisterNewUserUseCase registerNewUseUseCase;
   final GetUserIDUseCase getUserIDUseCase;
   final LoginWithEmailUseCase loginWithEmailUseCase;
+  final CreateEmailPasswordUserUseCase createEmailPasswordUserUseCase;
   UserAuthCubit({
+    required this.createEmailPasswordUserUseCase,
     required this.loginWithEmailUseCase,
     required this.getUserIDUseCase,
     required this.registerNewUseUseCase,
@@ -92,7 +95,7 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
           emit(const UserAuthState.loginPageError(message: 'Upps... something went wrong'));
         }, (userID){
           USER_LOGGED_IN = true;
-          emit(UserAuthState.loginSuccess(message: 'Success', uid: success));
+          emit(UserAuthState.loginSuccess(message: 'Success', uid: userID));
         });
 
       }
@@ -135,6 +138,40 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
       }else{
         emit(const UserAuthState.userLoggedOutInitialPage());
       }
+    });
+  }
+
+  Future<void> registerWithEmailAndPassword({required String userEmail, required String userPassword}) async{
+    final result = await createEmailPasswordUserUseCase(CreateEmailPasswordUserParams(userEmail: userEmail, userPassword: userPassword));
+    result.fold((failure){
+      emit(const UserAuthState.registerFailure(message: 'Unable to register new user'));
+    }, (success) async{
+       switch (success){
+         case 'email-already-in-use' :
+            print('email in use');
+         case 'invalid-email':
+            print('invalid email');
+         case 'weak-password':
+           print('weak password');
+         default : final result = await registerNewUseUseCase(RegisterNewUserParams(
+             userEmail: userEmail,
+             userPassword: userPassword,
+             userName: '',
+             userSureName: '',
+             userAvatar: '',
+             userMobileToken: '',
+             userID: success,
+             favouriteSpots: const [],
+             skatePoints: 0,
+             skateWarsWon: 0,
+             skateWarsLost: 0));
+         result.fold((failure){
+           emit(const UserAuthState.registerFailure(message: 'Unable to register new user'));
+         }, (success){
+           emit(const UserAuthState.registerSuccess(message: 'Registration successful'));
+         });
+
+       }
     });
   }
 

@@ -46,7 +46,13 @@ class ShowSkateSpotsPage extends HookWidget {
         title: const Text('SKATE SPOTS', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400),),
         actions: [
           _userLoggedIn? CircleAvatar(child: _showSkateSpotState.whenOrNull(
-            showSpotsInitial: (listOfSpots, userPosition, user) => Image.memory(const Base64Decoder().convert(user.userAvatar)),
+            showSpotsInitial: (listOfSpots, userPosition, user) {
+              if(user.userAvatar.isEmpty){
+                return const CircleAvatar();
+              }else{
+                return Image.memory(const Base64Decoder().convert(user.userAvatar));
+              }
+            }
           )) : SizedBox(),
         ],
       ),
