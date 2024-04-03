@@ -23,4 +23,30 @@ class SpotDetailsRepoImp implements SpotDetailsRepo{
     // TODO: implement getSpotDetails
     throw UnimplementedError();
   }
+
+  @override
+  Future<Either<Failure, void>> addUserToSpot({required String userID, required String spotID}) async{
+    try{
+      final result = await spotDetailsDatasource.addUserToSpot(userID: userID, spotID: spotID);
+      return Right(result);
+    }catch(error){
+      print('Unable to add rider to spot');
+      return (const Left(AddUserToSpotFailure(failureMessage: 'Unable to add user to spot')));
+    }
+    // TODO: implement addUserToSpot
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, void>> removeUserFromSpot({required String userID, required String spotID}) async{
+    try{
+      final result = await spotDetailsDatasource.removeUserFromSpot(userID: userID, spotID: spotID);
+      return Right(result);
+    }catch(error){
+      print('Unable to remove user from spot');
+      return (const Left(RemoveUserFromSpotFailure(failureMessage: 'Unable to remove user from spot')));
+    }
+    // TODO: implement removeUserFromSpot
+    throw UnimplementedError();
+  }
 }

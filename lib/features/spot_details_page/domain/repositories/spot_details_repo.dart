@@ -10,4 +10,14 @@ abstract class SpotDetailsRepo{
     required String spotID,
 });
 
+  Future<Either<Failure, void>> addUserToSpot({
+    required String userID,
+    required String spotID,
+});
+
+  Future<Either<Failure, void>> removeUserFromSpot({
+    required String userID,
+    required String spotID,
+});
+
 }

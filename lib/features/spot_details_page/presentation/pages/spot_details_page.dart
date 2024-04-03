@@ -9,6 +9,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:rating_dialog/rating_dialog.dart';
+import 'package:skatewars/core/constants/constants.dart';
 import 'package:skatewars/core/custom_widgets/carousel.dart';
 import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot.dart';
 import 'package:skatewars/features/spot_details_page/presentation/bloc/spot_details_cubit.dart';
@@ -180,9 +181,11 @@ class SpotDetailsPage extends HookWidget {
                           activeColor: Colors.green,
                           trackColor: Colors.red,
                           value: _switch.value, onChanged: (bool value) {
-                          if(_switch.value){
+                          if(_switch.value && USER_LOGGED_IN){
+                            _spotDetailsCubit.removeUserFromSpot(userID: uid, spotID: spotID);
                             _switch.value = false;
-                          }else{
+                          }else if(USER_LOGGED_IN){
+                            _spotDetailsCubit.addUserToSpot(spotID: spotID, userID: uid);
                             _switch.value = true;
                           }
                         },),
