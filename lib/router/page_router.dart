@@ -47,10 +47,11 @@ class MyPageRouter{
   ),
   GoRoute(
     name: 'login_page', // Optional, add name to your routes. Allows you navigate by name instead of path
-    path: '/login_page/:userLoggedIn',
+    path: '/login_page/:userLoggedIn/:uid',
     builder: (context, state) {
       final userIsLoggedIn = state.pathParameters['userLoggedIn'];
-      return UserLoginPage(userLoggedIn: userIsLoggedIn!);
+      final userID = state.pathParameters['uid'];
+      return UserLoginPage(userLoggedIn: userIsLoggedIn!, uid: userID!,);
     },
   ),
 ]);

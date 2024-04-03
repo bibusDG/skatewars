@@ -125,6 +125,7 @@ extension GetItInjectableX on _i1.GetIt {
           getUserIDUseCase: gh<_i13.GetUserIDUseCase>(),
           registerNewUseUseCase: gh<_i9.RegisterNewUserUseCase>(),
           loginWithGoogleUseCase: gh<_i8.LoginWithGoogleUseCase>(),
+          getUserByIDUseCase: gh<_i12.GetUserByIDUseCase>(),
           logOutUserUseCase: gh<_i10.LogOutUserUseCase>(),
         ));
     gh.factory<_i28.ShowSkateSpotsUseCase>(() => _i28.ShowSkateSpotsUseCase(

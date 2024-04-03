@@ -21,7 +21,7 @@ import '../../../../core/custom_widgets/custom_bottom_app_bar.dart';
 
 class ShowSkateSpotsPage extends HookWidget {
   final String uid;
-  const ShowSkateSpotsPage({Key? key, required this.uid}) : super(key: key);
+  const ShowSkateSpotsPage({super.key, required this.uid});
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +45,12 @@ class ShowSkateSpotsPage extends HookWidget {
       appBar: AppBar(
         title: const Text('SKATE SPOTS', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400),),
         actions: [
-          _userLoggedIn? CircleAvatar(child: _showSkateSpotState.whenOrNull(
+          _userLoggedIn? CircleAvatar(backgroundImage: _showSkateSpotState.whenOrNull(
             showSpotsInitial: (listOfSpots, userPosition, user) {
               if(user.userAvatar.isEmpty){
-                return const CircleAvatar();
+                return null;
               }else{
-                return Image.memory(const Base64Decoder().convert(user.userAvatar));
+                return MemoryImage(const Base64Decoder().convert(user.userAvatar));
               }
             }
           )) : SizedBox(),

@@ -4,6 +4,7 @@ import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:skatewars/core/classes/choose_image_to_database.dart';
 import 'package:skatewars/core/constants/constants.dart';
+import 'package:skatewars/features/user_relations/domain/usecases/get_user_by_id_usecase.dart';
 
 import '../../domain/entities/my_user.dart';
 import '../../domain/usecases/create_email_password_user_usecase.dart';
@@ -25,19 +26,26 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
   final GetUserIDUseCase getUserIDUseCase;
   final LoginWithEmailUseCase loginWithEmailUseCase;
   final CreateEmailPasswordUserUseCase createEmailPasswordUserUseCase;
+  final GetUserByIDUseCase getUserByIDUseCase;
   UserAuthCubit({
     required this.createEmailPasswordUserUseCase,
     required this.loginWithEmailUseCase,
     required this.getUserIDUseCase,
     required this.registerNewUseUseCase,
     required this.loginWithGoogleUseCase,
+    required this.getUserByIDUseCase,
     required this.logOutUserUseCase}) : super(const UserAuthState.initial());
 
-  Future<void> loginInitialPage({required String userLoggedIn}) async{
+  Future<void> loginInitialPage({required String userLoggedIn, required String uid}) async{
     if(userLoggedIn == 'false'){
       emit(const UserAuthState.userLoggedOutInitialPage());
     }else{
-      emit(const UserAuthState.userLoggedInInitialPage());
+      final result = await getUserByIDUseCase(GetUserByIdParams(userID: uid));
+      result.fold((failure){
+        emit(const UserAuthState.loginPageError(message: 'Upps...'));
+      }, (user){
+        emit(UserAuthState.userLoggedInInitialPage(user: user));
+      });
     }
   }
 
@@ -63,34 +71,39 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
     result.fold((failure){
     emit(const UserAuthState.loginPageError(message: 'Upps... something went wrong'));
     }, (credential) async{
-      final result = await getUserIDUseCase(GetUserIDParams(userEmail: credential.user!.email!));
-      result.fold((failure){
-        emit(const UserAuthState.loginPageError(message: 'Upps... something went wrong'));
-      }, (success){
-        USER_LOGGED_IN = true;
-        emit(UserAuthState.loginSuccess(message: 'Success', uid: success));
-      });
+      if(credential.additionalUserInfo!.isNewUser){
+        emit(const UserAuthState.loginPageError(message: 'It looks You do not have account. Please register first.'));
+      }else{
+        final result = await getUserIDUseCase(GetUserIDParams(userEmail: credential.user!.email!));
+        result.fold((failure){
+          emit(const UserAuthState.loginPageError(message: 'Upps... something went wrong'));
+        }, (success){
+          USER_LOGGED_IN = true;
+          emit(UserAuthState.loginSuccess(message: 'Success', uid: success));
+        });
+      }
     });
   }
 
   Future<void> loginWithEmail({required String userEmail, required String  userPassword}) async{
-    emit(const UserAuthState.loginInProgress());
     final result = await loginWithEmailUseCase(LoginWithEmailParams(userEmail: userEmail, userPassword: userPassword));
     result.fold((failure){
       emit(const UserAuthState.loginPageError(message: 'Upps... something went wrong'));
     }, (success) async{
       switch (success){
         case 'wrong-password' :
-          print('dd');
+          dispatch(const UserAuthAction.loginActionMessage(message: 'Invalid password. Try again'));
         case 'invalid-email' :
-          print('dd');
+          dispatch(const UserAuthAction.loginActionMessage(message: 'Invalid e-mail. Try again'));
         case 'INVALID_LOGIN_CREDENTIALS' :
           print('dd');
         case 'invalid-credential' :
-          print('dd');
+          dispatch(const UserAuthAction.loginActionMessage(message: 'Invalid login credentials. Try again.'));
         case 'too-many-requests' :
-          print('dd');
-        default: final result = await getUserIDUseCase(GetUserIDParams(userEmail: userEmail));
+          dispatch(const UserAuthAction.loginActionMessage(message: 'To many requests. Try again later'));
+        default:
+          emit(const UserAuthState.loginInProgress());
+          final result = await getUserIDUseCase(GetUserIDParams(userEmail: userEmail));
         result.fold((l){
           emit(const UserAuthState.loginPageError(message: 'Upps... something went wrong'));
         }, (userID){
@@ -136,7 +149,7 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
           });
         });
       }else{
-        emit(const UserAuthState.userLoggedOutInitialPage());
+        emit(const UserAuthState.registerFailure(message: 'User with this e-mail already exists. Please login via Google.'));
       }
     });
   }
@@ -148,11 +161,11 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
     }, (success) async{
        switch (success){
          case 'email-already-in-use' :
-            print('email in use');
+            dispatch(const UserAuthAction.signInActionMessage(message: 'User with this e-mail is already signed-in. Try another credentials.'));
          case 'invalid-email':
-            print('invalid email');
+           dispatch(const UserAuthAction.signInActionMessage(message: 'Invalid e-mail. Check if e-mial is correct.'));
          case 'weak-password':
-           print('weak password');
+           dispatch(const UserAuthAction.signInActionMessage(message: 'Your password is to weak. Try longer password.'));
          default : final result = await registerNewUseUseCase(RegisterNewUserParams(
              userEmail: userEmail,
              userPassword: userPassword,
