@@ -4,21 +4,26 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot.dart';
+import 'package:skatewars/features/user_relations/domain/entities/my_user.dart';
 
+import '../../../user_relations/domain/usecases/get_user_by_id_usecase.dart';
 import '../../domain/usecases/add_user_to_spot_usecase.dart';
 import '../../domain/usecases/get_spot_details_usecase.dart';
 import '../../domain/usecases/remove_user_from_spot_usecase.dart';
 
 part 'spot_details_state.dart';
 part 'spot_details_cubit.freezed.dart';
+
 @injectable
 class SpotDetailsCubit extends Cubit<SpotDetailsState> {
   final GetSpotDetailsUseCase getSpotDetailsUseCase;
   final AddUserToSpotUseCase addUserToSpotUseCase;
   final RemoveUserFromSpotUseCase removeUserFromSpotUseCase;
+  final GetUserByIDUseCase getUserByIDUseCase;
   SpotDetailsCubit({required this.getSpotDetailsUseCase,
     required this.removeUserFromSpotUseCase,
     required this.addUserToSpotUseCase,
+    required this.getUserByIDUseCase,
   }) : super(const SpotDetailsState.initial());
 
   StreamSubscription<SkateSpot>? _streamSubscription;
@@ -27,9 +32,18 @@ class SpotDetailsCubit extends Cubit<SpotDetailsState> {
     final result = await getSpotDetailsUseCase(GetSpotDetailsParams(spotID: spotID));
     result.fold((failure){
       emit(const SpotDetailsState.spotDetailsPageError(message: 'Upps...Something went wrong'));
-    }, (success){
-      _streamSubscription = success.listen((event) {
-        emit(SpotDetailsState.spotDetailsPageLoaded(skateSpot: event));
+    }, (success) {
+      _streamSubscription = success.listen((event) async{
+        List<MyUser> riders = [];
+        for(var uid in event.spotRiders){
+          final result = await getUserByIDUseCase(GetUserByIdParams(userID: uid));
+          result.fold((failure){
+            null;
+          }, (user){
+            riders.add(user);
+          });
+        }
+        emit(SpotDetailsState.spotDetailsPageLoaded(skateSpot: event, riders: riders));
       });
     });
   }

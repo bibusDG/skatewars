@@ -29,7 +29,7 @@ class CustomCarouselSlider extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 5.0),
                 decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                    color: Colors.amber
+                    color: Colors.transparent,
                 ),
                 child: FittedBox(fit: BoxFit.fill,child: Image.memory(const Base64Decoder().convert(i)),));
           },

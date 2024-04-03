@@ -19,7 +19,8 @@ mixin _$SpotDetailsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SkateSpot skateSpot) spotDetailsPageLoaded,
+    required TResult Function(SkateSpot skateSpot, List<MyUser> riders)
+        spotDetailsPageLoaded,
     required TResult Function() spotDetailsPageLoading,
     required TResult Function(String message) spotDetailsPageError,
   }) =>
@@ -27,7 +28,8 @@ mixin _$SpotDetailsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SkateSpot skateSpot)? spotDetailsPageLoaded,
+    TResult? Function(SkateSpot skateSpot, List<MyUser> riders)?
+        spotDetailsPageLoaded,
     TResult? Function()? spotDetailsPageLoading,
     TResult? Function(String message)? spotDetailsPageError,
   }) =>
@@ -35,7 +37,8 @@ mixin _$SpotDetailsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SkateSpot skateSpot)? spotDetailsPageLoaded,
+    TResult Function(SkateSpot skateSpot, List<MyUser> riders)?
+        spotDetailsPageLoaded,
     TResult Function()? spotDetailsPageLoading,
     TResult Function(String message)? spotDetailsPageError,
     required TResult orElse(),
@@ -127,7 +130,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SkateSpot skateSpot) spotDetailsPageLoaded,
+    required TResult Function(SkateSpot skateSpot, List<MyUser> riders)
+        spotDetailsPageLoaded,
     required TResult Function() spotDetailsPageLoading,
     required TResult Function(String message) spotDetailsPageError,
   }) {
@@ -138,7 +142,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SkateSpot skateSpot)? spotDetailsPageLoaded,
+    TResult? Function(SkateSpot skateSpot, List<MyUser> riders)?
+        spotDetailsPageLoaded,
     TResult? Function()? spotDetailsPageLoading,
     TResult? Function(String message)? spotDetailsPageError,
   }) {
@@ -149,7 +154,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SkateSpot skateSpot)? spotDetailsPageLoaded,
+    TResult Function(SkateSpot skateSpot, List<MyUser> riders)?
+        spotDetailsPageLoaded,
     TResult Function()? spotDetailsPageLoading,
     TResult Function(String message)? spotDetailsPageError,
     required TResult orElse(),
@@ -211,7 +217,7 @@ abstract class _$$SpotDetailsPageLoadedImplCopyWith<$Res> {
           $Res Function(_$SpotDetailsPageLoadedImpl) then) =
       __$$SpotDetailsPageLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({SkateSpot skateSpot});
+  $Res call({SkateSpot skateSpot, List<MyUser> riders});
 
   $SkateSpotCopyWith<$Res> get skateSpot;
 }
@@ -228,12 +234,17 @@ class __$$SpotDetailsPageLoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? skateSpot = null,
+    Object? riders = null,
   }) {
     return _then(_$SpotDetailsPageLoadedImpl(
       skateSpot: null == skateSpot
           ? _value.skateSpot
           : skateSpot // ignore: cast_nullable_to_non_nullable
               as SkateSpot,
+      riders: null == riders
+          ? _value._riders
+          : riders // ignore: cast_nullable_to_non_nullable
+              as List<MyUser>,
     ));
   }
 
@@ -249,14 +260,23 @@ class __$$SpotDetailsPageLoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SpotDetailsPageLoadedImpl implements _SpotDetailsPageLoaded {
-  const _$SpotDetailsPageLoadedImpl({required this.skateSpot});
+  const _$SpotDetailsPageLoadedImpl(
+      {required this.skateSpot, required final List<MyUser> riders})
+      : _riders = riders;
 
   @override
   final SkateSpot skateSpot;
+  final List<MyUser> _riders;
+  @override
+  List<MyUser> get riders {
+    if (_riders is EqualUnmodifiableListView) return _riders;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_riders);
+  }
 
   @override
   String toString() {
-    return 'SpotDetailsState.spotDetailsPageLoaded(skateSpot: $skateSpot)';
+    return 'SpotDetailsState.spotDetailsPageLoaded(skateSpot: $skateSpot, riders: $riders)';
   }
 
   @override
@@ -265,11 +285,13 @@ class _$SpotDetailsPageLoadedImpl implements _SpotDetailsPageLoaded {
         (other.runtimeType == runtimeType &&
             other is _$SpotDetailsPageLoadedImpl &&
             (identical(other.skateSpot, skateSpot) ||
-                other.skateSpot == skateSpot));
+                other.skateSpot == skateSpot) &&
+            const DeepCollectionEquality().equals(other._riders, _riders));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, skateSpot);
+  int get hashCode => Object.hash(
+      runtimeType, skateSpot, const DeepCollectionEquality().hash(_riders));
 
   @JsonKey(ignore: true)
   @override
@@ -282,35 +304,38 @@ class _$SpotDetailsPageLoadedImpl implements _SpotDetailsPageLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SkateSpot skateSpot) spotDetailsPageLoaded,
+    required TResult Function(SkateSpot skateSpot, List<MyUser> riders)
+        spotDetailsPageLoaded,
     required TResult Function() spotDetailsPageLoading,
     required TResult Function(String message) spotDetailsPageError,
   }) {
-    return spotDetailsPageLoaded(skateSpot);
+    return spotDetailsPageLoaded(skateSpot, riders);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SkateSpot skateSpot)? spotDetailsPageLoaded,
+    TResult? Function(SkateSpot skateSpot, List<MyUser> riders)?
+        spotDetailsPageLoaded,
     TResult? Function()? spotDetailsPageLoading,
     TResult? Function(String message)? spotDetailsPageError,
   }) {
-    return spotDetailsPageLoaded?.call(skateSpot);
+    return spotDetailsPageLoaded?.call(skateSpot, riders);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SkateSpot skateSpot)? spotDetailsPageLoaded,
+    TResult Function(SkateSpot skateSpot, List<MyUser> riders)?
+        spotDetailsPageLoaded,
     TResult Function()? spotDetailsPageLoading,
     TResult Function(String message)? spotDetailsPageError,
     required TResult orElse(),
   }) {
     if (spotDetailsPageLoaded != null) {
-      return spotDetailsPageLoaded(skateSpot);
+      return spotDetailsPageLoaded(skateSpot, riders);
     }
     return orElse();
   }
@@ -356,10 +381,12 @@ class _$SpotDetailsPageLoadedImpl implements _SpotDetailsPageLoaded {
 }
 
 abstract class _SpotDetailsPageLoaded implements SpotDetailsState {
-  const factory _SpotDetailsPageLoaded({required final SkateSpot skateSpot}) =
-      _$SpotDetailsPageLoadedImpl;
+  const factory _SpotDetailsPageLoaded(
+      {required final SkateSpot skateSpot,
+      required final List<MyUser> riders}) = _$SpotDetailsPageLoadedImpl;
 
   SkateSpot get skateSpot;
+  List<MyUser> get riders;
   @JsonKey(ignore: true)
   _$$SpotDetailsPageLoadedImplCopyWith<_$SpotDetailsPageLoadedImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -407,7 +434,8 @@ class _$SpotDetailsPageLoadingImpl implements _SpotDetailsPageLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SkateSpot skateSpot) spotDetailsPageLoaded,
+    required TResult Function(SkateSpot skateSpot, List<MyUser> riders)
+        spotDetailsPageLoaded,
     required TResult Function() spotDetailsPageLoading,
     required TResult Function(String message) spotDetailsPageError,
   }) {
@@ -418,7 +446,8 @@ class _$SpotDetailsPageLoadingImpl implements _SpotDetailsPageLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SkateSpot skateSpot)? spotDetailsPageLoaded,
+    TResult? Function(SkateSpot skateSpot, List<MyUser> riders)?
+        spotDetailsPageLoaded,
     TResult? Function()? spotDetailsPageLoading,
     TResult? Function(String message)? spotDetailsPageError,
   }) {
@@ -429,7 +458,8 @@ class _$SpotDetailsPageLoadingImpl implements _SpotDetailsPageLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SkateSpot skateSpot)? spotDetailsPageLoaded,
+    TResult Function(SkateSpot skateSpot, List<MyUser> riders)?
+        spotDetailsPageLoaded,
     TResult Function()? spotDetailsPageLoading,
     TResult Function(String message)? spotDetailsPageError,
     required TResult orElse(),
@@ -551,7 +581,8 @@ class _$SpotDetailsPageErrorImpl implements _SpotDetailsPageError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SkateSpot skateSpot) spotDetailsPageLoaded,
+    required TResult Function(SkateSpot skateSpot, List<MyUser> riders)
+        spotDetailsPageLoaded,
     required TResult Function() spotDetailsPageLoading,
     required TResult Function(String message) spotDetailsPageError,
   }) {
@@ -562,7 +593,8 @@ class _$SpotDetailsPageErrorImpl implements _SpotDetailsPageError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SkateSpot skateSpot)? spotDetailsPageLoaded,
+    TResult? Function(SkateSpot skateSpot, List<MyUser> riders)?
+        spotDetailsPageLoaded,
     TResult? Function()? spotDetailsPageLoading,
     TResult? Function(String message)? spotDetailsPageError,
   }) {
@@ -573,7 +605,8 @@ class _$SpotDetailsPageErrorImpl implements _SpotDetailsPageError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SkateSpot skateSpot)? spotDetailsPageLoaded,
+    TResult Function(SkateSpot skateSpot, List<MyUser> riders)?
+        spotDetailsPageLoaded,
     TResult Function()? spotDetailsPageLoading,
     TResult Function(String message)? spotDetailsPageError,
     required TResult orElse(),

@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -14,6 +16,7 @@ import 'package:skatewars/core/custom_widgets/carousel.dart';
 import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot.dart';
 import 'package:skatewars/features/spot_details_page/presentation/bloc/spot_details_cubit.dart';
 import 'package:collection/collection.dart';
+import 'package:skatewars/features/user_relations/domain/entities/my_user.dart';
 
 import '../../../../core/custom_widgets/custom_bottom_app_bar.dart';
 
@@ -30,7 +33,10 @@ class SpotDetailsPage extends HookWidget {
 
     useEffect(() {
       _spotDetailsCubit.initSpotDetailPage(spotID: spotID);
-    });
+      return null;
+    },
+      [_spotDetailsCubit],
+    );
 
     return Scaffold(
       bottomNavigationBar: CustomBottomAppBar(uid: uid,),
@@ -41,7 +47,7 @@ class SpotDetailsPage extends HookWidget {
         width: double.infinity,
         height: double.infinity,
         child: _spotDetailsState.whenOrNull(
-          spotDetailsPageLoaded: (skateSpot) => Card(
+          spotDetailsPageLoaded: (skateSpot, riders) => Card(
             child: Column(
               children: [
                 Expanded(
@@ -141,17 +147,20 @@ class SpotDetailsPage extends HookWidget {
                                     width: double.infinity,
                                     height: double.infinity,
                                     child: Card(
+                                      color: Colors.purple,
                                       child: ListView.builder(
-                                        itemCount: skateSpot.spotRiders.length,
+                                        itemCount: riders.length,
                                           itemExtent: 80,
                                           itemBuilder: (BuildContext context, int index){
+                                          MyUser user = riders[index];
                                         return Card(child:
                                           Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-                                            CircleAvatar(),
-                                            Text('DG')
+                                            user.userAvatar.isNotEmpty? CircleAvatar(
+                                              backgroundImage: MemoryImage(const Base64Decoder().convert(user.userAvatar)),):
+                                            const CircleAvatar(),
+                                            Text(user.userName)
                                           ],),);
                                       }),
-                                      color: Colors.purple,
                                     )),
                                 CircleAvatar(child: Text(skateSpot.spotRiders.length.toString())),
                               ],
@@ -180,13 +189,15 @@ class SpotDetailsPage extends HookWidget {
                         CupertinoSwitch(
                           activeColor: Colors.green,
                           trackColor: Colors.red,
-                          value: _switch.value, onChanged: (bool value) {
+                          value: _switch.value, onChanged: (bool value) async{
                           if(_switch.value && USER_LOGGED_IN){
-                            _spotDetailsCubit.removeUserFromSpot(userID: uid, spotID: spotID);
                             _switch.value = false;
+                            await _spotDetailsCubit.removeUserFromSpot(userID: uid, spotID: spotID);
+
                           }else if(USER_LOGGED_IN){
-                            _spotDetailsCubit.addUserToSpot(spotID: spotID, userID: uid);
                             _switch.value = true;
+                            await _spotDetailsCubit.addUserToSpot(spotID: spotID, userID: uid);
+
                           }
                         },),
                       ],

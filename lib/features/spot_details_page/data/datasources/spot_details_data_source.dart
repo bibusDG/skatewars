@@ -33,14 +33,14 @@ class SpotDetailsDataSourceImp implements SpotDetailsDatasource{
 
   @override
   Future<void> addUserToSpot({required String userID, required String spotID}) async{
-    await FIREBASE_PATH.doc(spotID).update({'spotRiders': FieldValue.arrayUnion([spotID])});
+    await FIREBASE_PATH.doc(spotID).update({'spotRiders': FieldValue.arrayUnion([userID])});
     // TODO: implement addUserToSpot
     // throw UnimplementedError();
   }
 
   @override
   Future<void> removeUserFromSpot({required String userID, required String spotID}) async{
-    await FIREBASE_PATH.doc(spotID).update({'spotRiders': FieldValue.arrayRemove([spotID]),});
+    await FIREBASE_PATH.doc(spotID).update({'spotRiders': FieldValue.arrayRemove([userID]),});
     // TODO: implement removeUserFromSpot
     // throw UnimplementedError();
   }

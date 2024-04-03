@@ -128,6 +128,7 @@ extension GetItInjectableX on _i1.GetIt {
           getSpotDetailsUseCase: gh<_i18.GetSpotDetailsUseCase>(),
           removeUserFromSpotUseCase: gh<_i20.RemoveUserFromSpotUseCase>(),
           addUserToSpotUseCase: gh<_i19.AddUserToSpotUseCase>(),
+          getUserByIDUseCase: gh<_i12.GetUserByIDUseCase>(),
         ));
     gh.factory<_i29.UserAuthCubit>(() => _i29.UserAuthCubit(
           createEmailPasswordUserUseCase:
