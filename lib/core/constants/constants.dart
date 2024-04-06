@@ -8,6 +8,8 @@ var FIREBASE_USER_PATH = FirebaseFirestore.instance.collection('users');
 
 var USER_LOGGED_IN = false;
 MyUser LOGGED_USER = MyUser.empty();
+var USER_RIDING = false;
+var USER_EX_SPOT = '';
 
 // MyUser userByID = MyUser(
 //     userEmail: userEmail,

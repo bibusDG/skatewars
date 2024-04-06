@@ -38,7 +38,7 @@ class AddSkateSpotPage extends HookWidget {
         creatingSpotSuccess: (message) async{
           await Future.delayed(const Duration(seconds: 3));
           if(context.mounted){
-            context.goNamed('start_page');
+            context.goNamed('show_skate_spots_page', pathParameters: {'uid' : uid});
           }
         },
       );

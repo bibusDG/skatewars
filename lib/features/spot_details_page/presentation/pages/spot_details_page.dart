@@ -3,8 +3,6 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -29,7 +27,7 @@ class SpotDetailsPage extends HookWidget {
   Widget build(BuildContext context) {
     final _spotDetailsCubit = useBloc<SpotDetailsCubit>();
     final _spotDetailsState = useBlocBuilder(_spotDetailsCubit);
-    final _switch = useState(false);
+    final _switch = useState(USER_RIDING && USER_EX_SPOT == spotID);
 
     useEffect(() {
       _spotDetailsCubit.initSpotDetailPage(spotID: spotID);
@@ -190,12 +188,19 @@ class SpotDetailsPage extends HookWidget {
                           activeColor: Colors.green,
                           trackColor: Colors.red,
                           value: _switch.value, onChanged: (bool value) async{
-                          if(_switch.value && USER_LOGGED_IN){
+                          if(USER_RIDING == true && USER_EX_SPOT != spotID && USER_LOGGED_IN){
+                            print('You are somewhere else');
+                          }
+                          else if(_switch.value && USER_LOGGED_IN){
+                            USER_RIDING = false;
+                            USER_EX_SPOT = '';
                             _switch.value = false;
                             await _spotDetailsCubit.removeUserFromSpot(userID: uid, spotID: spotID);
 
-                          }else if(USER_LOGGED_IN){
+                          }else if(USER_LOGGED_IN && USER_RIDING == false){
                             _switch.value = true;
+                            USER_RIDING = true;
+                            USER_EX_SPOT = spotID;
                             await _spotDetailsCubit.addUserToSpot(spotID: spotID, userID: uid);
 
                           }
