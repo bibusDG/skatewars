@@ -10,7 +10,7 @@ class UserAuthState with _$UserAuthState {
   const factory UserAuthState.registerFailure({required String message}) = _RegisterFailure;
   const factory UserAuthState.registerSuccess({required String message}) = _RegisterSuccess;
 
-  const factory UserAuthState.userLoggedInInitialPage({required MyUser user}) = _UserLoggedInInitialPage;
+  const factory UserAuthState.userLoggedInInitialPage({required MyUser user, required List<SkateSpot> favSpots}) = _UserLoggedInInitialPage;
   const factory UserAuthState.userLoggedOutInitialPage() = _UserLoggedOutInitialPage;
   const factory UserAuthState.loginSuccess({required String message, required String uid}) = _LoginSuccess;
   const factory UserAuthState.loginFailed({required String message}) = _LoginFailed;

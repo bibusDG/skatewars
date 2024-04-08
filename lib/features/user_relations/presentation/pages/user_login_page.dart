@@ -1,14 +1,18 @@
 import 'dart:convert';
 
+import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:get/utils.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:skatewars/core/classes/custom_snackbar.dart';
 import 'package:skatewars/core/constants/constants.dart';
 import 'package:skatewars/core/custom_widgets/custom_bottom_app_bar.dart';
+import 'package:skatewars/core/failure/failure.dart';
 import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot.dart';
+import 'package:skatewars/features/show_skate_spots_page/domain/usecases/get_spot_by_id_usecase.dart';
 import 'package:skatewars/features/user_relations/presentation/bloc/user_auth_cubit.dart';
 
 import '../../../../core/custom_widgets/custom_text_form_field.dart';
@@ -31,6 +35,8 @@ class UserLoginPage extends HookWidget {
 
     final _authCubit = useBloc<UserAuthCubit>();
     final _authState = useBlocBuilder(_authCubit);
+
+    final List<SkateSpot> _userFav = useState<List<SkateSpot>>([]).value;
 
     useEffect((){
       _authCubit.loginInitialPage(userLoggedIn: userLoggedIn, uid: uid);
@@ -87,7 +93,7 @@ class UserLoginPage extends HookWidget {
             userRegisterPassword: _userRegisterPassword,
             uid: uid,
         ),
-        userLoggedInInitialPage: (user) => LogInInitialPage(cubit: _authCubit, user: user),
+        userLoggedInInitialPage: (user, favSpots) => LogInInitialPage(cubit: _authCubit, user: user, favSpots: favSpots,),
         userLoggedOutInitialPage:() => LogOutInitialPage(userEmail: _userEmail, userPassword: _userPassword, authCubit: _authCubit),
         loginSuccess: (message, uid) => Center(child: Text(message),),
         loginInProgress: () => const Center(child: CircularProgressIndicator(),),
@@ -252,9 +258,10 @@ class SignUpUserPage extends StatelessWidget {
 }
 
 class LogInInitialPage extends StatelessWidget {
+  final List<SkateSpot> favSpots;
   final MyUser user;
   final UserAuthCubit cubit;
-  const LogInInitialPage({super.key, required this.cubit, required this.user});
+  const LogInInitialPage({super.key, required this.cubit, required this.user, required this.favSpots});
 
   @override
   Widget build(BuildContext context) {
@@ -302,15 +309,15 @@ class LogInInitialPage extends StatelessWidget {
             // ),
           ],
         )),
-        const Text('MY SPOTS', style: TextStyle(fontSize: 30),),
+        const Text('MY FAV SPOTS', style: TextStyle(fontSize: 30),),
         Expanded(
           flex:5,
-          child: user.favouriteSpots.isNotEmpty? ListView.builder(
-            itemCount: user.favouriteSpots.length,
-              itemExtent: 80,
+          child: favSpots.isNotEmpty? ListView.builder(
+            itemCount: favSpots.length,
+              itemExtent: 150,
               itemBuilder: (BuildContext context, int index){
-
-            return Card();
+              final spot = favSpots[index];
+            return Card(child: Center(child: Text(spot.spotName)));
           }): Center(child: Text('No favourite spots'),),
         ),
         Center(child: CupertinoButton(onPressed: (){

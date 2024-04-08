@@ -137,7 +137,13 @@ class ShowSkateSpotsPage extends HookWidget {
                                     ),
                                   ),
                                 ),
-                                IconButton(onPressed: (){}, icon: const Icon(Icons.favorite_border, size: 40, color: Colors.deepOrange,)),
+                                IconButton(onPressed: (){
+                                  if(USER_LOGGED_IN){
+                                    _showSkateSpotsCubit.addSpotToFavorites(userID: uid, spotID: skateSpot.spotID);
+                                  }else{
+                                    print('You must be logged in');
+                                  }
+                                }, icon: const Icon(Icons.favorite_border, size: 40, color: Colors.deepOrange,)),
                               ],
                             ),
                           );

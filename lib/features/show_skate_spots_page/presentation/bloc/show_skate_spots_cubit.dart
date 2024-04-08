@@ -10,6 +10,8 @@ import 'package:skatewars/features/user_relations/domain/entities/my_user.dart';
 
 import '../../../user_relations/domain/usecases/get_user_by_id_usecase.dart';
 import '../../../user_relations/domain/usecases/get_user_curret_position_usecase.dart';
+import '../../domain/usecases/add_spot_to_favorites_usecase.dart';
+import '../../domain/usecases/remove_spot_from_favorites_usecase.dart';
 import '../../domain/usecases/show_skate_spots_usecase.dart';
 
 part 'show_skate_spots_state.dart';
@@ -19,10 +21,12 @@ class ShowSkateSpotsCubit extends Cubit<ShowSkateSpotsState> {
   final GetUserByIDUseCase getUserByIDUseCase;
   final ShowSkateSpotsUseCase showSkateSpotsUseCase;
   final GetUserCurrentPositionUseCase getUserCurrentPositionUseCase;
+  final AddSpotToFavoritesUseCase addSpotToFavoritesUseCase;
   ShowSkateSpotsCubit({
     required this.showSkateSpotsUseCase,
     required this.getUserCurrentPositionUseCase,
     required this.getUserByIDUseCase,
+    required this.addSpotToFavoritesUseCase,
   }) : super(const ShowSkateSpotsState.initial());
 
   StreamSubscription<List<SkateSpot>>? _streamSubscription;
@@ -77,6 +81,16 @@ class ShowSkateSpotsCubit extends Cubit<ShowSkateSpotsState> {
     // });
   }
 
+  Future<void> addSpotToFavorites({required String userID, required String spotID}) async{
+    final result = await addSpotToFavoritesUseCase(AddSpotToFavoritesParams(spotID: spotID, userID: userID));
+    result.fold((failure){
+      print('not added');
+    }, (success){
+      print('spot added to fav');
+    });
+  }
+
+
   Future<void> showSpots({required String distance, required MyUser user}) async{
     final result = await getUserCurrentPositionUseCase();
     result.fold((failure){
@@ -110,6 +124,7 @@ class ShowSkateSpotsCubit extends Cubit<ShowSkateSpotsState> {
       });
     });
   }
+
 
   @override
   Future<void> close() async{

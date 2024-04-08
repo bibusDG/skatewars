@@ -10,4 +10,18 @@ abstract class ShowSkateSpotsRepo{
     required String distance,
 });
 
+  Future<Either<Failure, void>> addSpotToUserFavorites({
+    required String spotID,
+    required String userID,
+  });
+
+  Future<Either<Failure, void>> removeSpotFromUserFavorites({
+    required String spotID,
+    required String userID,
+  });
+
+  Future<Either<Failure, SkateSpot>> getSpotByID({
+    required String spotID,
+});
+
 }

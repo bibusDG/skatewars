@@ -6,6 +6,9 @@ import 'package:skatewars/core/classes/choose_image_to_database.dart';
 import 'package:skatewars/core/constants/constants.dart';
 import 'package:skatewars/features/user_relations/domain/usecases/get_user_by_id_usecase.dart';
 
+import '../../../add_skate_spot_page/domain/entities/skateSpot.dart';
+import '../../../show_skate_spots_page/domain/usecases/get_spot_by_id_usecase.dart';
+import '../../../show_skate_spots_page/domain/usecases/remove_spot_from_favorites_usecase.dart';
 import '../../domain/entities/my_user.dart';
 import '../../domain/usecases/create_email_password_user_usecase.dart';
 import '../../domain/usecases/log_out_user_usecase.dart';
@@ -27,7 +30,11 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
   final LoginWithEmailUseCase loginWithEmailUseCase;
   final CreateEmailPasswordUserUseCase createEmailPasswordUserUseCase;
   final GetUserByIDUseCase getUserByIDUseCase;
+  final RemoveSpotFromFavoritesUseCase removeSpotFromFavoritesUseCase;
+  final GetSpotByIdUseCase getSpotByIdUseCase;
   UserAuthCubit({
+    required this.getSpotByIdUseCase,
+    required this.removeSpotFromFavoritesUseCase,
     required this.createEmailPasswordUserUseCase,
     required this.loginWithEmailUseCase,
     required this.getUserIDUseCase,
@@ -43,8 +50,17 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
       final result = await getUserByIDUseCase(GetUserByIdParams(userID: uid));
       result.fold((failure){
         emit(const UserAuthState.loginPageError(message: 'Upps...'));
-      }, (user){
-        emit(UserAuthState.userLoggedInInitialPage(user: user));
+      }, (user) async{
+        final List<SkateSpot> userFavSpots = [];
+        for(var spotID in user.favouriteSpots){
+          final spot = await getSpotByIdUseCase(GetSpotByIdParams(spotID: spotID));
+          spot.fold((failure){
+            null;
+          }, (spot){
+            userFavSpots.add(spot);
+          });
+        }
+        emit(UserAuthState.userLoggedInInitialPage(user: user, favSpots: userFavSpots));
       });
     }
   }
@@ -185,6 +201,15 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
          });
 
        }
+    });
+  }
+
+  Future<void> getSpotByID({required String spotID}) async{
+    final result = await getSpotByIdUseCase(GetSpotByIdParams(spotID: spotID));
+    result.fold((failure){
+      null;
+    }, (success){
+      return success;
     });
   }
 

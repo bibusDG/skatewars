@@ -23,7 +23,8 @@ mixin _$UserAuthState {
     required TResult Function() registeringInProgress,
     required TResult Function(String message) registerFailure,
     required TResult Function(String message) registerSuccess,
-    required TResult Function(MyUser user) userLoggedInInitialPage,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
     required TResult Function() userLoggedOutInitialPage,
     required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
@@ -41,7 +42,8 @@ mixin _$UserAuthState {
     TResult? Function()? registeringInProgress,
     TResult? Function(String message)? registerFailure,
     TResult? Function(String message)? registerSuccess,
-    TResult? Function(MyUser user)? userLoggedInInitialPage,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult? Function()? userLoggedOutInitialPage,
     TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
@@ -59,7 +61,8 @@ mixin _$UserAuthState {
     TResult Function()? registeringInProgress,
     TResult Function(String message)? registerFailure,
     TResult Function(String message)? registerSuccess,
-    TResult Function(MyUser user)? userLoggedInInitialPage,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult Function()? userLoggedOutInitialPage,
     TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
@@ -194,7 +197,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function() registeringInProgress,
     required TResult Function(String message) registerFailure,
     required TResult Function(String message) registerSuccess,
-    required TResult Function(MyUser user) userLoggedInInitialPage,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
     required TResult Function() userLoggedOutInitialPage,
     required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
@@ -215,7 +219,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? registeringInProgress,
     TResult? Function(String message)? registerFailure,
     TResult? Function(String message)? registerSuccess,
-    TResult? Function(MyUser user)? userLoggedInInitialPage,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult? Function()? userLoggedOutInitialPage,
     TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
@@ -236,7 +241,8 @@ class _$InitialImpl implements _Initial {
     TResult Function()? registeringInProgress,
     TResult Function(String message)? registerFailure,
     TResult Function(String message)? registerSuccess,
-    TResult Function(MyUser user)? userLoggedInInitialPage,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult Function()? userLoggedOutInitialPage,
     TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
@@ -376,7 +382,8 @@ class _$UserRegisterInitialPageImpl implements _UserRegisterInitialPage {
     required TResult Function() registeringInProgress,
     required TResult Function(String message) registerFailure,
     required TResult Function(String message) registerSuccess,
-    required TResult Function(MyUser user) userLoggedInInitialPage,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
     required TResult Function() userLoggedOutInitialPage,
     required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
@@ -397,7 +404,8 @@ class _$UserRegisterInitialPageImpl implements _UserRegisterInitialPage {
     TResult? Function()? registeringInProgress,
     TResult? Function(String message)? registerFailure,
     TResult? Function(String message)? registerSuccess,
-    TResult? Function(MyUser user)? userLoggedInInitialPage,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult? Function()? userLoggedOutInitialPage,
     TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
@@ -418,7 +426,8 @@ class _$UserRegisterInitialPageImpl implements _UserRegisterInitialPage {
     TResult Function()? registeringInProgress,
     TResult Function(String message)? registerFailure,
     TResult Function(String message)? registerSuccess,
-    TResult Function(MyUser user)? userLoggedInInitialPage,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult Function()? userLoggedOutInitialPage,
     TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
@@ -557,7 +566,8 @@ class _$RegisteringInProgressImpl implements _RegisteringInProgress {
     required TResult Function() registeringInProgress,
     required TResult Function(String message) registerFailure,
     required TResult Function(String message) registerSuccess,
-    required TResult Function(MyUser user) userLoggedInInitialPage,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
     required TResult Function() userLoggedOutInitialPage,
     required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
@@ -578,7 +588,8 @@ class _$RegisteringInProgressImpl implements _RegisteringInProgress {
     TResult? Function()? registeringInProgress,
     TResult? Function(String message)? registerFailure,
     TResult? Function(String message)? registerSuccess,
-    TResult? Function(MyUser user)? userLoggedInInitialPage,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult? Function()? userLoggedOutInitialPage,
     TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
@@ -599,7 +610,8 @@ class _$RegisteringInProgressImpl implements _RegisteringInProgress {
     TResult Function()? registeringInProgress,
     TResult Function(String message)? registerFailure,
     TResult Function(String message)? registerSuccess,
-    TResult Function(MyUser user)? userLoggedInInitialPage,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult Function()? userLoggedOutInitialPage,
     TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
@@ -763,7 +775,8 @@ class _$RegisterFailureImpl implements _RegisterFailure {
     required TResult Function() registeringInProgress,
     required TResult Function(String message) registerFailure,
     required TResult Function(String message) registerSuccess,
-    required TResult Function(MyUser user) userLoggedInInitialPage,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
     required TResult Function() userLoggedOutInitialPage,
     required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
@@ -784,7 +797,8 @@ class _$RegisterFailureImpl implements _RegisterFailure {
     TResult? Function()? registeringInProgress,
     TResult? Function(String message)? registerFailure,
     TResult? Function(String message)? registerSuccess,
-    TResult? Function(MyUser user)? userLoggedInInitialPage,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult? Function()? userLoggedOutInitialPage,
     TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
@@ -805,7 +819,8 @@ class _$RegisterFailureImpl implements _RegisterFailure {
     TResult Function()? registeringInProgress,
     TResult Function(String message)? registerFailure,
     TResult Function(String message)? registerSuccess,
-    TResult Function(MyUser user)? userLoggedInInitialPage,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult Function()? userLoggedOutInitialPage,
     TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
@@ -975,7 +990,8 @@ class _$RegisterSuccessImpl implements _RegisterSuccess {
     required TResult Function() registeringInProgress,
     required TResult Function(String message) registerFailure,
     required TResult Function(String message) registerSuccess,
-    required TResult Function(MyUser user) userLoggedInInitialPage,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
     required TResult Function() userLoggedOutInitialPage,
     required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
@@ -996,7 +1012,8 @@ class _$RegisterSuccessImpl implements _RegisterSuccess {
     TResult? Function()? registeringInProgress,
     TResult? Function(String message)? registerFailure,
     TResult? Function(String message)? registerSuccess,
-    TResult? Function(MyUser user)? userLoggedInInitialPage,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult? Function()? userLoggedOutInitialPage,
     TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
@@ -1017,7 +1034,8 @@ class _$RegisterSuccessImpl implements _RegisterSuccess {
     TResult Function()? registeringInProgress,
     TResult Function(String message)? registerFailure,
     TResult Function(String message)? registerSuccess,
-    TResult Function(MyUser user)? userLoggedInInitialPage,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult Function()? userLoggedOutInitialPage,
     TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
@@ -1124,7 +1142,7 @@ abstract class _$$UserLoggedInInitialPageImplCopyWith<$Res> {
           $Res Function(_$UserLoggedInInitialPageImpl) then) =
       __$$UserLoggedInInitialPageImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({MyUser user});
+  $Res call({MyUser user, List<SkateSpot> favSpots});
 
   $MyUserCopyWith<$Res> get user;
 }
@@ -1142,12 +1160,17 @@ class __$$UserLoggedInInitialPageImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = null,
+    Object? favSpots = null,
   }) {
     return _then(_$UserLoggedInInitialPageImpl(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as MyUser,
+      favSpots: null == favSpots
+          ? _value._favSpots
+          : favSpots // ignore: cast_nullable_to_non_nullable
+              as List<SkateSpot>,
     ));
   }
 
@@ -1163,14 +1186,23 @@ class __$$UserLoggedInInitialPageImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
-  const _$UserLoggedInInitialPageImpl({required this.user});
+  const _$UserLoggedInInitialPageImpl(
+      {required this.user, required final List<SkateSpot> favSpots})
+      : _favSpots = favSpots;
 
   @override
   final MyUser user;
+  final List<SkateSpot> _favSpots;
+  @override
+  List<SkateSpot> get favSpots {
+    if (_favSpots is EqualUnmodifiableListView) return _favSpots;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favSpots);
+  }
 
   @override
   String toString() {
-    return 'UserAuthState.userLoggedInInitialPage(user: $user)';
+    return 'UserAuthState.userLoggedInInitialPage(user: $user, favSpots: $favSpots)';
   }
 
   @override
@@ -1178,11 +1210,13 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UserLoggedInInitialPageImpl &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.user, user) || other.user == user) &&
+            const DeepCollectionEquality().equals(other._favSpots, _favSpots));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode => Object.hash(
+      runtimeType, user, const DeepCollectionEquality().hash(_favSpots));
 
   @JsonKey(ignore: true)
   @override
@@ -1199,7 +1233,8 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     required TResult Function() registeringInProgress,
     required TResult Function(String message) registerFailure,
     required TResult Function(String message) registerSuccess,
-    required TResult Function(MyUser user) userLoggedInInitialPage,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
     required TResult Function() userLoggedOutInitialPage,
     required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
@@ -1209,7 +1244,7 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
   }) {
-    return userLoggedInInitialPage(user);
+    return userLoggedInInitialPage(user, favSpots);
   }
 
   @override
@@ -1220,7 +1255,8 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     TResult? Function()? registeringInProgress,
     TResult? Function(String message)? registerFailure,
     TResult? Function(String message)? registerSuccess,
-    TResult? Function(MyUser user)? userLoggedInInitialPage,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult? Function()? userLoggedOutInitialPage,
     TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
@@ -1230,7 +1266,7 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
   }) {
-    return userLoggedInInitialPage?.call(user);
+    return userLoggedInInitialPage?.call(user, favSpots);
   }
 
   @override
@@ -1241,7 +1277,8 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     TResult Function()? registeringInProgress,
     TResult Function(String message)? registerFailure,
     TResult Function(String message)? registerSuccess,
-    TResult Function(MyUser user)? userLoggedInInitialPage,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult Function()? userLoggedOutInitialPage,
     TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
@@ -1253,7 +1290,7 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     required TResult orElse(),
   }) {
     if (userLoggedInInitialPage != null) {
-      return userLoggedInInitialPage(user);
+      return userLoggedInInitialPage(user, favSpots);
     }
     return orElse();
   }
@@ -1332,10 +1369,12 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
 }
 
 abstract class _UserLoggedInInitialPage implements UserAuthState {
-  const factory _UserLoggedInInitialPage({required final MyUser user}) =
-      _$UserLoggedInInitialPageImpl;
+  const factory _UserLoggedInInitialPage(
+      {required final MyUser user,
+      required final List<SkateSpot> favSpots}) = _$UserLoggedInInitialPageImpl;
 
   MyUser get user;
+  List<SkateSpot> get favSpots;
   @JsonKey(ignore: true)
   _$$UserLoggedInInitialPageImplCopyWith<_$UserLoggedInInitialPageImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -1387,7 +1426,8 @@ class _$UserLoggedOutInitialPageImpl implements _UserLoggedOutInitialPage {
     required TResult Function() registeringInProgress,
     required TResult Function(String message) registerFailure,
     required TResult Function(String message) registerSuccess,
-    required TResult Function(MyUser user) userLoggedInInitialPage,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
     required TResult Function() userLoggedOutInitialPage,
     required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
@@ -1408,7 +1448,8 @@ class _$UserLoggedOutInitialPageImpl implements _UserLoggedOutInitialPage {
     TResult? Function()? registeringInProgress,
     TResult? Function(String message)? registerFailure,
     TResult? Function(String message)? registerSuccess,
-    TResult? Function(MyUser user)? userLoggedInInitialPage,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult? Function()? userLoggedOutInitialPage,
     TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
@@ -1429,7 +1470,8 @@ class _$UserLoggedOutInitialPageImpl implements _UserLoggedOutInitialPage {
     TResult Function()? registeringInProgress,
     TResult Function(String message)? registerFailure,
     TResult Function(String message)? registerSuccess,
-    TResult Function(MyUser user)? userLoggedInInitialPage,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult Function()? userLoggedOutInitialPage,
     TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
@@ -1600,7 +1642,8 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     required TResult Function() registeringInProgress,
     required TResult Function(String message) registerFailure,
     required TResult Function(String message) registerSuccess,
-    required TResult Function(MyUser user) userLoggedInInitialPage,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
     required TResult Function() userLoggedOutInitialPage,
     required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
@@ -1621,7 +1664,8 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult? Function()? registeringInProgress,
     TResult? Function(String message)? registerFailure,
     TResult? Function(String message)? registerSuccess,
-    TResult? Function(MyUser user)? userLoggedInInitialPage,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult? Function()? userLoggedOutInitialPage,
     TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
@@ -1642,7 +1686,8 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult Function()? registeringInProgress,
     TResult Function(String message)? registerFailure,
     TResult Function(String message)? registerSuccess,
-    TResult Function(MyUser user)? userLoggedInInitialPage,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult Function()? userLoggedOutInitialPage,
     TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
@@ -1813,7 +1858,8 @@ class _$LoginFailedImpl implements _LoginFailed {
     required TResult Function() registeringInProgress,
     required TResult Function(String message) registerFailure,
     required TResult Function(String message) registerSuccess,
-    required TResult Function(MyUser user) userLoggedInInitialPage,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
     required TResult Function() userLoggedOutInitialPage,
     required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
@@ -1834,7 +1880,8 @@ class _$LoginFailedImpl implements _LoginFailed {
     TResult? Function()? registeringInProgress,
     TResult? Function(String message)? registerFailure,
     TResult? Function(String message)? registerSuccess,
-    TResult? Function(MyUser user)? userLoggedInInitialPage,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult? Function()? userLoggedOutInitialPage,
     TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
@@ -1855,7 +1902,8 @@ class _$LoginFailedImpl implements _LoginFailed {
     TResult Function()? registeringInProgress,
     TResult Function(String message)? registerFailure,
     TResult Function(String message)? registerSuccess,
-    TResult Function(MyUser user)? userLoggedInInitialPage,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult Function()? userLoggedOutInitialPage,
     TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
@@ -2026,7 +2074,8 @@ class _$UserLoggedOutSuccessImpl implements _UserLoggedOutSuccess {
     required TResult Function() registeringInProgress,
     required TResult Function(String message) registerFailure,
     required TResult Function(String message) registerSuccess,
-    required TResult Function(MyUser user) userLoggedInInitialPage,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
     required TResult Function() userLoggedOutInitialPage,
     required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
@@ -2047,7 +2096,8 @@ class _$UserLoggedOutSuccessImpl implements _UserLoggedOutSuccess {
     TResult? Function()? registeringInProgress,
     TResult? Function(String message)? registerFailure,
     TResult? Function(String message)? registerSuccess,
-    TResult? Function(MyUser user)? userLoggedInInitialPage,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult? Function()? userLoggedOutInitialPage,
     TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
@@ -2068,7 +2118,8 @@ class _$UserLoggedOutSuccessImpl implements _UserLoggedOutSuccess {
     TResult Function()? registeringInProgress,
     TResult Function(String message)? registerFailure,
     TResult Function(String message)? registerSuccess,
-    TResult Function(MyUser user)? userLoggedInInitialPage,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult Function()? userLoggedOutInitialPage,
     TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
@@ -2239,7 +2290,8 @@ class _$UserLoggedOutFailureImpl implements _UserLoggedOutFailure {
     required TResult Function() registeringInProgress,
     required TResult Function(String message) registerFailure,
     required TResult Function(String message) registerSuccess,
-    required TResult Function(MyUser user) userLoggedInInitialPage,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
     required TResult Function() userLoggedOutInitialPage,
     required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
@@ -2260,7 +2312,8 @@ class _$UserLoggedOutFailureImpl implements _UserLoggedOutFailure {
     TResult? Function()? registeringInProgress,
     TResult? Function(String message)? registerFailure,
     TResult? Function(String message)? registerSuccess,
-    TResult? Function(MyUser user)? userLoggedInInitialPage,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult? Function()? userLoggedOutInitialPage,
     TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
@@ -2281,7 +2334,8 @@ class _$UserLoggedOutFailureImpl implements _UserLoggedOutFailure {
     TResult Function()? registeringInProgress,
     TResult Function(String message)? registerFailure,
     TResult Function(String message)? registerSuccess,
-    TResult Function(MyUser user)? userLoggedInInitialPage,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult Function()? userLoggedOutInitialPage,
     TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
@@ -2451,7 +2505,8 @@ class _$LoginPageErrorImpl implements _LoginPageError {
     required TResult Function() registeringInProgress,
     required TResult Function(String message) registerFailure,
     required TResult Function(String message) registerSuccess,
-    required TResult Function(MyUser user) userLoggedInInitialPage,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
     required TResult Function() userLoggedOutInitialPage,
     required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
@@ -2472,7 +2527,8 @@ class _$LoginPageErrorImpl implements _LoginPageError {
     TResult? Function()? registeringInProgress,
     TResult? Function(String message)? registerFailure,
     TResult? Function(String message)? registerSuccess,
-    TResult? Function(MyUser user)? userLoggedInInitialPage,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult? Function()? userLoggedOutInitialPage,
     TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
@@ -2493,7 +2549,8 @@ class _$LoginPageErrorImpl implements _LoginPageError {
     TResult Function()? registeringInProgress,
     TResult Function(String message)? registerFailure,
     TResult Function(String message)? registerSuccess,
-    TResult Function(MyUser user)? userLoggedInInitialPage,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult Function()? userLoggedOutInitialPage,
     TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
@@ -2636,7 +2693,8 @@ class _$LoginPageLoadingImpl implements _LoginPageLoading {
     required TResult Function() registeringInProgress,
     required TResult Function(String message) registerFailure,
     required TResult Function(String message) registerSuccess,
-    required TResult Function(MyUser user) userLoggedInInitialPage,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
     required TResult Function() userLoggedOutInitialPage,
     required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
@@ -2657,7 +2715,8 @@ class _$LoginPageLoadingImpl implements _LoginPageLoading {
     TResult? Function()? registeringInProgress,
     TResult? Function(String message)? registerFailure,
     TResult? Function(String message)? registerSuccess,
-    TResult? Function(MyUser user)? userLoggedInInitialPage,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult? Function()? userLoggedOutInitialPage,
     TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
@@ -2678,7 +2737,8 @@ class _$LoginPageLoadingImpl implements _LoginPageLoading {
     TResult Function()? registeringInProgress,
     TResult Function(String message)? registerFailure,
     TResult Function(String message)? registerSuccess,
-    TResult Function(MyUser user)? userLoggedInInitialPage,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult Function()? userLoggedOutInitialPage,
     TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
@@ -2815,7 +2875,8 @@ class _$LoginInProgressImpl implements _LoginInProgress {
     required TResult Function() registeringInProgress,
     required TResult Function(String message) registerFailure,
     required TResult Function(String message) registerSuccess,
-    required TResult Function(MyUser user) userLoggedInInitialPage,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
     required TResult Function() userLoggedOutInitialPage,
     required TResult Function(String message, String uid) loginSuccess,
     required TResult Function(String message) loginFailed,
@@ -2836,7 +2897,8 @@ class _$LoginInProgressImpl implements _LoginInProgress {
     TResult? Function()? registeringInProgress,
     TResult? Function(String message)? registerFailure,
     TResult? Function(String message)? registerSuccess,
-    TResult? Function(MyUser user)? userLoggedInInitialPage,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult? Function()? userLoggedOutInitialPage,
     TResult? Function(String message, String uid)? loginSuccess,
     TResult? Function(String message)? loginFailed,
@@ -2857,7 +2919,8 @@ class _$LoginInProgressImpl implements _LoginInProgress {
     TResult Function()? registeringInProgress,
     TResult Function(String message)? registerFailure,
     TResult Function(String message)? registerSuccess,
-    TResult Function(MyUser user)? userLoggedInInitialPage,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
     TResult Function()? userLoggedOutInitialPage,
     TResult Function(String message, String uid)? loginSuccess,
     TResult Function(String message)? loginFailed,
