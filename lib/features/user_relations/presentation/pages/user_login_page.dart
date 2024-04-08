@@ -1,9 +1,10 @@
 import 'dart:convert';
-
+import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/utils.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
@@ -274,7 +275,7 @@ class LogInInitialPage extends StatelessWidget {
               alignment: AlignmentDirectional.topEnd,
               children: [
                 CircleAvatar(backgroundImage: MemoryImage(const Base64Decoder().convert(user.userAvatar)), radius: 60,),
-                IconButton(onPressed: (){}, icon: Icon(Icons.change_circle_sharp, size: 40,))
+                IconButton(onPressed: (){}, icon: const Icon(Icons.change_circle_sharp, size: 40,))
               ],
             ),
             Row(
@@ -309,21 +310,63 @@ class LogInInitialPage extends StatelessWidget {
             // ),
           ],
         )),
-        const Text('MY FAV SPOTS', style: TextStyle(fontSize: 30),),
+        const Text('MY FAV SPOTS', style: TextStyle(fontSize: 35, fontWeight: FontWeight.w100),),
         Expanded(
           flex:5,
           child: favSpots.isNotEmpty? ListView.builder(
             itemCount: favSpots.length,
-              itemExtent: 150,
+              itemExtent: 180,
               itemBuilder: (BuildContext context, int index){
               final spot = favSpots[index];
-            return Card(child: Center(child: Text(spot.spotName)));
-          }): Center(child: Text('No favourite spots'),),
+            return Stack(
+              alignment: AlignmentDirectional.topEnd,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: GestureDetector(
+                    onTap: (){
+                      context.pushNamed('spot_details_page', pathParameters: {'uid': user.userID, 'spotID': spot.spotID});
+                    },
+                    child: Card(
+                        child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        CircleAvatar(backgroundImage: MemoryImage(const Base64Decoder().convert(spot.spotPhotos[0])),radius: 70,),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            RatingBarIndicator(
+                              itemBuilder: (context, index) => const Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                              ),
+                              rating: spot.spotRanks.sum / spot.spotRanks.length,
+                              itemCount: 5,
+                              itemSize: 40,
+                            ),
+                            Text(spot.spotName.toUpperCase(), style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w300),),
+                          ],
+                        ),
+                      ],
+                    )),
+                  ),
+                ),
+                IconButton(onPressed: () async{
+                   await cubit.removeSpotFromFav(user: user, spotID: spot.spotID, spots: favSpots);
+                   cubit.loginInitialPage(userLoggedIn: USER_LOGGED_IN.toString(), uid: user.userID);
+                   // showDialog(context: context, builder: (BuildContext context){
+                   //   return AlertDialog(backgroundColor: Colors.transparent, content: Icon(Icons.favorite_border_outlined),);
+                   // });
+                }, icon: const Icon(Icons.delete_outline, size: 40,))
+              ],
+            );
+          }): const Center(child: Text('No favourite spots'),),
         ),
         Center(child: CupertinoButton(onPressed: (){
           cubit.logOutUser();
-        }, child: const Text('LogOut'),
+        }, color: Colors.black, child: const Text('Logout'),
         ),),
+        const SizedBox(height: 10.0,),
       ],
     );
   }

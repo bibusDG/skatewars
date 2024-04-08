@@ -138,8 +138,10 @@ class ShowSkateSpotsPage extends HookWidget {
                                   ),
                                 ),
                                 IconButton(onPressed: (){
-                                  if(USER_LOGGED_IN){
+                                  if(USER_LOGGED_IN && !user.favouriteSpots.contains(skateSpot.spotID)){
                                     _showSkateSpotsCubit.addSpotToFavorites(userID: uid, spotID: skateSpot.spotID);
+                                  }else if(USER_LOGGED_IN && user.favouriteSpots.contains(skateSpot.spotID)){
+                                    print('spot already in fav');
                                   }else{
                                     print('You must be logged in');
                                   }

@@ -213,4 +213,13 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
     });
   }
 
+  Future<void> removeSpotFromFav({required MyUser user, required String spotID, required List<SkateSpot> spots}) async{
+    final result = await removeSpotFromFavoritesUseCase(RemoveSpotFromFavoritesParams(userID: user.userID, spotID: spotID));
+    result.fold((failure){
+
+    }, (success){
+      print('spot deleted');
+    });
+  }
+
 }
