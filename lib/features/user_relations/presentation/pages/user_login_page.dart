@@ -1,19 +1,15 @@
 import 'dart:convert';
 import 'package:collection/collection.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:get/utils.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:skatewars/core/classes/custom_snackbar.dart';
 import 'package:skatewars/core/constants/constants.dart';
 import 'package:skatewars/core/custom_widgets/custom_bottom_app_bar.dart';
-import 'package:skatewars/core/failure/failure.dart';
 import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot.dart';
-import 'package:skatewars/features/show_skate_spots_page/domain/usecases/get_spot_by_id_usecase.dart';
 import 'package:skatewars/features/user_relations/presentation/bloc/user_auth_cubit.dart';
 
 import '../../../../core/custom_widgets/custom_text_form_field.dart';
@@ -36,8 +32,6 @@ class UserLoginPage extends HookWidget {
 
     final _authCubit = useBloc<UserAuthCubit>();
     final _authState = useBlocBuilder(_authCubit);
-
-    final List<SkateSpot> _userFav = useState<List<SkateSpot>>([]).value;
 
     useEffect((){
       _authCubit.loginInitialPage(userLoggedIn: userLoggedIn, uid: uid);
@@ -79,6 +73,17 @@ class UserLoginPage extends HookWidget {
       action.whenOrNull(
         loginActionMessage: (message) => CustomSnackBar().mySnackBar(context, message),
         signInActionMessage: (message) => CustomSnackBar().mySnackBar(context, message),
+        dialogBox: (title, message) async{
+          showDialog(context: context, builder: (BuildContext context){
+            return AlertDialog(
+              title: Center(child: Text(title)),
+              content: SizedBox(height: 50, width: 350, child: Center(child: Text(message))),);
+          });
+          await Future.delayed(const Duration(seconds: 3));
+          if(context.mounted){
+            context.pop();
+          }
+        },
       );
     });
 
@@ -354,9 +359,6 @@ class LogInInitialPage extends StatelessWidget {
                 IconButton(onPressed: () async{
                    await cubit.removeSpotFromFav(user: user, spotID: spot.spotID, spots: favSpots);
                    cubit.loginInitialPage(userLoggedIn: USER_LOGGED_IN.toString(), uid: user.userID);
-                   // showDialog(context: context, builder: (BuildContext context){
-                   //   return AlertDialog(backgroundColor: Colors.transparent, content: Icon(Icons.favorite_border_outlined),);
-                   // });
                 }, icon: const Icon(Icons.delete_outline, size: 40,))
               ],
             );

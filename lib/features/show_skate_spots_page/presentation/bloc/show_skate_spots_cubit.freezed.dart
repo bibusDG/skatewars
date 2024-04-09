@@ -871,3 +871,311 @@ abstract class _ShowSpotsPageEmpty implements ShowSkateSpotsState {
   _$$ShowSpotsPageEmptyImplCopyWith<_$ShowSpotsPageEmptyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$ShowSkateSpotsAction {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() actionSpotsInitial,
+    required TResult Function(String title, String message) addSpotDialogBox,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? actionSpotsInitial,
+    TResult? Function(String title, String message)? addSpotDialogBox,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? actionSpotsInitial,
+    TResult Function(String title, String message)? addSpotDialogBox,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ActionSpotsInitial value) actionSpotsInitial,
+    required TResult Function(_AddSpotDialogBox value) addSpotDialogBox,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ActionSpotsInitial value)? actionSpotsInitial,
+    TResult? Function(_AddSpotDialogBox value)? addSpotDialogBox,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ActionSpotsInitial value)? actionSpotsInitial,
+    TResult Function(_AddSpotDialogBox value)? addSpotDialogBox,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ShowSkateSpotsActionCopyWith<$Res> {
+  factory $ShowSkateSpotsActionCopyWith(ShowSkateSpotsAction value,
+          $Res Function(ShowSkateSpotsAction) then) =
+      _$ShowSkateSpotsActionCopyWithImpl<$Res, ShowSkateSpotsAction>;
+}
+
+/// @nodoc
+class _$ShowSkateSpotsActionCopyWithImpl<$Res,
+        $Val extends ShowSkateSpotsAction>
+    implements $ShowSkateSpotsActionCopyWith<$Res> {
+  _$ShowSkateSpotsActionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$ActionSpotsInitialImplCopyWith<$Res> {
+  factory _$$ActionSpotsInitialImplCopyWith(_$ActionSpotsInitialImpl value,
+          $Res Function(_$ActionSpotsInitialImpl) then) =
+      __$$ActionSpotsInitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ActionSpotsInitialImplCopyWithImpl<$Res>
+    extends _$ShowSkateSpotsActionCopyWithImpl<$Res, _$ActionSpotsInitialImpl>
+    implements _$$ActionSpotsInitialImplCopyWith<$Res> {
+  __$$ActionSpotsInitialImplCopyWithImpl(_$ActionSpotsInitialImpl _value,
+      $Res Function(_$ActionSpotsInitialImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ActionSpotsInitialImpl implements _ActionSpotsInitial {
+  const _$ActionSpotsInitialImpl();
+
+  @override
+  String toString() {
+    return 'ShowSkateSpotsAction.actionSpotsInitial()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ActionSpotsInitialImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() actionSpotsInitial,
+    required TResult Function(String title, String message) addSpotDialogBox,
+  }) {
+    return actionSpotsInitial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? actionSpotsInitial,
+    TResult? Function(String title, String message)? addSpotDialogBox,
+  }) {
+    return actionSpotsInitial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? actionSpotsInitial,
+    TResult Function(String title, String message)? addSpotDialogBox,
+    required TResult orElse(),
+  }) {
+    if (actionSpotsInitial != null) {
+      return actionSpotsInitial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ActionSpotsInitial value) actionSpotsInitial,
+    required TResult Function(_AddSpotDialogBox value) addSpotDialogBox,
+  }) {
+    return actionSpotsInitial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ActionSpotsInitial value)? actionSpotsInitial,
+    TResult? Function(_AddSpotDialogBox value)? addSpotDialogBox,
+  }) {
+    return actionSpotsInitial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ActionSpotsInitial value)? actionSpotsInitial,
+    TResult Function(_AddSpotDialogBox value)? addSpotDialogBox,
+    required TResult orElse(),
+  }) {
+    if (actionSpotsInitial != null) {
+      return actionSpotsInitial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ActionSpotsInitial implements ShowSkateSpotsAction {
+  const factory _ActionSpotsInitial() = _$ActionSpotsInitialImpl;
+}
+
+/// @nodoc
+abstract class _$$AddSpotDialogBoxImplCopyWith<$Res> {
+  factory _$$AddSpotDialogBoxImplCopyWith(_$AddSpotDialogBoxImpl value,
+          $Res Function(_$AddSpotDialogBoxImpl) then) =
+      __$$AddSpotDialogBoxImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String title, String message});
+}
+
+/// @nodoc
+class __$$AddSpotDialogBoxImplCopyWithImpl<$Res>
+    extends _$ShowSkateSpotsActionCopyWithImpl<$Res, _$AddSpotDialogBoxImpl>
+    implements _$$AddSpotDialogBoxImplCopyWith<$Res> {
+  __$$AddSpotDialogBoxImplCopyWithImpl(_$AddSpotDialogBoxImpl _value,
+      $Res Function(_$AddSpotDialogBoxImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+    Object? message = null,
+  }) {
+    return _then(_$AddSpotDialogBoxImpl(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddSpotDialogBoxImpl implements _AddSpotDialogBox {
+  const _$AddSpotDialogBoxImpl({required this.title, required this.message});
+
+  @override
+  final String title;
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ShowSkateSpotsAction.addSpotDialogBox(title: $title, message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddSpotDialogBoxImpl &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, title, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddSpotDialogBoxImplCopyWith<_$AddSpotDialogBoxImpl> get copyWith =>
+      __$$AddSpotDialogBoxImplCopyWithImpl<_$AddSpotDialogBoxImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() actionSpotsInitial,
+    required TResult Function(String title, String message) addSpotDialogBox,
+  }) {
+    return addSpotDialogBox(title, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? actionSpotsInitial,
+    TResult? Function(String title, String message)? addSpotDialogBox,
+  }) {
+    return addSpotDialogBox?.call(title, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? actionSpotsInitial,
+    TResult Function(String title, String message)? addSpotDialogBox,
+    required TResult orElse(),
+  }) {
+    if (addSpotDialogBox != null) {
+      return addSpotDialogBox(title, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ActionSpotsInitial value) actionSpotsInitial,
+    required TResult Function(_AddSpotDialogBox value) addSpotDialogBox,
+  }) {
+    return addSpotDialogBox(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ActionSpotsInitial value)? actionSpotsInitial,
+    TResult? Function(_AddSpotDialogBox value)? addSpotDialogBox,
+  }) {
+    return addSpotDialogBox?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ActionSpotsInitial value)? actionSpotsInitial,
+    TResult Function(_AddSpotDialogBox value)? addSpotDialogBox,
+    required TResult orElse(),
+  }) {
+    if (addSpotDialogBox != null) {
+      return addSpotDialogBox(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddSpotDialogBox implements ShowSkateSpotsAction {
+  const factory _AddSpotDialogBox(
+      {required final String title,
+      required final String message}) = _$AddSpotDialogBoxImpl;
+
+  String get title;
+  String get message;
+  @JsonKey(ignore: true)
+  _$$AddSpotDialogBoxImplCopyWith<_$AddSpotDialogBoxImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

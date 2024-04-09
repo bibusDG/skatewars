@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:skatewars/core/constants/constants.dart';
 import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot.dart';
@@ -15,9 +16,10 @@ import '../../domain/usecases/remove_spot_from_favorites_usecase.dart';
 import '../../domain/usecases/show_skate_spots_usecase.dart';
 
 part 'show_skate_spots_state.dart';
+part 'show_skate_spots_action.dart';
 part 'show_skate_spots_cubit.freezed.dart';
 @injectable
-class ShowSkateSpotsCubit extends Cubit<ShowSkateSpotsState> {
+class ShowSkateSpotsCubit extends ActionCubit<ShowSkateSpotsState, ShowSkateSpotsAction> {
   final GetUserByIDUseCase getUserByIDUseCase;
   final ShowSkateSpotsUseCase showSkateSpotsUseCase;
   final GetUserCurrentPositionUseCase getUserCurrentPositionUseCase;
@@ -84,8 +86,9 @@ class ShowSkateSpotsCubit extends Cubit<ShowSkateSpotsState> {
   Future<void> addSpotToFavorites({required String userID, required String spotID}) async{
     final result = await addSpotToFavoritesUseCase(AddSpotToFavoritesParams(spotID: spotID, userID: userID));
     result.fold((failure){
-      print('not added');
+      dispatch(const ShowSkateSpotsAction.addSpotDialogBox(title: 'Add spot error', message: 'Unable to add new spot'));
     }, (success){
+      dispatch(const ShowSkateSpotsAction.addSpotDialogBox(title: 'Spot added', message: 'Spot added successfully to favs.'));
       print('spot added to fav');
     });
   }

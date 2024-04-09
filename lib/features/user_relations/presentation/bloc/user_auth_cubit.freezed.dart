@@ -3021,6 +3021,7 @@ mixin _$UserAuthAction {
     required TResult Function() initial,
     required TResult Function(String message) loginActionMessage,
     required TResult Function(String message) signInActionMessage,
+    required TResult Function(String title, String message) dialogBox,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -3028,6 +3029,7 @@ mixin _$UserAuthAction {
     TResult? Function()? initial,
     TResult? Function(String message)? loginActionMessage,
     TResult? Function(String message)? signInActionMessage,
+    TResult? Function(String title, String message)? dialogBox,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -3035,6 +3037,7 @@ mixin _$UserAuthAction {
     TResult Function()? initial,
     TResult Function(String message)? loginActionMessage,
     TResult Function(String message)? signInActionMessage,
+    TResult Function(String title, String message)? dialogBox,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -3043,6 +3046,7 @@ mixin _$UserAuthAction {
     required TResult Function(_ActionInitial value) initial,
     required TResult Function(_LoginActionMessage value) loginActionMessage,
     required TResult Function(_SignInActionMessage value) signInActionMessage,
+    required TResult Function(_DialogBox value) dialogBox,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -3050,6 +3054,7 @@ mixin _$UserAuthAction {
     TResult? Function(_ActionInitial value)? initial,
     TResult? Function(_LoginActionMessage value)? loginActionMessage,
     TResult? Function(_SignInActionMessage value)? signInActionMessage,
+    TResult? Function(_DialogBox value)? dialogBox,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -3057,6 +3062,7 @@ mixin _$UserAuthAction {
     TResult Function(_ActionInitial value)? initial,
     TResult Function(_LoginActionMessage value)? loginActionMessage,
     TResult Function(_SignInActionMessage value)? signInActionMessage,
+    TResult Function(_DialogBox value)? dialogBox,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -3121,6 +3127,7 @@ class _$ActionInitialImpl implements _ActionInitial {
     required TResult Function() initial,
     required TResult Function(String message) loginActionMessage,
     required TResult Function(String message) signInActionMessage,
+    required TResult Function(String title, String message) dialogBox,
   }) {
     return initial();
   }
@@ -3131,6 +3138,7 @@ class _$ActionInitialImpl implements _ActionInitial {
     TResult? Function()? initial,
     TResult? Function(String message)? loginActionMessage,
     TResult? Function(String message)? signInActionMessage,
+    TResult? Function(String title, String message)? dialogBox,
   }) {
     return initial?.call();
   }
@@ -3141,6 +3149,7 @@ class _$ActionInitialImpl implements _ActionInitial {
     TResult Function()? initial,
     TResult Function(String message)? loginActionMessage,
     TResult Function(String message)? signInActionMessage,
+    TResult Function(String title, String message)? dialogBox,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -3155,6 +3164,7 @@ class _$ActionInitialImpl implements _ActionInitial {
     required TResult Function(_ActionInitial value) initial,
     required TResult Function(_LoginActionMessage value) loginActionMessage,
     required TResult Function(_SignInActionMessage value) signInActionMessage,
+    required TResult Function(_DialogBox value) dialogBox,
   }) {
     return initial(this);
   }
@@ -3165,6 +3175,7 @@ class _$ActionInitialImpl implements _ActionInitial {
     TResult? Function(_ActionInitial value)? initial,
     TResult? Function(_LoginActionMessage value)? loginActionMessage,
     TResult? Function(_SignInActionMessage value)? signInActionMessage,
+    TResult? Function(_DialogBox value)? dialogBox,
   }) {
     return initial?.call(this);
   }
@@ -3175,6 +3186,7 @@ class _$ActionInitialImpl implements _ActionInitial {
     TResult Function(_ActionInitial value)? initial,
     TResult Function(_LoginActionMessage value)? loginActionMessage,
     TResult Function(_SignInActionMessage value)? signInActionMessage,
+    TResult Function(_DialogBox value)? dialogBox,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -3256,6 +3268,7 @@ class _$LoginActionMessageImpl implements _LoginActionMessage {
     required TResult Function() initial,
     required TResult Function(String message) loginActionMessage,
     required TResult Function(String message) signInActionMessage,
+    required TResult Function(String title, String message) dialogBox,
   }) {
     return loginActionMessage(message);
   }
@@ -3266,6 +3279,7 @@ class _$LoginActionMessageImpl implements _LoginActionMessage {
     TResult? Function()? initial,
     TResult? Function(String message)? loginActionMessage,
     TResult? Function(String message)? signInActionMessage,
+    TResult? Function(String title, String message)? dialogBox,
   }) {
     return loginActionMessage?.call(message);
   }
@@ -3276,6 +3290,7 @@ class _$LoginActionMessageImpl implements _LoginActionMessage {
     TResult Function()? initial,
     TResult Function(String message)? loginActionMessage,
     TResult Function(String message)? signInActionMessage,
+    TResult Function(String title, String message)? dialogBox,
     required TResult orElse(),
   }) {
     if (loginActionMessage != null) {
@@ -3290,6 +3305,7 @@ class _$LoginActionMessageImpl implements _LoginActionMessage {
     required TResult Function(_ActionInitial value) initial,
     required TResult Function(_LoginActionMessage value) loginActionMessage,
     required TResult Function(_SignInActionMessage value) signInActionMessage,
+    required TResult Function(_DialogBox value) dialogBox,
   }) {
     return loginActionMessage(this);
   }
@@ -3300,6 +3316,7 @@ class _$LoginActionMessageImpl implements _LoginActionMessage {
     TResult? Function(_ActionInitial value)? initial,
     TResult? Function(_LoginActionMessage value)? loginActionMessage,
     TResult? Function(_SignInActionMessage value)? signInActionMessage,
+    TResult? Function(_DialogBox value)? dialogBox,
   }) {
     return loginActionMessage?.call(this);
   }
@@ -3310,6 +3327,7 @@ class _$LoginActionMessageImpl implements _LoginActionMessage {
     TResult Function(_ActionInitial value)? initial,
     TResult Function(_LoginActionMessage value)? loginActionMessage,
     TResult Function(_SignInActionMessage value)? signInActionMessage,
+    TResult Function(_DialogBox value)? dialogBox,
     required TResult orElse(),
   }) {
     if (loginActionMessage != null) {
@@ -3397,6 +3415,7 @@ class _$SignInActionMessageImpl implements _SignInActionMessage {
     required TResult Function() initial,
     required TResult Function(String message) loginActionMessage,
     required TResult Function(String message) signInActionMessage,
+    required TResult Function(String title, String message) dialogBox,
   }) {
     return signInActionMessage(message);
   }
@@ -3407,6 +3426,7 @@ class _$SignInActionMessageImpl implements _SignInActionMessage {
     TResult? Function()? initial,
     TResult? Function(String message)? loginActionMessage,
     TResult? Function(String message)? signInActionMessage,
+    TResult? Function(String title, String message)? dialogBox,
   }) {
     return signInActionMessage?.call(message);
   }
@@ -3417,6 +3437,7 @@ class _$SignInActionMessageImpl implements _SignInActionMessage {
     TResult Function()? initial,
     TResult Function(String message)? loginActionMessage,
     TResult Function(String message)? signInActionMessage,
+    TResult Function(String title, String message)? dialogBox,
     required TResult orElse(),
   }) {
     if (signInActionMessage != null) {
@@ -3431,6 +3452,7 @@ class _$SignInActionMessageImpl implements _SignInActionMessage {
     required TResult Function(_ActionInitial value) initial,
     required TResult Function(_LoginActionMessage value) loginActionMessage,
     required TResult Function(_SignInActionMessage value) signInActionMessage,
+    required TResult Function(_DialogBox value) dialogBox,
   }) {
     return signInActionMessage(this);
   }
@@ -3441,6 +3463,7 @@ class _$SignInActionMessageImpl implements _SignInActionMessage {
     TResult? Function(_ActionInitial value)? initial,
     TResult? Function(_LoginActionMessage value)? loginActionMessage,
     TResult? Function(_SignInActionMessage value)? signInActionMessage,
+    TResult? Function(_DialogBox value)? dialogBox,
   }) {
     return signInActionMessage?.call(this);
   }
@@ -3451,6 +3474,7 @@ class _$SignInActionMessageImpl implements _SignInActionMessage {
     TResult Function(_ActionInitial value)? initial,
     TResult Function(_LoginActionMessage value)? loginActionMessage,
     TResult Function(_SignInActionMessage value)? signInActionMessage,
+    TResult Function(_DialogBox value)? dialogBox,
     required TResult orElse(),
   }) {
     if (signInActionMessage != null) {
@@ -3467,5 +3491,161 @@ abstract class _SignInActionMessage implements UserAuthAction {
   String get message;
   @JsonKey(ignore: true)
   _$$SignInActionMessageImplCopyWith<_$SignInActionMessageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DialogBoxImplCopyWith<$Res> {
+  factory _$$DialogBoxImplCopyWith(
+          _$DialogBoxImpl value, $Res Function(_$DialogBoxImpl) then) =
+      __$$DialogBoxImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String title, String message});
+}
+
+/// @nodoc
+class __$$DialogBoxImplCopyWithImpl<$Res>
+    extends _$UserAuthActionCopyWithImpl<$Res, _$DialogBoxImpl>
+    implements _$$DialogBoxImplCopyWith<$Res> {
+  __$$DialogBoxImplCopyWithImpl(
+      _$DialogBoxImpl _value, $Res Function(_$DialogBoxImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+    Object? message = null,
+  }) {
+    return _then(_$DialogBoxImpl(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DialogBoxImpl implements _DialogBox {
+  const _$DialogBoxImpl({required this.title, required this.message});
+
+  @override
+  final String title;
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'UserAuthAction.dialogBox(title: $title, message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DialogBoxImpl &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, title, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DialogBoxImplCopyWith<_$DialogBoxImpl> get copyWith =>
+      __$$DialogBoxImplCopyWithImpl<_$DialogBoxImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) loginActionMessage,
+    required TResult Function(String message) signInActionMessage,
+    required TResult Function(String title, String message) dialogBox,
+  }) {
+    return dialogBox(title, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? loginActionMessage,
+    TResult? Function(String message)? signInActionMessage,
+    TResult? Function(String title, String message)? dialogBox,
+  }) {
+    return dialogBox?.call(title, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? loginActionMessage,
+    TResult Function(String message)? signInActionMessage,
+    TResult Function(String title, String message)? dialogBox,
+    required TResult orElse(),
+  }) {
+    if (dialogBox != null) {
+      return dialogBox(title, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ActionInitial value) initial,
+    required TResult Function(_LoginActionMessage value) loginActionMessage,
+    required TResult Function(_SignInActionMessage value) signInActionMessage,
+    required TResult Function(_DialogBox value) dialogBox,
+  }) {
+    return dialogBox(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ActionInitial value)? initial,
+    TResult? Function(_LoginActionMessage value)? loginActionMessage,
+    TResult? Function(_SignInActionMessage value)? signInActionMessage,
+    TResult? Function(_DialogBox value)? dialogBox,
+  }) {
+    return dialogBox?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ActionInitial value)? initial,
+    TResult Function(_LoginActionMessage value)? loginActionMessage,
+    TResult Function(_SignInActionMessage value)? signInActionMessage,
+    TResult Function(_DialogBox value)? dialogBox,
+    required TResult orElse(),
+  }) {
+    if (dialogBox != null) {
+      return dialogBox(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DialogBox implements UserAuthAction {
+  const factory _DialogBox(
+      {required final String title,
+      required final String message}) = _$DialogBoxImpl;
+
+  String get title;
+  String get message;
+  @JsonKey(ignore: true)
+  _$$DialogBoxImplCopyWith<_$DialogBoxImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -40,6 +40,12 @@ class ShowSkateSpotsPage extends HookWidget {
       [_showSkateSpotsCubit],
     );
 
+    useActionListener(_showSkateSpotsCubit, (action){
+      action.whenOrNull(
+        addSpotDialogBox: (title, message) => showAddSpotDialog(title: title, message: message, context: context),
+      );
+    });
+
     return Scaffold(
       bottomNavigationBar: CustomBottomAppBar(uid: uid,),
       appBar: AppBar(
@@ -141,9 +147,9 @@ class ShowSkateSpotsPage extends HookWidget {
                                   if(USER_LOGGED_IN && !user.favouriteSpots.contains(skateSpot.spotID)){
                                     _showSkateSpotsCubit.addSpotToFavorites(userID: uid, spotID: skateSpot.spotID);
                                   }else if(USER_LOGGED_IN && user.favouriteSpots.contains(skateSpot.spotID)){
-                                    print('spot already in fav');
+                                    showAddSpotDialog(title: 'Uppss....', message: 'Spot already in Your favs', context: context);
                                   }else{
-                                    print('You must be logged in');
+                                    showAddSpotDialog(title: 'Add error', message: 'To add spot to favs, you need to be logged in', context: context);
                                   }
                                 }, icon: const Icon(Icons.favorite_border, size: 40, color: Colors.deepOrange,)),
                               ],
@@ -214,4 +220,18 @@ class ShowSkateSpotsPage extends HookWidget {
               ),
     );
   }
+
+  showAddSpotDialog({required String title, required String message, required BuildContext context}) async{
+    showDialog(context: context, builder: (BuildContext context){
+      return AlertDialog(
+        title: Center(child: Text(title),),
+        content: SizedBox(height: 50, width: 350, child: Center(child: Text(message)),)
+      );
+    });
+    await Future.delayed(const Duration(seconds: 3));
+    if(context.mounted){
+      context.pop();
+    }
+  }
+
 }

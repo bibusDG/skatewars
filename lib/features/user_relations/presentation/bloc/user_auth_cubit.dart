@@ -216,8 +216,9 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
   Future<void> removeSpotFromFav({required MyUser user, required String spotID, required List<SkateSpot> spots}) async{
     final result = await removeSpotFromFavoritesUseCase(RemoveSpotFromFavoritesParams(userID: user.userID, spotID: spotID));
     result.fold((failure){
-
+      dispatch(const UserAuthAction.dialogBox(title: 'Removing error', message: 'Unable to remove spot from favs.'));
     }, (success){
+      dispatch(const UserAuthAction.dialogBox(title: 'Spot removed', message: 'Spot removed successfully from favs.'));
       print('spot deleted');
     });
   }
