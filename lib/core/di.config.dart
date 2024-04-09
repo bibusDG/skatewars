@@ -11,7 +11,7 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:skatewars/features/add_skate_spot_page/data/datasources/add_skate_spot_data_source.dart'
-    as _i22;
+    as _i23;
 import 'package:skatewars/features/add_skate_spot_page/data/repositories/add_skate_spot_repo_imp.dart'
     as _i27;
 import 'package:skatewars/features/add_skate_spot_page/domain/repositories/add_skate_spot_repo.dart'
@@ -19,7 +19,7 @@ import 'package:skatewars/features/add_skate_spot_page/domain/repositories/add_s
 import 'package:skatewars/features/add_skate_spot_page/domain/usecases/add_skate_spot_usecase.dart'
     as _i28;
 import 'package:skatewars/features/add_skate_spot_page/presentation/bloc/add_skate_spot_cubit.dart'
-    as _i35;
+    as _i36;
 import 'package:skatewars/features/add_skate_spot_page/presentation/bloc/add_spot_map_bloc/add_spot_map_cubit.dart'
     as _i29;
 import 'package:skatewars/features/show_skate_spots_page/data/datasources/show_skate_spots_data_source.dart'
@@ -37,7 +37,7 @@ import 'package:skatewars/features/show_skate_spots_page/domain/usecases/remove_
 import 'package:skatewars/features/show_skate_spots_page/domain/usecases/show_skate_spots_usecase.dart'
     as _i34;
 import 'package:skatewars/features/show_skate_spots_page/presentation/bloc/show_skate_spots_cubit.dart'
-    as _i36;
+    as _i37;
 import 'package:skatewars/features/spot_details_page/data/datasources/spot_details_data_source.dart'
     as _i6;
 import 'package:skatewars/features/spot_details_page/data/repositories/spot_details_repo_imp.dart'
@@ -46,6 +46,8 @@ import 'package:skatewars/features/spot_details_page/domain/repositories/spot_de
     as _i16;
 import 'package:skatewars/features/spot_details_page/domain/usecases/add_user_to_spot_usecase.dart'
     as _i19;
+import 'package:skatewars/features/spot_details_page/domain/usecases/get_comment_by_id_usecase.dart'
+    as _i22;
 import 'package:skatewars/features/spot_details_page/domain/usecases/get_spot_details_usecase.dart'
     as _i18;
 import 'package:skatewars/features/spot_details_page/domain/usecases/rate_spot_usecase.dart'
@@ -53,7 +55,7 @@ import 'package:skatewars/features/spot_details_page/domain/usecases/rate_spot_u
 import 'package:skatewars/features/spot_details_page/domain/usecases/remove_user_from_spot_usecase.dart'
     as _i20;
 import 'package:skatewars/features/spot_details_page/presentation/bloc/spot_details_cubit.dart'
-    as _i23;
+    as _i35;
 import 'package:skatewars/features/user_relations/data/datasources/user_relations_data_source.dart'
     as _i3;
 import 'package:skatewars/features/user_relations/data/repositories/user_relations_repo_imp.dart'
@@ -124,18 +126,13 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i20.RemoveUserFromSpotUseCase(repo: gh<_i16.SpotDetailsRepo>()));
     gh.factory<_i21.RateSpotUseCase>(
         () => _i21.RateSpotUseCase(repo: gh<_i16.SpotDetailsRepo>()));
-    gh.singleton<_i22.AddSkateSpotDataSource>(() => _i22.AddSkateSpotDataImp());
-    gh.factory<_i23.SpotDetailsCubit>(() => _i23.SpotDetailsCubit(
-          getSpotDetailsUseCase: gh<_i18.GetSpotDetailsUseCase>(),
-          rateSpotUseCase: gh<_i21.RateSpotUseCase>(),
-          removeUserFromSpotUseCase: gh<_i20.RemoveUserFromSpotUseCase>(),
-          addUserToSpotUseCase: gh<_i19.AddUserToSpotUseCase>(),
-          getUserByIDUseCase: gh<_i12.GetUserByIDUseCase>(),
-        ));
+    gh.factory<_i22.GetCommentByIdUseCase>(
+        () => _i22.GetCommentByIdUseCase(repo: gh<_i16.SpotDetailsRepo>()));
+    gh.singleton<_i23.AddSkateSpotDataSource>(() => _i23.AddSkateSpotDataImp());
     gh.singleton<_i24.ShowSkateSpotsRepo>(() => _i25.ShowSkateSpotRepoImp(
         showSkateSpotsDataSource: gh<_i15.ShowSkateSpotsDataSource>()));
     gh.singleton<_i26.AddSkateSpotRepo>(() => _i27.AddSkateSpotRepoImp(
-        addSkateSpotDataSource: gh<_i22.AddSkateSpotDataSource>()));
+        addSkateSpotDataSource: gh<_i23.AddSkateSpotDataSource>()));
     gh.factory<_i28.AddSkateSpotUseCase>(
         () => _i28.AddSkateSpotUseCase(repo: gh<_i26.AddSkateSpotRepo>()));
     gh.factory<_i29.AddSpotMapCubit>(() => _i29.AddSpotMapCubit(
@@ -163,12 +160,20 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.factory<_i34.ShowSkateSpotsUseCase>(() => _i34.ShowSkateSpotsUseCase(
         showSkateSpotsRepo: gh<_i24.ShowSkateSpotsRepo>()));
-    gh.factory<_i35.AddSkateSpotCubit>(() => _i35.AddSkateSpotCubit(
+    gh.factory<_i35.SpotDetailsCubit>(() => _i35.SpotDetailsCubit(
+          getSpotDetailsUseCase: gh<_i18.GetSpotDetailsUseCase>(),
+          getCommentByIdUseCase: gh<_i22.GetCommentByIdUseCase>(),
+          rateSpotUseCase: gh<_i21.RateSpotUseCase>(),
+          removeUserFromSpotUseCase: gh<_i20.RemoveUserFromSpotUseCase>(),
+          addUserToSpotUseCase: gh<_i19.AddUserToSpotUseCase>(),
+          getUserByIDUseCase: gh<_i12.GetUserByIDUseCase>(),
+        ));
+    gh.factory<_i36.AddSkateSpotCubit>(() => _i36.AddSkateSpotCubit(
           addSkateSpotUseCase: gh<_i28.AddSkateSpotUseCase>(),
           getUserCurrentPositionUseCase:
               gh<_i7.GetUserCurrentPositionUseCase>(),
         ));
-    gh.factory<_i36.ShowSkateSpotsCubit>(() => _i36.ShowSkateSpotsCubit(
+    gh.factory<_i37.ShowSkateSpotsCubit>(() => _i37.ShowSkateSpotsCubit(
           showSkateSpotsUseCase: gh<_i34.ShowSkateSpotsUseCase>(),
           getUserCurrentPositionUseCase:
               gh<_i7.GetUserCurrentPositionUseCase>(),

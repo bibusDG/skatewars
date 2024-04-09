@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:skatewars/core/failure/failure.dart';
 import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot.dart';
 import 'package:skatewars/features/spot_details_page/data/datasources/spot_details_data_source.dart';
+import 'package:skatewars/features/spot_details_page/domain/entities/user_comment.dart';
 import 'package:skatewars/features/spot_details_page/domain/repositories/spot_details_repo.dart';
 import 'package:skatewars/features/spot_details_page/spot_details_failures.dart';
 
@@ -70,6 +71,19 @@ class SpotDetailsRepoImp implements SpotDetailsRepo{
       return (const Left(RateSpotFailure(failureMessage: 'Unable to rate spot')));
     }
     // TODO: implement rateSpot
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<Failure, UserComment>> getCommentByID({required String commentID}) async{
+    try{
+      final result = await spotDetailsDatasource.getCommentByID(commentID: commentID);
+      return Right(result);
+    }catch(error){
+      print('Unabele to get comment by ID');
+      return (const Left(GetCommentFailure(failureMessage: 'Unable to get comment by ID')));
+    }
+    // TODO: implement getCommentByID
     throw UnimplementedError();
   }
 }

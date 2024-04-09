@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot.dart';
+import 'package:skatewars/features/spot_details_page/domain/entities/user_comment.dart';
 
 import '../../../../core/failure/failure.dart';
 
@@ -26,6 +27,10 @@ abstract class SpotDetailsRepo{
     required String creationDate,
     required String spotID,
     required double userRate,
+});
+
+  Future<Either<Failure, UserComment>> getCommentByID({
+    required String commentID,
 });
 
 }

@@ -711,18 +711,25 @@ mixin _$SpotDetailsAction {
   TResult when<TResult extends Object?>({
     required TResult Function() spotDetailsActionInitial,
     required TResult Function(String message) spotRatingSnackBar,
+    required TResult Function(String message) userAddedToSpot,
+    required TResult Function(List<UserComment> listOfComments)
+        listOfCommentDialogBox,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? spotDetailsActionInitial,
     TResult? Function(String message)? spotRatingSnackBar,
+    TResult? Function(String message)? userAddedToSpot,
+    TResult? Function(List<UserComment> listOfComments)? listOfCommentDialogBox,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? spotDetailsActionInitial,
     TResult Function(String message)? spotRatingSnackBar,
+    TResult Function(String message)? userAddedToSpot,
+    TResult Function(List<UserComment> listOfComments)? listOfCommentDialogBox,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -731,6 +738,9 @@ mixin _$SpotDetailsAction {
     required TResult Function(_SpotDetailsActionInitial value)
         spotDetailsActionInitial,
     required TResult Function(_SpotRatingSnackBar value) spotRatingSnackBar,
+    required TResult Function(_UserAddedToSpot value) userAddedToSpot,
+    required TResult Function(_ListOfCommentsDialogBox value)
+        listOfCommentDialogBox,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -738,12 +748,16 @@ mixin _$SpotDetailsAction {
     TResult? Function(_SpotDetailsActionInitial value)?
         spotDetailsActionInitial,
     TResult? Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+    TResult? Function(_UserAddedToSpot value)? userAddedToSpot,
+    TResult? Function(_ListOfCommentsDialogBox value)? listOfCommentDialogBox,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SpotDetailsActionInitial value)? spotDetailsActionInitial,
     TResult Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+    TResult Function(_UserAddedToSpot value)? userAddedToSpot,
+    TResult Function(_ListOfCommentsDialogBox value)? listOfCommentDialogBox,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -811,6 +825,9 @@ class _$SpotDetailsActionInitialImpl implements _SpotDetailsActionInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() spotDetailsActionInitial,
     required TResult Function(String message) spotRatingSnackBar,
+    required TResult Function(String message) userAddedToSpot,
+    required TResult Function(List<UserComment> listOfComments)
+        listOfCommentDialogBox,
   }) {
     return spotDetailsActionInitial();
   }
@@ -820,6 +837,8 @@ class _$SpotDetailsActionInitialImpl implements _SpotDetailsActionInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? spotDetailsActionInitial,
     TResult? Function(String message)? spotRatingSnackBar,
+    TResult? Function(String message)? userAddedToSpot,
+    TResult? Function(List<UserComment> listOfComments)? listOfCommentDialogBox,
   }) {
     return spotDetailsActionInitial?.call();
   }
@@ -829,6 +848,8 @@ class _$SpotDetailsActionInitialImpl implements _SpotDetailsActionInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? spotDetailsActionInitial,
     TResult Function(String message)? spotRatingSnackBar,
+    TResult Function(String message)? userAddedToSpot,
+    TResult Function(List<UserComment> listOfComments)? listOfCommentDialogBox,
     required TResult orElse(),
   }) {
     if (spotDetailsActionInitial != null) {
@@ -843,6 +864,9 @@ class _$SpotDetailsActionInitialImpl implements _SpotDetailsActionInitial {
     required TResult Function(_SpotDetailsActionInitial value)
         spotDetailsActionInitial,
     required TResult Function(_SpotRatingSnackBar value) spotRatingSnackBar,
+    required TResult Function(_UserAddedToSpot value) userAddedToSpot,
+    required TResult Function(_ListOfCommentsDialogBox value)
+        listOfCommentDialogBox,
   }) {
     return spotDetailsActionInitial(this);
   }
@@ -853,6 +877,8 @@ class _$SpotDetailsActionInitialImpl implements _SpotDetailsActionInitial {
     TResult? Function(_SpotDetailsActionInitial value)?
         spotDetailsActionInitial,
     TResult? Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+    TResult? Function(_UserAddedToSpot value)? userAddedToSpot,
+    TResult? Function(_ListOfCommentsDialogBox value)? listOfCommentDialogBox,
   }) {
     return spotDetailsActionInitial?.call(this);
   }
@@ -862,6 +888,8 @@ class _$SpotDetailsActionInitialImpl implements _SpotDetailsActionInitial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SpotDetailsActionInitial value)? spotDetailsActionInitial,
     TResult Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+    TResult Function(_UserAddedToSpot value)? userAddedToSpot,
+    TResult Function(_ListOfCommentsDialogBox value)? listOfCommentDialogBox,
     required TResult orElse(),
   }) {
     if (spotDetailsActionInitial != null) {
@@ -942,6 +970,9 @@ class _$SpotRatingSnackBarImpl implements _SpotRatingSnackBar {
   TResult when<TResult extends Object?>({
     required TResult Function() spotDetailsActionInitial,
     required TResult Function(String message) spotRatingSnackBar,
+    required TResult Function(String message) userAddedToSpot,
+    required TResult Function(List<UserComment> listOfComments)
+        listOfCommentDialogBox,
   }) {
     return spotRatingSnackBar(message);
   }
@@ -951,6 +982,8 @@ class _$SpotRatingSnackBarImpl implements _SpotRatingSnackBar {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? spotDetailsActionInitial,
     TResult? Function(String message)? spotRatingSnackBar,
+    TResult? Function(String message)? userAddedToSpot,
+    TResult? Function(List<UserComment> listOfComments)? listOfCommentDialogBox,
   }) {
     return spotRatingSnackBar?.call(message);
   }
@@ -960,6 +993,8 @@ class _$SpotRatingSnackBarImpl implements _SpotRatingSnackBar {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? spotDetailsActionInitial,
     TResult Function(String message)? spotRatingSnackBar,
+    TResult Function(String message)? userAddedToSpot,
+    TResult Function(List<UserComment> listOfComments)? listOfCommentDialogBox,
     required TResult orElse(),
   }) {
     if (spotRatingSnackBar != null) {
@@ -974,6 +1009,9 @@ class _$SpotRatingSnackBarImpl implements _SpotRatingSnackBar {
     required TResult Function(_SpotDetailsActionInitial value)
         spotDetailsActionInitial,
     required TResult Function(_SpotRatingSnackBar value) spotRatingSnackBar,
+    required TResult Function(_UserAddedToSpot value) userAddedToSpot,
+    required TResult Function(_ListOfCommentsDialogBox value)
+        listOfCommentDialogBox,
   }) {
     return spotRatingSnackBar(this);
   }
@@ -984,6 +1022,8 @@ class _$SpotRatingSnackBarImpl implements _SpotRatingSnackBar {
     TResult? Function(_SpotDetailsActionInitial value)?
         spotDetailsActionInitial,
     TResult? Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+    TResult? Function(_UserAddedToSpot value)? userAddedToSpot,
+    TResult? Function(_ListOfCommentsDialogBox value)? listOfCommentDialogBox,
   }) {
     return spotRatingSnackBar?.call(this);
   }
@@ -993,6 +1033,8 @@ class _$SpotRatingSnackBarImpl implements _SpotRatingSnackBar {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_SpotDetailsActionInitial value)? spotDetailsActionInitial,
     TResult Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+    TResult Function(_UserAddedToSpot value)? userAddedToSpot,
+    TResult Function(_ListOfCommentsDialogBox value)? listOfCommentDialogBox,
     required TResult orElse(),
   }) {
     if (spotRatingSnackBar != null) {
@@ -1010,4 +1052,318 @@ abstract class _SpotRatingSnackBar implements SpotDetailsAction {
   @JsonKey(ignore: true)
   _$$SpotRatingSnackBarImplCopyWith<_$SpotRatingSnackBarImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UserAddedToSpotImplCopyWith<$Res> {
+  factory _$$UserAddedToSpotImplCopyWith(_$UserAddedToSpotImpl value,
+          $Res Function(_$UserAddedToSpotImpl) then) =
+      __$$UserAddedToSpotImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$UserAddedToSpotImplCopyWithImpl<$Res>
+    extends _$SpotDetailsActionCopyWithImpl<$Res, _$UserAddedToSpotImpl>
+    implements _$$UserAddedToSpotImplCopyWith<$Res> {
+  __$$UserAddedToSpotImplCopyWithImpl(
+      _$UserAddedToSpotImpl _value, $Res Function(_$UserAddedToSpotImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$UserAddedToSpotImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UserAddedToSpotImpl implements _UserAddedToSpot {
+  const _$UserAddedToSpotImpl({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'SpotDetailsAction.userAddedToSpot(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserAddedToSpotImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserAddedToSpotImplCopyWith<_$UserAddedToSpotImpl> get copyWith =>
+      __$$UserAddedToSpotImplCopyWithImpl<_$UserAddedToSpotImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() spotDetailsActionInitial,
+    required TResult Function(String message) spotRatingSnackBar,
+    required TResult Function(String message) userAddedToSpot,
+    required TResult Function(List<UserComment> listOfComments)
+        listOfCommentDialogBox,
+  }) {
+    return userAddedToSpot(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? spotDetailsActionInitial,
+    TResult? Function(String message)? spotRatingSnackBar,
+    TResult? Function(String message)? userAddedToSpot,
+    TResult? Function(List<UserComment> listOfComments)? listOfCommentDialogBox,
+  }) {
+    return userAddedToSpot?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? spotDetailsActionInitial,
+    TResult Function(String message)? spotRatingSnackBar,
+    TResult Function(String message)? userAddedToSpot,
+    TResult Function(List<UserComment> listOfComments)? listOfCommentDialogBox,
+    required TResult orElse(),
+  }) {
+    if (userAddedToSpot != null) {
+      return userAddedToSpot(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SpotDetailsActionInitial value)
+        spotDetailsActionInitial,
+    required TResult Function(_SpotRatingSnackBar value) spotRatingSnackBar,
+    required TResult Function(_UserAddedToSpot value) userAddedToSpot,
+    required TResult Function(_ListOfCommentsDialogBox value)
+        listOfCommentDialogBox,
+  }) {
+    return userAddedToSpot(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SpotDetailsActionInitial value)?
+        spotDetailsActionInitial,
+    TResult? Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+    TResult? Function(_UserAddedToSpot value)? userAddedToSpot,
+    TResult? Function(_ListOfCommentsDialogBox value)? listOfCommentDialogBox,
+  }) {
+    return userAddedToSpot?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SpotDetailsActionInitial value)? spotDetailsActionInitial,
+    TResult Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+    TResult Function(_UserAddedToSpot value)? userAddedToSpot,
+    TResult Function(_ListOfCommentsDialogBox value)? listOfCommentDialogBox,
+    required TResult orElse(),
+  }) {
+    if (userAddedToSpot != null) {
+      return userAddedToSpot(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserAddedToSpot implements SpotDetailsAction {
+  const factory _UserAddedToSpot({required final String message}) =
+      _$UserAddedToSpotImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$UserAddedToSpotImplCopyWith<_$UserAddedToSpotImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ListOfCommentsDialogBoxImplCopyWith<$Res> {
+  factory _$$ListOfCommentsDialogBoxImplCopyWith(
+          _$ListOfCommentsDialogBoxImpl value,
+          $Res Function(_$ListOfCommentsDialogBoxImpl) then) =
+      __$$ListOfCommentsDialogBoxImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<UserComment> listOfComments});
+}
+
+/// @nodoc
+class __$$ListOfCommentsDialogBoxImplCopyWithImpl<$Res>
+    extends _$SpotDetailsActionCopyWithImpl<$Res, _$ListOfCommentsDialogBoxImpl>
+    implements _$$ListOfCommentsDialogBoxImplCopyWith<$Res> {
+  __$$ListOfCommentsDialogBoxImplCopyWithImpl(
+      _$ListOfCommentsDialogBoxImpl _value,
+      $Res Function(_$ListOfCommentsDialogBoxImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? listOfComments = null,
+  }) {
+    return _then(_$ListOfCommentsDialogBoxImpl(
+      listOfComments: null == listOfComments
+          ? _value._listOfComments
+          : listOfComments // ignore: cast_nullable_to_non_nullable
+              as List<UserComment>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ListOfCommentsDialogBoxImpl implements _ListOfCommentsDialogBox {
+  const _$ListOfCommentsDialogBoxImpl(
+      {required final List<UserComment> listOfComments})
+      : _listOfComments = listOfComments;
+
+  final List<UserComment> _listOfComments;
+  @override
+  List<UserComment> get listOfComments {
+    if (_listOfComments is EqualUnmodifiableListView) return _listOfComments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listOfComments);
+  }
+
+  @override
+  String toString() {
+    return 'SpotDetailsAction.listOfCommentDialogBox(listOfComments: $listOfComments)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ListOfCommentsDialogBoxImpl &&
+            const DeepCollectionEquality()
+                .equals(other._listOfComments, _listOfComments));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_listOfComments));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ListOfCommentsDialogBoxImplCopyWith<_$ListOfCommentsDialogBoxImpl>
+      get copyWith => __$$ListOfCommentsDialogBoxImplCopyWithImpl<
+          _$ListOfCommentsDialogBoxImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() spotDetailsActionInitial,
+    required TResult Function(String message) spotRatingSnackBar,
+    required TResult Function(String message) userAddedToSpot,
+    required TResult Function(List<UserComment> listOfComments)
+        listOfCommentDialogBox,
+  }) {
+    return listOfCommentDialogBox(listOfComments);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? spotDetailsActionInitial,
+    TResult? Function(String message)? spotRatingSnackBar,
+    TResult? Function(String message)? userAddedToSpot,
+    TResult? Function(List<UserComment> listOfComments)? listOfCommentDialogBox,
+  }) {
+    return listOfCommentDialogBox?.call(listOfComments);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? spotDetailsActionInitial,
+    TResult Function(String message)? spotRatingSnackBar,
+    TResult Function(String message)? userAddedToSpot,
+    TResult Function(List<UserComment> listOfComments)? listOfCommentDialogBox,
+    required TResult orElse(),
+  }) {
+    if (listOfCommentDialogBox != null) {
+      return listOfCommentDialogBox(listOfComments);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SpotDetailsActionInitial value)
+        spotDetailsActionInitial,
+    required TResult Function(_SpotRatingSnackBar value) spotRatingSnackBar,
+    required TResult Function(_UserAddedToSpot value) userAddedToSpot,
+    required TResult Function(_ListOfCommentsDialogBox value)
+        listOfCommentDialogBox,
+  }) {
+    return listOfCommentDialogBox(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SpotDetailsActionInitial value)?
+        spotDetailsActionInitial,
+    TResult? Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+    TResult? Function(_UserAddedToSpot value)? userAddedToSpot,
+    TResult? Function(_ListOfCommentsDialogBox value)? listOfCommentDialogBox,
+  }) {
+    return listOfCommentDialogBox?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SpotDetailsActionInitial value)? spotDetailsActionInitial,
+    TResult Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+    TResult Function(_UserAddedToSpot value)? userAddedToSpot,
+    TResult Function(_ListOfCommentsDialogBox value)? listOfCommentDialogBox,
+    required TResult orElse(),
+  }) {
+    if (listOfCommentDialogBox != null) {
+      return listOfCommentDialogBox(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ListOfCommentsDialogBox implements SpotDetailsAction {
+  const factory _ListOfCommentsDialogBox(
+          {required final List<UserComment> listOfComments}) =
+      _$ListOfCommentsDialogBoxImpl;
+
+  List<UserComment> get listOfComments;
+  @JsonKey(ignore: true)
+  _$$ListOfCommentsDialogBoxImplCopyWith<_$ListOfCommentsDialogBoxImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

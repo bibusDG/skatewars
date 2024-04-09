@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -18,6 +19,7 @@ import 'package:collection/collection.dart';
 import 'package:skatewars/features/user_relations/domain/entities/my_user.dart';
 
 import '../../../../core/custom_widgets/custom_bottom_app_bar.dart';
+import '../../domain/entities/user_comment.dart';
 
 class SpotDetailsPage extends HookWidget {
   final String spotID;
@@ -40,6 +42,8 @@ class SpotDetailsPage extends HookWidget {
     useActionListener(_spotDetailsCubit, (action){
       action.whenOrNull(
         spotRatingSnackBar: (message) => CustomSnackBar().mySnackBar(context, message),
+        userAddedToSpot: (message) => CustomSnackBar().mySnackBar(context, message),
+        listOfCommentDialogBox: (commentsList) => showDialogWithComments(context: context, comments: commentsList,)
       );
     });
 
@@ -67,7 +71,9 @@ class SpotDetailsPage extends HookWidget {
                       Expanded(
                           flex: 2,
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              _spotDetailsCubit.getListOfComments(spot: skateSpot);
+                            },
                             icon: Icon(
                               Icons.comment,
                               size: 40,
@@ -113,7 +119,15 @@ class SpotDetailsPage extends HookWidget {
                                 },
                               );
                               showDialog(context: context, builder: (BuildContext context){
-                                return _ratingDialog;
+                                if(USER_LOGGED_IN){
+                                  return _ratingDialog;
+                                }else{
+                                  return const AlertDialog(
+                                    title: Center(child: Text('Rating error'),),
+                                    content: SizedBox(width: 350, height: 50, child: Center(child: Text('To rate spot You must be logged in'),)),
+                                  );
+                                }
+
                               });
                             },
                             icon: const Icon(
@@ -202,7 +216,15 @@ class SpotDetailsPage extends HookWidget {
                           activeColor: Colors.green,
                           trackColor: Colors.red,
                           value: _switch.value, onChanged: (bool value) async{
-                          if(USER_RIDING == true && USER_EX_SPOT != spotID && USER_LOGGED_IN){
+                            if(!USER_LOGGED_IN){
+                              showDialog(context: context, builder: (BuildContext context){
+                                return const AlertDialog(
+                                  title: Center(child: Text('Upps...'),),
+                                  content: SizedBox(width: 350, height: 50, child: Center(child: Text('You must be logged in to sign in to spot'),)),
+                                );
+                              });
+                            }
+                          else if(USER_RIDING == true && USER_EX_SPOT != spotID && USER_LOGGED_IN){
                             print('You are somewhere else');
                           }
                           else if(_switch.value && USER_LOGGED_IN){
@@ -229,6 +251,45 @@ class SpotDetailsPage extends HookWidget {
         ),
       ),
     );
+  }
+  showDialogWithComments({required BuildContext context, required List<UserComment> comments}) async{
+    showDialog(context: context, builder: (BuildContext context){
+      return AlertDialog(
+        title: const Center(child: Text('Spot comments'),),
+        content: SizedBox(width: 350, height: 300,
+            child: ListView.builder(
+                itemExtent: 150,
+                itemCount: comments.length,
+                itemBuilder: (BuildContext context, int index){
+                  UserComment singleComment = comments[index];
+                  return Card(
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(singleComment.userName),
+                            Text(singleComment.creationDate),
+                          ],
+                        ),
+                        RatingBarIndicator(
+                          itemBuilder: (context, index) => const Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          rating: singleComment.userRate,
+                          itemCount: 5,
+                          itemSize: 20,
+                        ),
+                        Text(singleComment.comment),
+
+                      ],
+                    ),
+                  );
+
+                })),
+      );
+    });
   }
 }
 

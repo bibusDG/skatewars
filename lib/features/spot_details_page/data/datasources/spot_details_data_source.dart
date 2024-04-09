@@ -27,6 +27,10 @@ abstract class SpotDetailsDatasource {
     required String spotID,
     required double userRate,
   });
+
+  Future<UserComment> getCommentByID({
+    required String commentID,
+});
 }
 
 @Singleton(as: SpotDetailsDatasource)
@@ -78,5 +82,14 @@ class SpotDetailsDataSourceImp implements SpotDetailsDatasource {
     });
     // TODO: implement rateSpot
     // throw UnimplementedError();
+  }
+
+  @override
+  Future<UserComment> getCommentByID({required String commentID}) async{
+    final result = await FIREBASE_COMMENTS_PATH.doc(commentID).get();
+    final comment = UserComment.fromJson(result.data());
+    return comment;
+    // TODO: implement getCommentByID
+    throw UnimplementedError();
   }
 }
