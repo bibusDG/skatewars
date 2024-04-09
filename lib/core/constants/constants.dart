@@ -5,6 +5,7 @@ import 'package:skatewars/features/user_relations/domain/entities/my_user.dart';
 
 var FIREBASE_PATH = FirebaseFirestore.instance.collection('skateSpots');
 var FIREBASE_USER_PATH = FirebaseFirestore.instance.collection('users');
+var FIREBASE_COMMENTS_PATH = FirebaseFirestore.instance.collection('comments');
 
 var USER_LOGGED_IN = false;
 MyUser LOGGED_USER = MyUser.empty();

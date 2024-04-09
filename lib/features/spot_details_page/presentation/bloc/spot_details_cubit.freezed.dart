@@ -19,7 +19,8 @@ mixin _$SpotDetailsState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SkateSpot skateSpot, List<MyUser> riders)
+    required TResult Function(
+            SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser)
         spotDetailsPageLoaded,
     required TResult Function() spotDetailsPageLoading,
     required TResult Function(String message) spotDetailsPageError,
@@ -28,7 +29,8 @@ mixin _$SpotDetailsState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SkateSpot skateSpot, List<MyUser> riders)?
+    TResult? Function(
+            SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser)?
         spotDetailsPageLoaded,
     TResult? Function()? spotDetailsPageLoading,
     TResult? Function(String message)? spotDetailsPageError,
@@ -37,7 +39,8 @@ mixin _$SpotDetailsState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SkateSpot skateSpot, List<MyUser> riders)?
+    TResult Function(
+            SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser)?
         spotDetailsPageLoaded,
     TResult Function()? spotDetailsPageLoading,
     TResult Function(String message)? spotDetailsPageError,
@@ -130,7 +133,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SkateSpot skateSpot, List<MyUser> riders)
+    required TResult Function(
+            SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser)
         spotDetailsPageLoaded,
     required TResult Function() spotDetailsPageLoading,
     required TResult Function(String message) spotDetailsPageError,
@@ -142,7 +146,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SkateSpot skateSpot, List<MyUser> riders)?
+    TResult? Function(
+            SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser)?
         spotDetailsPageLoaded,
     TResult? Function()? spotDetailsPageLoading,
     TResult? Function(String message)? spotDetailsPageError,
@@ -154,7 +159,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SkateSpot skateSpot, List<MyUser> riders)?
+    TResult Function(
+            SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser)?
         spotDetailsPageLoaded,
     TResult Function()? spotDetailsPageLoading,
     TResult Function(String message)? spotDetailsPageError,
@@ -217,9 +223,10 @@ abstract class _$$SpotDetailsPageLoadedImplCopyWith<$Res> {
           $Res Function(_$SpotDetailsPageLoadedImpl) then) =
       __$$SpotDetailsPageLoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({SkateSpot skateSpot, List<MyUser> riders});
+  $Res call({SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser});
 
   $SkateSpotCopyWith<$Res> get skateSpot;
+  $MyUserCopyWith<$Res> get existingUser;
 }
 
 /// @nodoc
@@ -235,6 +242,7 @@ class __$$SpotDetailsPageLoadedImplCopyWithImpl<$Res>
   $Res call({
     Object? skateSpot = null,
     Object? riders = null,
+    Object? existingUser = null,
   }) {
     return _then(_$SpotDetailsPageLoadedImpl(
       skateSpot: null == skateSpot
@@ -245,6 +253,10 @@ class __$$SpotDetailsPageLoadedImplCopyWithImpl<$Res>
           ? _value._riders
           : riders // ignore: cast_nullable_to_non_nullable
               as List<MyUser>,
+      existingUser: null == existingUser
+          ? _value.existingUser
+          : existingUser // ignore: cast_nullable_to_non_nullable
+              as MyUser,
     ));
   }
 
@@ -255,13 +267,23 @@ class __$$SpotDetailsPageLoadedImplCopyWithImpl<$Res>
       return _then(_value.copyWith(skateSpot: value));
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MyUserCopyWith<$Res> get existingUser {
+    return $MyUserCopyWith<$Res>(_value.existingUser, (value) {
+      return _then(_value.copyWith(existingUser: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$SpotDetailsPageLoadedImpl implements _SpotDetailsPageLoaded {
   const _$SpotDetailsPageLoadedImpl(
-      {required this.skateSpot, required final List<MyUser> riders})
+      {required this.skateSpot,
+      required final List<MyUser> riders,
+      required this.existingUser})
       : _riders = riders;
 
   @override
@@ -275,8 +297,11 @@ class _$SpotDetailsPageLoadedImpl implements _SpotDetailsPageLoaded {
   }
 
   @override
+  final MyUser existingUser;
+
+  @override
   String toString() {
-    return 'SpotDetailsState.spotDetailsPageLoaded(skateSpot: $skateSpot, riders: $riders)';
+    return 'SpotDetailsState.spotDetailsPageLoaded(skateSpot: $skateSpot, riders: $riders, existingUser: $existingUser)';
   }
 
   @override
@@ -286,12 +311,14 @@ class _$SpotDetailsPageLoadedImpl implements _SpotDetailsPageLoaded {
             other is _$SpotDetailsPageLoadedImpl &&
             (identical(other.skateSpot, skateSpot) ||
                 other.skateSpot == skateSpot) &&
-            const DeepCollectionEquality().equals(other._riders, _riders));
+            const DeepCollectionEquality().equals(other._riders, _riders) &&
+            (identical(other.existingUser, existingUser) ||
+                other.existingUser == existingUser));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, skateSpot, const DeepCollectionEquality().hash(_riders));
+  int get hashCode => Object.hash(runtimeType, skateSpot,
+      const DeepCollectionEquality().hash(_riders), existingUser);
 
   @JsonKey(ignore: true)
   @override
@@ -304,38 +331,41 @@ class _$SpotDetailsPageLoadedImpl implements _SpotDetailsPageLoaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SkateSpot skateSpot, List<MyUser> riders)
+    required TResult Function(
+            SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser)
         spotDetailsPageLoaded,
     required TResult Function() spotDetailsPageLoading,
     required TResult Function(String message) spotDetailsPageError,
   }) {
-    return spotDetailsPageLoaded(skateSpot, riders);
+    return spotDetailsPageLoaded(skateSpot, riders, existingUser);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SkateSpot skateSpot, List<MyUser> riders)?
+    TResult? Function(
+            SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser)?
         spotDetailsPageLoaded,
     TResult? Function()? spotDetailsPageLoading,
     TResult? Function(String message)? spotDetailsPageError,
   }) {
-    return spotDetailsPageLoaded?.call(skateSpot, riders);
+    return spotDetailsPageLoaded?.call(skateSpot, riders, existingUser);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SkateSpot skateSpot, List<MyUser> riders)?
+    TResult Function(
+            SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser)?
         spotDetailsPageLoaded,
     TResult Function()? spotDetailsPageLoading,
     TResult Function(String message)? spotDetailsPageError,
     required TResult orElse(),
   }) {
     if (spotDetailsPageLoaded != null) {
-      return spotDetailsPageLoaded(skateSpot, riders);
+      return spotDetailsPageLoaded(skateSpot, riders, existingUser);
     }
     return orElse();
   }
@@ -383,10 +413,12 @@ class _$SpotDetailsPageLoadedImpl implements _SpotDetailsPageLoaded {
 abstract class _SpotDetailsPageLoaded implements SpotDetailsState {
   const factory _SpotDetailsPageLoaded(
       {required final SkateSpot skateSpot,
-      required final List<MyUser> riders}) = _$SpotDetailsPageLoadedImpl;
+      required final List<MyUser> riders,
+      required final MyUser existingUser}) = _$SpotDetailsPageLoadedImpl;
 
   SkateSpot get skateSpot;
   List<MyUser> get riders;
+  MyUser get existingUser;
   @JsonKey(ignore: true)
   _$$SpotDetailsPageLoadedImplCopyWith<_$SpotDetailsPageLoadedImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -434,7 +466,8 @@ class _$SpotDetailsPageLoadingImpl implements _SpotDetailsPageLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SkateSpot skateSpot, List<MyUser> riders)
+    required TResult Function(
+            SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser)
         spotDetailsPageLoaded,
     required TResult Function() spotDetailsPageLoading,
     required TResult Function(String message) spotDetailsPageError,
@@ -446,7 +479,8 @@ class _$SpotDetailsPageLoadingImpl implements _SpotDetailsPageLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SkateSpot skateSpot, List<MyUser> riders)?
+    TResult? Function(
+            SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser)?
         spotDetailsPageLoaded,
     TResult? Function()? spotDetailsPageLoading,
     TResult? Function(String message)? spotDetailsPageError,
@@ -458,7 +492,8 @@ class _$SpotDetailsPageLoadingImpl implements _SpotDetailsPageLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SkateSpot skateSpot, List<MyUser> riders)?
+    TResult Function(
+            SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser)?
         spotDetailsPageLoaded,
     TResult Function()? spotDetailsPageLoading,
     TResult Function(String message)? spotDetailsPageError,
@@ -581,7 +616,8 @@ class _$SpotDetailsPageErrorImpl implements _SpotDetailsPageError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(SkateSpot skateSpot, List<MyUser> riders)
+    required TResult Function(
+            SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser)
         spotDetailsPageLoaded,
     required TResult Function() spotDetailsPageLoading,
     required TResult Function(String message) spotDetailsPageError,
@@ -593,7 +629,8 @@ class _$SpotDetailsPageErrorImpl implements _SpotDetailsPageError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(SkateSpot skateSpot, List<MyUser> riders)?
+    TResult? Function(
+            SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser)?
         spotDetailsPageLoaded,
     TResult? Function()? spotDetailsPageLoading,
     TResult? Function(String message)? spotDetailsPageError,
@@ -605,7 +642,8 @@ class _$SpotDetailsPageErrorImpl implements _SpotDetailsPageError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(SkateSpot skateSpot, List<MyUser> riders)?
+    TResult Function(
+            SkateSpot skateSpot, List<MyUser> riders, MyUser existingUser)?
         spotDetailsPageLoaded,
     TResult Function()? spotDetailsPageLoading,
     TResult Function(String message)? spotDetailsPageError,
@@ -665,4 +703,311 @@ abstract class _SpotDetailsPageError implements SpotDetailsState {
   @JsonKey(ignore: true)
   _$$SpotDetailsPageErrorImplCopyWith<_$SpotDetailsPageErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$SpotDetailsAction {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() spotDetailsActionInitial,
+    required TResult Function(String message) spotRatingSnackBar,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? spotDetailsActionInitial,
+    TResult? Function(String message)? spotRatingSnackBar,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? spotDetailsActionInitial,
+    TResult Function(String message)? spotRatingSnackBar,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SpotDetailsActionInitial value)
+        spotDetailsActionInitial,
+    required TResult Function(_SpotRatingSnackBar value) spotRatingSnackBar,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SpotDetailsActionInitial value)?
+        spotDetailsActionInitial,
+    TResult? Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SpotDetailsActionInitial value)? spotDetailsActionInitial,
+    TResult Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SpotDetailsActionCopyWith<$Res> {
+  factory $SpotDetailsActionCopyWith(
+          SpotDetailsAction value, $Res Function(SpotDetailsAction) then) =
+      _$SpotDetailsActionCopyWithImpl<$Res, SpotDetailsAction>;
+}
+
+/// @nodoc
+class _$SpotDetailsActionCopyWithImpl<$Res, $Val extends SpotDetailsAction>
+    implements $SpotDetailsActionCopyWith<$Res> {
+  _$SpotDetailsActionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$SpotDetailsActionInitialImplCopyWith<$Res> {
+  factory _$$SpotDetailsActionInitialImplCopyWith(
+          _$SpotDetailsActionInitialImpl value,
+          $Res Function(_$SpotDetailsActionInitialImpl) then) =
+      __$$SpotDetailsActionInitialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SpotDetailsActionInitialImplCopyWithImpl<$Res>
+    extends _$SpotDetailsActionCopyWithImpl<$Res,
+        _$SpotDetailsActionInitialImpl>
+    implements _$$SpotDetailsActionInitialImplCopyWith<$Res> {
+  __$$SpotDetailsActionInitialImplCopyWithImpl(
+      _$SpotDetailsActionInitialImpl _value,
+      $Res Function(_$SpotDetailsActionInitialImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SpotDetailsActionInitialImpl implements _SpotDetailsActionInitial {
+  const _$SpotDetailsActionInitialImpl();
+
+  @override
+  String toString() {
+    return 'SpotDetailsAction.spotDetailsActionInitial()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SpotDetailsActionInitialImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() spotDetailsActionInitial,
+    required TResult Function(String message) spotRatingSnackBar,
+  }) {
+    return spotDetailsActionInitial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? spotDetailsActionInitial,
+    TResult? Function(String message)? spotRatingSnackBar,
+  }) {
+    return spotDetailsActionInitial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? spotDetailsActionInitial,
+    TResult Function(String message)? spotRatingSnackBar,
+    required TResult orElse(),
+  }) {
+    if (spotDetailsActionInitial != null) {
+      return spotDetailsActionInitial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SpotDetailsActionInitial value)
+        spotDetailsActionInitial,
+    required TResult Function(_SpotRatingSnackBar value) spotRatingSnackBar,
+  }) {
+    return spotDetailsActionInitial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SpotDetailsActionInitial value)?
+        spotDetailsActionInitial,
+    TResult? Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+  }) {
+    return spotDetailsActionInitial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SpotDetailsActionInitial value)? spotDetailsActionInitial,
+    TResult Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+    required TResult orElse(),
+  }) {
+    if (spotDetailsActionInitial != null) {
+      return spotDetailsActionInitial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SpotDetailsActionInitial implements SpotDetailsAction {
+  const factory _SpotDetailsActionInitial() = _$SpotDetailsActionInitialImpl;
+}
+
+/// @nodoc
+abstract class _$$SpotRatingSnackBarImplCopyWith<$Res> {
+  factory _$$SpotRatingSnackBarImplCopyWith(_$SpotRatingSnackBarImpl value,
+          $Res Function(_$SpotRatingSnackBarImpl) then) =
+      __$$SpotRatingSnackBarImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$SpotRatingSnackBarImplCopyWithImpl<$Res>
+    extends _$SpotDetailsActionCopyWithImpl<$Res, _$SpotRatingSnackBarImpl>
+    implements _$$SpotRatingSnackBarImplCopyWith<$Res> {
+  __$$SpotRatingSnackBarImplCopyWithImpl(_$SpotRatingSnackBarImpl _value,
+      $Res Function(_$SpotRatingSnackBarImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$SpotRatingSnackBarImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SpotRatingSnackBarImpl implements _SpotRatingSnackBar {
+  const _$SpotRatingSnackBarImpl({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'SpotDetailsAction.spotRatingSnackBar(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SpotRatingSnackBarImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SpotRatingSnackBarImplCopyWith<_$SpotRatingSnackBarImpl> get copyWith =>
+      __$$SpotRatingSnackBarImplCopyWithImpl<_$SpotRatingSnackBarImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() spotDetailsActionInitial,
+    required TResult Function(String message) spotRatingSnackBar,
+  }) {
+    return spotRatingSnackBar(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? spotDetailsActionInitial,
+    TResult? Function(String message)? spotRatingSnackBar,
+  }) {
+    return spotRatingSnackBar?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? spotDetailsActionInitial,
+    TResult Function(String message)? spotRatingSnackBar,
+    required TResult orElse(),
+  }) {
+    if (spotRatingSnackBar != null) {
+      return spotRatingSnackBar(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_SpotDetailsActionInitial value)
+        spotDetailsActionInitial,
+    required TResult Function(_SpotRatingSnackBar value) spotRatingSnackBar,
+  }) {
+    return spotRatingSnackBar(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_SpotDetailsActionInitial value)?
+        spotDetailsActionInitial,
+    TResult? Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+  }) {
+    return spotRatingSnackBar?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_SpotDetailsActionInitial value)? spotDetailsActionInitial,
+    TResult Function(_SpotRatingSnackBar value)? spotRatingSnackBar,
+    required TResult orElse(),
+  }) {
+    if (spotRatingSnackBar != null) {
+      return spotRatingSnackBar(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SpotRatingSnackBar implements SpotDetailsAction {
+  const factory _SpotRatingSnackBar({required final String message}) =
+      _$SpotRatingSnackBarImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$SpotRatingSnackBarImplCopyWith<_$SpotRatingSnackBarImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

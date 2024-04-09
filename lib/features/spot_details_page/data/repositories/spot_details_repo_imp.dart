@@ -49,4 +49,27 @@ class SpotDetailsRepoImp implements SpotDetailsRepo{
     // TODO: implement removeUserFromSpot
     throw UnimplementedError();
   }
+
+  @override
+  Future<Either<Failure, void>> rateSpot({
+    required String userName,
+    required String comment,
+    required String creationDate,
+    required String spotID,
+    required double userRate}) async{
+    try{
+      final result = await spotDetailsDatasource.rateSpot(
+          userName: userName,
+          comment: comment,
+          creationDate: creationDate,
+          spotID: spotID,
+          userRate: userRate);
+      return Right(result);
+    }catch(error){
+      print('Unabel to rate spot');
+      return (const Left(RateSpotFailure(failureMessage: 'Unable to rate spot')));
+    }
+    // TODO: implement rateSpot
+    throw UnimplementedError();
+  }
 }

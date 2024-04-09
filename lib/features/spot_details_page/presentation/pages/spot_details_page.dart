@@ -9,6 +9,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:rating_dialog/rating_dialog.dart';
+import 'package:skatewars/core/classes/custom_snackbar.dart';
 import 'package:skatewars/core/constants/constants.dart';
 import 'package:skatewars/core/custom_widgets/carousel.dart';
 import 'package:skatewars/features/add_skate_spot_page/domain/entities/skateSpot.dart';
@@ -30,11 +31,17 @@ class SpotDetailsPage extends HookWidget {
     final _switch = useState(USER_RIDING && USER_EX_SPOT == spotID);
 
     useEffect(() {
-      _spotDetailsCubit.initSpotDetailPage(spotID: spotID);
+      _spotDetailsCubit.initSpotDetailPage(spotID: spotID, uid: uid);
       return null;
     },
       [_spotDetailsCubit],
     );
+
+    useActionListener(_spotDetailsCubit, (action){
+      action.whenOrNull(
+        spotRatingSnackBar: (message) => CustomSnackBar().mySnackBar(context, message),
+      );
+    });
 
     return Scaffold(
       bottomNavigationBar: CustomBottomAppBar(uid: uid,),
@@ -45,7 +52,7 @@ class SpotDetailsPage extends HookWidget {
         width: double.infinity,
         height: double.infinity,
         child: _spotDetailsState.whenOrNull(
-          spotDetailsPageLoaded: (skateSpot, riders) => Card(
+          spotDetailsPageLoaded: (skateSpot, riders, user) => Card(
             child: Column(
               children: [
                 Expanded(
@@ -96,7 +103,14 @@ class SpotDetailsPage extends HookWidget {
                                 // your app's logo?
                                 submitButtonText: 'Submit',
                                 commentHint: 'Comment spot',
-                                onSubmitted: (response) {},
+                                onSubmitted: (response) {
+                                  _spotDetailsCubit.rateSpot(
+                                      comment: response.comment,
+                                      userRate: response.rating,
+                                      userName: user.userName,
+                                      spotID: spotID,
+                                      creationDate: DateTime.now().toString().substring(0,11));
+                                },
                               );
                               showDialog(context: context, builder: (BuildContext context){
                                 return _ratingDialog;

@@ -11,3 +11,7 @@ class AddUserToSpotFailure extends Failure{
 class RemoveUserFromSpotFailure extends Failure{
   const RemoveUserFromSpotFailure({required super.failureMessage});
 }
+
+class RateSpotFailure extends Failure{
+  const RateSpotFailure({required super.failureMessage});
+}

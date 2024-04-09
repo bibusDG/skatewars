@@ -20,4 +20,12 @@ abstract class SpotDetailsRepo{
     required String spotID,
 });
 
+  Future<Either<Failure, void>> rateSpot({
+    required String userName,
+    required String comment,
+    required String creationDate,
+    required String spotID,
+    required double userRate,
+});
+
 }
