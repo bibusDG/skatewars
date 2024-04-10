@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:go_router/go_router.dart';
@@ -295,7 +296,7 @@ class LogInInitialPage extends StatelessWidget {
                 Text(user.userName, style: const TextStyle(fontSize: 20),),
                 InkWell(child: const Text('change display name',
                   style: TextStyle(fontSize: 12.0, color: Colors.teal),), onTap: (){
-
+                  changeNameDialogBox(user: user, context: context);
                 }),
               ],
             ),
@@ -365,6 +366,34 @@ class LogInInitialPage extends StatelessWidget {
       ],
     );
   }
+
+  changeNameDialogBox({required MyUser user, required BuildContext context}) async{
+    showDialog(context: context, builder: (BuildContext context){
+
+      final userNewName = TextEditingController();
+
+      return AlertDialog(
+        title: Center(child: Text('Change Your name')),
+        content: SizedBox(width: 350, height: 150, child: Center(
+          child: Column(
+            children: [
+              CustomTextFormField(
+                controller: userNewName, hintText: user.userName, obscureText: false,),
+              const SizedBox(height: 40.0,),
+              CupertinoButton(onPressed: () async{
+                await cubit.changeUserCredentials(userID: user.userID, credential: 'userName', newCredentialValue: userNewName.text);
+                cubit.loginInitialPage(userLoggedIn: USER_LOGGED_IN.toString(), uid: user.userID);
+                if(context.mounted){
+                  context.pop();
+                }
+              }, color: Colors.black,child: const Text('Change'),),
+            ],
+          ),
+        ),),
+      );
+    });
+  }
+
 }
 
 
