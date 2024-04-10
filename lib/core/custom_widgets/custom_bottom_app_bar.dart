@@ -20,9 +20,9 @@ class CustomBottomAppBar extends StatelessWidget {
         IconButton(onPressed: (){
           context.goNamed('add_skate_spot_page', pathParameters: {'uid' : uid});
         }, icon: const Icon(Icons.add, size: 40,)),
-        IconButton(onPressed: (){
-          context.goNamed('start_page');
-        }, icon: const Icon(Icons.link, size: 40,)),
+        // IconButton(onPressed: (){
+        //   context.goNamed('start_page');
+        // }, icon: const Icon(Icons.link, size: 40,)),
         IconButton(onPressed: (){
           context.goNamed('login_page', pathParameters: {'userLoggedIn' : USER_LOGGED_IN.toString(), 'uid': uid});
         }, icon: const Icon(Icons.person, size: 40,)),

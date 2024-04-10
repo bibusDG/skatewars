@@ -51,4 +51,10 @@ abstract class UserRelationsRepo {
     required String uid,
 });
 
+  Future<Either<Failure, void>> changeUserCredentials({
+    required String userID,
+    required String credential,
+    required String newCredentialValue,
+});
+
 }

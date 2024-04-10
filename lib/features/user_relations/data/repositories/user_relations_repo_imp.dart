@@ -154,4 +154,23 @@ class UserRelationsRepoImp implements UserRelationsRepo{
     // TODO: implement createNewEmailPasswordUser
     throw UnimplementedError();
   }
+
+  @override
+  Future<Either<Failure, void>> changeUserCredentials({
+    required String userID,
+    required String credential,
+    required String newCredentialValue}) async{
+    try{
+      final result = await dataSource.changeUserCredentials(
+          userID: userID,
+          credential: credential,
+          newCredentialValue: newCredentialValue);
+      return Right(result);
+    }catch(error){
+      print('Unable to change user credentials');
+      return const Left(ChangeUserCredentialsFailure(failureMessage: 'Unable to change user credentials'));
+    }
+    // TODO: implement changeUserCredentials
+    throw UnimplementedError();
+  }
 }

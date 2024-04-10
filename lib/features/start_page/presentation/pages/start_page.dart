@@ -27,14 +27,8 @@ class StartPage extends HookWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CupertinoButton(onPressed: (){
-            context.pushNamed('add_skate_spot_page');
-                      }, color: Colors.black,child: const Text('Add spot'),),
-            CupertinoButton(onPressed: (){
-              context.pushNamed('show_skate_spots_page');
-            }, color: Colors.black,child: const Text('Show spots'),),
-            CupertinoButton(onPressed: (){
-              context.pushNamed('login_page');
-            }, color: Colors.black,child: const Text('Google login page'),),
+              context.goNamed('show_skate_spots_page', pathParameters: {'uid': 'null'});
+            }, color: Colors.black,child: const Text('Start'),),
           ],
         ),
       ),

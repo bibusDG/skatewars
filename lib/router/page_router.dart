@@ -13,6 +13,7 @@ final rootNavigationKey = GlobalKey<NavigatorState>();
 class MyPageRouter{
   GoRouter get myRouter => _myRouter;
   static final _myRouter = GoRouter(
+    // initialLocation: '/show_skate_spots_page/:uid',
     navigatorKey: rootNavigationKey,
     routes: <RouteBase>[
   GoRoute(

@@ -6,6 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
+import 'package:skatewars/core/classes/choose_image_to_database.dart';
 import 'package:skatewars/core/classes/custom_snackbar.dart';
 import 'package:skatewars/core/constants/constants.dart';
 import 'package:skatewars/core/custom_widgets/custom_bottom_app_bar.dart';
@@ -273,51 +274,36 @@ class LogInInitialPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(flex:2,
+        Expanded(flex:3,
             child: Column(
           children: [
             Stack(
               alignment: AlignmentDirectional.topEnd,
               children: [
                 CircleAvatar(backgroundImage: MemoryImage(const Base64Decoder().convert(user.userAvatar)), radius: 60,),
-                IconButton(onPressed: (){}, icon: const Icon(Icons.change_circle_sharp, size: 40,))
+                IconButton(onPressed: () async{
+                  final imageAvatar = await ChooseImageToDatabase().chooseImageFromGallery();
+                  await cubit.changeUserCredentials(
+                      userID: user.userID, credential: 'userAvatar', newCredentialValue: imageAvatar!);
+                  cubit.loginInitialPage(userLoggedIn: USER_LOGGED_IN.toString(), uid: user.userID);
+                }, icon: const Icon(Icons.change_circle_sharp, size: 40,))
               ],
             ),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(user.userName, style: const TextStyle(fontSize: 20),),
+                InkWell(child: const Text('change display name',
+                  style: TextStyle(fontSize: 12.0, color: Colors.teal),), onTap: (){
+
+                }),
               ],
             ),
-            // const Text('BATTLES AND POINTS', style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //   children: [
-            //     Column(
-            //       children: [
-            //         Text('WON', style: TextStyle(fontSize: 40, fontWeight: FontWeight.w200),),
-            //         Text(user.skateWarsWon.toString(), style: TextStyle(fontSize: 40, color: Colors.green),),
-            //       ],
-            //     ),
-            //     Column(
-            //       children: [
-            //         Text('LOST', style: TextStyle(fontSize: 40, fontWeight: FontWeight.w200)),
-            //         Text(user.skateWarsLost.toString(), style: TextStyle(fontSize: 40, color: Colors.redAccent)),
-            //       ],
-            //     ),
-            //     Column(
-            //       children: [
-            //         Text('POINTS', style: TextStyle(fontSize: 40, fontWeight: FontWeight.w200)),
-            //         Text(user.skatePoints.toString(), style: TextStyle(fontSize: 40, color: Colors.orangeAccent)),
-            //       ],
-            //     ),
-            //   ],
-            // ),
           ],
         )),
         const Text('MY FAV SPOTS', style: TextStyle(fontSize: 35, fontWeight: FontWeight.w100),),
         Expanded(
-          flex:5,
+          flex:7,
           child: favSpots.isNotEmpty? ListView.builder(
             itemCount: favSpots.length,
               itemExtent: 180,
@@ -364,9 +350,16 @@ class LogInInitialPage extends StatelessWidget {
             );
           }): const Center(child: Text('No favourite spots'),),
         ),
-        Center(child: CupertinoButton(onPressed: (){
-          cubit.logOutUser();
-        }, color: Colors.black, child: const Text('Logout'),
+        Center(child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            CupertinoButton(onPressed: (){
+              cubit.logOutUser();
+            }, color: Colors.black, child: const Text('Logout'),),
+            CupertinoButton(onPressed: (){
+
+            }, color: Colors.black, child: const Text('Remove my account'),),
+          ],
         ),),
         const SizedBox(height: 10.0,),
       ],

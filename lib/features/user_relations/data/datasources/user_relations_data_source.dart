@@ -52,6 +52,12 @@ abstract class UserRelationsDataSource{
     required String userPassword,
 });
 
+  Future<void> changeUserCredentials({
+    required String userID,
+    required String credential,
+    required String newCredentialValue,
+});
+
 }
 @Singleton(as: UserRelationsDataSource)
 class UserRelationsDataSourceImp implements UserRelationsDataSource{
@@ -209,6 +215,16 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
       }
     // TODO: implement createNewEmailPasswordUser
     throw UnimplementedError();
+  }
+
+  @override
+  Future<void> changeUserCredentials({
+    required String userID,
+    required String credential,
+    required String newCredentialValue}) async{
+    await FIREBASE_USER_PATH.doc(userID).update({credential : newCredentialValue});
+    // TODO: implement changeUserCredentials
+    // throw UnimplementedError();
   }
 
 }

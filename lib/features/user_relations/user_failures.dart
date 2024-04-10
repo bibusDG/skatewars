@@ -37,3 +37,7 @@ class GetUserByIDFailure extends Failure{
 class CreateEmailPasswordUserFailure extends Failure{
   const CreateEmailPasswordUserFailure({required super.failureMessage});
 }
+
+class ChangeUserCredentialsFailure extends Failure{
+  const ChangeUserCredentialsFailure({required super.failureMessage});
+}

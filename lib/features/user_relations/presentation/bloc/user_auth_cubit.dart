@@ -10,6 +10,7 @@ import '../../../add_skate_spot_page/domain/entities/skateSpot.dart';
 import '../../../show_skate_spots_page/domain/usecases/get_spot_by_id_usecase.dart';
 import '../../../show_skate_spots_page/domain/usecases/remove_spot_from_favorites_usecase.dart';
 import '../../domain/entities/my_user.dart';
+import '../../domain/usecases/change_user_credentials_usecase.dart';
 import '../../domain/usecases/create_email_password_user_usecase.dart';
 import '../../domain/usecases/log_out_user_usecase.dart';
 import '../../domain/usecases/login_with_google_usecase.dart';
@@ -32,7 +33,9 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
   final GetUserByIDUseCase getUserByIDUseCase;
   final RemoveSpotFromFavoritesUseCase removeSpotFromFavoritesUseCase;
   final GetSpotByIdUseCase getSpotByIdUseCase;
+  final ChangeUserCredentialsUseCase changeUserCredentialsUseCase;
   UserAuthCubit({
+    required this.changeUserCredentialsUseCase,
     required this.getSpotByIdUseCase,
     required this.removeSpotFromFavoritesUseCase,
     required this.createEmailPasswordUserUseCase,
@@ -220,6 +223,20 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
     }, (success){
       dispatch(const UserAuthAction.dialogBox(title: 'Spot removed', message: 'Spot removed successfully from favs.'));
       print('spot deleted');
+    });
+  }
+
+  Future<void> changeUserCredentials({
+    required String userID,
+    required String credential,
+    required String newCredentialValue}) async{
+    final result = await changeUserCredentialsUseCase(ChangeUserCredentialsParams(
+        newCredentialValue: newCredentialValue,
+        credential: credential, userID: userID));
+    result.fold((failure){
+      print('Cred unchanged');
+    }, (success){
+      print('Cred changed');
     });
   }
 
