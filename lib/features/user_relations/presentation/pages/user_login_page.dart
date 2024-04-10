@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:go_router/go_router.dart';
@@ -90,8 +89,17 @@ class UserLoginPage extends HookWidget {
     });
 
     return Scaffold(
-      bottomNavigationBar: CustomBottomAppBar(uid: uid),
-      appBar: AppBar(title: Text('USER LOGIN PAGE'),
+      bottomNavigationBar: _authState.maybeWhen(
+          userRegisterInitialPage: () => CustomBottomAppBar(uid: uid),
+          userLoggedOutInitialPage: () => CustomBottomAppBar(uid: uid),
+          userLoggedInInitialPage: (user, favSpots) => CustomBottomAppBar(uid: uid),
+          orElse: () { return null; }
+      ),
+      appBar: AppBar(title: _authState.maybeWhen(
+          userRegisterInitialPage: () => const Text('REGISTRATION PAGE'),
+          userLoggedInInitialPage: (user, favSpots) => const Text('MY ACCOUNT'),
+          userLoggedOutInitialPage: () => const Text('LOGIN PAGE'),
+          orElse: (){return null;}),
       ),
       body: _authState.whenOrNull(
         userRegisterInitialPage: () => SignUpUserPage(
@@ -103,11 +111,32 @@ class UserLoginPage extends HookWidget {
         ),
         userLoggedInInitialPage: (user, favSpots) => LogInInitialPage(cubit: _authCubit, user: user, favSpots: favSpots,),
         userLoggedOutInitialPage:() => LogOutInitialPage(userEmail: _userEmail, userPassword: _userPassword, authCubit: _authCubit),
-        loginSuccess: (message, uid) => Center(child: Text(message),),
+        loginSuccess: (message, uid) => Center(child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.check_circle_outline_outlined, color: Colors.green, size: 50.0,),
+            const SizedBox(height: 20.0,),
+            Text(message),
+          ],
+        ),),
         loginInProgress: () => const Center(child: CircularProgressIndicator(),),
-        loginFailed: (message) => Center(child: Text(message),),
+        loginFailed: (message) => Center(child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.error_outline, color: Colors.red, size: 50.0,),
+            const SizedBox(height: 20.0,),
+            Text(message),
+          ],
+        ),),
         loginPageLoading: () => const Center(child: CircularProgressIndicator(),),
-        loggedOutSuccess: (message) => Center(child: Text(message),),
+        loggedOutSuccess: (message) => Center(child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.check_circle_outline_outlined, size: 50.0, color: Colors.green,),
+            const SizedBox(height: 20.0,),
+            Text(message),
+          ],
+        ),),
         loginPageError: (message) => Center(child: Text(message)),
       ),
     );
@@ -143,8 +172,8 @@ class LogOutInitialPage extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 50, right: 50),
                 child: CustomTextFormField(controller: _userPassword, hintText: 'Password', obscureText: true,),
               ),
-              const SizedBox(height: 20.0,),
-              InkWell(onTap: (){}, child: const Text('Forgot password?', style: TextStyle(fontWeight: FontWeight.w600, color: Colors.teal),)),
+              // const SizedBox(height: 20.0,),
+              // InkWell(onTap: (){}, child: const Text('Forgot password?', style: TextStyle(fontWeight: FontWeight.w600, color: Colors.teal),)),
               const SizedBox(height: 40.0,),
               CupertinoButton(onPressed: (){
                 _authCubit.loginWithEmail(userEmail: _userEmail.text, userPassword: _userPassword.text);
@@ -373,7 +402,7 @@ class LogInInitialPage extends StatelessWidget {
       final userNewName = TextEditingController();
 
       return AlertDialog(
-        title: Center(child: Text('Change Your name')),
+        title: const Center(child: Text('Change Your name')),
         content: SizedBox(width: 350, height: 150, child: Center(
           child: Column(
             children: [

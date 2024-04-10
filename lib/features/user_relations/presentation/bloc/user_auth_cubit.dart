@@ -79,7 +79,7 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
     }, (success){
       USER_LOGGED_IN = false;
       LOGGED_USER = MyUser.empty();
-      emit(const UserAuthState.loggedOutSuccess(message: 'LogOut successful'));
+      emit(const UserAuthState.loggedOutSuccess(message: 'Log-out successful'));
     });
   }
 
@@ -98,7 +98,7 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
           emit(const UserAuthState.loginPageError(message: 'Upps... something went wrong'));
         }, (success){
           USER_LOGGED_IN = true;
-          emit(UserAuthState.loginSuccess(message: 'Success', uid: success));
+          emit(UserAuthState.loginSuccess(message: 'Login success.', uid: success));
         });
       }
     });
@@ -127,7 +127,7 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
           emit(const UserAuthState.loginPageError(message: 'Upps... something went wrong'));
         }, (userID){
           USER_LOGGED_IN = true;
-          emit(UserAuthState.loginSuccess(message: 'Success', uid: userID));
+          emit(UserAuthState.loginSuccess(message: 'Login success.', uid: userID));
         });
 
       }
@@ -139,7 +139,7 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
     ///login with google account
     final result = await loginWithGoogleUseCase();
     result.fold((failure){
-      emit(const UserAuthState.registerFailure(message: 'Registration failure'));
+      emit(const UserAuthState.registerFailure(message: 'Registration failure.'));
     }, (credential) async{
       if(credential.additionalUserInfo!.isNewUser){
         final _image = await ImageOperations().changeHttpImageToBase64(imageUrl: credential.user!.photoURL!);
@@ -156,15 +156,15 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
             skateWarsWon: 0,
             skateWarsLost: 0));
         result.fold((failure){
-          emit(const UserAuthState.registerFailure(message: 'Register failure'));
+          emit(const UserAuthState.registerFailure(message: 'Registration failure.'));
         }, (success) async{
           emit(const UserAuthState.loginInProgress());
           final result = await getUserIDUseCase(GetUserIDParams(userEmail: credential.user!.email!));
           result.fold((failure){
-            emit(const UserAuthState.loginPageError(message: 'Upps... something went wrong'));
+            emit(const UserAuthState.loginPageError(message: 'Upps... something went wrong.'));
           }, (success){
             USER_LOGGED_IN = true;
-            emit(UserAuthState.loginSuccess(message: 'Login Success', uid: success));
+            emit(UserAuthState.loginSuccess(message: 'Login success.', uid: success));
           });
         });
       }else{
@@ -176,13 +176,13 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
   Future<void> registerWithEmailAndPassword({required String userEmail, required String userPassword}) async{
     final result = await createEmailPasswordUserUseCase(CreateEmailPasswordUserParams(userEmail: userEmail, userPassword: userPassword));
     result.fold((failure){
-      emit(const UserAuthState.registerFailure(message: 'Unable to register new user'));
+      emit(const UserAuthState.registerFailure(message: 'Unable to register new user.'));
     }, (success) async{
        switch (success){
          case 'email-already-in-use' :
             dispatch(const UserAuthAction.signInActionMessage(message: 'User with this e-mail is already signed-in. Try another credentials.'));
          case 'invalid-email':
-           dispatch(const UserAuthAction.signInActionMessage(message: 'Invalid e-mail. Check if e-mial is correct.'));
+           dispatch(const UserAuthAction.signInActionMessage(message: 'Invalid e-mail. Check if e-mail is correct.'));
          case 'weak-password':
            dispatch(const UserAuthAction.signInActionMessage(message: 'Your password is to weak. Try longer password.'));
          default : final result = await registerNewUseUseCase(RegisterNewUserParams(
@@ -198,9 +198,9 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
              skateWarsWon: 0,
              skateWarsLost: 0));
          result.fold((failure){
-           emit(const UserAuthState.registerFailure(message: 'Unable to register new user'));
+           emit(const UserAuthState.registerFailure(message: 'Unable to register new user.'));
          }, (success){
-           emit(const UserAuthState.registerSuccess(message: 'Registration successful'));
+           emit(const UserAuthState.registerSuccess(message: 'Registration successful.'));
          });
 
        }

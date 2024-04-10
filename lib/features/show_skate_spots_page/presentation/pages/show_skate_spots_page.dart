@@ -158,8 +158,9 @@ class ShowSkateSpotsPage extends HookWidget {
                         },
                       ),
                       showSpotsPageLoading: () => const Center(child: CircularProgressIndicator(),),
-                      showSpotsPageEmpty: (message) => const Center(child: Text('We havent found any spots.'),),
-                      orElse: () => const Center(child: Text('error'),)),
+                      showSpotsPageEmpty: (message) => const Center(child: Text("We haven't found any spots."),),
+                      orElse: () => const Center(child: Text('We have some problems...\n'
+                          'It seems, that You need to switch on location services.'),)),
                   ),
                   SizedBox( child:
                   _showSkateSpotState.maybeWhen(
@@ -168,7 +169,7 @@ class ShowSkateSpotsPage extends HookWidget {
                     orElse:() => _showAll.value == false
                       ? Column(
                     children: [
-                      const Text('Find spot in Your nearest area by moving below slider'),
+                      const Text('Find spot in Your nearest area by moving below slider.'),
                       const SizedBox(height: 20.0,),
                       SfSliderTheme(
                         data: const SfSliderThemeData(
