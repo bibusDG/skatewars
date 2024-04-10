@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'package:collection/collection.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:go_router/go_router.dart';
@@ -66,6 +68,24 @@ class UserLoginPage extends HookWidget {
           if(context.mounted){
             _authCubit.registerInitialPage();
           }
+        },
+        deleteUserSuccess: (message) async{
+          await Future.delayed(const Duration(seconds: 3));
+          if(context.mounted){
+            context.goNamed('show_skate_spots_page', pathParameters: {'uid' : 'null'});
+          }
+        },
+        deleteUserFailure: (message) async{
+          await Future.delayed(const Duration(seconds: 3));
+          if(context.mounted){
+            _authCubit.loginInitialPage(userLoggedIn: USER_LOGGED_IN.toString(), uid: uid);
+          }
+        },
+        registerSuccess: (message) async{
+          await Future.delayed(const Duration(seconds: 3));
+          if(context.mounted){
+            context.goNamed('show_skate_spots_page', pathParameters: {'uid' : uid});
+          }
         }
       );
     });
@@ -102,6 +122,23 @@ class UserLoginPage extends HookWidget {
           orElse: (){return null;}),
       ),
       body: _authState.whenOrNull(
+        registeringInProgress: () => const Center(child: CircularProgressIndicator(),),
+        registerSuccess: (message) => Center(child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.check_circle_outline_outlined, color: Colors.green, size: 50.0,),
+            const SizedBox(height: 20.0,),
+            Text(message),
+          ],
+        ),),
+        registerFailure: (message) => Center(child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.error_outline, color: Colors.red, size: 50.0,),
+            const SizedBox(height: 20.0,),
+            Text(message),
+          ],
+        ),),
         userRegisterInitialPage: () => SignUpUserPage(
             cubit: _authCubit,
             userRepeatPassword: _userRepeatPassword,
@@ -138,6 +175,23 @@ class UserLoginPage extends HookWidget {
           ],
         ),),
         loginPageError: (message) => Center(child: Text(message)),
+        deletingUser: () => const Center(child: CircularProgressIndicator(),),
+        deleteUserFailure: (message) => Center(child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.error_outline, color: Colors.red, size: 50.0,),
+            const SizedBox(height: 20.0,),
+            Text(message),
+          ],
+        ),),
+        deleteUserSuccess: (message) => Center(child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.check_circle_outline_outlined, color: Colors.green, size: 50.0,),
+            const SizedBox(height: 20.0,),
+            Text(message),
+          ],
+        ),),
       ),
     );
   }
@@ -310,7 +364,9 @@ class LogInInitialPage extends StatelessWidget {
             Stack(
               alignment: AlignmentDirectional.topEnd,
               children: [
-                CircleAvatar(backgroundImage: MemoryImage(const Base64Decoder().convert(user.userAvatar)), radius: 60,),
+                user.userAvatar.isNotEmpty?
+                CircleAvatar(backgroundImage: MemoryImage(const Base64Decoder().convert(user.userAvatar)), radius: 60,):
+                const CircleAvatar(radius: 60),
                 IconButton(onPressed: () async{
                   final imageAvatar = await ChooseImageToDatabase().chooseImageFromGallery();
                   await cubit.changeUserCredentials(
@@ -322,7 +378,8 @@ class LogInInitialPage extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(user.userName, style: const TextStyle(fontSize: 20),),
+                user.userName.isNotEmpty? Text(user.userName, style: const TextStyle(fontSize: 20),):
+                const Text('No name user'),
                 InkWell(child: const Text('change display name',
                   style: TextStyle(fontSize: 12.0, color: Colors.teal),), onTap: (){
                   changeNameDialogBox(user: user, context: context);
@@ -387,7 +444,7 @@ class LogInInitialPage extends StatelessWidget {
               cubit.logOutUser();
             }, color: Colors.black, child: const Text('Logout'),),
             CupertinoButton(onPressed: (){
-
+              deleteUserConfirmation(user: user, context: context, cubit: cubit);
             }, color: Colors.black, child: const Text('Remove my account'),),
           ],
         ),),
@@ -418,6 +475,25 @@ class LogInInitialPage extends StatelessWidget {
               }, color: Colors.black,child: const Text('Change'),),
             ],
           ),
+        ),),
+      );
+    });
+  }
+
+  deleteUserConfirmation({required MyUser user, required BuildContext context, required UserAuthCubit cubit}) async{
+    showDialog(context: context, builder: (BuildContext context){
+      final confirmationPassword = TextEditingController();
+      return AlertDialog(
+        title: const Center(child: Text('Confirmation'),),
+        content: SizedBox(width: 350, height: 120, child: Column(
+          children: [
+            const Text('Do You really want to delete account? '),
+            const SizedBox(height: 20.0,),
+            CupertinoButton(child: Text('Delete account'), onPressed: () async{
+              context.pop();
+              cubit.deleteUser(userID: user.userID);
+            }, color: Colors.black,),
+          ],
         ),),
       );
     });

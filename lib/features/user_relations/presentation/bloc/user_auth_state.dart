@@ -22,4 +22,8 @@ class UserAuthState with _$UserAuthState {
   const factory UserAuthState.loginPageLoading() = _LoginPageLoading;
   const factory UserAuthState.loginInProgress() = _LoginInProgress;
 
+  const factory UserAuthState.deleteUserSuccess({required String message}) = _DeleteUserSuccess;
+  const factory UserAuthState.deleteUserFailure({required String message}) = _DeleteUserFailure;
+  const factory UserAuthState.deletingUser() = _DeletingUser;
+
 }

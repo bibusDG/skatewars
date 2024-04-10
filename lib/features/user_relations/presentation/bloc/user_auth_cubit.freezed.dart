@@ -33,6 +33,9 @@ mixin _$UserAuthState {
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +55,9 @@ mixin _$UserAuthState {
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +77,9 @@ mixin _$UserAuthState {
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
     TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -94,6 +103,9 @@ mixin _$UserAuthState {
     required TResult Function(_LoginPageError value) loginPageError,
     required TResult Function(_LoginPageLoading value) loginPageLoading,
     required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -113,6 +125,9 @@ mixin _$UserAuthState {
     TResult? Function(_LoginPageError value)? loginPageError,
     TResult? Function(_LoginPageLoading value)? loginPageLoading,
     TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -131,6 +146,9 @@ mixin _$UserAuthState {
     TResult Function(_LoginPageError value)? loginPageError,
     TResult Function(_LoginPageLoading value)? loginPageLoading,
     TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -207,6 +225,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
   }) {
     return initial();
   }
@@ -229,6 +250,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
   }) {
     return initial?.call();
   }
@@ -251,6 +275,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
     TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -280,6 +307,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_LoginPageError value) loginPageError,
     required TResult Function(_LoginPageLoading value) loginPageLoading,
     required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
   }) {
     return initial(this);
   }
@@ -302,6 +332,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_LoginPageError value)? loginPageError,
     TResult? Function(_LoginPageLoading value)? loginPageLoading,
     TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
   }) {
     return initial?.call(this);
   }
@@ -323,6 +356,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(_LoginPageError value)? loginPageError,
     TResult Function(_LoginPageLoading value)? loginPageLoading,
     TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -392,6 +428,9 @@ class _$UserRegisterInitialPageImpl implements _UserRegisterInitialPage {
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
   }) {
     return userRegisterInitialPage();
   }
@@ -414,6 +453,9 @@ class _$UserRegisterInitialPageImpl implements _UserRegisterInitialPage {
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
   }) {
     return userRegisterInitialPage?.call();
   }
@@ -436,6 +478,9 @@ class _$UserRegisterInitialPageImpl implements _UserRegisterInitialPage {
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
     TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
     required TResult orElse(),
   }) {
     if (userRegisterInitialPage != null) {
@@ -465,6 +510,9 @@ class _$UserRegisterInitialPageImpl implements _UserRegisterInitialPage {
     required TResult Function(_LoginPageError value) loginPageError,
     required TResult Function(_LoginPageLoading value) loginPageLoading,
     required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
   }) {
     return userRegisterInitialPage(this);
   }
@@ -487,6 +535,9 @@ class _$UserRegisterInitialPageImpl implements _UserRegisterInitialPage {
     TResult? Function(_LoginPageError value)? loginPageError,
     TResult? Function(_LoginPageLoading value)? loginPageLoading,
     TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
   }) {
     return userRegisterInitialPage?.call(this);
   }
@@ -508,6 +559,9 @@ class _$UserRegisterInitialPageImpl implements _UserRegisterInitialPage {
     TResult Function(_LoginPageError value)? loginPageError,
     TResult Function(_LoginPageLoading value)? loginPageLoading,
     TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
     required TResult orElse(),
   }) {
     if (userRegisterInitialPage != null) {
@@ -576,6 +630,9 @@ class _$RegisteringInProgressImpl implements _RegisteringInProgress {
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
   }) {
     return registeringInProgress();
   }
@@ -598,6 +655,9 @@ class _$RegisteringInProgressImpl implements _RegisteringInProgress {
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
   }) {
     return registeringInProgress?.call();
   }
@@ -620,6 +680,9 @@ class _$RegisteringInProgressImpl implements _RegisteringInProgress {
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
     TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
     required TResult orElse(),
   }) {
     if (registeringInProgress != null) {
@@ -649,6 +712,9 @@ class _$RegisteringInProgressImpl implements _RegisteringInProgress {
     required TResult Function(_LoginPageError value) loginPageError,
     required TResult Function(_LoginPageLoading value) loginPageLoading,
     required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
   }) {
     return registeringInProgress(this);
   }
@@ -671,6 +737,9 @@ class _$RegisteringInProgressImpl implements _RegisteringInProgress {
     TResult? Function(_LoginPageError value)? loginPageError,
     TResult? Function(_LoginPageLoading value)? loginPageLoading,
     TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
   }) {
     return registeringInProgress?.call(this);
   }
@@ -692,6 +761,9 @@ class _$RegisteringInProgressImpl implements _RegisteringInProgress {
     TResult Function(_LoginPageError value)? loginPageError,
     TResult Function(_LoginPageLoading value)? loginPageLoading,
     TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
     required TResult orElse(),
   }) {
     if (registeringInProgress != null) {
@@ -785,6 +857,9 @@ class _$RegisterFailureImpl implements _RegisterFailure {
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
   }) {
     return registerFailure(message);
   }
@@ -807,6 +882,9 @@ class _$RegisterFailureImpl implements _RegisterFailure {
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
   }) {
     return registerFailure?.call(message);
   }
@@ -829,6 +907,9 @@ class _$RegisterFailureImpl implements _RegisterFailure {
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
     TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
     required TResult orElse(),
   }) {
     if (registerFailure != null) {
@@ -858,6 +939,9 @@ class _$RegisterFailureImpl implements _RegisterFailure {
     required TResult Function(_LoginPageError value) loginPageError,
     required TResult Function(_LoginPageLoading value) loginPageLoading,
     required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
   }) {
     return registerFailure(this);
   }
@@ -880,6 +964,9 @@ class _$RegisterFailureImpl implements _RegisterFailure {
     TResult? Function(_LoginPageError value)? loginPageError,
     TResult? Function(_LoginPageLoading value)? loginPageLoading,
     TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
   }) {
     return registerFailure?.call(this);
   }
@@ -901,6 +988,9 @@ class _$RegisterFailureImpl implements _RegisterFailure {
     TResult Function(_LoginPageError value)? loginPageError,
     TResult Function(_LoginPageLoading value)? loginPageLoading,
     TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
     required TResult orElse(),
   }) {
     if (registerFailure != null) {
@@ -1000,6 +1090,9 @@ class _$RegisterSuccessImpl implements _RegisterSuccess {
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
   }) {
     return registerSuccess(message);
   }
@@ -1022,6 +1115,9 @@ class _$RegisterSuccessImpl implements _RegisterSuccess {
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
   }) {
     return registerSuccess?.call(message);
   }
@@ -1044,6 +1140,9 @@ class _$RegisterSuccessImpl implements _RegisterSuccess {
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
     TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
     required TResult orElse(),
   }) {
     if (registerSuccess != null) {
@@ -1073,6 +1172,9 @@ class _$RegisterSuccessImpl implements _RegisterSuccess {
     required TResult Function(_LoginPageError value) loginPageError,
     required TResult Function(_LoginPageLoading value) loginPageLoading,
     required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
   }) {
     return registerSuccess(this);
   }
@@ -1095,6 +1197,9 @@ class _$RegisterSuccessImpl implements _RegisterSuccess {
     TResult? Function(_LoginPageError value)? loginPageError,
     TResult? Function(_LoginPageLoading value)? loginPageLoading,
     TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
   }) {
     return registerSuccess?.call(this);
   }
@@ -1116,6 +1221,9 @@ class _$RegisterSuccessImpl implements _RegisterSuccess {
     TResult Function(_LoginPageError value)? loginPageError,
     TResult Function(_LoginPageLoading value)? loginPageLoading,
     TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
     required TResult orElse(),
   }) {
     if (registerSuccess != null) {
@@ -1243,6 +1351,9 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
   }) {
     return userLoggedInInitialPage(user, favSpots);
   }
@@ -1265,6 +1376,9 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
   }) {
     return userLoggedInInitialPage?.call(user, favSpots);
   }
@@ -1287,6 +1401,9 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
     TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
     required TResult orElse(),
   }) {
     if (userLoggedInInitialPage != null) {
@@ -1316,6 +1433,9 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     required TResult Function(_LoginPageError value) loginPageError,
     required TResult Function(_LoginPageLoading value) loginPageLoading,
     required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
   }) {
     return userLoggedInInitialPage(this);
   }
@@ -1338,6 +1458,9 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     TResult? Function(_LoginPageError value)? loginPageError,
     TResult? Function(_LoginPageLoading value)? loginPageLoading,
     TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
   }) {
     return userLoggedInInitialPage?.call(this);
   }
@@ -1359,6 +1482,9 @@ class _$UserLoggedInInitialPageImpl implements _UserLoggedInInitialPage {
     TResult Function(_LoginPageError value)? loginPageError,
     TResult Function(_LoginPageLoading value)? loginPageLoading,
     TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
     required TResult orElse(),
   }) {
     if (userLoggedInInitialPage != null) {
@@ -1436,6 +1562,9 @@ class _$UserLoggedOutInitialPageImpl implements _UserLoggedOutInitialPage {
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
   }) {
     return userLoggedOutInitialPage();
   }
@@ -1458,6 +1587,9 @@ class _$UserLoggedOutInitialPageImpl implements _UserLoggedOutInitialPage {
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
   }) {
     return userLoggedOutInitialPage?.call();
   }
@@ -1480,6 +1612,9 @@ class _$UserLoggedOutInitialPageImpl implements _UserLoggedOutInitialPage {
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
     TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
     required TResult orElse(),
   }) {
     if (userLoggedOutInitialPage != null) {
@@ -1509,6 +1644,9 @@ class _$UserLoggedOutInitialPageImpl implements _UserLoggedOutInitialPage {
     required TResult Function(_LoginPageError value) loginPageError,
     required TResult Function(_LoginPageLoading value) loginPageLoading,
     required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
   }) {
     return userLoggedOutInitialPage(this);
   }
@@ -1531,6 +1669,9 @@ class _$UserLoggedOutInitialPageImpl implements _UserLoggedOutInitialPage {
     TResult? Function(_LoginPageError value)? loginPageError,
     TResult? Function(_LoginPageLoading value)? loginPageLoading,
     TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
   }) {
     return userLoggedOutInitialPage?.call(this);
   }
@@ -1552,6 +1693,9 @@ class _$UserLoggedOutInitialPageImpl implements _UserLoggedOutInitialPage {
     TResult Function(_LoginPageError value)? loginPageError,
     TResult Function(_LoginPageLoading value)? loginPageLoading,
     TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
     required TResult orElse(),
   }) {
     if (userLoggedOutInitialPage != null) {
@@ -1652,6 +1796,9 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
   }) {
     return loginSuccess(message, uid);
   }
@@ -1674,6 +1821,9 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
   }) {
     return loginSuccess?.call(message, uid);
   }
@@ -1696,6 +1846,9 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
     TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
     required TResult orElse(),
   }) {
     if (loginSuccess != null) {
@@ -1725,6 +1878,9 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     required TResult Function(_LoginPageError value) loginPageError,
     required TResult Function(_LoginPageLoading value) loginPageLoading,
     required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
   }) {
     return loginSuccess(this);
   }
@@ -1747,6 +1903,9 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult? Function(_LoginPageError value)? loginPageError,
     TResult? Function(_LoginPageLoading value)? loginPageLoading,
     TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
   }) {
     return loginSuccess?.call(this);
   }
@@ -1768,6 +1927,9 @@ class _$LoginSuccessImpl implements _LoginSuccess {
     TResult Function(_LoginPageError value)? loginPageError,
     TResult Function(_LoginPageLoading value)? loginPageLoading,
     TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
     required TResult orElse(),
   }) {
     if (loginSuccess != null) {
@@ -1868,6 +2030,9 @@ class _$LoginFailedImpl implements _LoginFailed {
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
   }) {
     return loginFailed(message);
   }
@@ -1890,6 +2055,9 @@ class _$LoginFailedImpl implements _LoginFailed {
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
   }) {
     return loginFailed?.call(message);
   }
@@ -1912,6 +2080,9 @@ class _$LoginFailedImpl implements _LoginFailed {
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
     TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
     required TResult orElse(),
   }) {
     if (loginFailed != null) {
@@ -1941,6 +2112,9 @@ class _$LoginFailedImpl implements _LoginFailed {
     required TResult Function(_LoginPageError value) loginPageError,
     required TResult Function(_LoginPageLoading value) loginPageLoading,
     required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
   }) {
     return loginFailed(this);
   }
@@ -1963,6 +2137,9 @@ class _$LoginFailedImpl implements _LoginFailed {
     TResult? Function(_LoginPageError value)? loginPageError,
     TResult? Function(_LoginPageLoading value)? loginPageLoading,
     TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
   }) {
     return loginFailed?.call(this);
   }
@@ -1984,6 +2161,9 @@ class _$LoginFailedImpl implements _LoginFailed {
     TResult Function(_LoginPageError value)? loginPageError,
     TResult Function(_LoginPageLoading value)? loginPageLoading,
     TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
     required TResult orElse(),
   }) {
     if (loginFailed != null) {
@@ -2084,6 +2264,9 @@ class _$UserLoggedOutSuccessImpl implements _UserLoggedOutSuccess {
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
   }) {
     return loggedOutSuccess(message);
   }
@@ -2106,6 +2289,9 @@ class _$UserLoggedOutSuccessImpl implements _UserLoggedOutSuccess {
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
   }) {
     return loggedOutSuccess?.call(message);
   }
@@ -2128,6 +2314,9 @@ class _$UserLoggedOutSuccessImpl implements _UserLoggedOutSuccess {
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
     TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
     required TResult orElse(),
   }) {
     if (loggedOutSuccess != null) {
@@ -2157,6 +2346,9 @@ class _$UserLoggedOutSuccessImpl implements _UserLoggedOutSuccess {
     required TResult Function(_LoginPageError value) loginPageError,
     required TResult Function(_LoginPageLoading value) loginPageLoading,
     required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
   }) {
     return loggedOutSuccess(this);
   }
@@ -2179,6 +2371,9 @@ class _$UserLoggedOutSuccessImpl implements _UserLoggedOutSuccess {
     TResult? Function(_LoginPageError value)? loginPageError,
     TResult? Function(_LoginPageLoading value)? loginPageLoading,
     TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
   }) {
     return loggedOutSuccess?.call(this);
   }
@@ -2200,6 +2395,9 @@ class _$UserLoggedOutSuccessImpl implements _UserLoggedOutSuccess {
     TResult Function(_LoginPageError value)? loginPageError,
     TResult Function(_LoginPageLoading value)? loginPageLoading,
     TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
     required TResult orElse(),
   }) {
     if (loggedOutSuccess != null) {
@@ -2300,6 +2498,9 @@ class _$UserLoggedOutFailureImpl implements _UserLoggedOutFailure {
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
   }) {
     return loggedOutFailure(message);
   }
@@ -2322,6 +2523,9 @@ class _$UserLoggedOutFailureImpl implements _UserLoggedOutFailure {
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
   }) {
     return loggedOutFailure?.call(message);
   }
@@ -2344,6 +2548,9 @@ class _$UserLoggedOutFailureImpl implements _UserLoggedOutFailure {
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
     TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
     required TResult orElse(),
   }) {
     if (loggedOutFailure != null) {
@@ -2373,6 +2580,9 @@ class _$UserLoggedOutFailureImpl implements _UserLoggedOutFailure {
     required TResult Function(_LoginPageError value) loginPageError,
     required TResult Function(_LoginPageLoading value) loginPageLoading,
     required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
   }) {
     return loggedOutFailure(this);
   }
@@ -2395,6 +2605,9 @@ class _$UserLoggedOutFailureImpl implements _UserLoggedOutFailure {
     TResult? Function(_LoginPageError value)? loginPageError,
     TResult? Function(_LoginPageLoading value)? loginPageLoading,
     TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
   }) {
     return loggedOutFailure?.call(this);
   }
@@ -2416,6 +2629,9 @@ class _$UserLoggedOutFailureImpl implements _UserLoggedOutFailure {
     TResult Function(_LoginPageError value)? loginPageError,
     TResult Function(_LoginPageLoading value)? loginPageLoading,
     TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
     required TResult orElse(),
   }) {
     if (loggedOutFailure != null) {
@@ -2515,6 +2731,9 @@ class _$LoginPageErrorImpl implements _LoginPageError {
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
   }) {
     return loginPageError(message);
   }
@@ -2537,6 +2756,9 @@ class _$LoginPageErrorImpl implements _LoginPageError {
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
   }) {
     return loginPageError?.call(message);
   }
@@ -2559,6 +2781,9 @@ class _$LoginPageErrorImpl implements _LoginPageError {
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
     TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
     required TResult orElse(),
   }) {
     if (loginPageError != null) {
@@ -2588,6 +2813,9 @@ class _$LoginPageErrorImpl implements _LoginPageError {
     required TResult Function(_LoginPageError value) loginPageError,
     required TResult Function(_LoginPageLoading value) loginPageLoading,
     required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
   }) {
     return loginPageError(this);
   }
@@ -2610,6 +2838,9 @@ class _$LoginPageErrorImpl implements _LoginPageError {
     TResult? Function(_LoginPageError value)? loginPageError,
     TResult? Function(_LoginPageLoading value)? loginPageLoading,
     TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
   }) {
     return loginPageError?.call(this);
   }
@@ -2631,6 +2862,9 @@ class _$LoginPageErrorImpl implements _LoginPageError {
     TResult Function(_LoginPageError value)? loginPageError,
     TResult Function(_LoginPageLoading value)? loginPageLoading,
     TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
     required TResult orElse(),
   }) {
     if (loginPageError != null) {
@@ -2703,6 +2937,9 @@ class _$LoginPageLoadingImpl implements _LoginPageLoading {
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
   }) {
     return loginPageLoading();
   }
@@ -2725,6 +2962,9 @@ class _$LoginPageLoadingImpl implements _LoginPageLoading {
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
   }) {
     return loginPageLoading?.call();
   }
@@ -2747,6 +2987,9 @@ class _$LoginPageLoadingImpl implements _LoginPageLoading {
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
     TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
     required TResult orElse(),
   }) {
     if (loginPageLoading != null) {
@@ -2776,6 +3019,9 @@ class _$LoginPageLoadingImpl implements _LoginPageLoading {
     required TResult Function(_LoginPageError value) loginPageError,
     required TResult Function(_LoginPageLoading value) loginPageLoading,
     required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
   }) {
     return loginPageLoading(this);
   }
@@ -2798,6 +3044,9 @@ class _$LoginPageLoadingImpl implements _LoginPageLoading {
     TResult? Function(_LoginPageError value)? loginPageError,
     TResult? Function(_LoginPageLoading value)? loginPageLoading,
     TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
   }) {
     return loginPageLoading?.call(this);
   }
@@ -2819,6 +3068,9 @@ class _$LoginPageLoadingImpl implements _LoginPageLoading {
     TResult Function(_LoginPageError value)? loginPageError,
     TResult Function(_LoginPageLoading value)? loginPageLoading,
     TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
     required TResult orElse(),
   }) {
     if (loginPageLoading != null) {
@@ -2885,6 +3137,9 @@ class _$LoginInProgressImpl implements _LoginInProgress {
     required TResult Function(String message) loginPageError,
     required TResult Function() loginPageLoading,
     required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
   }) {
     return loginInProgress();
   }
@@ -2907,6 +3162,9 @@ class _$LoginInProgressImpl implements _LoginInProgress {
     TResult? Function(String message)? loginPageError,
     TResult? Function()? loginPageLoading,
     TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
   }) {
     return loginInProgress?.call();
   }
@@ -2929,6 +3187,9 @@ class _$LoginInProgressImpl implements _LoginInProgress {
     TResult Function(String message)? loginPageError,
     TResult Function()? loginPageLoading,
     TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
     required TResult orElse(),
   }) {
     if (loginInProgress != null) {
@@ -2958,6 +3219,9 @@ class _$LoginInProgressImpl implements _LoginInProgress {
     required TResult Function(_LoginPageError value) loginPageError,
     required TResult Function(_LoginPageLoading value) loginPageLoading,
     required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
   }) {
     return loginInProgress(this);
   }
@@ -2980,6 +3244,9 @@ class _$LoginInProgressImpl implements _LoginInProgress {
     TResult? Function(_LoginPageError value)? loginPageError,
     TResult? Function(_LoginPageLoading value)? loginPageLoading,
     TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
   }) {
     return loginInProgress?.call(this);
   }
@@ -3001,6 +3268,9 @@ class _$LoginInProgressImpl implements _LoginInProgress {
     TResult Function(_LoginPageError value)? loginPageError,
     TResult Function(_LoginPageLoading value)? loginPageLoading,
     TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
     required TResult orElse(),
   }) {
     if (loginInProgress != null) {
@@ -3012,6 +3282,672 @@ class _$LoginInProgressImpl implements _LoginInProgress {
 
 abstract class _LoginInProgress implements UserAuthState {
   const factory _LoginInProgress() = _$LoginInProgressImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteUserSuccessImplCopyWith<$Res> {
+  factory _$$DeleteUserSuccessImplCopyWith(_$DeleteUserSuccessImpl value,
+          $Res Function(_$DeleteUserSuccessImpl) then) =
+      __$$DeleteUserSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$DeleteUserSuccessImplCopyWithImpl<$Res>
+    extends _$UserAuthStateCopyWithImpl<$Res, _$DeleteUserSuccessImpl>
+    implements _$$DeleteUserSuccessImplCopyWith<$Res> {
+  __$$DeleteUserSuccessImplCopyWithImpl(_$DeleteUserSuccessImpl _value,
+      $Res Function(_$DeleteUserSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$DeleteUserSuccessImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteUserSuccessImpl implements _DeleteUserSuccess {
+  const _$DeleteUserSuccessImpl({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'UserAuthState.deleteUserSuccess(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteUserSuccessImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteUserSuccessImplCopyWith<_$DeleteUserSuccessImpl> get copyWith =>
+      __$$DeleteUserSuccessImplCopyWithImpl<_$DeleteUserSuccessImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() userRegisterInitialPage,
+    required TResult Function() registeringInProgress,
+    required TResult Function(String message) registerFailure,
+    required TResult Function(String message) registerSuccess,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
+    required TResult Function() userLoggedOutInitialPage,
+    required TResult Function(String message, String uid) loginSuccess,
+    required TResult Function(String message) loginFailed,
+    required TResult Function(String message) loggedOutSuccess,
+    required TResult Function(String message) loggedOutFailure,
+    required TResult Function(String message) loginPageError,
+    required TResult Function() loginPageLoading,
+    required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
+  }) {
+    return deleteUserSuccess(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? userRegisterInitialPage,
+    TResult? Function()? registeringInProgress,
+    TResult? Function(String message)? registerFailure,
+    TResult? Function(String message)? registerSuccess,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
+    TResult? Function()? userLoggedOutInitialPage,
+    TResult? Function(String message, String uid)? loginSuccess,
+    TResult? Function(String message)? loginFailed,
+    TResult? Function(String message)? loggedOutSuccess,
+    TResult? Function(String message)? loggedOutFailure,
+    TResult? Function(String message)? loginPageError,
+    TResult? Function()? loginPageLoading,
+    TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
+  }) {
+    return deleteUserSuccess?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? userRegisterInitialPage,
+    TResult Function()? registeringInProgress,
+    TResult Function(String message)? registerFailure,
+    TResult Function(String message)? registerSuccess,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
+    TResult Function()? userLoggedOutInitialPage,
+    TResult Function(String message, String uid)? loginSuccess,
+    TResult Function(String message)? loginFailed,
+    TResult Function(String message)? loggedOutSuccess,
+    TResult Function(String message)? loggedOutFailure,
+    TResult Function(String message)? loginPageError,
+    TResult Function()? loginPageLoading,
+    TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
+    required TResult orElse(),
+  }) {
+    if (deleteUserSuccess != null) {
+      return deleteUserSuccess(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_UserRegisterInitialPage value)
+        userRegisterInitialPage,
+    required TResult Function(_RegisteringInProgress value)
+        registeringInProgress,
+    required TResult Function(_RegisterFailure value) registerFailure,
+    required TResult Function(_RegisterSuccess value) registerSuccess,
+    required TResult Function(_UserLoggedInInitialPage value)
+        userLoggedInInitialPage,
+    required TResult Function(_UserLoggedOutInitialPage value)
+        userLoggedOutInitialPage,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailed value) loginFailed,
+    required TResult Function(_UserLoggedOutSuccess value) loggedOutSuccess,
+    required TResult Function(_UserLoggedOutFailure value) loggedOutFailure,
+    required TResult Function(_LoginPageError value) loginPageError,
+    required TResult Function(_LoginPageLoading value) loginPageLoading,
+    required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
+  }) {
+    return deleteUserSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_UserRegisterInitialPage value)? userRegisterInitialPage,
+    TResult? Function(_RegisteringInProgress value)? registeringInProgress,
+    TResult? Function(_RegisterFailure value)? registerFailure,
+    TResult? Function(_RegisterSuccess value)? registerSuccess,
+    TResult? Function(_UserLoggedInInitialPage value)? userLoggedInInitialPage,
+    TResult? Function(_UserLoggedOutInitialPage value)?
+        userLoggedOutInitialPage,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailed value)? loginFailed,
+    TResult? Function(_UserLoggedOutSuccess value)? loggedOutSuccess,
+    TResult? Function(_UserLoggedOutFailure value)? loggedOutFailure,
+    TResult? Function(_LoginPageError value)? loginPageError,
+    TResult? Function(_LoginPageLoading value)? loginPageLoading,
+    TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
+  }) {
+    return deleteUserSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_UserRegisterInitialPage value)? userRegisterInitialPage,
+    TResult Function(_RegisteringInProgress value)? registeringInProgress,
+    TResult Function(_RegisterFailure value)? registerFailure,
+    TResult Function(_RegisterSuccess value)? registerSuccess,
+    TResult Function(_UserLoggedInInitialPage value)? userLoggedInInitialPage,
+    TResult Function(_UserLoggedOutInitialPage value)? userLoggedOutInitialPage,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailed value)? loginFailed,
+    TResult Function(_UserLoggedOutSuccess value)? loggedOutSuccess,
+    TResult Function(_UserLoggedOutFailure value)? loggedOutFailure,
+    TResult Function(_LoginPageError value)? loginPageError,
+    TResult Function(_LoginPageLoading value)? loginPageLoading,
+    TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
+    required TResult orElse(),
+  }) {
+    if (deleteUserSuccess != null) {
+      return deleteUserSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteUserSuccess implements UserAuthState {
+  const factory _DeleteUserSuccess({required final String message}) =
+      _$DeleteUserSuccessImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$DeleteUserSuccessImplCopyWith<_$DeleteUserSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteUserFailureImplCopyWith<$Res> {
+  factory _$$DeleteUserFailureImplCopyWith(_$DeleteUserFailureImpl value,
+          $Res Function(_$DeleteUserFailureImpl) then) =
+      __$$DeleteUserFailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$DeleteUserFailureImplCopyWithImpl<$Res>
+    extends _$UserAuthStateCopyWithImpl<$Res, _$DeleteUserFailureImpl>
+    implements _$$DeleteUserFailureImplCopyWith<$Res> {
+  __$$DeleteUserFailureImplCopyWithImpl(_$DeleteUserFailureImpl _value,
+      $Res Function(_$DeleteUserFailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$DeleteUserFailureImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteUserFailureImpl implements _DeleteUserFailure {
+  const _$DeleteUserFailureImpl({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'UserAuthState.deleteUserFailure(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteUserFailureImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteUserFailureImplCopyWith<_$DeleteUserFailureImpl> get copyWith =>
+      __$$DeleteUserFailureImplCopyWithImpl<_$DeleteUserFailureImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() userRegisterInitialPage,
+    required TResult Function() registeringInProgress,
+    required TResult Function(String message) registerFailure,
+    required TResult Function(String message) registerSuccess,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
+    required TResult Function() userLoggedOutInitialPage,
+    required TResult Function(String message, String uid) loginSuccess,
+    required TResult Function(String message) loginFailed,
+    required TResult Function(String message) loggedOutSuccess,
+    required TResult Function(String message) loggedOutFailure,
+    required TResult Function(String message) loginPageError,
+    required TResult Function() loginPageLoading,
+    required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
+  }) {
+    return deleteUserFailure(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? userRegisterInitialPage,
+    TResult? Function()? registeringInProgress,
+    TResult? Function(String message)? registerFailure,
+    TResult? Function(String message)? registerSuccess,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
+    TResult? Function()? userLoggedOutInitialPage,
+    TResult? Function(String message, String uid)? loginSuccess,
+    TResult? Function(String message)? loginFailed,
+    TResult? Function(String message)? loggedOutSuccess,
+    TResult? Function(String message)? loggedOutFailure,
+    TResult? Function(String message)? loginPageError,
+    TResult? Function()? loginPageLoading,
+    TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
+  }) {
+    return deleteUserFailure?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? userRegisterInitialPage,
+    TResult Function()? registeringInProgress,
+    TResult Function(String message)? registerFailure,
+    TResult Function(String message)? registerSuccess,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
+    TResult Function()? userLoggedOutInitialPage,
+    TResult Function(String message, String uid)? loginSuccess,
+    TResult Function(String message)? loginFailed,
+    TResult Function(String message)? loggedOutSuccess,
+    TResult Function(String message)? loggedOutFailure,
+    TResult Function(String message)? loginPageError,
+    TResult Function()? loginPageLoading,
+    TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
+    required TResult orElse(),
+  }) {
+    if (deleteUserFailure != null) {
+      return deleteUserFailure(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_UserRegisterInitialPage value)
+        userRegisterInitialPage,
+    required TResult Function(_RegisteringInProgress value)
+        registeringInProgress,
+    required TResult Function(_RegisterFailure value) registerFailure,
+    required TResult Function(_RegisterSuccess value) registerSuccess,
+    required TResult Function(_UserLoggedInInitialPage value)
+        userLoggedInInitialPage,
+    required TResult Function(_UserLoggedOutInitialPage value)
+        userLoggedOutInitialPage,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailed value) loginFailed,
+    required TResult Function(_UserLoggedOutSuccess value) loggedOutSuccess,
+    required TResult Function(_UserLoggedOutFailure value) loggedOutFailure,
+    required TResult Function(_LoginPageError value) loginPageError,
+    required TResult Function(_LoginPageLoading value) loginPageLoading,
+    required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
+  }) {
+    return deleteUserFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_UserRegisterInitialPage value)? userRegisterInitialPage,
+    TResult? Function(_RegisteringInProgress value)? registeringInProgress,
+    TResult? Function(_RegisterFailure value)? registerFailure,
+    TResult? Function(_RegisterSuccess value)? registerSuccess,
+    TResult? Function(_UserLoggedInInitialPage value)? userLoggedInInitialPage,
+    TResult? Function(_UserLoggedOutInitialPage value)?
+        userLoggedOutInitialPage,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailed value)? loginFailed,
+    TResult? Function(_UserLoggedOutSuccess value)? loggedOutSuccess,
+    TResult? Function(_UserLoggedOutFailure value)? loggedOutFailure,
+    TResult? Function(_LoginPageError value)? loginPageError,
+    TResult? Function(_LoginPageLoading value)? loginPageLoading,
+    TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
+  }) {
+    return deleteUserFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_UserRegisterInitialPage value)? userRegisterInitialPage,
+    TResult Function(_RegisteringInProgress value)? registeringInProgress,
+    TResult Function(_RegisterFailure value)? registerFailure,
+    TResult Function(_RegisterSuccess value)? registerSuccess,
+    TResult Function(_UserLoggedInInitialPage value)? userLoggedInInitialPage,
+    TResult Function(_UserLoggedOutInitialPage value)? userLoggedOutInitialPage,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailed value)? loginFailed,
+    TResult Function(_UserLoggedOutSuccess value)? loggedOutSuccess,
+    TResult Function(_UserLoggedOutFailure value)? loggedOutFailure,
+    TResult Function(_LoginPageError value)? loginPageError,
+    TResult Function(_LoginPageLoading value)? loginPageLoading,
+    TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
+    required TResult orElse(),
+  }) {
+    if (deleteUserFailure != null) {
+      return deleteUserFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteUserFailure implements UserAuthState {
+  const factory _DeleteUserFailure({required final String message}) =
+      _$DeleteUserFailureImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$DeleteUserFailureImplCopyWith<_$DeleteUserFailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeletingUserImplCopyWith<$Res> {
+  factory _$$DeletingUserImplCopyWith(
+          _$DeletingUserImpl value, $Res Function(_$DeletingUserImpl) then) =
+      __$$DeletingUserImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeletingUserImplCopyWithImpl<$Res>
+    extends _$UserAuthStateCopyWithImpl<$Res, _$DeletingUserImpl>
+    implements _$$DeletingUserImplCopyWith<$Res> {
+  __$$DeletingUserImplCopyWithImpl(
+      _$DeletingUserImpl _value, $Res Function(_$DeletingUserImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DeletingUserImpl implements _DeletingUser {
+  const _$DeletingUserImpl();
+
+  @override
+  String toString() {
+    return 'UserAuthState.deletingUser()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DeletingUserImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() userRegisterInitialPage,
+    required TResult Function() registeringInProgress,
+    required TResult Function(String message) registerFailure,
+    required TResult Function(String message) registerSuccess,
+    required TResult Function(MyUser user, List<SkateSpot> favSpots)
+        userLoggedInInitialPage,
+    required TResult Function() userLoggedOutInitialPage,
+    required TResult Function(String message, String uid) loginSuccess,
+    required TResult Function(String message) loginFailed,
+    required TResult Function(String message) loggedOutSuccess,
+    required TResult Function(String message) loggedOutFailure,
+    required TResult Function(String message) loginPageError,
+    required TResult Function() loginPageLoading,
+    required TResult Function() loginInProgress,
+    required TResult Function(String message) deleteUserSuccess,
+    required TResult Function(String message) deleteUserFailure,
+    required TResult Function() deletingUser,
+  }) {
+    return deletingUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? userRegisterInitialPage,
+    TResult? Function()? registeringInProgress,
+    TResult? Function(String message)? registerFailure,
+    TResult? Function(String message)? registerSuccess,
+    TResult? Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
+    TResult? Function()? userLoggedOutInitialPage,
+    TResult? Function(String message, String uid)? loginSuccess,
+    TResult? Function(String message)? loginFailed,
+    TResult? Function(String message)? loggedOutSuccess,
+    TResult? Function(String message)? loggedOutFailure,
+    TResult? Function(String message)? loginPageError,
+    TResult? Function()? loginPageLoading,
+    TResult? Function()? loginInProgress,
+    TResult? Function(String message)? deleteUserSuccess,
+    TResult? Function(String message)? deleteUserFailure,
+    TResult? Function()? deletingUser,
+  }) {
+    return deletingUser?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? userRegisterInitialPage,
+    TResult Function()? registeringInProgress,
+    TResult Function(String message)? registerFailure,
+    TResult Function(String message)? registerSuccess,
+    TResult Function(MyUser user, List<SkateSpot> favSpots)?
+        userLoggedInInitialPage,
+    TResult Function()? userLoggedOutInitialPage,
+    TResult Function(String message, String uid)? loginSuccess,
+    TResult Function(String message)? loginFailed,
+    TResult Function(String message)? loggedOutSuccess,
+    TResult Function(String message)? loggedOutFailure,
+    TResult Function(String message)? loginPageError,
+    TResult Function()? loginPageLoading,
+    TResult Function()? loginInProgress,
+    TResult Function(String message)? deleteUserSuccess,
+    TResult Function(String message)? deleteUserFailure,
+    TResult Function()? deletingUser,
+    required TResult orElse(),
+  }) {
+    if (deletingUser != null) {
+      return deletingUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_UserRegisterInitialPage value)
+        userRegisterInitialPage,
+    required TResult Function(_RegisteringInProgress value)
+        registeringInProgress,
+    required TResult Function(_RegisterFailure value) registerFailure,
+    required TResult Function(_RegisterSuccess value) registerSuccess,
+    required TResult Function(_UserLoggedInInitialPage value)
+        userLoggedInInitialPage,
+    required TResult Function(_UserLoggedOutInitialPage value)
+        userLoggedOutInitialPage,
+    required TResult Function(_LoginSuccess value) loginSuccess,
+    required TResult Function(_LoginFailed value) loginFailed,
+    required TResult Function(_UserLoggedOutSuccess value) loggedOutSuccess,
+    required TResult Function(_UserLoggedOutFailure value) loggedOutFailure,
+    required TResult Function(_LoginPageError value) loginPageError,
+    required TResult Function(_LoginPageLoading value) loginPageLoading,
+    required TResult Function(_LoginInProgress value) loginInProgress,
+    required TResult Function(_DeleteUserSuccess value) deleteUserSuccess,
+    required TResult Function(_DeleteUserFailure value) deleteUserFailure,
+    required TResult Function(_DeletingUser value) deletingUser,
+  }) {
+    return deletingUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_UserRegisterInitialPage value)? userRegisterInitialPage,
+    TResult? Function(_RegisteringInProgress value)? registeringInProgress,
+    TResult? Function(_RegisterFailure value)? registerFailure,
+    TResult? Function(_RegisterSuccess value)? registerSuccess,
+    TResult? Function(_UserLoggedInInitialPage value)? userLoggedInInitialPage,
+    TResult? Function(_UserLoggedOutInitialPage value)?
+        userLoggedOutInitialPage,
+    TResult? Function(_LoginSuccess value)? loginSuccess,
+    TResult? Function(_LoginFailed value)? loginFailed,
+    TResult? Function(_UserLoggedOutSuccess value)? loggedOutSuccess,
+    TResult? Function(_UserLoggedOutFailure value)? loggedOutFailure,
+    TResult? Function(_LoginPageError value)? loginPageError,
+    TResult? Function(_LoginPageLoading value)? loginPageLoading,
+    TResult? Function(_LoginInProgress value)? loginInProgress,
+    TResult? Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult? Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult? Function(_DeletingUser value)? deletingUser,
+  }) {
+    return deletingUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_UserRegisterInitialPage value)? userRegisterInitialPage,
+    TResult Function(_RegisteringInProgress value)? registeringInProgress,
+    TResult Function(_RegisterFailure value)? registerFailure,
+    TResult Function(_RegisterSuccess value)? registerSuccess,
+    TResult Function(_UserLoggedInInitialPage value)? userLoggedInInitialPage,
+    TResult Function(_UserLoggedOutInitialPage value)? userLoggedOutInitialPage,
+    TResult Function(_LoginSuccess value)? loginSuccess,
+    TResult Function(_LoginFailed value)? loginFailed,
+    TResult Function(_UserLoggedOutSuccess value)? loggedOutSuccess,
+    TResult Function(_UserLoggedOutFailure value)? loggedOutFailure,
+    TResult Function(_LoginPageError value)? loginPageError,
+    TResult Function(_LoginPageLoading value)? loginPageLoading,
+    TResult Function(_LoginInProgress value)? loginInProgress,
+    TResult Function(_DeleteUserSuccess value)? deleteUserSuccess,
+    TResult Function(_DeleteUserFailure value)? deleteUserFailure,
+    TResult Function(_DeletingUser value)? deletingUser,
+    required TResult orElse(),
+  }) {
+    if (deletingUser != null) {
+      return deletingUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeletingUser implements UserAuthState {
+  const factory _DeletingUser() = _$DeletingUserImpl;
 }
 
 /// @nodoc

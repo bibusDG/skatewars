@@ -182,6 +182,7 @@ class UserRelationsDataSourceImp implements UserRelationsDataSource{
 
   @override
   Future<void> deleteUserFromDataBase({required String userID}) async{
+    await FirebaseAuth.instance.currentUser?.delete();
     await FIREBASE_USER_PATH.doc(userID).delete();
     // TODO: implement deleteUserFromDataBase
     // throw UnimplementedError();

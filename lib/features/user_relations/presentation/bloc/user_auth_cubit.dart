@@ -12,6 +12,7 @@ import '../../../show_skate_spots_page/domain/usecases/remove_spot_from_favorite
 import '../../domain/entities/my_user.dart';
 import '../../domain/usecases/change_user_credentials_usecase.dart';
 import '../../domain/usecases/create_email_password_user_usecase.dart';
+import '../../domain/usecases/delete_user_usecase.dart';
 import '../../domain/usecases/log_out_user_usecase.dart';
 import '../../domain/usecases/login_with_google_usecase.dart';
 import '../../domain/usecases/logint_with_email_usecase.dart';
@@ -34,7 +35,9 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
   final RemoveSpotFromFavoritesUseCase removeSpotFromFavoritesUseCase;
   final GetSpotByIdUseCase getSpotByIdUseCase;
   final ChangeUserCredentialsUseCase changeUserCredentialsUseCase;
+  final DeleteUserUseCase deleteUserUseCase;
   UserAuthCubit({
+    required this.deleteUserUseCase,
     required this.changeUserCredentialsUseCase,
     required this.getSpotByIdUseCase,
     required this.removeSpotFromFavoritesUseCase,
@@ -174,6 +177,7 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
   }
 
   Future<void> registerWithEmailAndPassword({required String userEmail, required String userPassword}) async{
+    emit(const UserAuthState.registeringInProgress());
     final result = await createEmailPasswordUserUseCase(CreateEmailPasswordUserParams(userEmail: userEmail, userPassword: userPassword));
     result.fold((failure){
       emit(const UserAuthState.registerFailure(message: 'Unable to register new user.'));
@@ -237,6 +241,17 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
       print('Cred unchanged');
     }, (success){
       print('Cred changed');
+    });
+  }
+
+  Future<void> deleteUser({required String userID}) async{
+    emit(const UserAuthState.deletingUser());
+    final result = await deleteUserUseCase(DeleteUserParams(userID: userID));
+    result.fold((failure){
+      emit(const UserAuthState.deleteUserFailure(message: 'Removing account failed, please try again'));
+    }, (success){
+      USER_LOGGED_IN = false;
+      emit(const UserAuthState.deleteUserSuccess(message: 'Your account have been removed'));
     });
   }
 
