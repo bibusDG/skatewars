@@ -22,7 +22,7 @@ class StartPage extends HookWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          _userLoggedIn? CircleAvatar(child: Text(_user.userName[0]),) : SizedBox(),
+          _userLoggedIn? CircleAvatar(child: Text(_user.userName[0]),) : const SizedBox(),
         ],
       ),
       body: Center(

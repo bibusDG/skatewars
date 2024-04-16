@@ -109,92 +109,97 @@ class UserLoginPage extends HookWidget {
       );
     });
 
-    return Scaffold(
-      bottomNavigationBar: _authState.maybeWhen(
-          userRegisterInitialPage: () => CustomBottomAppBar(uid: uid),
-          userLoggedOutInitialPage: () => CustomBottomAppBar(uid: uid),
-          userLoggedInInitialPage: (user, favSpots) => CustomBottomAppBar(uid: uid),
-          orElse: () { return null; }
-      ),
-      appBar: AppBar(title: _authState.maybeWhen(
-          userRegisterInitialPage: () => const Text('REGISTRATION PAGE'),
-          userLoggedInInitialPage: (user, favSpots) => const Text('MY ACCOUNT'),
-          userLoggedOutInitialPage: () => const Text('LOGIN PAGE'),
-          orElse: (){return null;}),
-      ),
-      body: _authState.whenOrNull(
-        registeringInProgress: () => const Center(child: CircularProgressIndicator(),),
-        registerSuccess: (message) => Center(child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.check_circle_outline_outlined, color: Colors.green, size: 50.0,),
-            const SizedBox(height: 20.0,),
-            Text(message),
-            const SizedBox(height: 20.0,),
-            const Text('Please login to your account', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 25),)
-          ],
-        ),),
-        registerFailure: (message) => Center(child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.error_outline, color: Colors.red, size: 50.0,),
-            const SizedBox(height: 20.0,),
-            Text(message),
-          ],
-        ),),
-        userRegisterInitialPage: () => SignUpUserPage(
-            cubit: _authCubit,
-            userRepeatPassword: _userRepeatPassword,
-            userRegisterEmail: _userRegisterEmail,
-            userRegisterPassword: _userRegisterPassword,
-            uid: uid,
+    return GestureDetector(
+      onTap: (){
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        bottomNavigationBar: _authState.maybeWhen(
+            userRegisterInitialPage: () => CustomBottomAppBar(uid: uid),
+            userLoggedOutInitialPage: () => CustomBottomAppBar(uid: uid),
+            userLoggedInInitialPage: (user, favSpots) => CustomBottomAppBar(uid: uid),
+            orElse: () { return null; }
         ),
-        userLoggedInInitialPage: (user, favSpots) => LogInInitialPage(cubit: _authCubit, user: user, favSpots: favSpots,),
-        userLoggedOutInitialPage:() => LogOutInitialPage(userEmail: _userEmail, userPassword: _userPassword, authCubit: _authCubit),
-        loginSuccess: (message, uid) => Center(child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.check_circle_outline_outlined, color: Colors.green, size: 50.0,),
-            const SizedBox(height: 20.0,),
-            Text(message),
-          ],
-        ),),
-        loginInProgress: () => const Center(child: CircularProgressIndicator(),),
-        loginFailed: (message) => Center(child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.error_outline, color: Colors.red, size: 50.0,),
-            const SizedBox(height: 20.0,),
-            Text(message),
-          ],
-        ),),
-        loginPageLoading: () => const Center(child: CircularProgressIndicator(),),
-        loggedOutSuccess: (message) => Center(child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.check_circle_outline_outlined, size: 50.0, color: Colors.green,),
-            const SizedBox(height: 20.0,),
-            Text(message),
-          ],
-        ),),
-        loginPageError: (message) => Center(child: Text(message)),
-        deletingUser: () => const Center(child: CircularProgressIndicator(),),
-        deleteUserFailure: (message) => Center(child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.error_outline, color: Colors.red, size: 50.0,),
-            const SizedBox(height: 20.0,),
-            Text(message),
-          ],
-        ),),
-        deleteUserSuccess: (message) => Center(child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.check_circle_outline_outlined, color: Colors.green, size: 50.0,),
-            const SizedBox(height: 20.0,),
-            Text(message),
-          ],
-        ),),
+        appBar: AppBar(title: _authState.maybeWhen(
+            userRegisterInitialPage: () => const Text('REGISTRATION PAGE'),
+            userLoggedInInitialPage: (user, favSpots) => const Text('MY ACCOUNT'),
+            userLoggedOutInitialPage: () => const Text('LOGIN PAGE'),
+            orElse: (){return null;}),
+        ),
+        body: _authState.whenOrNull(
+          registeringInProgress: () => const Center(child: CircularProgressIndicator(),),
+          registerSuccess: (message) => Center(child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.check_circle_outline_outlined, color: Colors.green, size: 50.0,),
+              const SizedBox(height: 20.0,),
+              Text(message),
+              const SizedBox(height: 20.0,),
+              const Text('Please login to your account', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 25),)
+            ],
+          ),),
+          registerFailure: (message) => Center(child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.error_outline, color: Colors.red, size: 50.0,),
+              const SizedBox(height: 20.0,),
+              Text(message),
+            ],
+          ),),
+          userRegisterInitialPage: () => SignUpUserPage(
+              cubit: _authCubit,
+              userRepeatPassword: _userRepeatPassword,
+              userRegisterEmail: _userRegisterEmail,
+              userRegisterPassword: _userRegisterPassword,
+              uid: uid,
+          ),
+          userLoggedInInitialPage: (user, favSpots) => LogInInitialPage(cubit: _authCubit, user: user, favSpots: favSpots,),
+          userLoggedOutInitialPage:() => LogOutInitialPage(userEmail: _userEmail, userPassword: _userPassword, authCubit: _authCubit),
+          loginSuccess: (message, uid) => Center(child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.check_circle_outline_outlined, color: Colors.green, size: 50.0,),
+              const SizedBox(height: 20.0,),
+              Text(message),
+            ],
+          ),),
+          loginInProgress: () => const Center(child: CircularProgressIndicator(),),
+          loginFailed: (message) => Center(child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.error_outline, color: Colors.red, size: 50.0,),
+              const SizedBox(height: 20.0,),
+              Text(message),
+            ],
+          ),),
+          loginPageLoading: () => const Center(child: CircularProgressIndicator(),),
+          loggedOutSuccess: (message) => Center(child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.check_circle_outline_outlined, size: 50.0, color: Colors.green,),
+              const SizedBox(height: 20.0,),
+              Text(message),
+            ],
+          ),),
+          loginPageError: (message) => Center(child: Text(message)),
+          deletingUser: () => const Center(child: CircularProgressIndicator(),),
+          deleteUserFailure: (message) => Center(child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.error_outline, color: Colors.red, size: 50.0,),
+              const SizedBox(height: 20.0,),
+              Text(message),
+            ],
+          ),),
+          deleteUserSuccess: (message) => Center(child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.check_circle_outline_outlined, color: Colors.green, size: 50.0,),
+              const SizedBox(height: 20.0,),
+              Text(message),
+            ],
+          ),),
+        ),
       ),
     );
   }
