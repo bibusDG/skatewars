@@ -1,3 +1,6 @@
+import 'package:get_storage/get_storage.dart';
+import 'package:skatewars/core/di.config.dart';
+
 import '../router/page_router.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -110,6 +113,11 @@ late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
 
 void main() async{
+  await GetStorage.init();
+  final memoryData = GetStorage();
+  memoryData.writeIfNull('userRiding', false);
+  memoryData.writeIfNull('userExistingSpot', '');
+
   WidgetsFlutterBinding.ensureInitialized();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await Firebase.initializeApp(

@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:rating_dialog/rating_dialog.dart';
@@ -28,6 +29,13 @@ class SpotDetailsPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final memoryData = GetStorage();
+    print(memoryData.read('userRiding'));
+    print(memoryData.read('userExistingSpot'));
+    final USER_RIDING = memoryData.read('userRiding');
+    final USER_EX_SPOT = memoryData.read('userExistingSpot');
+
     final _spotDetailsCubit = useBloc<SpotDetailsCubit>();
     final _spotDetailsState = useBlocBuilder(_spotDetailsCubit);
     final _switch = useState(USER_RIDING && USER_EX_SPOT == spotID);
@@ -225,18 +233,22 @@ class SpotDetailsPage extends HookWidget {
                               });
                             }
                           else if(USER_RIDING == true && USER_EX_SPOT != spotID && USER_LOGGED_IN){
-                            print('You are somewhere else');
+                            _spotDetailsCubit.userAlreadyRiding();
                           }
                           else if(_switch.value && USER_LOGGED_IN){
-                            USER_RIDING = false;
-                            USER_EX_SPOT = '';
+                            memoryData.write('userRiding', false);
+                            memoryData.write('userExistingSpot', '');
+                            // USER_RIDING = false;
+                            // USER_EX_SPOT = '';
                             _switch.value = false;
                             await _spotDetailsCubit.removeUserFromSpot(userID: uid, spotID: spotID);
 
                           }else if(USER_LOGGED_IN && USER_RIDING == false){
                             _switch.value = true;
-                            USER_RIDING = true;
-                            USER_EX_SPOT = spotID;
+                            memoryData.write('userRiding', true);
+                            memoryData.write('userExistingSpot', spotID);
+                            // USER_RIDING = true;
+                            // USER_EX_SPOT = spotID;
                             await _spotDetailsCubit.addUserToSpot(spotID: spotID, userID: uid);
 
                           }

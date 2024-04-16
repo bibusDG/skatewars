@@ -176,39 +176,46 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
     });
   }
 
-  Future<void> registerWithEmailAndPassword({required String userEmail, required String userPassword}) async{
-    emit(const UserAuthState.registeringInProgress());
-    final result = await createEmailPasswordUserUseCase(CreateEmailPasswordUserParams(userEmail: userEmail, userPassword: userPassword));
-    result.fold((failure){
-      emit(const UserAuthState.registerFailure(message: 'Unable to register new user.'));
-    }, (success) async{
-       switch (success){
-         case 'email-already-in-use' :
+  Future<void> registerWithEmailAndPassword({
+    required String userEmail,
+    required String userPassword,
+    required String passwordConfirmation,
+  }) async{
+    if(userPassword != passwordConfirmation){
+      dispatch(const UserAuthAction.signInActionMessage(message: 'These are not the same passwords.'));
+    }else{
+      emit(const UserAuthState.registeringInProgress());
+      final result = await createEmailPasswordUserUseCase(CreateEmailPasswordUserParams(userEmail: userEmail, userPassword: userPassword));
+      result.fold((failure){
+        emit(const UserAuthState.registerFailure(message: 'Unable to register new user.'));
+      }, (success) async{
+        switch (success){
+          case 'email-already-in-use' :
             dispatch(const UserAuthAction.signInActionMessage(message: 'User with this e-mail is already signed-in. Try another credentials.'));
-         case 'invalid-email':
-           dispatch(const UserAuthAction.signInActionMessage(message: 'Invalid e-mail. Check if e-mail is correct.'));
-         case 'weak-password':
-           dispatch(const UserAuthAction.signInActionMessage(message: 'Your password is to weak. Try longer password.'));
-         default : final result = await registerNewUseUseCase(RegisterNewUserParams(
-             userEmail: userEmail,
-             userPassword: userPassword,
-             userName: '',
-             userSureName: '',
-             userAvatar: '',
-             userMobileToken: '',
-             userID: success,
-             favouriteSpots: const [],
-             skatePoints: 0,
-             skateWarsWon: 0,
-             skateWarsLost: 0));
-         result.fold((failure){
-           emit(const UserAuthState.registerFailure(message: 'Unable to register new user.'));
-         }, (success){
-           emit(const UserAuthState.registerSuccess(message: 'Registration successful.'));
-         });
-
-       }
-    });
+          case 'invalid-email':
+            dispatch(const UserAuthAction.signInActionMessage(message: 'Invalid e-mail. Check if e-mail is correct.'));
+          case 'weak-password':
+            dispatch(const UserAuthAction.signInActionMessage(message: 'Your password is to weak. Try longer password.'));
+          default : final result = await registerNewUseUseCase(RegisterNewUserParams(
+              userEmail: userEmail,
+              userPassword: userPassword,
+              userName: '',
+              userSureName: '',
+              userAvatar: '',
+              userMobileToken: '',
+              userID: success,
+              favouriteSpots: const [],
+              skatePoints: 0,
+              skateWarsWon: 0,
+              skateWarsLost: 0));
+          result.fold((failure){
+            emit(const UserAuthState.registerFailure(message: 'Unable to register new user.'));
+          }, (success){
+            emit(const UserAuthState.registerSuccess(message: 'Registration successful.'));
+          });
+        }
+      });
+    }
   }
 
   Future<void> getSpotByID({required String spotID}) async{

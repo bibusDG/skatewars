@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:skatewars/core/classes/choose_image_to_database.dart';
@@ -129,6 +130,8 @@ class UserLoginPage extends HookWidget {
             const Icon(Icons.check_circle_outline_outlined, color: Colors.green, size: 50.0,),
             const SizedBox(height: 20.0,),
             Text(message),
+            const SizedBox(height: 20.0,),
+            const Text('Please login to your account', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 25),)
           ],
         ),),
         registerFailure: (message) => Center(child: Column(
@@ -308,7 +311,10 @@ class SignUpUserPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 40.0,),
                   CupertinoButton(onPressed: (){
-                    cubit.registerWithEmailAndPassword(userEmail: userRegisterEmail.text, userPassword: userRegisterPassword.text);
+                    cubit.registerWithEmailAndPassword(
+                        passwordConfirmation: userRepeatPassword.text,
+                        userEmail: userRegisterEmail.text,
+                        userPassword: userRegisterPassword.text);
                   }, color: Colors.black, child: const Text('Register'),),
                   const SizedBox(height: 70,),
                   Padding(
@@ -356,6 +362,9 @@ class LogInInitialPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final _memoryData = GetStorage();
+
     return Column(
       children: [
         Expanded(flex:3,
@@ -369,9 +378,13 @@ class LogInInitialPage extends StatelessWidget {
                 const CircleAvatar(radius: 60),
                 IconButton(onPressed: () async{
                   final imageAvatar = await ChooseImageToDatabase().chooseImageFromGallery();
-                  await cubit.changeUserCredentials(
-                      userID: user.userID, credential: 'userAvatar', newCredentialValue: imageAvatar!);
-                  cubit.loginInitialPage(userLoggedIn: USER_LOGGED_IN.toString(), uid: user.userID);
+                  if(imageAvatar == null){
+                    null;
+                  }else{
+                    await cubit.changeUserCredentials(
+                        userID: user.userID, credential: 'userAvatar', newCredentialValue: imageAvatar!);
+                    cubit.loginInitialPage(userLoggedIn: USER_LOGGED_IN.toString(), uid: user.userID);
+                  }
                 }, icon: const Icon(Icons.change_circle_sharp, size: 40,))
               ],
             ),
@@ -388,7 +401,22 @@ class LogInInitialPage extends StatelessWidget {
             ),
           ],
         )),
-        const Text('MY FAV SPOTS', style: TextStyle(fontSize: 35, fontWeight: FontWeight.w100),),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('MY FAV SPOTS', style: TextStyle(fontSize: 35, fontWeight: FontWeight.w100),),
+            const SizedBox(width: 20,),
+            Icon(Icons.circle, color: _memoryData.read('userRiding') == true? Colors.green : Colors.red),
+            GestureDetector(
+              onTap: (){
+                final spotID = _memoryData.read('userExistingSpot');
+                if(spotID != ''){
+                  context.pushNamed('spot_details_page', pathParameters: {'spotID': spotID, 'uid': user.userID});
+                }
+              },
+                child: Text(_memoryData.read('userRiding') == true? 'Riding here' : 'Not riding')),
+          ],
+        ),
         Expanded(
           flex:7,
           child: favSpots.isNotEmpty? ListView.builder(

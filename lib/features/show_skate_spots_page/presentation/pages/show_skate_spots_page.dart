@@ -169,6 +169,7 @@ class ShowSkateSpotsPage extends HookWidget {
                     orElse:() => _showAll.value == false
                       ? Column(
                     children: [
+                      const SizedBox(height: 10.0,),
                       const Text('Find spot in Your nearest area by moving below slider.'),
                       const SizedBox(height: 20.0,),
                       SfSliderTheme(

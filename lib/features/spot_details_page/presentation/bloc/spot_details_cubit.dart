@@ -124,6 +124,10 @@ class SpotDetailsCubit extends ActionCubit<SpotDetailsState, SpotDetailsAction> 
     dispatch(SpotDetailsAction.listOfCommentDialogBox(listOfComments: listOfComments));
   }
 
+  Future<void> userAlreadyRiding() async{
+    dispatch(const SpotDetailsAction.userAddedToSpot(message: 'You are riding already somewhere else.\nPlease check Your account page.'));
+  }
+
   @override
   Future<void> close() async{
     _streamSubscription?.cancel();

@@ -9,8 +9,8 @@ var FIREBASE_COMMENTS_PATH = FirebaseFirestore.instance.collection('comments');
 
 var USER_LOGGED_IN = false;
 MyUser LOGGED_USER = MyUser.empty();
-var USER_RIDING = false;
-var USER_EX_SPOT = '';
+// var USER_RIDING = false;
+// var USER_EX_SPOT = '';
 
 // MyUser userByID = MyUser(
 //     userEmail: userEmail,
