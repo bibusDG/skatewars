@@ -31,8 +31,6 @@ class SpotDetailsPage extends HookWidget {
   Widget build(BuildContext context) {
 
     final memoryData = GetStorage();
-    print(memoryData.read('userRiding'));
-    print(memoryData.read('userExistingSpot'));
     final USER_RIDING = memoryData.read('userRiding');
     final USER_EX_SPOT = memoryData.read('userExistingSpot');
 
@@ -131,7 +129,7 @@ class SpotDetailsPage extends HookWidget {
                                   return _ratingDialog;
                                 }else{
                                   return const AlertDialog(
-                                    title: Center(child: Text('Rating error'),),
+                                    title: Center(child: Text('Upps...'),),
                                     content: SizedBox(width: 350, height: 50, child: Center(child: Text('To rate spot You must be logged in'),)),
                                   );
                                 }
@@ -181,7 +179,7 @@ class SpotDetailsPage extends HookWidget {
                                     width: double.infinity,
                                     height: double.infinity,
                                     child: Card(
-                                      color: Colors.purple,
+                                      color: Colors.deepOrangeAccent,
                                       child: ListView.builder(
                                         itemCount: riders.length,
                                           itemExtent: 80,

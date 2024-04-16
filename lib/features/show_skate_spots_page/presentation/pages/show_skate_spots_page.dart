@@ -149,7 +149,7 @@ class ShowSkateSpotsPage extends HookWidget {
                                   }else if(USER_LOGGED_IN && user.favouriteSpots.contains(skateSpot.spotID)){
                                     showAddSpotDialog(title: 'Uppss....', message: 'Spot already in Your favs', context: context);
                                   }else{
-                                    showAddSpotDialog(title: 'Add error', message: 'To add spot to favs, you need to be logged in', context: context);
+                                    showAddSpotDialog(title: 'Upps...', message: 'To add spot to favs, you need to be logged in', context: context);
                                   }
                                 }, icon: const Icon(Icons.favorite_border, size: 40, color: Colors.deepOrange,)),
                               ],
@@ -230,10 +230,6 @@ class ShowSkateSpotsPage extends HookWidget {
         content: SizedBox(height: 50, width: 350, child: Center(child: Text(message)),)
       );
     });
-    await Future.delayed(const Duration(seconds: 3));
-    if(context.mounted){
-      context.pop();
-    }
   }
 
 }

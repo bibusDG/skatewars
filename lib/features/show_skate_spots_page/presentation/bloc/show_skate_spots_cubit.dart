@@ -50,7 +50,7 @@ class ShowSkateSpotsCubit extends ActionCubit<ShowSkateSpotsState, ShowSkateSpot
   Future<void> addSpotToFavorites({required String userID, required String spotID}) async{
     final result = await addSpotToFavoritesUseCase(AddSpotToFavoritesParams(spotID: spotID, userID: userID));
     result.fold((failure){
-      dispatch(const ShowSkateSpotsAction.addSpotDialogBox(title: 'Add spot error', message: 'Unable to add new spot'));
+      dispatch(const ShowSkateSpotsAction.addSpotDialogBox(title: 'Upps...', message: 'Unable to add new spot'));
     }, (success){
       dispatch(const ShowSkateSpotsAction.addSpotDialogBox(title: 'Spot added', message: 'Spot added successfully to favs.'));
       print('spot added to fav');

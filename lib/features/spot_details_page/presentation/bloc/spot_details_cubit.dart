@@ -78,7 +78,8 @@ class SpotDetailsCubit extends ActionCubit<SpotDetailsState, SpotDetailsAction> 
     result.fold((failure){
       dispatch(const SpotDetailsAction.userAddedToSpot(message: 'Unable to add user to spot'));
     }, (success){
-      dispatch(const SpotDetailsAction.userAddedToSpot(message: 'Since now, you are riding here'));
+      dispatch(const SpotDetailsAction.userAddedToSpot(message: 'Since now, you are riding here.\n '
+          'Please remember to change the switch when leaving spot.'));
     });
   }
 
