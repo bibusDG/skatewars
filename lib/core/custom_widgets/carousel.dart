@@ -31,7 +31,7 @@ class CustomCarouselSlider extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     color: Colors.transparent,
                 ),
-                child: FittedBox(fit: BoxFit.fill,child: Image.memory(const Base64Decoder().convert(i)),));
+                child: FittedBox(fit: BoxFit.cover,child: Image.memory(const Base64Decoder().convert(i)),));
           },
         );
       }).toList(),

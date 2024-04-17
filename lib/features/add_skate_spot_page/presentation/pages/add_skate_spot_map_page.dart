@@ -54,7 +54,10 @@ class AddSkateSpotMapPage extends HookWidget {
                 return FlutterMap(
                   options: MapOptions(
                     onTap: (tapPosition, point) {
+                      _positionLoaded.value = 'init';
+                      _newSpotPosition.value = true;
                       _mapCubit.geNewPosition(point);
+                      _newMarkerPosition.value = point;
                     },
                     initialZoom: 19.0,
                     initialCenter: LatLng(position.latitude, position.longitude),

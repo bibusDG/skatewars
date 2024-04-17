@@ -184,7 +184,6 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
     if(userPassword != passwordConfirmation){
       dispatch(const UserAuthAction.signInActionMessage(message: 'These are not the same passwords.'));
     }else{
-      emit(const UserAuthState.registeringInProgress());
       final result = await createEmailPasswordUserUseCase(CreateEmailPasswordUserParams(userEmail: userEmail, userPassword: userPassword));
       result.fold((failure){
         emit(const UserAuthState.registerFailure(message: 'Unable to register new user.'));
@@ -196,7 +195,8 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
             dispatch(const UserAuthAction.signInActionMessage(message: 'Invalid e-mail. Check if e-mail is correct.'));
           case 'weak-password':
             dispatch(const UserAuthAction.signInActionMessage(message: 'Your password is to weak. Try longer password.'));
-          default : final result = await registerNewUseUseCase(RegisterNewUserParams(
+          default : emit(const UserAuthState.registeringInProgress());
+          final result = await registerNewUseUseCase(RegisterNewUserParams(
               userEmail: userEmail,
               userPassword: userPassword,
               userName: '',

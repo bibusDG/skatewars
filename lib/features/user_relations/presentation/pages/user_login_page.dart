@@ -224,7 +224,7 @@ class LogOutInitialPage extends StatelessWidget {
         Expanded(
           child: Column(
             children: [
-              const SizedBox(height: 40,),
+              const SizedBox(height: 20,),
               Padding(
                 padding: const EdgeInsets.only(left: 50, right: 50),
                 child: CustomTextFormField(controller: _userEmail, hintText: 'E-mail', obscureText: false,)
@@ -236,11 +236,11 @@ class LogOutInitialPage extends StatelessWidget {
               ),
               // const SizedBox(height: 20.0,),
               // InkWell(onTap: (){}, child: const Text('Forgot password?', style: TextStyle(fontWeight: FontWeight.w600, color: Colors.teal),)),
-              const SizedBox(height: 40.0,),
+              const SizedBox(height: 30.0,),
               CupertinoButton(onPressed: (){
                 _authCubit.loginWithEmail(userEmail: _userEmail.text, userPassword: _userPassword.text);
               }, color: Colors.black, child: const Text('Login'),),
-              const SizedBox(height: 70,),
+              const SizedBox(height: 30,),
               Padding(
                 padding: const EdgeInsets.only(left: 80, right: 80),
                 child: CupertinoButton(onPressed: (){
@@ -270,7 +270,7 @@ class LogOutInitialPage extends StatelessWidget {
             }, child: const Text('Sign up', style: TextStyle(fontWeight: FontWeight.w600, color: Colors.teal),),),
           ],
         ),
-        const SizedBox(height: 20.0,),
+        const SizedBox(height: 25.0,),
 
       ],
     ),);
@@ -297,9 +297,10 @@ class SignUpUserPage extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
+              flex: 25,
               child: Column(
                 children: [
-                  const SizedBox(height: 40,),
+                  const SizedBox(height: 10,),
                   Padding(
                       padding: const EdgeInsets.only(left: 50, right: 50),
                       child: CustomTextFormField(controller: userRegisterEmail, hintText: 'E-mail', obscureText: false,)
@@ -314,14 +315,14 @@ class SignUpUserPage extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 50, right: 50),
                     child: CustomTextFormField(controller: userRepeatPassword, hintText: 'Repeat password', obscureText: true,),
                   ),
-                  const SizedBox(height: 40.0,),
+                  const SizedBox(height: 30.0,),
                   CupertinoButton(onPressed: (){
                     cubit.registerWithEmailAndPassword(
                         passwordConfirmation: userRepeatPassword.text,
                         userEmail: userRegisterEmail.text,
                         userPassword: userRegisterPassword.text);
                   }, color: Colors.black, child: const Text('Register'),),
-                  const SizedBox(height: 70,),
+                  const SizedBox(height: 30,),
                   Padding(
                     padding: const EdgeInsets.only(left: 60, right: 60),
                     child: CupertinoButton(onPressed: (){
@@ -342,16 +343,19 @@ class SignUpUserPage extends StatelessWidget {
                 ],
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Already have account: '),
-                InkWell(onTap: (){
-                  cubit.loginInitialPage(userLoggedIn: USER_LOGGED_IN.toString(), uid: uid);
-                }, child: const Text('Sign in', style: TextStyle(fontWeight: FontWeight.w600, color: Colors.teal),),),
-              ],
+            Expanded(
+              flex:1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Already have account: '),
+                  InkWell(onTap: (){
+                    cubit.loginInitialPage(userLoggedIn: USER_LOGGED_IN.toString(), uid: uid);
+                  }, child: const Text('Sign in', style: TextStyle(fontWeight: FontWeight.w600, color: Colors.teal),),),
+                ],
+              ),
             ),
-            const SizedBox(height: 20.0,),
+            const SizedBox(height: 10.0,),
 
           ],
         ),
