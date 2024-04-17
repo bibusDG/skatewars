@@ -80,7 +80,7 @@ class SpotDetailsPage extends HookWidget {
                             onPressed: () {
                               _spotDetailsCubit.getListOfComments(spot: skateSpot);
                             },
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.comment,
                               size: 40,
                             ),
@@ -91,7 +91,7 @@ class SpotDetailsPage extends HookWidget {
                           child: Center(
                               child: Text(
                             skateSpot.spotName.toUpperCase(),
-                            style: TextStyle(fontSize: 25, fontWeight: FontWeight.w300),
+                            style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w300, overflow: TextOverflow.ellipsis),
                           ))),
                       Expanded(
                           flex: 2,

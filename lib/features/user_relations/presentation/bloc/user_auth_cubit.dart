@@ -186,7 +186,7 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
     }else{
       final result = await createEmailPasswordUserUseCase(CreateEmailPasswordUserParams(userEmail: userEmail, userPassword: userPassword));
       result.fold((failure){
-        emit(const UserAuthState.registerFailure(message: 'Unable to register new user.'));
+        emit(const UserAuthState.registerFailure(message: 'Unable to create new account.'));
       }, (success) async{
         switch (success){
           case 'email-already-in-use' :

@@ -102,7 +102,7 @@ class ShowSkateSpotsPage extends HookWidget {
                                             Center(
                                                 child: Text(
                                                   skateSpot.spotName.toUpperCase(),
-                                                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                                                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w300, overflow: TextOverflow.ellipsis),
                                                 )),
                                             RatingBarIndicator(
                                               itemBuilder: (context, index) => const Icon(
