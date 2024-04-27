@@ -11,8 +11,8 @@ class ChooseImageToDatabase{
 
   Future<String?> chooseImageFromGallery() async{
     XFile? file = await _imagePicker.pickImage(
-      maxHeight: 200,
-        maxWidth: 200,
+      maxHeight: 600,
+        maxWidth: 600,
         source: ImageSource.gallery);
       if (file != null) {
         final bytes = File(file.path).readAsBytesSync();
@@ -26,8 +26,8 @@ class ChooseImageToDatabase{
   Future<List<String>> chooseManyImageFromGallery() async{
     List<String> myGallery = [];
     List<XFile?> gallery = await _imagePicker.pickMultiImage(
-        maxHeight: 200,
-        maxWidth: 200);
+        maxHeight: 600,
+        maxWidth: 600);
     if (gallery.isNotEmpty) {
       for(var item in gallery){
         final bytes = File(item!.path).readAsBytesSync();
@@ -43,8 +43,8 @@ class ChooseImageToDatabase{
 
   Future<String?> chooseImageFromCamera() async{
     XFile? file = await _imagePicker.pickImage(
-        maxHeight: 200,
-        maxWidth: 200,
+        maxHeight: 600,
+        maxWidth: 600,
         source: ImageSource.camera);
     if (file != null) {
       final bytes = File(file.path).readAsBytesSync();

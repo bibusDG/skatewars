@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooked_bloc/hooked_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -94,6 +95,7 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
     emit(const UserAuthState.loginPageError(message: 'Upps... something went wrong'));
     }, (credential) async{
       if(credential.additionalUserInfo!.isNewUser){
+        await FirebaseAuth.instance.currentUser?.delete();
         emit(const UserAuthState.loginPageError(message: 'It looks You do not have account. Please register first.'));
       }else{
         final result = await getUserIDUseCase(GetUserIDParams(userEmail: credential.user!.email!));
@@ -167,7 +169,7 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
             emit(const UserAuthState.loginPageError(message: 'Upps... something went wrong.'));
           }, (success){
             USER_LOGGED_IN = true;
-            emit(UserAuthState.loginSuccess(message: 'Login success.', uid: success));
+            emit(UserAuthState.loginSuccess(message: 'Registration success.', uid: success));
           });
         });
       }else{

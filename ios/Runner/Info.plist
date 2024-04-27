@@ -38,15 +38,15 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>To capture profile photo please grant camera access</string>
+	<string>To capture profile photo, change Your profile images and to add photos to newly created skate spots, it is recommended to allow app access to camera.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app needs access to location when open and in the background.</string>
+	<string>This app needs access to location when open and in the background. It is recommended to have Your location switched-on, to filter better skate spots which are in Your area and provide distance to spot. </string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app needs access to location when in the background.</string>
+	<string>This app needs access to location when in the background. It is recommended to have Your location switched-on, to filter better skate spots which are in Your area and provide distance to spot.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs access to location in the background.</string>
+	<string>This app needs access to location in the background. It is recommended to have Your location switched-on, to filter better skate spots which are in Your area and provide distance to spot.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>App needs access to photo lib for profile images</string>
+	<string>App needs access to photo lib to change Your profile images and to add photos to newly created skate spots. It is recommended to allow app access to your images.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
