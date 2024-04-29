@@ -49,6 +49,7 @@ class ShowSkateSpotsPage extends HookWidget {
     return Scaffold(
       bottomNavigationBar: CustomBottomAppBar(uid: uid,),
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('SKATE SPOTS', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400),),
         actions: [
           _userLoggedIn? CircleAvatar(backgroundImage: _showSkateSpotState.whenOrNull(
@@ -91,7 +92,7 @@ class ShowSkateSpotsPage extends HookWidget {
                                       children: [
                                         CircleAvatar(
                                           radius: 70,
-                                          backgroundColor: Colors.tealAccent,
+                                          // backgroundColor: Colors.tealAccent,
                                           backgroundImage: skateSpot.spotPhotos.isEmpty
                                               ? null
                                               : Image.memory(const Base64Decoder().convert(skateSpot.spotPhotos[0])).image,
@@ -99,11 +100,14 @@ class ShowSkateSpotsPage extends HookWidget {
                                         Column(
                                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                           children: [
-                                            Center(
-                                                child: Text(
-                                                  skateSpot.spotName.toUpperCase(),
-                                                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w300, overflow: TextOverflow.ellipsis),
-                                                )),
+                                            SizedBox(
+                                              width: 200,
+                                              child: Center(
+                                                  child: Text(
+                                                    skateSpot.spotName.toUpperCase(),
+                                                    style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w300, overflow: TextOverflow.ellipsis),
+                                                  )),
+                                            ),
                                             RatingBarIndicator(
                                               itemBuilder: (context, index) => const Icon(
                                                 Icons.star,
@@ -174,8 +178,10 @@ class ShowSkateSpotsPage extends HookWidget {
                       const SizedBox(height: 20.0,),
                       SfSliderTheme(
                         data: const SfSliderThemeData(
+
+                          thumbRadius: 20,
                             tooltipBackgroundColor: Colors.orangeAccent,
-                            tooltipTextStyle: TextStyle(color: Colors.black)
+                            tooltipTextStyle: TextStyle(color: Colors.black, fontSize: 20)
                         ),
                         child: SfSlider(
                             inactiveColor: Colors.white70,
@@ -192,8 +198,12 @@ class ShowSkateSpotsPage extends HookWidget {
                             numberFormat: NumberFormat("km "),
                             onChanged: (value) {
                               _distance.value = (value*1000).toString();
+                              // _showSkateSpotsCubit.showSkateSpotsInArea(distance: _distance.value, userID: uid);
+                            },
+                            onChangeEnd: (change){
                               _showSkateSpotsCubit.showSkateSpotsInArea(distance: _distance.value, userID: uid);
-                            }),
+                          },
+                        ),
                       ),
                       const SizedBox(height: 20.0,),
                       CupertinoButton(

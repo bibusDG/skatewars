@@ -120,7 +120,9 @@ class UserLoginPage extends HookWidget {
             userLoggedInInitialPage: (user, favSpots) => CustomBottomAppBar(uid: uid),
             orElse: () { return null; }
         ),
-        appBar: AppBar(title: _authState.maybeWhen(
+        appBar: AppBar(
+          centerTitle: true,
+          title: _authState.maybeWhen(
             userRegisterInitialPage: () => const Text('REGISTRATION PAGE'),
             userLoggedInInitialPage: (user, favSpots) => const Text('MY ACCOUNT'),
             userLoggedOutInitialPage: () => const Text('LOGIN PAGE'),

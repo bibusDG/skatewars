@@ -65,9 +65,11 @@ class AddSkateSpotPage extends HookWidget {
         bottomNavigationBar: CustomBottomAppBar(uid: uid,),
         appBar: _addSkateSpotState.maybeWhen(
           addSkateSpotPageLoaded:(userLoggedIn) => AppBar(
+            centerTitle: true,
             title: const Text('CREATE NEW SPOT', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300),),
           ),
             gallery: (gallery) => AppBar(
+              centerTitle: true,
               title: const Text('Adding new spot'),
             ),
             orElse: () => null),

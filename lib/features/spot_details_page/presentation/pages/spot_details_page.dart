@@ -56,6 +56,7 @@ class SpotDetailsPage extends HookWidget {
     return Scaffold(
       bottomNavigationBar: CustomBottomAppBar(uid: uid,),
       appBar: AppBar(
+        centerTitle: true,
         title: Text('SPOT DETAILS'),
       ),
       body: SizedBox(

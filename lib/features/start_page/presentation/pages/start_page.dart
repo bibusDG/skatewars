@@ -33,8 +33,8 @@ class StartPage extends HookWidget {
               effects: const [
                 FadeEffect(),
               ],
-                child: const Text('SKATE WARS', style: TextStyle(fontSize: 70, fontWeight: FontWeight.w100),).animate().fadeIn(duration: 1.seconds)),
-            const Text('find skate spot and ride...', style: TextStyle(fontSize: 25),),
+                child: FittedBox(fit: BoxFit.fitWidth, child: const Text('SKATE WARS', style: TextStyle(fontSize: 70, fontWeight: FontWeight.w100),).animate().fadeIn(duration: 1.seconds))),
+            FittedBox(fit: BoxFit.fitWidth, child: const Text('find skate spot and ride...', style: TextStyle(fontSize: 25),)),
           ],
         ),
       ),
