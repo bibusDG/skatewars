@@ -200,7 +200,7 @@ class UserAuthCubit extends ActionCubit<UserAuthState, UserAuthAction> {
           default : emit(const UserAuthState.registeringInProgress());
           final result = await registerNewUseUseCase(RegisterNewUserParams(
               userEmail: userEmail,
-              userPassword: userPassword,
+              userPassword: '',
               userName: '',
               userSureName: '',
               userAvatar: '',
